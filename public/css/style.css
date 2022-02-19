@@ -250,6 +250,7 @@ html body #error-404-500 {
   background-repeat: no-repeat;
 }
 html body #error-404-500 div {
+  padding: 25px;
   background-color: #000000c9;
   height: 100vh;
   display: flex;
@@ -259,6 +260,7 @@ html body #error-404-500 div {
 html body #error-404-500 div h1 {
   color: #ffffff;
   margin-bottom: 140px;
+  text-align: center;
   font-family: cursive;
   font-size: 70px;
   font-weight: 400;
@@ -504,6 +506,10 @@ html body footer .footer-wrapper .final-footer span {
   }
   html body header .intro {
     height: 86vh;
+  }
+  html body #error-404-500 div h1 {
+    font-size: 50px;
+    font-weight: 400;
   }
   html body footer .footer-wrapper .news-latter-section {
     flex-wrap: wrap;

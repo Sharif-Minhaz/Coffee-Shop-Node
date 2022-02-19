@@ -247,12 +247,14 @@ html {
 				repeat: no-repeat;
 			}
 			div {
+                padding: 25px;
 				background-color: $wrapper-bg;
 				height: 100vh;
 				@include flex();
 				h1 {
 					color: $font-color;
 					margin-bottom: 140px;
+                    text-align: center;
 					font: {
 						family: cursive;
 						size: 70px;
@@ -498,6 +500,16 @@ html {
 				}
 				.intro {
 					height: 86vh;
+				}
+			}
+			#error-404-500 {
+				div {
+					h1 {
+						font: {
+							size: 50px;
+							weight: 400;
+						}
+					}
 				}
 			}
 			footer {
