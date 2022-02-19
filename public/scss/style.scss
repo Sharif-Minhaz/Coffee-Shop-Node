@@ -100,11 +100,11 @@ html {
 								cursor: pointer;
 							}
 						}
-                        .search-section {
-                            .set-invisible {
-                                display: none;
-                            }
-                        }
+						.search-section {
+							.set-invisible {
+								display: none;
+							}
+						}
 					}
 				}
 				.vertical-menu {
@@ -114,6 +114,7 @@ html {
 			.sticky {
 				width: 100%;
 				position: fixed;
+				z-index: 999;
 				animation: {
 					name: animationFade;
 					duration: 1s;
@@ -130,19 +131,19 @@ html {
 				background-color: $font-color;
 				@include flex();
 				padding: 15px 15px;
-                transform: scale(0);
-                transition: 0.2s all;
+				transform: scale(0);
+				transition: 0.2s all;
 				form {
 					input[type="search"] {
 						font-size: 17px;
 						height: 55px;
 						padding: 10px;
-                        background-color: $input-field;
-                        border: none;
-                        width: 270px;
-                        &:focus {
-                            outline: none;
-                        }
+						background-color: $input-field;
+						border: none;
+						width: 270px;
+						&:focus {
+							outline: none;
+						}
 					}
 					button {
 						background-color: $sec-bg;
@@ -152,13 +153,13 @@ html {
 						height: 55px;
 						width: 55px;
 						margin-left: -10px;
-                        cursor: pointer;
+						cursor: pointer;
 					}
 				}
 			}
-            .search-scaling {
-                transform: scale(1);
-            }
+			.search-scaling {
+				transform: scale(1);
+			}
 			.intro {
 				padding: 20px;
 				@include flex(center, flex-start);
@@ -232,6 +233,150 @@ html {
 								margin-right: 6px;
 							}
 						}
+					}
+				}
+			}
+		}
+		footer {
+			position: relative;
+			background: {
+				image: url(/images/footer.jpeg);
+				size: cover;
+				position: center;
+				repeat: no-repeat;
+			}
+			border-top: 1px solid $border-color;
+			.footer-wrapper {
+				padding: 150px 20px 0px 20px;
+				background-color: $wrapper-bg;
+				#gotoTop {
+					span {
+						position: absolute;
+						left: 50%;
+						top: -27px;
+						transform: translate(-50%);
+						height: 50px;
+						width: 50px;
+						border: 2px solid $border-color;
+						background-color: $main-bg;
+						border-radius: 50%;
+						@include flex();
+						cursor: pointer;
+						transition: 0.3s;
+						&::after {
+							content: "GO TO TOP";
+							position: absolute;
+							left: 23px;
+							bottom: -34px;
+							transform: translate(-50%);
+							width: 100px;
+							text-align: center;
+							font-size: 15px;
+							color: $font-color;
+						}
+						&:hover {
+							background-color: $highlight;
+						}
+					}
+					i {
+						color: $font-color !important;
+					}
+				}
+				.news-latter-section {
+					@include flex(flex-start, center);
+					> div {
+						flex-basis: 33.3333%;
+						color: $font-color;
+						display: flex;
+						align-items: center;
+						gap: 15px;
+						&:nth-child(2) {
+							text-align: center;
+							justify-content: center;
+						}
+						span {
+							color: $font-color;
+							&:last-child {
+								color: $muted;
+							}
+						}
+					}
+					> form {
+						margin-left: auto;
+						input[type="email"] {
+							background-color: transparent;
+							border: none;
+							border-bottom: 1px solid $border-color;
+							padding: 18px 10px;
+							min-width: 200px;
+							color: $font-color;
+							font-size: 17px;
+							&:focus {
+								outline: none;
+								box-shadow: none;
+							}
+						}
+						button {
+							height: 57px;
+							margin-left: -10px;
+							background-color: transparent;
+							cursor: pointer;
+							border: none;
+							border-bottom: 1px solid $border-color;
+							color: $font-color;
+							padding: 0px 10px;
+							i {
+								margin-left: 8px;
+							}
+						}
+					}
+				}
+				.short-bio {
+					display: flex;
+					padding: 70px 0px 30px 0px;
+
+					.short-motif {
+						flex-basis: 50%;
+                        margin-bottom: 30px;
+						img {
+							width: 80px;
+							height: 80px;
+						}
+						.short-des {
+							color: $font-color;
+							font-size: 18px;
+						}
+					}
+					.socials-rect {
+						flex-basis: 50%;
+						@include flex(flex-end);
+						gap: 10px;
+						> a {
+							span {
+								color: $muted;
+								width: 40px;
+								height: 40px;
+								border-radius: 4px;
+								@include flex();
+								border: 1px solid $border-color;
+								transition: 0.3s all;
+							}
+							&:hover span {
+								border-color: $font-color;
+								color: $font-color;
+							}
+						}
+					}
+				}
+				.final-footer {
+					border-top: 1px solid $border-color;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					padding: 30px;
+					text-align: center;
+					span {
+						color: $font-color;
 					}
 				}
 			}
@@ -331,6 +476,45 @@ html {
 					height: 86vh;
 				}
 			}
+			footer {
+				.footer-wrapper {
+					.news-latter-section {
+						flex-wrap: wrap;
+						> div {
+							&:nth-child(1) {
+								justify-content: center;
+								flex-basis: 50%;
+							}
+							&:nth-child(2) {
+								flex-basis: 50%;
+							}
+						}
+						> form {
+							margin: auto;
+							margin-top: 40px;
+							input[type="email"] {
+								min-width: 300px;
+								background-color: transparent;
+							}
+						}
+					}
+					.short-bio {
+                        flex-wrap: wrap;
+						.short-motif {
+                            flex-basis: 100%;
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            gap: 20px;
+						}
+						.socials-rect {
+                            flex-basis: 100%;
+							gap: 10px;
+                            justify-content: flex-start;
+						}
+					}
+				}
+			}
 		}
 	}
 }
@@ -348,6 +532,26 @@ html {
 					}
 					p {
 						text-align: center;
+					}
+				}
+			}
+			footer {
+				.footer-wrapper {
+					.news-latter-section {
+						> div {
+							&:nth-child(1) {
+								flex-basis: 100%;
+                                margin-bottom: 30px;
+							}
+							&:nth-child(2) {
+								flex-basis: 100%;
+							}
+						}
+						> form {
+							input[type="email"] {
+								max-width: 300px;
+							}
+						}
 					}
 				}
 			}

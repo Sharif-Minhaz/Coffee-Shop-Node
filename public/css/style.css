@@ -124,6 +124,7 @@ html body header nav .vertical-menu {
 html body header .sticky {
   width: 100%;
   position: fixed;
+  z-index: 999;
   -webkit-animation-name: animationFade;
           animation-name: animationFade;
   -webkit-animation-duration: 1s;
@@ -240,6 +241,151 @@ html body header .intro .social-media span a:hover {
 html body header .intro .social-media span a i {
   margin-right: 6px;
 }
+html body footer {
+  position: relative;
+  background-image: url(/images/footer.jpeg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-top: 1px solid #32323D;
+}
+html body footer .footer-wrapper {
+  padding: 150px 20px 0px 20px;
+  background-color: #000000c9;
+}
+html body footer .footer-wrapper #gotoTop span {
+  position: absolute;
+  left: 50%;
+  top: -27px;
+  transform: translate(-50%);
+  height: 50px;
+  width: 50px;
+  border: 2px solid #32323D;
+  background-color: #010103;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+html body footer .footer-wrapper #gotoTop span::after {
+  content: "GO TO TOP";
+  position: absolute;
+  left: 23px;
+  bottom: -34px;
+  transform: translate(-50%);
+  width: 100px;
+  text-align: center;
+  font-size: 15px;
+  color: #ffffff;
+}
+html body footer .footer-wrapper #gotoTop span:hover {
+  background-color: #C7A17A;
+}
+html body footer .footer-wrapper #gotoTop i {
+  color: #ffffff !important;
+}
+html body footer .footer-wrapper .news-latter-section {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+html body footer .footer-wrapper .news-latter-section > div {
+  flex-basis: 33.3333%;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+html body footer .footer-wrapper .news-latter-section > div:nth-child(2) {
+  text-align: center;
+  justify-content: center;
+}
+html body footer .footer-wrapper .news-latter-section > div span {
+  color: #ffffff;
+}
+html body footer .footer-wrapper .news-latter-section > div span:last-child {
+  color: #A7A7A7;
+}
+html body footer .footer-wrapper .news-latter-section > form {
+  margin-left: auto;
+}
+html body footer .footer-wrapper .news-latter-section > form input[type=email] {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #32323D;
+  padding: 18px 10px;
+  min-width: 200px;
+  color: #ffffff;
+  font-size: 17px;
+}
+html body footer .footer-wrapper .news-latter-section > form input[type=email]:focus {
+  outline: none;
+  box-shadow: none;
+}
+html body footer .footer-wrapper .news-latter-section > form button {
+  height: 57px;
+  margin-left: -10px;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  border-bottom: 1px solid #32323D;
+  color: #ffffff;
+  padding: 0px 10px;
+}
+html body footer .footer-wrapper .news-latter-section > form button i {
+  margin-left: 8px;
+}
+html body footer .footer-wrapper .short-bio {
+  display: flex;
+  padding: 70px 0px 30px 0px;
+}
+html body footer .footer-wrapper .short-bio .short-motif {
+  flex-basis: 50%;
+  margin-bottom: 30px;
+}
+html body footer .footer-wrapper .short-bio .short-motif img {
+  width: 80px;
+  height: 80px;
+}
+html body footer .footer-wrapper .short-bio .short-motif .short-des {
+  color: #ffffff;
+  font-size: 18px;
+}
+html body footer .footer-wrapper .short-bio .socials-rect {
+  flex-basis: 50%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}
+html body footer .footer-wrapper .short-bio .socials-rect > a span {
+  color: #A7A7A7;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #32323D;
+  transition: 0.3s all;
+}
+html body footer .footer-wrapper .short-bio .socials-rect > a:hover span {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+html body footer .footer-wrapper .final-footer {
+  border-top: 1px solid #32323D;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  text-align: center;
+}
+html body footer .footer-wrapper .final-footer span {
+  color: #ffffff;
+}
 
 @-webkit-keyframes animationFade {
   from {
@@ -337,6 +483,39 @@ html body header .intro .social-media span a i {
   html body header .intro {
     height: 86vh;
   }
+  html body footer .footer-wrapper .news-latter-section {
+    flex-wrap: wrap;
+  }
+  html body footer .footer-wrapper .news-latter-section > div:nth-child(1) {
+    justify-content: center;
+    flex-basis: 50%;
+  }
+  html body footer .footer-wrapper .news-latter-section > div:nth-child(2) {
+    flex-basis: 50%;
+  }
+  html body footer .footer-wrapper .news-latter-section > form {
+    margin: auto;
+    margin-top: 40px;
+  }
+  html body footer .footer-wrapper .news-latter-section > form input[type=email] {
+    min-width: 300px;
+    background-color: transparent;
+  }
+  html body footer .footer-wrapper .short-bio {
+    flex-wrap: wrap;
+  }
+  html body footer .footer-wrapper .short-bio .short-motif {
+    flex-basis: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+  }
+  html body footer .footer-wrapper .short-bio .socials-rect {
+    flex-basis: 100%;
+    gap: 10px;
+    justify-content: flex-start;
+  }
 }
 @media (max-width: 592px) {
   html body header .intro {
@@ -351,5 +530,15 @@ html body header .intro .social-media span a i {
   }
   html body header .intro p {
     text-align: center;
+  }
+  html body footer .footer-wrapper .news-latter-section > div:nth-child(1) {
+    flex-basis: 100%;
+    margin-bottom: 30px;
+  }
+  html body footer .footer-wrapper .news-latter-section > div:nth-child(2) {
+    flex-basis: 100%;
+  }
+  html body footer .footer-wrapper .news-latter-section > form input[type=email] {
+    max-width: 300px;
   }
 }
