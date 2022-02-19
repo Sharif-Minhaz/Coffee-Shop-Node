@@ -4,7 +4,7 @@ const path = require("path");
 const mongoose = require("mongoose");
 require("dotenv").config();
 const setRoutes = require("./routes/routes");
-const middlewares = require("./middlewares/middlewares")
+const middlewares = require("./middlewares/middlewares");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -15,6 +15,20 @@ const PORT = process.env.PORT || 5000;
 // <=======< Set all routes and middlewares >=======> //
 setRoutes(app);
 middlewares(app);
+
+app.use((req, res, next) => {
+	let error = new Error("404 page not found");
+	error.status = 404;
+	next(error);
+});
+
+app.use((error, req, res, next) => {
+	console.error(error);
+	if (error.status === 404) {
+		return res.render("pages/error/404", { title: "404 page not found" });
+	}
+	res.render("pages/error/500", { title: "server error" });
+});
 
 // <=======< connect to the database >=======> //
 mongoose
