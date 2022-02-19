@@ -4,6 +4,7 @@ const path = require("path");
 const mongoose = require("mongoose");
 require("dotenv").config();
 const setRoutes = require("./routes/routes");
+const middlewares = require("./middlewares/middlewares")
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -11,9 +12,11 @@ app.set("views", path.join(__dirname, "views"));
 const { MONGODB_CONNECTION_URI } = process.env;
 const PORT = process.env.PORT || 5000;
 
-// <==============<set all routes>==============> //
+// <=======< Set all routes and middlewares >=======> //
 setRoutes(app);
+middlewares(app);
 
+// <=======< connect to the database >=======> //
 mongoose
 	.connect(MONGODB_CONNECTION_URI, {
 		useNewUrlParser: true,

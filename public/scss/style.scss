@@ -1,0 +1,213 @@
+@import "reset";
+@import "variable";
+
+@mixin flex($just: center, $align: center) {
+	display: flex;
+	justify-content: $just;
+	align-items: $align;
+}
+
+html {
+	scroll-behavior: smooth;
+	body {
+		height: 100vh;
+		background-color: $main-bg;
+		header {
+			background: {
+				image: url(/images/hero-img.jpeg);
+				size: cover;
+				repeat: no-repeat;
+			}
+			height: 200vh;
+			nav {
+				border-bottom: 1px solid $border-color;
+				position: relative;
+				ul {
+					list-style-type: none;
+					padding: 28px 20px;
+					@include flex(space-between);
+					li {
+						@include flex();
+						a {
+							color: $font-color;
+							text-decoration: none;
+							transition: all 0.3s;
+							font-size: 15px;
+							font-weight: 500;
+							line-height: 22px;
+							text-transform: uppercase;
+							position: relative;
+							@include flex();
+							&::before {
+								content: "";
+								position: absolute;
+								width: 10px;
+								height: 10px;
+								border-radius: 50%;
+								background-color: $highlight;
+								top: 27%;
+								left: 11px;
+								transform: translate(-50%);
+								transition: 0.3s all;
+								visibility: hidden;
+								opacity: 0;
+							}
+							&:hover {
+								color: $highlight;
+							}
+							&:hover:not(.no-circle)::before {
+								left: -9px;
+								visibility: visible;
+								opacity: 1;
+							}
+						}
+						img {
+							width: 85px;
+						}
+						i {
+							color: $font-color;
+						}
+					}
+					.left-menu {
+						flex-basis: 33.3333%;
+						@include flex(flex-start);
+						gap: 60px;
+						li {
+							text-align: left;
+						}
+					}
+					.brand-image {
+						flex-basis: 33.3333%;
+						@include flex();
+					}
+					.right-menu {
+						flex-basis: 25%;
+						@include flex(flex-start);
+						gap: 60px;
+					}
+					.btns {
+						padding-left: 30px;
+						flex-basis: 8.3333%;
+						@include flex(flex-end);
+						gap: 30px;
+						li {
+							&:first-child {
+								display: none;
+							}
+							i {
+								font-size: 20px;
+								cursor: pointer;
+							}
+						}
+					}
+				}
+				.vertical-menu {
+					display: none;
+				}
+			}
+			.sticky {
+				width: 100%;
+				position: fixed;
+				animation-name: animationFade;
+				animation-duration: 1s;
+				animation-fill-mode: both;
+                background-color: $main-bg;
+                ul {
+                    padding: 8px 20px;
+                }
+			}
+		}
+	}
+}
+
+@keyframes animationFade {
+	from {
+		opacity: 0;
+		transform: translate3d(0, -100%, 0);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+@media (max-width: 972px) {
+	html {
+		body {
+			overflow-x: hidden;
+			header {
+				nav {
+					ul {
+						padding: 6px 20px;
+						.left-menu {
+							display: none;
+						}
+						.brand-image {
+							@include flex(flex-start);
+							li {
+								img {
+									width: 70px;
+								}
+							}
+						}
+						.right-menu {
+							display: none;
+						}
+						.btns {
+							li {
+								&:first-child {
+									display: inherit;
+								}
+							}
+						}
+					}
+					.vertical-menu {
+						position: absolute;
+						right: -300px;
+						top: 0;
+						width: 280px;
+						background-color: $font-color;
+						height: 100vh;
+						display: inherit;
+						overflow-y: auto;
+						transition: 0.4s ease-in-out all;
+						.functionality {
+							@include flex(space-between);
+							padding: 18px;
+							a {
+								img {
+									width: 70px;
+									filter: grayscale(100%);
+								}
+							}
+							i {
+								font-size: 30px;
+								cursor: pointer;
+								transition: 0.3s all;
+								&:hover {
+									color: $highlight;
+								}
+							}
+						}
+						ul {
+							@include flex(flex-start, flex-start);
+							flex-direction: column;
+							li {
+								margin: 10px 0px;
+								a {
+									color: $main-bg;
+									&:hover {
+										color: $highlight;
+									}
+								}
+							}
+						}
+					}
+					.reveal-sidebar {
+						right: 0;
+					}
+				}
+			}
+		}
+	}
+}
