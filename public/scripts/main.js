@@ -29,9 +29,12 @@ window.onscroll = () => {
 
 function sticky() {
 	let nav = document.querySelector("nav");
+	let searchBox = document.querySelector(".search-input");
 	if (document.documentElement.scrollTop > 150) {
 		nav.classList.add("sticky");
+		searchBox.classList.add("search-fading");
 	} else {
 		nav.classList.remove("sticky");
+		searchBox.classList.remove("search-fading");
 	}
 }

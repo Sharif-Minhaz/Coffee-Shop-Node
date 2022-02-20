@@ -144,8 +144,11 @@ html body header .search-input {
   justify-content: center;
   align-items: center;
   padding: 15px 15px;
+  opacity: 0;
+  visibility: hidden;
   transform: scale(0);
-  transition: 0.2s all;
+  transition: 0.3s all;
+  z-index: 999;
 }
 html body header .search-input form input[type=search] {
   font-size: 17px;
@@ -168,8 +171,20 @@ html body header .search-input form button {
   margin-left: -10px;
   cursor: pointer;
 }
+html body header .search-fading {
+  position: fixed;
+  top: 101px;
+  -webkit-animation-name: animationFade;
+          animation-name: animationFade;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+}
 html body header .search-scaling {
   transform: scale(1);
+  visibility: visible;
+  opacity: 1;
 }
 html body header .intro {
   padding: 20px;
@@ -244,7 +259,7 @@ html body header .intro .social-media span a i {
 html body #error-404-500 {
   position: relative;
   height: 100vh;
-  background-image: url(/images/breadcrumb.jpeg) !important;
+  background-image: url(/images/breadcrumb.jpeg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -264,6 +279,92 @@ html body #error-404-500 div h1 {
   font-family: cursive;
   font-size: 70px;
   font-weight: 400;
+}
+html body #auth {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  background-color: #131419ed;
+  padding: 50px 20px;
+}
+html body #auth .form {
+  position: relative;
+  width: 500px;
+  padding: 40px 40px 60px;
+  background-color: #131419;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: -5px -5px 10px rgba(255, 255, 255, 0.05), 5px 5px 15px rgba(0, 0, 0, 0.5);
+}
+html body #auth .form h2 {
+  color: #c7c7c7;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+html body #auth .form .input {
+  text-align: left;
+  margin-top: 40px;
+}
+html body #auth .form .input .inputBox {
+  margin-top: 20px;
+}
+html body #auth .form .input .inputBox label {
+  display: block;
+  color: #A7A7A7;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+html body #auth .form .input .inputBox input {
+  width: 100%;
+  height: 50px;
+  background-color: #131419;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  padding: 5px 15px;
+  color: #ffffff;
+  font-size: 18px;
+  color: #C7A17A;
+  box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.1), inset 2px 2px 6px rgba(0, 0, 0, 0.8);
+}
+html body #auth .form .input .inputBox input[type=submit] {
+  cursor: pointer;
+  margin-top: 20px;
+  box-shadow: -2px -2px 6px rgba(255, 255, 255, 0.1), 2px 2px 6px rgba(0, 0, 0, 0.8);
+}
+html body #auth .form .input .inputBox input[type=submit]:active {
+  opacity: 0.8;
+  margin-top: 20px;
+  box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.1), inset 2px 2px 6px rgba(0, 0, 0, 0.8);
+}
+html body #auth .form .input .inputBox input[type=submit]::-moz-placeholder {
+  color: #A7A7A7;
+  font-size: 18px;
+}
+html body #auth .form .input .inputBox input[type=submit]:-ms-input-placeholder {
+  color: #A7A7A7;
+  font-size: 18px;
+}
+html body #auth .form .input .inputBox input[type=submit]::placeholder {
+  color: #A7A7A7;
+  font-size: 18px;
+}
+html body #auth .form .input .inputBox input[type=submit]:hover {
+  opacity: 0.9;
+}
+html body #auth .reminder {
+  margin-top: 30px;
+  color: #A7A7A7;
+}
+html body #auth .reminder a {
+  color: #C7A17A;
+  text-decoration: none;
+  transition: 0.2s all;
+}
+html body #auth .reminder a:hover {
+  text-decoration: underline;
+  opacity: 0.9;
 }
 html body footer {
   position: relative;
