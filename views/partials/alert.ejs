@@ -1,0 +1,14 @@
+<div id="alert-div">
+    <% if(flashMessage.success) { %> 
+        <div class="alert alert-success" role="alert">
+            <%= flashMessage.success %> 
+            <button type="button" class="btn-close"></button>
+        </div>
+    <% } %>     
+    <% if(flashMessage.fail) { %> 
+        <div class="alert alert-danger" role="alert">
+            <%= flashMessage.fail %> 
+            <button type="button" class="btn-close"></button>
+        </div>
+    <% } %>     
+</div>

@@ -26,8 +26,9 @@ const PORT = process.env.PORT || 5000;
  * @param app - The express app to set up the routes for. 
  * @returns None
  */
-setRoutes(app);
+
 middlewares(app);
+setRoutes(app);
 
 /**
  * Handles errors that are thrown by the application. 

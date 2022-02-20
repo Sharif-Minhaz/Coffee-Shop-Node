@@ -317,7 +317,6 @@ html {
 							outline: none;
 							border-radius: 40px;
 							padding: 5px 15px;
-							color: $font-color;
 							font-size: 18px;
 							color: $highlight;
 							box-shadow: inset -2px -2px 6px $form-box-shadow,
@@ -341,6 +340,20 @@ html {
 								}
 							}
 						}
+						.is-invalid {
+							border: 1px solid $invalid-color;
+						}
+						.invalid-feedback {
+							p {
+								color: $invalid-color;
+								padding: 9px 0px 0px 0px;
+								font: {
+									size: 14px;
+									family: system-ui;
+									weight: 400;
+								}
+							}
+						}
 					}
 				}
 			}
@@ -357,6 +370,12 @@ html {
 					}
 				}
 			}
+		}
+		.auth-height-def {
+			height: 128vh !important;
+		}
+		.auth-height {
+			height: 140vh !important;
 		}
 		footer {
 			position: relative;

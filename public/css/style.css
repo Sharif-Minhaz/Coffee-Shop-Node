@@ -323,7 +323,6 @@ html body #auth .form .input .inputBox input {
   outline: none;
   border-radius: 40px;
   padding: 5px 15px;
-  color: #ffffff;
   font-size: 18px;
   color: #C7A17A;
   box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.1), inset 2px 2px 6px rgba(0, 0, 0, 0.8);
@@ -353,6 +352,16 @@ html body #auth .form .input .inputBox input[type=submit]::placeholder {
 html body #auth .form .input .inputBox input[type=submit]:hover {
   opacity: 0.9;
 }
+html body #auth .form .input .inputBox .is-invalid {
+  border: 1px solid #ff0000c7;
+}
+html body #auth .form .input .inputBox .invalid-feedback p {
+  color: #ff0000c7;
+  padding: 9px 0px 0px 0px;
+  font-size: 14px;
+  font-family: system-ui;
+  font-weight: 400;
+}
 html body #auth .reminder {
   margin-top: 30px;
   color: #A7A7A7;
@@ -365,6 +374,12 @@ html body #auth .reminder a {
 html body #auth .reminder a:hover {
   text-decoration: underline;
   opacity: 0.9;
+}
+html body .auth-height-def {
+  height: 128vh !important;
+}
+html body .auth-height {
+  height: 140vh !important;
 }
 html body footer {
   position: relative;
