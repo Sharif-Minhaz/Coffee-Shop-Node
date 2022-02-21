@@ -28,6 +28,7 @@ html {
 					padding: 28px 20px;
 					@include flex(space-between);
 					li {
+						position: relative;
 						@include flex();
 						a {
 							color: $font-color;
@@ -64,6 +65,50 @@ html {
 						}
 						img {
 							width: 85px;
+						}
+						.profile-pic {
+							height: 45px;
+							width: 45px;
+							border-radius: 50%;
+							cursor: pointer;
+						}
+						.dropdown-menu {
+							position: absolute;
+							bottom: -90px;
+							visibility: hidden;
+							opacity: 0;
+							border-radius: 6px;
+							border-top: 2px solid $highlight;
+							display: flex;
+							align-items: flex-start;
+							flex-direction: column;
+							width: 140px;
+							background-color: $form-background;
+							padding: 20px;
+							transition: 0.3s all;
+							box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
+								rgba(0, 0, 0, 0.23) 0px 6px 6px;
+							a {
+								text-align: left;
+								margin-bottom: 12px;
+								i {
+									margin-right: 10px;
+								}
+								&:hover {
+									i {
+										color: $highlight;
+									}
+								}
+								&:last-child {
+									margin-bottom: 0px;
+								}
+							}
+						}
+						.dropdown-menu-reveal {
+							transition: 0.3s all;
+							visibility: visible;
+							opacity: 1;
+							bottom: -110px;
 						}
 						i {
 							color: $font-color;
@@ -614,6 +659,9 @@ html {
 				}
 				.intro {
 					height: 86vh;
+				}
+				.search-fading {
+					top: 87px;
 				}
 			}
 			#error-404-500 {

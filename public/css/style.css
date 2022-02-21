@@ -32,6 +32,7 @@ html body header nav ul {
   align-items: center;
 }
 html body header nav ul li {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -73,6 +74,47 @@ html body header nav ul li a:hover:not(.no-circle)::before {
 }
 html body header nav ul li img {
   width: 85px;
+}
+html body header nav ul li .profile-pic {
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+html body header nav ul li .dropdown-menu {
+  position: absolute;
+  bottom: -90px;
+  visibility: hidden;
+  opacity: 0;
+  border-radius: 6px;
+  border-top: 2px solid #C7A17A;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 140px;
+  background-color: #131419;
+  padding: 20px;
+  transition: 0.3s all;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+html body header nav ul li .dropdown-menu a {
+  text-align: left;
+  margin-bottom: 12px;
+}
+html body header nav ul li .dropdown-menu a i {
+  margin-right: 10px;
+}
+html body header nav ul li .dropdown-menu a:hover i {
+  color: #C7A17A;
+}
+html body header nav ul li .dropdown-menu a:last-child {
+  margin-bottom: 0px;
+}
+html body header nav ul li .dropdown-menu-reveal {
+  transition: 0.3s all;
+  visibility: visible;
+  opacity: 1;
+  bottom: -110px;
 }
 html body header nav ul li i {
   color: #ffffff;
@@ -622,6 +664,9 @@ html body footer .footer-wrapper .final-footer span {
   }
   html body header .intro {
     height: 86vh;
+  }
+  html body header .search-fading {
+    top: 87px;
   }
   html body #error-404-500 div h1 {
     font-size: 50px;

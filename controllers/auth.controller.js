@@ -13,7 +13,9 @@ exports.loginGetController = (req, res, next) => {
 	});
 };
 
-exports.loginPostController = (req, res, next) => {
+exports.loginPostController = async (req, res, next) => {
+	const { email, password } = req.body;
+
 	let errors = validationResult(req).formatWith(errorFormatter);
 
 	if (!errors.isEmpty()) {
@@ -26,8 +28,24 @@ exports.loginPostController = (req, res, next) => {
 		});
 	}
 
-	res.redirect("/");
+	let user;
 
+	try {
+		user = await User.findOne({ email });
+	} catch (err) {
+		next(err);
+	}
+
+	req.session.isLoggedIn = true;
+	req.session.user = user;
+	req.session.save((err) => {
+		if (err) {
+			next(err);
+		} else {
+			req.flash("success", "Successfully logged in.");
+			return res.redirect("/");
+		}
+	});
 };
 
 exports.signupGetController = (req, res, next) => {
@@ -68,4 +86,15 @@ exports.signupPostController = async (req, res, next) => {
 	} catch (err) {
 		next(err);
 	}
+};
+
+exports.logoutController = (req, res, next) => {
+	req.flash("success", "Successfully sign out");
+	req.session.destroy((err) => {
+		if (err) {
+			next(err);
+		} else {
+			res.redirect("/");
+		}
+	});
 };

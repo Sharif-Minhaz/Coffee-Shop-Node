@@ -15,14 +15,24 @@
 			<div class="right-menu">
 				<li><a href="#">Shop</a></li>
 				<li><a href="#">Contact</a></li>
-				<li><a href="/auth/login">Login</a></li>
+				<li class="user-det">
+					<% if (!user) { %>
+						<a href="/auth/login">Login</a>
+					<% } else { %>
+						<img class="profile-pic" src="/images/default.jpg" alt="profile_pic" />
+						<div class="dropdown-menu">
+							<a href="/profile/create-profile"><i class="bi bi-person-circle"></i> Profile</a>
+							<a href="/auth/logout"><i class="bi bi-box-arrow-left"></i> Logout</a>
+						</div>
+					<% } %>
+				</li>
 			</div>
 			<div class="btns">
 				<li><i class="bi bi-list"></i></li>
 				<li class="search-section">
 					<i class="bi bi-search" id="search-icon"></i>
 					<i class="bi bi-x-lg set-invisible"></i>
-				</li>				
+				</li>
 				<li><i class="bi bi-basket2-fill"></i></li>
 			</div>
 		</ul>
@@ -40,7 +50,15 @@
 				<li><a href="/">Reservation</a></li>
 				<li><a href="#">Shop</a></li>
 				<li><a href="#">Contact</a></li>
-				<li><a href="#">Login</a></li>
+				<li>
+					<% if (!user) { %>
+					<a href="/auth/login">Login</a>
+					<% } else { %>
+					<img class="profile-pic" src="/images/default.jpg" alt="profile_pic" />
+					<a href="/profile/create-profile">Profile</a>
+					<a href="/auth/logout">Logout</a>
+					<% } %>
+				</li>
 			</ul>
 		</div>
 	</nav>
@@ -50,4 +68,3 @@
 			<button type="submit"><i class="bi bi-search"></i></button>
 		</form>
 	</div>
-	

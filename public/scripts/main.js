@@ -4,6 +4,9 @@ window.onload = () => {
 	const closeMenu = document.querySelector(".bi-x-circle-fill");
 	const searchIcon = document.getElementById("search-icon");
 	const searchBox = document.querySelector(".search-input");
+	const profilePic = document.querySelector(".profile-pic");
+	const dropDownMenu = document.querySelector(".dropdown-menu");
+
 	closeMenu.addEventListener("click", function () {
 		verticalMenu.classList.remove("reveal-sidebar");
 	});
@@ -21,6 +24,9 @@ window.onload = () => {
 			searchBox.classList.remove("search-scaling");
 		});
 	});
+	profilePic.addEventListener("click", function () {
+		dropDownMenu.classList.toggle("dropdown-menu-reveal");
+	})
 };
 
 window.onscroll = () => {
