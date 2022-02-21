@@ -14,12 +14,20 @@ exports.loginGetController = (req, res, next) => {
 };
 
 exports.loginPostController = (req, res, next) => {
-	res.render("pages/auth/login", {
-		title: "Coffee Shop | Login",
-		flashMessage: {},
-		errors: {},
-		values: {},
-	});
+	let errors = validationResult(req).formatWith(errorFormatter);
+
+	if (!errors.isEmpty()) {
+		req.flash("fail", "Please check your fields.");
+		return res.render("pages/auth/login", {
+			title: "Coffee Shop | Login",
+			flashMessage: {},
+			errors: errors.mapped(),
+			values: req.body,
+		});
+	}
+
+	res.redirect("/");
+
 };
 
 exports.signupGetController = (req, res, next) => {
