@@ -385,6 +385,12 @@ html {
 								}
 							}
 						}
+						textarea {
+							@extend input;
+							resize: none;
+							height: 130px;
+							padding-top: 14px;
+						}
 						.is-invalid {
 							border: 1px solid $invalid-color;
 						}
@@ -399,6 +405,74 @@ html {
 								}
 							}
 						}
+					}
+				}
+				.change-profile-img {
+					height: 205px;
+					width: 205px;
+					overflow: hidden;
+					position: relative;
+					border-radius: 50%;
+					border: 3px solid $highlight;
+					margin: 20px auto 25px auto;
+					.choose-img {
+						position: absolute;
+						bottom: -75px;
+						background-color: $form-background-op;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						height: 70px;
+						width: 100%;
+						transition: 0.3s all;
+						&:hover {
+							bottom: 0;
+						}
+						form {
+							overflow: hidden;
+							label {
+								color: $font-color;
+								width: 190px;
+								height: 76px;
+								cursor: pointer;
+								display: flex;
+								justify-content: center;
+								align-items: center;
+								overflow: hidden;
+								border-bottom-left-radius: 100px;
+								border-bottom-right-radius: 100px;
+								i {
+									font-size: 30px;
+								}
+							}
+							input {
+								display: none;
+							}
+						}
+					}
+					img {
+						height: 200px;
+						width: 200px;
+						border-radius: 50%;
+						&:hover + .choose-img {
+							bottom: 0;
+						}
+					}
+				}
+				#removeProfilePicsBtn {
+					color: $invalid-color;
+					border: none;
+					border-radius: 50px;
+					font-size: 16px;
+					cursor: pointer;
+					height: 50px;
+					width: 140px;
+					background-color: $form-background;
+					box-shadow: -2px -2px 6px $form-box-shadow, 2px 2px 6px $form-shadow;
+					&:active {
+						opacity: 0.8;
+						box-shadow: inset -2px -2px 6px $form-box-shadow,
+							inset 2px 2px 6px $form-shadow;
 					}
 				}
 			}

@@ -3,52 +3,90 @@
 <body>
     <%- include("../../partials/alert.ejs")  %>
     <%- include("../../partials/header.ejs") %>
-        <section id="auth" class="<%= (errors.username || errors.email || errors.password) ? "auth-height" : "auth-height-def"  %> ">
-            <form class="form" action="/auth/signup" method="post">
+        <section id="auth" style="height: 200vh">
+            <div class="form" style="width: 600px">
                 <h2>CREATE PROFILE</h2>
-                <div class="input">
+                <div class="change-profile-img">
+                    <img
+                        class=""
+                        id="profilePics"
+                        src="<%= user.profilePics %>"
+                        alt="profile_pic"
+                    />
+                    <div class="choose-img">
+                        <form
+                            action="/uploads/profilePics"
+                            class=""
+                            id="profilePicsForm"
+                            method="post"
+                            enctype="multipart/form-data"
+                        >
+                            <label title="Change Profile Picture" for="profilePicsFile">
+                                <i class="bi bi-camera"></i>
+                            </label>
+                            <input
+                                class="profilePicsFile"
+                                name="profilePics"
+                                type="file"
+                                id="profilePicsFile"
+                                accept="image/*"
+                            />
+                        </form>
+                    </div>
+                </div>
+                <input
+                    title="Remove current image"
+                    id="removeProfilePicsBtn"
+                    type="button"
+                    value="Remove Image"
+                    style="display: <%= (user.profilePics.includes('default.jpg')) ? "none" : "block" %>;"
+                />
+                <form action="/profile/create-profile" class="input">
                     <div class="inputBox">
-                        <label>Username</label>
-                        <input class="<%= errors.username && "is-invalid"%>" type="text" name="username" placeholder="choose username"/>
-                        <% if (errors.username) { %>
+                        <label>Name</label>
+                        <input class="<%= errors.name && "is-invalid"%>" type="text" name="name" placeholder="Enter name"/>
+                        <% if (errors.name) { %>
                             <div class="invalid-feedback">
-                                <p><%= errors.username %> </p>
+                                <p><%= errors.name %> </p>
                             </div>
                         <% } %>  
                     </div>
                     <div class="inputBox">
                         <label>Email</label>
-                        <input class="<%= errors.email && "is-invalid"%>" type="email" name="email" placeholder="example@xyz.com"/>
+                        <input type="email" name="email" value="<%= user.email %>" disabled />
                         <% if (errors.email) { %>
                             <div class="invalid-feedback">
-                                <p><%= errors.email %> </p>
+                                <p><%= errors.email %></p>
                             </div>
                         <% } %>  
                     </div>
                     <div class="inputBox">
-                        <label>Password</label>
-                        <input class="<%= errors.password && "is-invalid"%>" type="password" name="password" placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"/>
-                        <% if (errors.password) { %>
+                        <label>Title</label>
+                        <input type="text" name="title" placeholder="Enter a title" />
+                    </div>
+                    <div class="inputBox">
+                        <label>Short Bio</label>
+                        <textarea class="<%= errors.bio && "is-invalid"%>" name="bio" id="bio" rows="6" placeholder="Enter a short bio"></textarea>
+                        <% if (errors.bio) { %>
                             <div class="invalid-feedback">
-                                <p><%= errors.password %> </p>
+                                <p><%= errors.bio %> </p>
                             </div>
                         <% } %>  
                     </div>
                     <div class="inputBox">
-                        <label>Confirm Password</label>
-                        <input class="<%= errors.confirmPassword && "is-invalid"%>" type="password" name="confirmPassword" placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"/>
-                        <% if (errors.confirmPassword) { %>
+                        <label>Website or Social Media</label>
+                        <input type="url" class="<%= errors.website && "is-invalid"%>" name="website" id="website" placeholder="Provide url" />
+                        <% if (errors.bio) { %>
                             <div class="invalid-feedback">
-                                <p><%= errors.confirmPassword %> </p>
+                                <p><%= errors.bio %> </p>
                             </div>
                         <% } %>  
                     </div>
                     <div class="inputBox">
                         <input type="submit" value="Create Profile"/>
                     </div>
-                </div>
-                <p class="reminder">Already have an account? <a href="/auth/login">Login now</a></p>
-            </form>
+                </form>
+            </div>
         </section>
 
     </header>
