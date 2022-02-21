@@ -19,7 +19,7 @@
 					<% if (!user) { %>
 						<a href="/auth/login">Login</a>
 					<% } else { %>
-						<img class="profile-pic" src="/images/default.jpg" alt="profile_pic" />
+						<img class="profile-pic" src="/images/default.jpg" title="<%= user.username %> " alt="profile_pic" />
 						<div class="dropdown-menu">
 							<a href="/profile/create-profile"><i class="bi bi-person-circle"></i> Profile</a>
 							<a href="/auth/logout"><i class="bi bi-box-arrow-left"></i> Logout</a>
@@ -50,13 +50,15 @@
 				<li><a href="/">Reservation</a></li>
 				<li><a href="#">Shop</a></li>
 				<li><a href="#">Contact</a></li>
-				<li>
+				<li class="user-det">
 					<% if (!user) { %>
-					<a href="/auth/login">Login</a>
+						<a href="/auth/login">Login</a>
 					<% } else { %>
-					<img class="profile-pic" src="/images/default.jpg" alt="profile_pic" />
-					<a href="/profile/create-profile">Profile</a>
-					<a href="/auth/logout">Logout</a>
+						<img class="profile-pic" src="/images/default.jpg" alt="profile_pic" />
+						<div class="dropdown-menu">
+							<a href="/profile/create-profile"><i class="bi bi-person-circle"></i> Profile</a>
+							<a href="/auth/logout"><i class="bi bi-box-arrow-left"></i> Logout</a>
+						</div>
 					<% } %>
 				</li>
 			</ul>

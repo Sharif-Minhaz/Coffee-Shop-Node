@@ -71,6 +71,7 @@ html {
 							width: 45px;
 							border-radius: 50%;
 							cursor: pointer;
+							border: 1px solid $border-color;
 						}
 						.dropdown-menu {
 							position: absolute;
@@ -88,6 +89,7 @@ html {
 							transition: 0.3s all;
 							box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
 								rgba(0, 0, 0, 0.23) 0px 6px 6px;
+							z-index: 999;
 							a {
 								text-align: left;
 								margin-bottom: 12px;
@@ -725,9 +727,31 @@ html {
 									}
 								}
 							}
+							.user-det {
+								.dropdown-menu {
+									bottom: -54px;
+									right: -135px;
+									border: none;
+									border-left: 2px solid $highlight;
+									a {
+										color: $font-color;
+										&:hover {
+											color: $highlight;
+										}
+									}
+								}
+								.dropdown-menu-reveal {
+									transition: 0.3s all;
+									visibility: visible;
+									opacity: 1;
+									bottom: -54px;
+									right: -157px;
+								}
+							}
 						}
 					}
 					.reveal-sidebar {
+						z-index: 99999;
 						right: 0;
 					}
 				}
@@ -735,6 +759,7 @@ html {
 					height: 86vh;
 				}
 				.search-fading {
+					z-index: 99;
 					top: 87px;
 				}
 			}

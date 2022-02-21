@@ -4,8 +4,8 @@ window.onload = () => {
 	const closeMenu = document.querySelector(".bi-x-circle-fill");
 	const searchIcon = document.getElementById("search-icon");
 	const searchBox = document.querySelector(".search-input");
-	const profilePic = document.querySelector(".profile-pic");
-	const dropDownMenu = document.querySelector(".dropdown-menu");
+	const profilePic = document.querySelectorAll(".profile-pic");
+	const dropDownMenu = document.querySelectorAll(".dropdown-menu");
 
 	closeMenu.addEventListener("click", function () {
 		verticalMenu.classList.remove("reveal-sidebar");
@@ -13,6 +13,7 @@ window.onload = () => {
 	revealList.addEventListener("click", function () {
 		verticalMenu.classList.add("reveal-sidebar");
 	});
+
 	searchIcon.addEventListener("click", function () {
 		this.style.display = "none";
 		searchBox.classList.add("search-scaling");
@@ -24,9 +25,12 @@ window.onload = () => {
 			searchBox.classList.remove("search-scaling");
 		});
 	});
-	profilePic.addEventListener("click", function () {
-		dropDownMenu.classList.toggle("dropdown-menu-reveal");
-	})
+
+	for (let i = 0; i < profilePic.length; i++) {
+		profilePic[i].addEventListener("click", function () {
+			dropDownMenu[i].classList.toggle("dropdown-menu-reveal");
+		});
+	}
 };
 
 window.onscroll = () => {

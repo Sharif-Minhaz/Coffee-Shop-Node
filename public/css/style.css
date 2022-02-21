@@ -80,6 +80,7 @@ html body header nav ul li .profile-pic {
   width: 45px;
   border-radius: 50%;
   cursor: pointer;
+  border: 1px solid #32323D;
 }
 html body header nav ul li .dropdown-menu {
   position: absolute;
@@ -96,6 +97,7 @@ html body header nav ul li .dropdown-menu {
   padding: 20px;
   transition: 0.3s all;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  z-index: 999;
 }
 html body header nav ul li .dropdown-menu a {
   text-align: left;
@@ -731,13 +733,34 @@ html body footer .footer-wrapper .final-footer span {
   html body header nav .vertical-menu ul li a:hover {
     color: #C7A17A;
   }
+  html body header nav .vertical-menu ul .user-det .dropdown-menu {
+    bottom: -54px;
+    right: -135px;
+    border: none;
+    border-left: 2px solid #C7A17A;
+  }
+  html body header nav .vertical-menu ul .user-det .dropdown-menu a {
+    color: #ffffff;
+  }
+  html body header nav .vertical-menu ul .user-det .dropdown-menu a:hover {
+    color: #C7A17A;
+  }
+  html body header nav .vertical-menu ul .user-det .dropdown-menu-reveal {
+    transition: 0.3s all;
+    visibility: visible;
+    opacity: 1;
+    bottom: -54px;
+    right: -157px;
+  }
   html body header nav .reveal-sidebar {
+    z-index: 99999;
     right: 0;
   }
   html body header .intro {
     height: 86vh;
   }
   html body header .search-fading {
+    z-index: 99;
     top: 87px;
   }
   html body #error-404-500 div h1 {
