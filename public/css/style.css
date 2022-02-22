@@ -14,6 +14,31 @@ html body {
   height: 100vh;
   background-color: #010103;
 }
+html body #alert-div {
+  position: fixed;
+  right: 27px;
+  bottom: 27px;
+  z-index: 99999;
+  transition: 0.3s all;
+}
+html body #alert-div .alert {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 15px 18px;
+  border-radius: 5px;
+  color: #00ff95c7;
+}
+html body #alert-div .alert span {
+  cursor: pointer;
+  color: #ffffff;
+  margin-left: 15px;
+}
+html body #alert-div .alert-danger {
+  color: #ff0000c7;
+}
 html body header {
   position: relative;
   background-image: url(/images/hero-img.jpeg);

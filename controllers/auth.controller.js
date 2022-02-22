@@ -7,7 +7,7 @@ const Flash = require("../utils/Flash");
 exports.loginGetController = (req, res, next) => {
 	res.render("pages/auth/login", {
 		title: "Coffee Shop | Login",
-		flashMessage: {},
+		flashMessage: Flash.getMessage(req),
 		errors: {},
 		values: {},
 	});
@@ -22,7 +22,7 @@ exports.loginPostController = async (req, res, next) => {
 		req.flash("fail", "Please check your fields.");
 		return res.render("pages/auth/login", {
 			title: "Coffee Shop | Login",
-			flashMessage: {},
+			flashMessage: Flash.getMessage(req),
 			errors: errors.mapped(),
 			values: req.body,
 		});

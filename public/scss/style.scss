@@ -30,6 +30,29 @@ html {
 	body {
 		height: 100vh;
 		background-color: $main-bg;
+		#alert-div {
+			position: fixed;
+			right: 27px;
+			bottom: 27px;
+			z-index: 99999;
+			transition: 0.3s all;
+			.alert {
+				@include flex(flex-start, center);
+				color: $font-color;
+				background-color: $form-box-shadow;
+				padding: 15px 18px;
+				border-radius: 5px;
+				color: $valid-color;
+				span {
+					cursor: pointer;
+					color: $font-color;
+					margin-left: 15px;
+				}
+			}
+			.alert-danger {
+				color: $invalid-color;
+			}
+		}
 		header {
 			position: relative;
 			background: {

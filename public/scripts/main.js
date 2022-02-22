@@ -6,6 +6,8 @@ window.onload = () => {
 	const searchBox = document.querySelector(".search-input");
 	const profilePic = document.querySelectorAll(".profile-pic");
 	const dropDownMenu = document.querySelectorAll(".dropdown-menu");
+	const closeAlert = document.querySelectorAll(".close-alert");
+	const alertDiv = document.getElementById("alert-div");
 
 	closeMenu.addEventListener("click", function () {
 		verticalMenu.classList.remove("reveal-sidebar");
@@ -31,6 +33,16 @@ window.onload = () => {
 			dropDownMenu[i].classList.toggle("dropdown-menu-reveal");
 		});
 	}
+
+	for (let i = 0; i < closeAlert.length; i++) {
+		closeAlert[i].addEventListener("click", function () {
+			alertDiv.style.display = "none";
+		});
+	}
+
+	setTimeout(() => {
+		alertDiv.style.display = "none";
+	}, 3000);
 };
 
 window.onscroll = () => {
