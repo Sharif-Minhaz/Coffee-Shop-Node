@@ -6,9 +6,27 @@
 	justify-content: $just;
 	align-items: $align;
 }
+@mixin neumorphism {
+	cursor: pointer;
+	margin-top: 20px;
+	box-shadow: -2px -2px 6px $form-box-shadow, 2px 2px 6px $form-shadow;
+	&:active {
+		opacity: 0.8;
+		margin-top: 20px;
+		box-shadow: inset -2px -2px 6px $form-box-shadow, inset 2px 2px 6px $form-shadow;
+	}
+	&::placeholder {
+		color: $muted;
+		font-size: 18px;
+	}
+	&:hover {
+		opacity: 0.9;
+	}
+}
 
 html {
 	scroll-behavior: smooth;
+	overflow-x: hidden;
 	body {
 		height: 100vh;
 		background-color: $main-bg;
@@ -369,22 +387,7 @@ html {
 							box-shadow: inset -2px -2px 6px $form-box-shadow,
 								inset 2px 2px 6px $form-shadow;
 							&[type="submit"] {
-								cursor: pointer;
-								margin-top: 20px;
-								box-shadow: -2px -2px 6px $form-box-shadow, 2px 2px 6px $form-shadow;
-								&:active {
-									opacity: 0.8;
-									margin-top: 20px;
-									box-shadow: inset -2px -2px 6px $form-box-shadow,
-										inset 2px 2px 6px $form-shadow;
-								}
-								&::placeholder {
-									color: $muted;
-									font-size: 18px;
-								}
-								&:hover {
-									opacity: 0.9;
-								}
+								@include neumorphism();
 							}
 						}
 						textarea {
@@ -497,6 +500,64 @@ html {
 		}
 		.auth-height {
 			height: 140vh !important;
+		}
+		#crop-modal {
+			top: 0;
+			width: 100%;
+			height: 100vh;
+			position: fixed;
+			background-color: rgba(0, 0, 0, 0.308);
+			z-index: 9999;
+			display: none;
+			padding: 20px;
+			.modal-dialog {
+				width: 340px;
+				max-width: 340px;
+				background-color: $font-color;
+				border-radius: 5px;
+				margin: 20px auto;
+				.modal-header {
+					@include flex(space-between, center);
+					border-bottom: 1px solid $border-color;
+					padding: 20px;
+					h5 {
+						font-size: 20px;
+					}
+					button {
+						background-color: $invalid-color;
+						color: $font-color;
+						border: 1px solid $font-color;
+						border-radius: 5px;
+						width: 44px;
+						height: 28px;
+						cursor: pointer;
+						@include flex();
+					}
+				}
+				.modal-body {
+					border-bottom: 1px solid $border-color;
+					padding: 20px;
+				}
+				.modal-footer {
+					display: flex;
+					justify-content: flex-end;
+					padding: 20px;
+					gap: 10px;
+					button {
+						font-size: 16px;
+						@include neumorphism();
+						margin-top: 0;
+						width: 80px;
+						height: 34px;
+						&:active {
+							margin-top: 0;
+						}
+						&:first-child {
+							color: $invalid-color;
+						}
+					}
+				}
+			}
 		}
 		footer {
 			position: relative;
@@ -687,7 +748,7 @@ html {
 						}
 					}
 					.vertical-menu {
-						position: absolute;
+						position: fixed;
 						right: -300px;
 						top: 0;
 						width: 280px;

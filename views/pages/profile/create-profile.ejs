@@ -1,14 +1,14 @@
 <%- include("../../partials/head.ejs")  %>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css" integrity="sha512-zxBiDORGDEAYDdKLuYU9X/JaJo/DPzE42UubfBw9yg8Qvb2YRRIQ8v4KsGHOx2H1/+sdSXyXxLXv5r7tHc9ygg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <%- include("../../partials/alert.ejs")  %>
     <%- include("../../partials/header.ejs") %>
-        <section id="auth" style="height: 200vh">
+        <section id="auth" style="max-height: 200vh; height: 183vh;">
             <div class="form" style="width: 600px">
                 <h2>CREATE PROFILE</h2>
                 <div class="change-profile-img">
                     <img
-                        class=""
                         id="profilePics"
                         src="<%= user.profilePics %>"
                         alt="profile_pic"
@@ -88,9 +88,37 @@
                 </form>
             </div>
         </section>
-
     </header>
 
+    <div id="crop-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Resize Image</h5>
+                    <button type="button" class="cancel-cropping"><i class="bi bi-x-lg"></i></button>
+                </div>
+                <div class="modal-body">
+                    <div id="cropped-image"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="cancel-cropping">
+                        Close
+                    </button>
+                    <button id="upload-image" type="button">
+                        Upload
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <%- include("../../partials/footer.ejs") %>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"
+        integrity="sha512-Gs+PsXsGkmr+15rqObPJbenQ2wB3qYvTHuJO6YJzPe/dTLvhy0fmae2BcnaozxDo5iaF8emzmCZWbQ1XXiX2Ig=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    ></script>
+    <script src="/scripts/profilePicUpload.js"></script>
 </body>
 </html>
