@@ -47,7 +47,7 @@ html body header {
   min-height: 100vh;
 }
 html body header nav {
-  border-bottom: 1px solid #32323D;
+  border-bottom: 1px solid #32323d;
   position: relative;
 }
 html body header nav ul {
@@ -82,7 +82,7 @@ html body header nav ul li a::before {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: #C7A17A;
+  background-color: #c7a17a;
   top: 27%;
   left: 11px;
   transform: translate(-50%);
@@ -91,7 +91,7 @@ html body header nav ul li a::before {
   opacity: 0;
 }
 html body header nav ul li a:hover {
-  color: #C7A17A;
+  color: #c7a17a;
 }
 html body header nav ul li a:hover:not(.no-circle)::before {
   left: -9px;
@@ -106,7 +106,7 @@ html body header nav ul li .profile-pic {
   width: 45px;
   border-radius: 50%;
   cursor: pointer;
-  border: 1px solid #32323D;
+  border: 1px solid #32323d;
 }
 html body header nav ul li .dropdown-menu {
   position: absolute;
@@ -114,7 +114,7 @@ html body header nav ul li .dropdown-menu {
   visibility: hidden;
   opacity: 0;
   border-radius: 6px;
-  border-top: 2px solid #C7A17A;
+  border-top: 2px solid #c7a17a;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
@@ -133,7 +133,7 @@ html body header nav ul li .dropdown-menu a i {
   margin-right: 10px;
 }
 html body header nav ul li .dropdown-menu a:hover i {
-  color: #C7A17A;
+  color: #c7a17a;
 }
 html body header nav ul li .dropdown-menu a:last-child {
   margin-bottom: 0px;
@@ -220,19 +220,19 @@ html body header .search-input {
   transition: 0.3s all;
   z-index: 999;
 }
-html body header .search-input form input[type=search], html body header .search-input form #auth .form .input .inputBox textarea[type=search], html body #auth .form .input .inputBox header .search-input form textarea[type=search] {
+html body header .search-input form input[type=search], html body header .search-input form #auth .form .input .inputBox textarea[type=search], html body header #auth .form .input .inputBox .search-input form textarea[type=search] {
   font-size: 17px;
   height: 55px;
   padding: 10px;
-  background-color: #F4F1EE;
+  background-color: #f4f1ee;
   border: none;
   width: 270px;
 }
-html body header .search-input form input[type=search]:focus, html body header .search-input form #auth .form .input .inputBox textarea[type=search]:focus, html body #auth .form .input .inputBox header .search-input form textarea[type=search]:focus {
+html body header .search-input form input[type=search]:focus, html body header .search-input form #auth .form .input .inputBox textarea[type=search]:focus, html body header #auth .form .input .inputBox .search-input form textarea[type=search]:focus {
   outline: none;
 }
 html body header .search-input form button {
-  background-color: #13131A;
+  background-color: #13131a;
   color: #ffffff;
   border: none;
   font-size: 18px;
@@ -274,7 +274,7 @@ html body header .intro h1 {
   font-weight: 400;
 }
 html body header .intro p {
-  color: #A7A7A7;
+  color: #c7c6c6;
   font-size: 18px;
   line-height: 22px;
 }
@@ -289,24 +289,24 @@ html body header .intro .intro-btns button {
   padding: 16px 34px;
   text-transform: uppercase;
   border-radius: 5px;
-  background-color: #C7A17A;
+  background-color: #c7a17a;
   border: none;
   letter-spacing: 2px;
   display: inline-block;
-  box-shadow: inset 0 0 0 0 #C7A17A;
+  box-shadow: inset 0 0 0 0 #c7a17a;
   transition: ease 0.4s;
   font-size: 12px;
   font-weight: 500;
 }
 html body header .intro .intro-btns button:last-child {
   background-color: transparent;
-  border: 2px solid #32323D;
+  border: 2px solid #32323d;
 }
 html body header .intro .intro-btns button:first-child:hover {
-  background-color: #32323D;
+  background-color: #32323d;
 }
 html body header .intro .intro-btns button:last-child:hover {
-  box-shadow: inset 180px 0 0 0 #C7A17A;
+  box-shadow: inset 180px 0 0 0 #c7a17a;
 }
 html body header .intro .social-media {
   display: flex;
@@ -321,12 +321,12 @@ html body header .intro .social-media span a {
   font-size: 15px;
 }
 html body header .intro .social-media span a:hover {
-  color: #C7A17A;
+  color: #c7a17a;
 }
 html body header .intro .social-media span a i {
   margin-right: 6px;
 }
-html body #error-404-500 {
+html body header #error-404-500 {
   position: relative;
   height: 100vh;
   background-image: url(/images/breadcrumb.jpeg);
@@ -334,7 +334,7 @@ html body #error-404-500 {
   background-position: center;
   background-repeat: no-repeat;
 }
-html body #error-404-500 div {
+html body header #error-404-500 div {
   padding: 25px;
   background-color: #000000c9;
   height: 100vh;
@@ -342,7 +342,7 @@ html body #error-404-500 div {
   justify-content: center;
   align-items: center;
 }
-html body #error-404-500 div h1 {
+html body header #error-404-500 div h1 {
   color: #ffffff;
   margin-bottom: 140px;
   text-align: center;
@@ -350,14 +350,14 @@ html body #error-404-500 div h1 {
   font-size: 70px;
   font-weight: 400;
 }
-html body #auth {
+html body header #auth {
   display: flex;
   justify-content: center;
   height: 100vh;
   background-color: #131419ed;
   padding: 50px 20px;
 }
-html body #auth .form {
+html body header #auth .form {
   position: relative;
   width: 500px;
   padding: 40px 40px 60px;
@@ -366,26 +366,26 @@ html body #auth .form {
   text-align: center;
   box-shadow: -5px -5px 10px rgba(255, 255, 255, 0.05), 5px 5px 15px rgba(0, 0, 0, 0.5);
 }
-html body #auth .form h2 {
+html body header #auth .form h2 {
   color: #c7c7c7;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 4px;
 }
-html body #auth .form .input {
+html body header #auth .form .input {
   text-align: left;
   margin-top: 40px;
 }
-html body #auth .form .input .inputBox {
+html body header #auth .form .input .inputBox {
   margin-top: 20px;
 }
-html body #auth .form .input .inputBox label {
+html body header #auth .form .input .inputBox label {
   display: block;
-  color: #A7A7A7;
+  color: #c7c6c6;
   margin-bottom: 5px;
   font-size: 18px;
 }
-html body #auth .form .input .inputBox input, html body #auth .form .input .inputBox textarea {
+html body header #auth .form .input .inputBox input, html body header #auth .form .input .inputBox textarea {
   width: 100%;
   height: 50px;
   background-color: #131419;
@@ -394,59 +394,59 @@ html body #auth .form .input .inputBox input, html body #auth .form .input .inpu
   border-radius: 40px;
   padding: 5px 15px;
   font-size: 18px;
-  color: #C7A17A;
+  color: #c7a17a;
   box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.1), inset 2px 2px 6px rgba(0, 0, 0, 0.8);
 }
-html body #auth .form .input .inputBox input[type=submit], html body #auth .form .input .inputBox textarea[type=submit] {
+html body header #auth .form .input .inputBox input[type=submit], html body header #auth .form .input .inputBox textarea[type=submit] {
   cursor: pointer;
   margin-top: 20px;
   box-shadow: -2px -2px 6px rgba(255, 255, 255, 0.1), 2px 2px 6px rgba(0, 0, 0, 0.8);
 }
-html body #auth .form .input .inputBox input[type=submit]:active, html body #auth .form .input .inputBox textarea[type=submit]:active {
+html body header #auth .form .input .inputBox input[type=submit]:active, html body header #auth .form .input .inputBox textarea[type=submit]:active {
   opacity: 0.8;
   margin-top: 20px;
   box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.1), inset 2px 2px 6px rgba(0, 0, 0, 0.8);
 }
-html body #auth .form .input .inputBox input[type=submit]::-moz-placeholder, html body #auth .form .input .inputBox textarea[type=submit]::-moz-placeholder {
-  color: #A7A7A7;
+html body header #auth .form .input .inputBox input[type=submit]::-moz-placeholder, html body header #auth .form .input .inputBox textarea[type=submit]::-moz-placeholder {
+  color: #c7c6c6;
   font-size: 18px;
 }
-html body #auth .form .input .inputBox input[type=submit]:-ms-input-placeholder, html body #auth .form .input .inputBox textarea[type=submit]:-ms-input-placeholder {
-  color: #A7A7A7;
+html body header #auth .form .input .inputBox input[type=submit]:-ms-input-placeholder, html body header #auth .form .input .inputBox textarea[type=submit]:-ms-input-placeholder {
+  color: #c7c6c6;
   font-size: 18px;
 }
-html body #auth .form .input .inputBox input[type=submit]::placeholder, html body #auth .form .input .inputBox textarea[type=submit]::placeholder {
-  color: #A7A7A7;
+html body header #auth .form .input .inputBox input[type=submit]::placeholder, html body header #auth .form .input .inputBox textarea[type=submit]::placeholder {
+  color: #c7c6c6;
   font-size: 18px;
 }
-html body #auth .form .input .inputBox input[type=submit]:hover, html body #auth .form .input .inputBox textarea[type=submit]:hover {
+html body header #auth .form .input .inputBox input[type=submit]:hover, html body header #auth .form .input .inputBox textarea[type=submit]:hover {
   opacity: 0.9;
 }
-html body #auth .form .input .inputBox textarea {
+html body header #auth .form .input .inputBox textarea {
   resize: none;
   height: 130px;
   padding-top: 14px;
 }
-html body #auth .form .input .inputBox .is-invalid {
+html body header #auth .form .input .inputBox .is-invalid {
   border: 1px solid #ff0000c7;
 }
-html body #auth .form .input .inputBox .invalid-feedback p {
+html body header #auth .form .input .inputBox .invalid-feedback p {
   color: #ff0000c7;
   padding: 9px 0px 0px 0px;
   font-size: 14px;
   font-family: system-ui;
   font-weight: 400;
 }
-html body #auth .form .change-profile-img {
+html body header #auth .form .change-profile-img {
   height: 205px;
   width: 205px;
   overflow: hidden;
   position: relative;
   border-radius: 50%;
-  border: 3px solid #C7A17A;
+  border: 3px solid #c7a17a;
   margin: 20px auto 25px auto;
 }
-html body #auth .form .change-profile-img .choose-img {
+html body header #auth .form .change-profile-img .choose-img {
   position: absolute;
   bottom: -75px;
   background-color: #131419ed;
@@ -457,13 +457,13 @@ html body #auth .form .change-profile-img .choose-img {
   width: 100%;
   transition: 0.3s all;
 }
-html body #auth .form .change-profile-img .choose-img:hover {
+html body header #auth .form .change-profile-img .choose-img:hover {
   bottom: 0;
 }
-html body #auth .form .change-profile-img .choose-img form {
+html body header #auth .form .change-profile-img .choose-img form {
   overflow: hidden;
 }
-html body #auth .form .change-profile-img .choose-img form label {
+html body header #auth .form .change-profile-img .choose-img form label {
   color: #ffffff;
   width: 190px;
   height: 76px;
@@ -475,21 +475,21 @@ html body #auth .form .change-profile-img .choose-img form label {
   border-bottom-left-radius: 100px;
   border-bottom-right-radius: 100px;
 }
-html body #auth .form .change-profile-img .choose-img form label i {
+html body header #auth .form .change-profile-img .choose-img form label i {
   font-size: 30px;
 }
-html body #auth .form .change-profile-img .choose-img form input, html body #auth .form .change-profile-img .choose-img form .input .inputBox textarea, html body #auth .form .input .inputBox .change-profile-img .choose-img form textarea {
+html body header #auth .form .change-profile-img .choose-img form input, html body header #auth .form .change-profile-img .choose-img form .input .inputBox textarea, html body header #auth .form .input .inputBox .change-profile-img .choose-img form textarea {
   display: none;
 }
-html body #auth .form .change-profile-img img {
+html body header #auth .form .change-profile-img img {
   height: 200px;
   width: 200px;
   border-radius: 50%;
 }
-html body #auth .form .change-profile-img img:hover + .choose-img {
+html body header #auth .form .change-profile-img img:hover + .choose-img {
   bottom: 0;
 }
-html body #auth .form #removeProfilePicsBtn {
+html body header #auth .form #removeProfilePicsBtn {
   color: #ff0000c7;
   border: none;
   border-radius: 50px;
@@ -500,28 +500,88 @@ html body #auth .form #removeProfilePicsBtn {
   background-color: #131419;
   box-shadow: -2px -2px 6px rgba(255, 255, 255, 0.1), 2px 2px 6px rgba(0, 0, 0, 0.8);
 }
-html body #auth .form #removeProfilePicsBtn:active {
+html body header #auth .form #removeProfilePicsBtn:active {
   opacity: 0.8;
   box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.1), inset 2px 2px 6px rgba(0, 0, 0, 0.8);
 }
-html body #auth .reminder {
+html body header #auth .reminder {
   margin-top: 30px;
-  color: #A7A7A7;
+  color: #c7c6c6;
 }
-html body #auth .reminder a {
-  color: #C7A17A;
+html body header #auth .reminder a {
+  color: #c7a17a;
   text-decoration: none;
   transition: 0.2s all;
 }
-html body #auth .reminder a:hover {
+html body header #auth .reminder a:hover {
   text-decoration: underline;
   opacity: 0.9;
 }
-html body .auth-height-def {
+html body header .auth-height-def {
   height: 128vh !important;
 }
-html body .auth-height {
+html body header .auth-height {
   height: 140vh !important;
+}
+html body #opening {
+  margin-top: 120px;
+}
+html body #opening .container {
+  padding: 20px;
+  display: flex;
+}
+html body #opening .container .full-row {
+  display: flex;
+  gap: 1.5%;
+}
+html body #opening .container .full-row [class^=prod-] {
+  position: relative;
+  display: flex;
+}
+html body #opening .container .full-row [class^=prod-] .images {
+  position: relative;
+}
+html body #opening .container .full-row [class^=prod-] .images::before {
+  content: "";
+  width: 0%;
+  background-color: #c7a17a;
+  height: 4px;
+  position: absolute;
+  z-index: 9;
+  top: 0;
+  transition: 0.3s ease-in width;
+}
+html body #opening .container .full-row [class^=prod-] .images .product-img {
+  width: 100%;
+}
+html body #opening .container .full-row [class^=prod-] .images .shape {
+  position: absolute;
+  left: 1px;
+  right: 1px;
+  width: -webkit-fill-available;
+  top: 1px;
+}
+html body #opening .container .full-row [class^=prod-]:hover .images::before {
+  width: 100%;
+}
+html body #opening .container .full-row [class^=prod-] .des {
+  position: absolute;
+  padding: 40px;
+}
+html body #opening .container .full-row [class^=prod-] .des span {
+  color: #c7a17a;
+}
+html body #opening .container .full-row [class^=prod-] .des h3 {
+  color: #ffffff;
+  font-family: "Bebas Neue", cursive;
+  font-size: 33px;
+  font-weight: 500;
+}
+html body #opening .container .full-row [class^=prod-] .des p {
+  color: #ffffff;
+  font-weight: 500;
+  color: #c7c6c6;
+  font-size: 18px;
 }
 html body #crop-modal {
   top: 0;
@@ -544,7 +604,7 @@ html body #crop-modal .modal-dialog .modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #32323D;
+  border-bottom: 1px solid #32323d;
   padding: 20px;
 }
 html body #crop-modal .modal-dialog .modal-header h5 {
@@ -563,7 +623,7 @@ html body #crop-modal .modal-dialog .modal-header button {
   align-items: center;
 }
 html body #crop-modal .modal-dialog .modal-body {
-  border-bottom: 1px solid #32323D;
+  border-bottom: 1px solid #32323d;
   padding: 20px;
 }
 html body #crop-modal .modal-dialog .modal-footer {
@@ -587,15 +647,15 @@ html body #crop-modal .modal-dialog .modal-footer button:active {
   box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.1), inset 2px 2px 6px rgba(0, 0, 0, 0.8);
 }
 html body #crop-modal .modal-dialog .modal-footer button::-moz-placeholder {
-  color: #A7A7A7;
+  color: #c7c6c6;
   font-size: 18px;
 }
 html body #crop-modal .modal-dialog .modal-footer button:-ms-input-placeholder {
-  color: #A7A7A7;
+  color: #c7c6c6;
   font-size: 18px;
 }
 html body #crop-modal .modal-dialog .modal-footer button::placeholder {
-  color: #A7A7A7;
+  color: #c7c6c6;
   font-size: 18px;
 }
 html body #crop-modal .modal-dialog .modal-footer button:hover {
@@ -613,7 +673,7 @@ html body footer {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border-top: 1px solid #32323D;
+  border-top: 1px solid #32323d;
 }
 html body footer .footer-wrapper {
   padding: 150px 20px 0px 20px;
@@ -626,7 +686,7 @@ html body footer .footer-wrapper #gotoTop span {
   transform: translate(-50%);
   height: 50px;
   width: 50px;
-  border: 2px solid #32323D;
+  border: 2px solid #32323d;
   background-color: #010103;
   border-radius: 50%;
   display: flex;
@@ -647,7 +707,7 @@ html body footer .footer-wrapper #gotoTop span::after {
   color: #ffffff;
 }
 html body footer .footer-wrapper #gotoTop span:hover {
-  background-color: #C7A17A;
+  background-color: #c7a17a;
 }
 html body footer .footer-wrapper #gotoTop i {
   color: #ffffff !important;
@@ -672,21 +732,21 @@ html body footer .footer-wrapper .news-latter-section > div span {
   color: #ffffff;
 }
 html body footer .footer-wrapper .news-latter-section > div span:last-child {
-  color: #A7A7A7;
+  color: #c7c6c6;
 }
 html body footer .footer-wrapper .news-latter-section > form {
   margin-left: auto;
 }
-html body footer .footer-wrapper .news-latter-section > form input[type=email], html body footer .footer-wrapper .news-latter-section > form #auth .form .input .inputBox textarea[type=email], html body #auth .form .input .inputBox footer .footer-wrapper .news-latter-section > form textarea[type=email] {
+html body footer .footer-wrapper .news-latter-section > form input[type=email], html body footer .footer-wrapper .news-latter-section > form header #auth .form .input .inputBox textarea[type=email], html body header #auth .form .input .inputBox footer .footer-wrapper .news-latter-section > form textarea[type=email] {
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid #32323D;
+  border-bottom: 1px solid #32323d;
   padding: 18px 10px;
   min-width: 200px;
   color: #ffffff;
   font-size: 17px;
 }
-html body footer .footer-wrapper .news-latter-section > form input[type=email]:focus, html body footer .footer-wrapper .news-latter-section > form #auth .form .input .inputBox textarea[type=email]:focus, html body #auth .form .input .inputBox footer .footer-wrapper .news-latter-section > form textarea[type=email]:focus {
+html body footer .footer-wrapper .news-latter-section > form input[type=email]:focus, html body footer .footer-wrapper .news-latter-section > form header #auth .form .input .inputBox textarea[type=email]:focus, html body header #auth .form .input .inputBox footer .footer-wrapper .news-latter-section > form textarea[type=email]:focus {
   outline: none;
   box-shadow: none;
 }
@@ -696,7 +756,7 @@ html body footer .footer-wrapper .news-latter-section > form button {
   background-color: transparent;
   cursor: pointer;
   border: none;
-  border-bottom: 1px solid #32323D;
+  border-bottom: 1px solid #32323d;
   color: #ffffff;
   padding: 0px 10px;
 }
@@ -727,14 +787,14 @@ html body footer .footer-wrapper .short-bio .socials-rect {
   gap: 10px;
 }
 html body footer .footer-wrapper .short-bio .socials-rect > a span {
-  color: #A7A7A7;
+  color: #c7c6c6;
   width: 40px;
   height: 40px;
   border-radius: 4px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #32323D;
+  border: 1px solid #32323d;
   transition: 0.3s all;
 }
 html body footer .footer-wrapper .short-bio .socials-rect > a:hover span {
@@ -742,7 +802,7 @@ html body footer .footer-wrapper .short-bio .socials-rect > a:hover span {
   color: #ffffff;
 }
 html body footer .footer-wrapper .final-footer {
-  border-top: 1px solid #32323D;
+  border-top: 1px solid #32323d;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -772,6 +832,24 @@ html body footer .footer-wrapper .final-footer span {
   to {
     opacity: 1;
     transform: none;
+  }
+}
+@media (max-width: 1093px) {
+  #opening .container .full-row {
+    width: 100%;
+    flex-wrap: wrap !important;
+    row-gap: 14px !important;
+  }
+  #opening .container .full-row [class^=prod-] {
+    min-width: 48.5% !important;
+    width: 49.25%;
+  }
+  #opening .container .full-row [class^=prod-] .images {
+    overflow: hidden;
+    width: 100%;
+  }
+  #opening .container .full-row [class^=prod-] .images .product-img {
+    width: 100%;
   }
 }
 @media (max-width: 972px) {
@@ -826,7 +904,7 @@ html body footer .footer-wrapper .final-footer span {
     transition: 0.3s all;
   }
   html body header nav .vertical-menu .functionality i:hover {
-    color: #C7A17A;
+    color: #c7a17a;
   }
   html body header nav .vertical-menu ul {
     display: flex;
@@ -841,19 +919,19 @@ html body footer .footer-wrapper .final-footer span {
     color: #010103;
   }
   html body header nav .vertical-menu ul li a:hover {
-    color: #C7A17A;
+    color: #c7a17a;
   }
   html body header nav .vertical-menu ul .user-det .dropdown-menu {
     bottom: -54px;
     right: -135px;
     border: none;
-    border-left: 2px solid #C7A17A;
+    border-left: 2px solid #c7a17a;
   }
   html body header nav .vertical-menu ul .user-det .dropdown-menu a {
     color: #ffffff;
   }
   html body header nav .vertical-menu ul .user-det .dropdown-menu a:hover {
-    color: #C7A17A;
+    color: #c7a17a;
   }
   html body header nav .vertical-menu ul .user-det .dropdown-menu-reveal {
     transition: 0.3s all;
@@ -873,7 +951,7 @@ html body footer .footer-wrapper .final-footer span {
     z-index: 99;
     top: 87px;
   }
-  html body #error-404-500 div h1 {
+  html body header #error-404-500 div h1 {
     font-size: 50px;
     font-weight: 400;
   }
@@ -891,7 +969,7 @@ html body footer .footer-wrapper .final-footer span {
     margin: auto;
     margin-top: 40px;
   }
-  html body footer .footer-wrapper .news-latter-section > form input[type=email], html body footer .footer-wrapper .news-latter-section > form #auth .form .input .inputBox textarea[type=email], html body #auth .form .input .inputBox footer .footer-wrapper .news-latter-section > form textarea[type=email] {
+  html body footer .footer-wrapper .news-latter-section > form input[type=email], html body footer .footer-wrapper .news-latter-section > form header #auth .form .input .inputBox textarea[type=email], html body header #auth .form .input .inputBox footer .footer-wrapper .news-latter-section > form textarea[type=email] {
     min-width: 300px;
     background-color: transparent;
   }
@@ -909,6 +987,26 @@ html body footer .footer-wrapper .final-footer span {
     flex-basis: 100%;
     gap: 10px;
     justify-content: flex-start;
+  }
+}
+@media (max-width: 732px) {
+  #opening .container .full-row {
+    width: 100%;
+    flex-wrap: wrap !important;
+    gap: 20px !important;
+  }
+  #opening .container .full-row [class^=prod-] {
+    min-width: 48.5% !important;
+    width: 100%;
+    height: 300px;
+  }
+  #opening .container .full-row [class^=prod-] .images {
+    overflow: hidden;
+    width: 100%;
+    border-bottom: 1.5px solid #32323d;
+  }
+  #opening .container .full-row [class^=prod-] .images .product-img {
+    width: 100%;
   }
 }
 @media (max-width: 592px) {
@@ -932,7 +1030,7 @@ html body footer .footer-wrapper .final-footer span {
   html body footer .footer-wrapper .news-latter-section > div:nth-child(2) {
     flex-basis: 100%;
   }
-  html body footer .footer-wrapper .news-latter-section > form input[type=email], html body footer .footer-wrapper .news-latter-section > form #auth .form .input .inputBox textarea[type=email], html body #auth .form .input .inputBox footer .footer-wrapper .news-latter-section > form textarea[type=email] {
+  html body footer .footer-wrapper .news-latter-section > form input[type=email], html body footer .footer-wrapper .news-latter-section > form header #auth .form .input .inputBox textarea[type=email], html body header #auth .form .input .inputBox footer .footer-wrapper .news-latter-section > form textarea[type=email] {
     max-width: 300px;
   }
 }

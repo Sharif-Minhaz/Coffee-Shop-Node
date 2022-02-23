@@ -23,6 +23,10 @@
 		opacity: 0.9;
 	}
 }
+@mixin container {
+	padding: 20px;
+	display: flex;
+}
 
 html {
 	scroll-behavior: smooth;
@@ -338,191 +342,250 @@ html {
 					}
 				}
 			}
-		}
-		#error-404-500 {
-			position: relative;
-			height: 100vh;
-			background: {
-				image: url(/images/breadcrumb.jpeg);
-				size: cover;
-				position: center;
-				repeat: no-repeat;
-			}
-			div {
-				padding: 25px;
-				background-color: $wrapper-bg;
-				height: 100vh;
-				@include flex();
-				h1 {
-					color: $font-color;
-					margin-bottom: 140px;
-					text-align: center;
-					font: {
-						family: cursive;
-						size: 70px;
-						weight: 400;
-					}
-				}
-			}
-		}
-		#auth {
-			display: flex;
-			justify-content: center;
-			height: 100vh;
-			background-color: $form-background-op;
-			padding: 50px 20px;
-			.form {
+			#error-404-500 {
 				position: relative;
-				width: 500px;
-				padding: 40px 40px 60px;
-				background-color: $form-background;
-				border-radius: 10px;
-				text-align: center;
-				box-shadow: -5px -5px 10px rgba(255, 255, 255, 0.05),
-					5px 5px 15px rgba(0, 0, 0, 0.5);
-				h2 {
-					color: #c7c7c7;
-					font-weight: 500;
-					text-transform: uppercase;
-					letter-spacing: 4px;
+				height: 100vh;
+				background: {
+					image: url(/images/breadcrumb.jpeg);
+					size: cover;
+					position: center;
+					repeat: no-repeat;
 				}
-				.input {
-					text-align: left;
-					margin-top: 40px;
-					.inputBox {
-						margin-top: 20px;
-						label {
-							display: block;
-							color: $muted;
-							margin-bottom: 5px;
-							font-size: 18px;
-						}
-						input {
-							width: 100%;
-							height: 50px;
-							background-color: $form-background;
-							border: none;
-							outline: none;
-							border-radius: 40px;
-							padding: 5px 15px;
-							font-size: 18px;
-							color: $highlight;
-							box-shadow: inset -2px -2px 6px $form-box-shadow,
-								inset 2px 2px 6px $form-shadow;
-							&[type="submit"] {
-								@include neumorphism();
-							}
-						}
-						textarea {
-							@extend input;
-							resize: none;
-							height: 130px;
-							padding-top: 14px;
-						}
-						.is-invalid {
-							border: 1px solid $invalid-color;
-						}
-						.invalid-feedback {
-							p {
-								color: $invalid-color;
-								padding: 9px 0px 0px 0px;
-								font: {
-									size: 14px;
-									family: system-ui;
-									weight: 400;
-								}
-							}
+				div {
+					padding: 25px;
+					background-color: $wrapper-bg;
+					height: 100vh;
+					@include flex();
+					h1 {
+						color: $font-color;
+						margin-bottom: 140px;
+						text-align: center;
+						font: {
+							family: cursive;
+							size: 70px;
+							weight: 400;
 						}
 					}
 				}
-				.change-profile-img {
-					height: 205px;
-					width: 205px;
-					overflow: hidden;
+			}
+			#auth {
+				display: flex;
+				justify-content: center;
+				height: 100vh;
+				background-color: $form-background-op;
+				padding: 50px 20px;
+				.form {
 					position: relative;
-					border-radius: 50%;
-					border: 3px solid $highlight;
-					margin: 20px auto 25px auto;
-					.choose-img {
-						position: absolute;
-						bottom: -75px;
-						background-color: $form-background-op;
-						display: flex;
-						justify-content: center;
-						align-items: center;
-						height: 70px;
-						width: 100%;
-						transition: 0.3s all;
-						&:hover {
-							bottom: 0;
-						}
-						form {
-							overflow: hidden;
+					width: 500px;
+					padding: 40px 40px 60px;
+					background-color: $form-background;
+					border-radius: 10px;
+					text-align: center;
+					box-shadow: -5px -5px 10px rgba(255, 255, 255, 0.05),
+						5px 5px 15px rgba(0, 0, 0, 0.5);
+					h2 {
+						color: #c7c7c7;
+						font-weight: 500;
+						text-transform: uppercase;
+						letter-spacing: 4px;
+					}
+					.input {
+						text-align: left;
+						margin-top: 40px;
+						.inputBox {
+							margin-top: 20px;
 							label {
-								color: $font-color;
-								width: 190px;
-								height: 76px;
-								cursor: pointer;
-								display: flex;
-								justify-content: center;
-								align-items: center;
-								overflow: hidden;
-								border-bottom-left-radius: 100px;
-								border-bottom-right-radius: 100px;
-								i {
-									font-size: 30px;
-								}
+								display: block;
+								color: $muted;
+								margin-bottom: 5px;
+								font-size: 18px;
 							}
 							input {
-								display: none;
+								width: 100%;
+								height: 50px;
+								background-color: $form-background;
+								border: none;
+								outline: none;
+								border-radius: 40px;
+								padding: 5px 15px;
+								font-size: 18px;
+								color: $highlight;
+								box-shadow: inset -2px -2px 6px $form-box-shadow,
+									inset 2px 2px 6px $form-shadow;
+								&[type="submit"] {
+									@include neumorphism();
+								}
+							}
+							textarea {
+								@extend input;
+								resize: none;
+								height: 130px;
+								padding-top: 14px;
+							}
+							.is-invalid {
+								border: 1px solid $invalid-color;
+							}
+							.invalid-feedback {
+								p {
+									color: $invalid-color;
+									padding: 9px 0px 0px 0px;
+									font: {
+										size: 14px;
+										family: system-ui;
+										weight: 400;
+									}
+								}
 							}
 						}
 					}
-					img {
-						height: 200px;
-						width: 200px;
+					.change-profile-img {
+						height: 205px;
+						width: 205px;
+						overflow: hidden;
+						position: relative;
 						border-radius: 50%;
-						&:hover + .choose-img {
-							bottom: 0;
+						border: 3px solid $highlight;
+						margin: 20px auto 25px auto;
+						.choose-img {
+							position: absolute;
+							bottom: -75px;
+							background-color: $form-background-op;
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							height: 70px;
+							width: 100%;
+							transition: 0.3s all;
+							&:hover {
+								bottom: 0;
+							}
+							form {
+								overflow: hidden;
+								label {
+									color: $font-color;
+									width: 190px;
+									height: 76px;
+									cursor: pointer;
+									display: flex;
+									justify-content: center;
+									align-items: center;
+									overflow: hidden;
+									border-bottom-left-radius: 100px;
+									border-bottom-right-radius: 100px;
+									i {
+										font-size: 30px;
+									}
+								}
+								input {
+									display: none;
+								}
+							}
+						}
+						img {
+							height: 200px;
+							width: 200px;
+							border-radius: 50%;
+							&:hover + .choose-img {
+								bottom: 0;
+							}
+						}
+					}
+					#removeProfilePicsBtn {
+						color: $invalid-color;
+						border: none;
+						border-radius: 50px;
+						font-size: 16px;
+						cursor: pointer;
+						height: 50px;
+						width: 140px;
+						background-color: $form-background;
+						box-shadow: -2px -2px 6px $form-box-shadow, 2px 2px 6px $form-shadow;
+						&:active {
+							opacity: 0.8;
+							box-shadow: inset -2px -2px 6px $form-box-shadow,
+								inset 2px 2px 6px $form-shadow;
 						}
 					}
 				}
-				#removeProfilePicsBtn {
-					color: $invalid-color;
-					border: none;
-					border-radius: 50px;
-					font-size: 16px;
-					cursor: pointer;
-					height: 50px;
-					width: 140px;
-					background-color: $form-background;
-					box-shadow: -2px -2px 6px $form-box-shadow, 2px 2px 6px $form-shadow;
-					&:active {
-						opacity: 0.8;
-						box-shadow: inset -2px -2px 6px $form-box-shadow,
-							inset 2px 2px 6px $form-shadow;
+				.reminder {
+					margin-top: 30px;
+					color: $muted;
+					a {
+						color: $highlight;
+						text-decoration: none;
+						transition: 0.2s all;
+						&:hover {
+							text-decoration: underline;
+							opacity: 0.9;
+						}
 					}
 				}
 			}
-			.reminder {
-				margin-top: 30px;
-				color: $muted;
-				a {
-					color: $highlight;
-					text-decoration: none;
-					transition: 0.2s all;
-					&:hover {
-						text-decoration: underline;
-						opacity: 0.9;
+			.auth-height-def {
+				height: 128vh !important;
+			}
+			.auth-height {
+				height: 140vh !important;
+			}
+		}
+		#opening {
+			margin-top: 120px;
+			.container {
+				@include container();
+				.full-row {
+					display: flex;
+					gap: 1.5%;
+					[class^="prod-"] {
+						position: relative;
+						display: flex;
+						.images {
+							position: relative;
+							&::before {
+								content: "";
+								width: 0%;
+								background-color: $highlight;
+								height: 4px;
+								position: absolute;
+								z-index: 9;
+								top: 0;
+								transition: 0.3s ease-in width;
+							}
+							.product-img {
+								width: 100%;
+							}
+							.shape {
+								position: absolute;
+								left: 1px;
+								right: 1px;
+								width: -webkit-fill-available;
+								top: 1px;
+							}
+						}
+						&:hover .images::before {
+							width: 100%;
+						}
+						.des {
+							position: absolute;
+							padding: 40px;
+							span {
+								color: $highlight;
+							}
+							h3 {
+								color: $font-color;
+								font-family: $bebas;
+								font-size: 33px;
+								font-weight: 500;
+							}
+							p {
+								color: $font-color;
+								font-weight: 500;
+								color: $muted;
+								font-size: 18px;
+							}
+						}
 					}
 				}
 			}
-		}
-		.auth-height-def {
-			height: 128vh !important;
-		}
-		.auth-height {
-			height: 140vh !important;
 		}
 		#crop-modal {
 			top: 0;
@@ -740,6 +803,29 @@ html {
 	}
 }
 
+@media (max-width: 1093px) {
+	#opening {
+		.container {
+			.full-row {
+				width: 100%;
+				flex-wrap: wrap !important;
+				row-gap: 14px !important;
+				[class^="prod-"] {
+					min-width: 48.5% !important;
+					width: 49.25%;
+					.images {
+						overflow: hidden;
+						width: 100%;
+						.product-img {
+							width: 100%;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 @media (max-width: 972px) {
 	html {
 		body {
@@ -846,13 +932,13 @@ html {
 					z-index: 99;
 					top: 87px;
 				}
-			}
-			#error-404-500 {
-				div {
-					h1 {
-						font: {
-							size: 50px;
-							weight: 400;
+				#error-404-500 {
+					div {
+						h1 {
+							font: {
+								size: 50px;
+								weight: 400;
+							}
 						}
 					}
 				}
@@ -892,6 +978,31 @@ html {
 							flex-basis: 100%;
 							gap: 10px;
 							justify-content: flex-start;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 732px) {
+	#opening {
+		.container {
+			.full-row {
+				width: 100%;
+				flex-wrap: wrap !important;
+				gap: 20px !important;
+				[class^="prod-"] {
+					min-width: 48.5% !important;
+					width: 100%;
+					height: 300px;
+					.images {
+						overflow: hidden;
+						width: 100%;
+						border-bottom: 1.5px solid $product-border;
+						.product-img {
+							width: 100%;
 						}
 					}
 				}
