@@ -1,7 +1,8 @@
 const homeRoute = require("./home.route");
 const authRoute = require("./auth.route");
 const profileRoute = require("./profile.route");
-const uploadRoute = require("../routes/upload.route");
+const uploadRoute = require("./upload.route");
+const menuRoute = require("./menu.route");
 
 const routes = [
 	{
@@ -13,12 +14,16 @@ const routes = [
 		handler: authRoute,
 	},
 	{
-		path: "/upload",
-		handler: uploadRoute,
-	},
-	{
 		path: "/profile",
 		handler: profileRoute,
+	},
+	{
+		path: "/menu",
+		handler: menuRoute,
+	},
+	{
+		path: "/upload",
+		handler: uploadRoute,
 	},
 ];
 
