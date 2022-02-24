@@ -5,3 +5,7 @@ exports.createProfileGetController = (req, res, next) => {
 		errors: {},
 	});
 };
+
+exports.createProfilePostController = async (req, res, next) => {
+	res.send("Profile");
+}

@@ -40,10 +40,10 @@
                     value="Remove Image"
                     style="display: <%= (user.profilePics.includes('default.jpg')) ? "none" : "block" %>;"
                 />
-                <form action="/profile/create-profile" class="input">
+                <form action="/profile/create-profile" method="post" class="input">
                     <div class="inputBox">
                         <label>Name</label>
-                        <input class="<%= errors.name && "is-invalid"%>" type="text" name="name" placeholder="Enter name"/>
+                        <input class="<%= errors.name && "is-invalid"%>" value="<%= user.username %> " type="text" name="name" placeholder="Enter name"/>
                         <% if (errors.name) { %>
                             <div class="invalid-feedback">
                                 <p><%= errors.name %> </p>
