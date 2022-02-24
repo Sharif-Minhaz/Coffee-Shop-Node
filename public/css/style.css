@@ -796,6 +796,125 @@ html body #coffee-machine .container-sm .full-row .product-img {
   width: 50%;
   text-align: center;
 }
+html body #other-product {
+  margin-top: 96px;
+  background-image: url(/images/footer.jpeg);
+}
+html body #other-product .container-sm {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  padding: 20px 8% 20px 8%;
+  margin: auto;
+  display: flex;
+}
+html body #other-product .container-sm .sm-heading {
+  width: 156px;
+  color: #ffffff;
+  display: inline-block;
+  padding: 4px 13px;
+  background-color: #c7a17a;
+  border-radius: 4px;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+html body #other-product .container-sm .lg-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+html body #other-product .container-sm .lg-heading h1 {
+  font: 500 60px "Bebas Neue", cursive;
+  color: #ffffff;
+}
+html body #other-product .container-sm .lg-heading a {
+  color: #ffffff;
+  display: inline-block;
+  padding: 4px 13px;
+  background-color: #c7a17a;
+  border-radius: 4px;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 16px;
+  letter-spacing: normal;
+  padding: 8px 22px;
+  transition: 0.3s all;
+}
+html body #other-product .container-sm .lg-heading a:hover {
+  background-color: #32323d;
+}
+html body #other-product .container-sm .full-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+html body #other-product .container-sm .full-row .single-item {
+  width: 33.3333%;
+  border: 1px solid #32323d;
+  position: relative;
+  padding: 110px 20px 40px 20px;
+  transition: 0.3s background-color;
+}
+html body #other-product .container-sm .full-row .single-item .tools {
+  display: flex;
+  gap: 10px;
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translate(-50%);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s all;
+}
+html body #other-product .container-sm .full-row .single-item .tools span {
+  color: #c7c6c6;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #c7c6c6;
+  transition: 0.3s all;
+  cursor: pointer;
+}
+html body #other-product .container-sm .full-row .single-item .tools span:hover {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+html body #other-product .container-sm .full-row .single-item .img {
+  text-align: center;
+  margin-bottom: 30px;
+  transition: 0.6s;
+}
+html body #other-product .container-sm .full-row .single-item .item-des {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+html body #other-product .container-sm .full-row .single-item .item-des span:first-child {
+  font-size: 20px;
+  color: #ffffff;
+  letter-spacing: 0px;
+}
+html body #other-product .container-sm .full-row .single-item .item-des span:last-child {
+  color: #c7a17a;
+}
+html body #other-product .container-sm .full-row .single-item:hover {
+  background-color: #13131a;
+}
+html body #other-product .container-sm .full-row .single-item:hover .tools {
+  opacity: 1;
+  visibility: visible;
+}
+html body #other-product .container-sm .full-row .single-item:hover .img {
+  transform: scale(1.08);
+}
 html body .order-modal {
   top: 0;
   width: 100%;
