@@ -615,10 +615,10 @@ html body #about .container .full-row .des span {
   margin-bottom: 20px;
 }
 html body #about .container .full-row .des h1 {
+  color: #ffffff;
   font-family: "Bebas Neue", cursive;
   font-size: 50px;
   font-weight: 500;
-  color: #ffffff;
 }
 html body #about .container .full-row .des p {
   font-size: 17px;
@@ -746,6 +746,55 @@ html body #menu .menu-footer a:last-child {
 }
 html body #menu .menu-footer a:last-child:hover {
   background-color: #c7a17a;
+}
+html body #coffee-machine {
+  margin-top: 96px;
+}
+html body #coffee-machine .container-sm {
+  padding: 20px 8% 20px 8%;
+  margin: auto;
+  display: flex;
+}
+html body #coffee-machine .container-sm .full-row {
+  display: flex;
+}
+html body #coffee-machine .container-sm .full-row .des {
+  width: 50%;
+  color: #ffffff;
+}
+html body #coffee-machine .container-sm .full-row .des h3 {
+  font: 500 55px "Bebas Neue", cursive;
+  margin-bottom: 23px;
+}
+html body #coffee-machine .container-sm .full-row .des p {
+  line-height: 1.7rem;
+  font-size: 17px;
+  color: #c7c6c6;
+  margin-bottom: 35px;
+}
+html body #coffee-machine .container-sm .full-row .des span {
+  color: #ffffff;
+  display: inline-block;
+  padding: 4px 13px;
+  background-color: #c7a17a;
+  border-radius: 4px;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 16px;
+  letter-spacing: normal;
+  padding: 8px 22px;
+  transition: 0.3s all;
+  border: none;
+  cursor: pointer;
+}
+html body #coffee-machine .container-sm .full-row .des span:hover {
+  background-color: #32323d;
+}
+html body #coffee-machine .container-sm .full-row .product-img {
+  width: 50%;
+  text-align: center;
 }
 html body .order-modal {
   top: 0;
@@ -933,6 +982,109 @@ html body #crop-modal .modal-dialog .modal-footer button:active {
 }
 html body #crop-modal .modal-dialog .modal-footer button:first-child {
   color: #ff0000c7;
+}
+html body .coffee-modal {
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.808);
+  z-index: 9999;
+  display: none;
+}
+html body .coffee-modal .modal-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+html body .coffee-modal .modal-wrapper .modal-section {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 4px;
+  width: 500px;
+  height: 406px;
+}
+html body .coffee-modal .modal-wrapper .modal-section .heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+html body .coffee-modal .modal-wrapper .modal-section .heading h3 {
+  margin-bottom: 10px;
+  font: 500 23px "Bebas Neue", cursive;
+}
+html body .coffee-modal .modal-wrapper .modal-section .heading span {
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+html body .coffee-modal .modal-wrapper .modal-section .modal-body-machine {
+  display: flex;
+  border: 1px solid #32323d3d;
+  padding: 20px;
+}
+html body .coffee-modal .modal-wrapper .modal-section .modal-body-machine .prod-img-machine {
+  width: 50%;
+}
+html body .coffee-modal .modal-wrapper .modal-section .modal-body-machine .prod-img-machine img {
+  width: 150px;
+}
+html body .coffee-modal .modal-wrapper .modal-section .modal-body-machine .prod-des {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 20px;
+}
+html body .coffee-modal .modal-wrapper .modal-section .modal-body-machine .prod-des h3 {
+  font: 500 23px "Bebas Neue", cursive;
+  text-align: center;
+}
+html body .coffee-modal .modal-wrapper .modal-section .modal-body-machine .prod-des .inc-dec-machine span {
+  display: inline-block;
+  border: 1px solid #32323d;
+  width: 45px;
+  text-align: center;
+  -moz-user-select: none;
+   -ms-user-select: none;
+       user-select: none;
+  -webkit-user-select: none;
+  margin-left: -5px;
+  cursor: pointer;
+}
+html body .coffee-modal .modal-wrapper .modal-section .modal-body-machine .prod-des .inc-dec-machine span:first-child {
+  margin-left: 0px;
+  border-right: none;
+}
+html body .coffee-modal .modal-wrapper .modal-section .modal-body-machine .prod-des .inc-dec-machine span:nth-child(2) {
+  border-right: none;
+  cursor: auto;
+}
+html body .coffee-modal .modal-wrapper .modal-section .modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+html body .coffee-modal .modal-wrapper .modal-section .modal-footer a {
+  color: #ffffff;
+  display: inline-block;
+  padding: 4px 13px;
+  background-color: #c7a17a;
+  border-radius: 4px;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 16px;
+  letter-spacing: normal;
+  padding: 8px 22px;
+  transition: 0.3s all;
+  margin-top: 20px;
+}
+html body .coffee-modal .modal-wrapper .modal-section .modal-footer a:hover {
+  background-color: #32323d;
 }
 html body footer {
   position: relative;
@@ -1142,6 +1294,21 @@ html body footer .footer-wrapper .final-footer span {
   #about .container .full-row .des {
     height: auto !important;
     flex-basis: 100%;
+  }
+
+  #coffee-machine .container-sm .full-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+    row-gap: 40px;
+  }
+  #coffee-machine .container-sm .full-row .des {
+    width: 100% !important;
+    text-align: center;
+  }
+  #coffee-machine .container-sm .full-row .product-img {
+    width: 100% !important;
   }
 }
 @media (max-width: 972px) {

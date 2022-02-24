@@ -82,6 +82,36 @@ window.onload = () => {
 			price.innerHTML = "$" + ((count + 1) * singleMenuPrice.substring(1)).toFixed(2);
 		}
 	});
+
+	const discoverMachine = document.getElementById("discover-machine");
+	const coffeeMachineModal = document.getElementsByClassName("coffee-modal")[0];
+	const coffeeMachinePrice = document.getElementById("price-machine");
+	const currentPrice = Number(coffeeMachinePrice.innerHTML.substring(1));
+	discoverMachine.addEventListener("click", function () {
+		coffeeMachineModal.style.display = "block";
+		let min = document.getElementById("min");
+		let res = document.getElementById("count-res");
+		let inc = document.getElementById("inc");
+		inc.addEventListener("click", function () {
+			let count = Number(res.innerHTML);
+			if (count < 50) {
+				count++;
+				res.innerHTML = count;
+				coffeeMachinePrice.innerHTML = "$" + (currentPrice * count).toFixed(2);
+			}
+		});
+		min.addEventListener("click", function () {
+			let count = Number(res.innerHTML);
+			if (count > 1) {
+				count--;
+				res.innerHTML = count;
+				coffeeMachinePrice.innerHTML = "$" + (currentPrice * count).toFixed(2);
+			}
+		});
+		document.getElementById("order-modal-close-machine").addEventListener("click", function () {
+			coffeeMachineModal.style.display = "none";
+		});
+	});
 };
 
 function sticky() {
