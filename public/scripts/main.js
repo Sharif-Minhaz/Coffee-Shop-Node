@@ -46,12 +46,17 @@ window.onload = () => {
 
 	const singleMenu = document.querySelectorAll(".single-menu");
 	const orderModal = document.querySelector(".order-modal");
+	const orderCount = document.querySelector(".inc-dec span:nth-child(2)");
+	let singleMenuPrice;
 	singleMenu.forEach(function (menu) {
 		menu.addEventListener("click", function () {
-			let prodName = document.querySelector(".inner-section span:first-child").innerHTML;
-			document.getElementById("prod-img").src = "/images/menu-1.png";
-			document.getElementById("placeName").innerHTML = prodName;
+			singleMenuPrice = this.lastElementChild.children[1].innerHTML;
+			document.getElementById("price").innerHTML = singleMenuPrice;
+			document.getElementById("prod-img").src = this.firstElementChild.src;
+			document.getElementById("placeName").innerHTML =
+				this.lastElementChild.firstElementChild.innerHTML;
 			orderModal.style.display = "block";
+			orderCount.innerHTML = 1;
 		});
 	});
 
@@ -61,19 +66,20 @@ window.onload = () => {
 	});
 
 	const dec = document.querySelector(".inc-dec span:first-child");
-	const orderCount = document.querySelector(".inc-dec span:nth-child(2)");
 	const inc = document.querySelector(".inc-dec span:nth-child(3)");
 
 	dec.addEventListener("click", function () {
 		let count = Number(orderCount.innerHTML);
 		if (count > 1) {
 			orderCount.innerHTML = count - 1;
+			price.innerHTML = "$" + ((count - 1) * singleMenuPrice.substring(1)).toFixed(2);
 		}
 	});
 	inc.addEventListener("click", function () {
 		let count = Number(orderCount.innerHTML);
-		if (count < 20) {
+		if (count < 50) {
 			orderCount.innerHTML = count + 1;
+			price.innerHTML = "$" + ((count + 1) * singleMenuPrice.substring(1)).toFixed(2);
 		}
 	});
 };
