@@ -799,17 +799,17 @@ html body #coffee-machine .container-sm .full-row .product-img {
 html body #other-product {
   margin-top: 96px;
   background-image: url(/images/footer.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 html body #other-product .container-sm {
-  display: flex;
   flex-direction: column;
   row-gap: 20px;
   padding: 20px 8% 20px 8%;
   margin: auto;
   display: flex;
 }
-html body #other-product .container-sm .sm-heading {
-  width: 156px;
+html body #other-product .container-sm .sm-heading span {
   color: #ffffff;
   display: inline-block;
   padding: 4px 13px;
@@ -1533,6 +1533,22 @@ html body footer .footer-wrapper .final-footer span {
     font-size: 50px;
     font-weight: 400;
   }
+  html body #other-product .container-sm .full-row {
+    gap: 20px;
+    flex-direction: column;
+  }
+  html body #other-product .container-sm .full-row .single-item {
+    width: 100%;
+    border: 1px solid #32323d;
+    position: relative;
+    padding: 110px 20px 40px 20px;
+    transition: 0.3s background-color;
+  }
+  html body #other-product .container-sm .full-row .single-item .img {
+    text-align: center;
+    margin-bottom: 30px;
+    transition: 0.6s;
+  }
   html body footer .footer-wrapper .news-latter-section {
     flex-wrap: wrap;
   }
@@ -1585,6 +1601,17 @@ html body footer .footer-wrapper .final-footer span {
   }
   #opening .container .full-row [class^=prod-] .images .product-img {
     width: 100%;
+  }
+
+  #other-product .container-sm .sm-heading {
+    text-align: center;
+  }
+  #other-product .container-sm .lg-heading {
+    flex-direction: column !important;
+    row-gap: 20px;
+  }
+  #other-product .container-sm .lg-heading h1 {
+    text-align: center;
   }
 }
 @media (max-width: 660px) {

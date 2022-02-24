@@ -801,14 +801,16 @@ html {
 		#other-product {
 			margin-top: 96px;
 			background-image: url(/images/footer.jpeg);
+			background-size: cover;
+			background-repeat: no-repeat;
 			.container-sm {
-				display: flex;
 				flex-direction: column;
 				row-gap: 20px;
 				@include container-sm();
 				.sm-heading {
-					width: 156px;
-					@include sm-heading();
+					span {
+						@include sm-heading();
+					}
 				}
 				.lg-heading {
 					display: flex;
@@ -866,7 +868,7 @@ html {
 							display: flex;
 							flex-direction: column;
 							align-items: center;
-							span{
+							span {
 								&:first-child {
 									font-size: 20px;
 									color: $font-color;
@@ -1412,6 +1414,26 @@ html {
 					}
 				}
 			}
+			#other-product {
+				.container-sm {
+					.full-row {
+						gap: 20px;
+						flex-direction: column;
+						.single-item {
+							width: 100%;
+							border: 1px solid $border-color;
+							position: relative;
+							padding: 110px 20px 40px 20px;
+							transition: 0.3s background-color;
+							.img {
+								text-align: center;
+								margin-bottom: 30px;
+								transition: 0.6s;
+							}
+						}
+					}
+				}
+			}
 			footer {
 				.footer-wrapper {
 					.news-latter-section {
@@ -1474,6 +1496,20 @@ html {
 							width: 100%;
 						}
 					}
+				}
+			}
+		}
+	}
+	#other-product {
+		.container-sm {
+			.sm-heading {
+				text-align: center;
+			}
+			.lg-heading {
+				flex-direction: column !important;
+				row-gap: 20px;
+				h1 {
+					text-align: center;
 				}
 			}
 		}
