@@ -19,7 +19,7 @@
 					<% if (!user) { %>
 						<a href="/auth/login">Login</a>
 					<% } else { %>
-						<img class="profile-pic" src="/images/default.jpg" title="<%= user.username %> " alt="profile_pic" />
+						<img class="profile-pic" src="<%= user.profilePics %>" title="<%= user.username %> " alt="profile_pic" />
 						<div class="dropdown-menu">
 							<a href="/profile/create-profile"><i class="bi bi-person-circle"></i> Profile</a>
 							<a href="/auth/logout"><i class="bi bi-box-arrow-left"></i> Logout</a>
@@ -54,7 +54,7 @@
 					<% if (!user) { %>
 						<a href="/auth/login">Login</a>
 					<% } else { %>
-						<img class="profile-pic" src="/images/default.jpg" alt="profile_pic" />
+						<img class="profile-pic" src="<%= user.profilePics %>" alt="profile_pic" />
 						<div class="dropdown-menu">
 							<a href="/profile/create-profile"><i class="bi bi-person-circle"></i> Profile</a>
 							<a href="/auth/logout"><i class="bi bi-box-arrow-left"></i> Logout</a>

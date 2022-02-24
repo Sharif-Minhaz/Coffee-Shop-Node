@@ -967,7 +967,7 @@ html {
 				margin: 20px auto;
 				.modal-header {
 					@include flex(space-between, center);
-					border-bottom: 1px solid $border-color;
+					border-bottom: 1px solid $border-color-lite;
 					padding: 20px;
 					h5 {
 						font-size: 20px;
@@ -984,25 +984,32 @@ html {
 					}
 				}
 				.modal-body {
-					border-bottom: 1px solid $border-color;
+					border-bottom: 1px solid $border-color-lite;
 					padding: 20px;
 				}
 				.modal-footer {
 					display: flex;
 					justify-content: flex-end;
 					padding: 20px;
-					gap: 10px;
+					gap: 15px;
 					button {
 						font-size: 16px;
-						@include neumorphism();
 						margin-top: 0;
-						width: 80px;
-						height: 34px;
+						width: 100px;
+						@include big-heading();
+						border: none;
+						cursor: pointer;
 						&:active {
 							margin-top: 0;
 						}
 						&:first-child {
-							color: $invalid-color;
+							background-color: $sec-bg;
+							&:hover {
+								background-color: $highlight;
+							}
+						}
+						&:hover &:last-child {
+							background-color: $sec-bg
 						}
 					}
 				}

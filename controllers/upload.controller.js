@@ -18,12 +18,12 @@ exports.uploadProfilePics = async (req, res, next) => {
 				{ $set: { profilePics } }
 			);
 
-			if (oldProfilePics !== "/uploads/default.jpg") {
+			if (oldProfilePics != "/images/default.jpg") {
+				console.log(oldProfilePics);
 				fs.unlink(`public/${oldProfilePics}`, (err) => {
 					err && console.error(err);
 				});
 			}
-
 			res.status(200).json({
 				profilePics,
 			});
@@ -41,7 +41,7 @@ exports.uploadProfilePics = async (req, res, next) => {
 
 exports.removeProfilePics = (req, res, next) => {
 	try {
-		let defaultProfile = "/uploads/default.jpg";
+		let defaultProfile = "/images/default.jpg";
 		let currentProfilePics = req.user.profilePics;
 
 		fs.unlink(`public/${currentProfilePics}`, async (err) => {

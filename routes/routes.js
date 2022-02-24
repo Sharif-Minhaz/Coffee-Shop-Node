@@ -22,7 +22,7 @@ const routes = [
 		handler: menuRoute,
 	},
 	{
-		path: "/upload",
+		path: "/uploads",
 		handler: uploadRoute,
 	},
 ];

@@ -11,7 +11,7 @@ const {
 
 router.post("/profilePics", isAuthenticated, upload.single("profilePics"), uploadProfilePics);
 
-// router.delete("/profilePics", isAuthenticated, removeProfilePics);
+router.delete("/profilePics", isAuthenticated, removeProfilePics);
 
 // router.post("/postimage", isAuthenticated, upload.single("post-image"), postImageUploadController);
 

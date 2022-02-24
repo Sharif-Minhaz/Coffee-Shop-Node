@@ -1039,7 +1039,7 @@ html body #crop-modal .modal-dialog .modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #32323d;
+  border-bottom: 1px solid #32323d3d;
   padding: 20px;
 }
 html body #crop-modal .modal-dialog .modal-header h5 {
@@ -1058,49 +1058,49 @@ html body #crop-modal .modal-dialog .modal-header button {
   align-items: center;
 }
 html body #crop-modal .modal-dialog .modal-body {
-  border-bottom: 1px solid #32323d;
+  border-bottom: 1px solid #32323d3d;
   padding: 20px;
 }
 html body #crop-modal .modal-dialog .modal-footer {
   display: flex;
   justify-content: flex-end;
   padding: 20px;
-  gap: 10px;
+  gap: 15px;
 }
 html body #crop-modal .modal-dialog .modal-footer button {
   font-size: 16px;
-  cursor: pointer;
-  margin-top: 20px;
-  box-shadow: -2px -2px 6px rgba(255, 255, 255, 0.1), 2px 2px 6px rgba(0, 0, 0, 0.8);
   margin-top: 0;
-  width: 80px;
-  height: 34px;
-}
-html body #crop-modal .modal-dialog .modal-footer button:active {
-  opacity: 0.8;
-  margin-top: 20px;
-  box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.1), inset 2px 2px 6px rgba(0, 0, 0, 0.8);
-}
-html body #crop-modal .modal-dialog .modal-footer button::-moz-placeholder {
-  color: #c7c6c6;
-  font-size: 18px;
-}
-html body #crop-modal .modal-dialog .modal-footer button:-ms-input-placeholder {
-  color: #c7c6c6;
-  font-size: 18px;
-}
-html body #crop-modal .modal-dialog .modal-footer button::placeholder {
-  color: #c7c6c6;
-  font-size: 18px;
+  width: 100px;
+  color: #ffffff;
+  display: inline-block;
+  padding: 4px 13px;
+  background-color: #c7a17a;
+  border-radius: 4px;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 16px;
+  letter-spacing: normal;
+  padding: 8px 22px;
+  transition: 0.3s all;
+  border: none;
+  cursor: pointer;
 }
 html body #crop-modal .modal-dialog .modal-footer button:hover {
-  opacity: 0.9;
+  background-color: #32323d;
 }
 html body #crop-modal .modal-dialog .modal-footer button:active {
   margin-top: 0;
 }
 html body #crop-modal .modal-dialog .modal-footer button:first-child {
-  color: #ff0000c7;
+  background-color: #13131a;
+}
+html body #crop-modal .modal-dialog .modal-footer button:first-child:hover {
+  background-color: #c7a17a;
+}
+html body #crop-modal .modal-dialog .modal-footer button:hover html body #crop-modal .modal-dialog .modal-footer button:last-child {
+  background-color: #13131a;
 }
 html body .coffee-modal {
   top: 0;
