@@ -504,6 +504,28 @@ html body header #auth .form #removeProfilePicsBtn:active {
   opacity: 0.8;
   box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.1), inset 2px 2px 6px rgba(0, 0, 0, 0.8);
 }
+html body header #auth .form a[class=edit-profile-link] {
+  color: #ffffff;
+  display: inline-block;
+  padding: 4px 13px;
+  background-color: #c7a17a;
+  border-radius: 4px;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 16px;
+  letter-spacing: normal;
+  padding: 8px 22px;
+  transition: 0.3s all;
+  font-size: 14px;
+}
+html body header #auth .form a[class=edit-profile-link]:hover {
+  background-color: #32323d;
+}
+html body header #auth .form a[class=edit-profile-link] i {
+  margin-left: 4px;
+}
 html body header #auth .reminder {
   margin-top: 30px;
   color: #c7c6c6;
