@@ -489,6 +489,18 @@ html body header #auth .form .change-profile-img img {
 html body header #auth .form .change-profile-img img:hover + .choose-img {
   bottom: 0;
 }
+html body header #auth .form h3 {
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  padding-bottom: 10px;
+}
+html body header #auth .form p {
+  color: #c7c6c6;
+  font-size: 18px;
+}
+html body header #auth .form a {
+  margin: 27px;
+}
 html body header #auth .form #removeProfilePicsBtn {
   color: #ff0000c7;
   border: none;
@@ -503,6 +515,12 @@ html body header #auth .form #removeProfilePicsBtn {
 html body header #auth .form #removeProfilePicsBtn:active {
   opacity: 0.8;
   box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.1), inset 2px 2px 6px rgba(0, 0, 0, 0.8);
+}
+html body header #auth .form .website-link {
+  margin-top: 20px;
+}
+html body header #auth .form .website-link a {
+  font-size: 30px;
 }
 html body header #auth .form a[class=edit-profile-link] {
   color: #ffffff;
@@ -527,7 +545,7 @@ html body header #auth .form a[class=edit-profile-link] i {
   margin-left: 4px;
 }
 html body header #auth .reminder {
-  margin-top: 30px;
+  margin-top: 25px;
   color: #c7c6c6;
 }
 html body header #auth .reminder a {

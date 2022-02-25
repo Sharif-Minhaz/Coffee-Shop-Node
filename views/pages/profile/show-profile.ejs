@@ -4,7 +4,7 @@
 <body>
     <%- include("../../partials/alert.ejs")  %>
     <%- include("../../partials/header.ejs") %>
-        <section id="auth" style="height: 100vh;">
+        <section id="auth" style="min-height: 110vh;">
             <div class="form" style="width: 600px">
                 <h2>PROFILE</h2>
                 <div class="change-profile-img">
@@ -14,8 +14,13 @@
                         alt="profile_pic"
                     />
                 </div>
-                <p><%= profile.title %></p>
+                <h3><%= profile.title %></h3>
                 <p><%= profile.bio %></p>
+                <p class="website-link">
+                    <% if(profile.website) { %> 
+                        <a target="_blank" href="<%= profile.website %>"><i class="bi bi-google"></i></a>
+                    <% } %> 
+                </p>
                 <a class="edit-profile-link" href="/profile/edit-profile">
                     Edit Profile 
                     <i class="bi bi-pencil"></i>

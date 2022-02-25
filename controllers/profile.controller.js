@@ -23,7 +23,7 @@ exports.createProfileGetController = async (req, res, next) => {
 exports.createProfilePostController = async (req, res, next) => {
 	const { name, email, title, bio, website } = req.body;
 
-	const errors = validationResult(req).formatWith(errorFormatter);
+	let errors = validationResult(req).formatWith(errorFormatter);
 	if (!errors.isEmpty()) {
 		req.flash("fail", "Please check your fields");
 		return res.render("pages/profile/create-profile", {
@@ -39,12 +39,12 @@ exports.createProfilePostController = async (req, res, next) => {
 		name,
 		email,
 		title,
-		bio,
+		bio: bio || "",
 		website: website || "",
 	});
 	try {
 		await profile.save();
-		req.flash("Success", "Profile updated successfully");
+		req.flash("Success", "Profile created successfully");
 		return res.redirect("/profile/show-profile");
 	} catch (err) {
 		next(err);
@@ -83,6 +83,36 @@ exports.updateProfileGetController = async (req, res, next) => {
 			values: {},
 			profile,
 		});
+	} catch (err) {
+		next(err);
+	}
+};
+
+exports.updateProfilePostController = async (req, res, next) => {
+	const { name, title, bio, website } = req.body;
+	let errors = validationResult(req).formatWith(errorFormatter);
+	if (!errors.isEmpty()) {
+		req.flash("fail", "Please check your fields");
+		return res.render("pages/profile/create-profile", {
+			title: "Coffee Shop | Create Profile",
+			flashMessage: Flash.getMessage(req),
+			errors: errors.mapped(),
+			values: req.body,
+		});
+	}
+
+	let profile = {
+		name,
+		title,
+		bio: bio || "",
+		website: website || "",
+	};
+
+	try {
+		await Profile.findOneAndUpdate({ user: req.user._id }, profile);
+
+		req.flash("success", "Profile updated successfully");
+		return res.redirect("/profile/show-profile");
 	} catch (err) {
 		next(err);
 	}

@@ -25,9 +25,7 @@ const profileSchema = new Schema(
 			trim: true,
 		},
 		profilePics: String,
-		links: {
-			website: String,
-		},
+		website: String,
 		posts: [
 			{
 				type: Schema.Types.ObjectId,
