@@ -21,9 +21,9 @@ module.exports = [
 	body("title")
 		.not()
 		.isEmpty()
-		.withMessage("Title can not be empty")
+		.withMessage("Designation can not be empty")
 		.isLength({ max: 100 })
-		.withMessage("Title can not be longer than 100 characters")
+		.withMessage("Designation can not be longer than 100 characters")
 		.trim(),
 	body("bio")
 		.isLength({ max: 500 })

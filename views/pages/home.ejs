@@ -1,4 +1,5 @@
 <%- include("../partials/head.ejs")  %>
+<link rel="stylesheet" href="/dist/css/owl.carousel.min.css">
 </head>
 <body>
     <%- include("../partials/alert.ejs")  %>
@@ -202,6 +203,48 @@
             </div>
         </div>
     </section>
+    <!-- product review -->
+    <section id="review-product">
+        <div class="container-sm">
+            <div class="sm-heading">
+                <span>CUSTOMER FEEDBACK</span>
+            </div>
+            <h1>
+                OUR CUSTOMER REVIEW
+            </h1>
+            <div class="full-row">
+                <div class="owl-carousel">
+                    <div class="owl-item-custom">
+                        <div class="quote">
+                            <img id="quote-img" src="/images/quote.png" alt="quote">
+                        </div>
+                        <div class="reviewed-user">
+                            <p class="review-body">Increase the relevance of your review by addressing your overall experience, including the level of customer service you received.</p>
+                            <div class="user-img">
+                                <img src="/images/default.jpg" alt="profilePic">
+                            </div>
+                            <p class="name">name</p>
+                            <p class="designation">designation</p>
+                        </div>
+                    </div>
+                    <!-- item two -->
+                    <div class="owl-item-custom">
+                        <div class="quote">
+                            <img id="quote-img" src="/images/quote.png" alt="quote">
+                        </div>
+                        <div class="reviewed-user">
+                            <p class="review-body">Decrease the relevance of your review by addressing your overall experience, including the level of customer service you received.</p>
+                            <div class="user-img">
+                                <img src="/images/default.jpg" alt="profilePic">
+                            </div>
+                            <p class="name">name</p>
+                            <p class="designation">designation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- modal for menu order -->
     <div class="order-modal">
@@ -260,7 +303,27 @@
         </div>
     </div>
     
-
+    
+    
     <%- include("../partials/footer.ejs")  %>
+    <script src="/dist/js/owl.carousel.min.js"></script>
+    <script>
+        $('.owl-carousel').owlCarousel({
+            loop:true,
+            margin:10,
+            responsiveClass:true,
+            nav:true,
+            responsive:{
+                0:{
+                    items:1,
+                    loop:true,
+                },
+                1000:{
+                    items:1,
+                    loop:true,
+                }
+            }
+        })
+    </script>
 </body>
 </html>

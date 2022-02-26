@@ -920,6 +920,95 @@ html {
 				}
 			}
 		}
+		#review-product {
+			margin-top: 90px;
+			.container-sm {
+				@include container-sm();
+				flex-direction: column;
+				row-gap: 20px;
+				.sm-heading {
+					text-align: center;
+					span {
+						@include sm-heading();
+					}
+				}
+				h1 {
+					text-align: center;
+					font: 500 60px $bebas;
+					color: #fff;
+				}
+				.full-row {
+					.owl-carousel {
+						.owl-item-custom {
+							@include flex(center, center);
+							flex-direction: column;
+							position: relative;
+							.quote {
+								#quote-img {
+									width: 60px !important;
+									margin: 20px;
+								}
+							}
+							.reviewed-user {
+								text-align: center;
+								@include flex(center, center);
+								flex-direction: column;
+								.review-body {
+									width: 66%;
+									color: $font-color;
+									font-size: 21px;
+									line-height: 1.7rem;
+								}
+								.user-img {
+									img {
+										width: 60px;
+										border-radius: 50%;
+										margin: 20px;
+									}
+								}
+								.name {
+									color: $font-color;
+									font-size: 20px;
+									text-transform: uppercase;
+								}
+								.designation {
+									color: $highlight;
+									font-size: 17px;
+									text-transform: uppercase;
+								}
+							}
+						}
+						.owl-nav {
+							position: absolute;
+							top: 30%;
+							width: 100%;
+							button {
+								width: 50px;
+								height: 50px;
+								border: 1px solid $grey;
+								border-radius: 50%;
+								transition: 0.3s;
+								color: #a4a4a4;
+								font-weight: bold;
+								@include flex();
+								font-size: 18px;
+								&.owl-prev {
+									float: left;
+								}
+								&.owl-next {
+									float: right;
+								}
+								&:hover {
+									background-color: $highlight;
+									border-color: $highlight;
+									color: $font-color;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 		.order-modal {
 			@include modal();
 			.modal-wrapper {
@@ -1466,6 +1555,21 @@ html {
 					}
 				}
 			}
+			#review-product {
+				.container-sm {
+					.full-row {
+						.owl-carousel {
+							.owl-item-custom {
+								.reviewed-user {
+									.review-body {
+										width: 80%;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
 			footer {
 				.footer-wrapper {
 					.news-latter-section {
@@ -1542,6 +1646,17 @@ html {
 				row-gap: 20px;
 				h1 {
 					text-align: center;
+				}
+			}
+		}
+	}
+	#review-product {
+		.container-sm {
+			.full-row {
+				.owl-carousel {
+					.owl-nav {
+						top: 77% !important;
+					}
 				}
 			}
 		}
