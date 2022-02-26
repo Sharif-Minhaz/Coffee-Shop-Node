@@ -44,6 +44,12 @@ const profileSchema = new Schema(
 				ref: "Product",
 			},
 		],
+		reservation: [
+			{
+				type: Schema.Types.ObjectId,
+				ref: "Reservation",
+			},
+		],
 	},
 	{
 		timestamps: true,

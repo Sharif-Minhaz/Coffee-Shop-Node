@@ -3,6 +3,7 @@ const authRoute = require("./auth.route");
 const profileRoute = require("./profile.route");
 const uploadRoute = require("./upload.route");
 const menuRoute = require("./menu.route");
+const reservationRoute = require("./reservation.route");
 
 const routes = [
 	{
@@ -20,6 +21,10 @@ const routes = [
 	{
 		path: "/menu",
 		handler: menuRoute,
+	},
+	{
+		path: "/reservation",
+		handler: reservationRoute,
 	},
 	{
 		path: "/uploads",

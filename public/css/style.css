@@ -1051,6 +1051,114 @@ html body #review-product .container-sm .full-row .owl-carousel .owl-nav button:
   border-color: #c7a17a;
   color: #ffffff;
 }
+html body #reservation {
+  margin-top: 50px;
+}
+html body #reservation .container {
+  padding: 20px;
+  display: flex;
+}
+html body #reservation .container .full-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+html body #reservation .container .full-row .location {
+  width: 50%;
+  height: 100%;
+}
+html body #reservation .container .full-row .location iframe {
+  width: 100%;
+  height: 100%;
+}
+html body #reservation .container .full-row .reservation-input {
+  width: 50%;
+  background-color: #13131a;
+  padding: 50px 70px;
+}
+html body #reservation .container .full-row .reservation-input .sm-heading {
+  text-align: center;
+  margin-bottom: 20px;
+}
+html body #reservation .container .full-row .reservation-input .sm-heading span {
+  color: #ffffff;
+  display: inline-block;
+  padding: 4px 13px;
+  background-color: #c7a17a;
+  border-radius: 4px;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+html body #reservation .container .full-row .reservation-input h1 {
+  margin-bottom: 20px;
+  color: #ffffff;
+  font: 500 55px "Bebas Neue", cursive;
+  text-align: center;
+}
+html body #reservation .container .full-row .reservation-input form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 20px;
+}
+html body #reservation .container .full-row .reservation-input form .single-box {
+  width: 100%;
+}
+html body #reservation .container .full-row .reservation-input form .single-box input, html body #reservation .container .full-row .reservation-input form .single-box header #auth .form .input .inputBox textarea, html body header #auth .form .input .inputBox #reservation .container .full-row .reservation-input form .single-box textarea {
+  background-color: #09090D;
+  width: calc(100% - 1px);
+  padding: 16px 19px;
+  border: 1px solid #32323d3d;
+  color: #c7c6c6;
+  font-size: 16px;
+}
+html body #reservation .container .full-row .reservation-input form .single-box input:focus, html body #reservation .container .full-row .reservation-input form .single-box header #auth .form .input .inputBox textarea:focus, html body header #auth .form .input .inputBox #reservation .container .full-row .reservation-input form .single-box textarea:focus {
+  outline: none;
+}
+html body #reservation .container .full-row .reservation-input form .single-box input[type=number]::-webkit-outer-spin-button, html body #reservation .container .full-row .reservation-input form .single-box header #auth .form .input .inputBox textarea[type=number]::-webkit-outer-spin-button, html body header #auth .form .input .inputBox #reservation .container .full-row .reservation-input form .single-box textarea[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+html body #reservation .container .full-row .reservation-input form .single-box input[type=number]::-webkit-inner-spin-button, html body #reservation .container .full-row .reservation-input form .single-box header #auth .form .input .inputBox textarea[type=number]::-webkit-inner-spin-button, html body header #auth .form .input .inputBox #reservation .container .full-row .reservation-input form .single-box textarea[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+html body #reservation .container .full-row .reservation-input form .single-box input::-webkit-calendar-picker-indicator, html body #reservation .container .full-row .reservation-input form .single-box header #auth .form .input .inputBox textarea::-webkit-calendar-picker-indicator, html body header #auth .form .input .inputBox #reservation .container .full-row .reservation-input form .single-box textarea::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+html body #reservation .container .full-row .reservation-input form .single-box input::-webkit-calendar-picker-indicator:hover, html body #reservation .container .full-row .reservation-input form .single-box header #auth .form .input .inputBox textarea::-webkit-calendar-picker-indicator:hover, html body header #auth .form .input .inputBox #reservation .container .full-row .reservation-input form .single-box textarea::-webkit-calendar-picker-indicator:hover {
+  cursor: pointer;
+}
+html body #reservation .container .full-row .reservation-input form .single-box i {
+  margin-left: -45px;
+  font-size: 17px;
+  color: #c7c6c6;
+}
+html body #reservation .container .full-row .reservation-input form input[type=submit], html body #reservation .container .full-row .reservation-input form header #auth .form .input .inputBox textarea[type=submit], html body header #auth .form .input .inputBox #reservation .container .full-row .reservation-input form textarea[type=submit] {
+  color: #ffffff;
+  display: inline-block;
+  padding: 4px 13px;
+  background-color: #c7a17a;
+  border-radius: 4px;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 16px;
+  letter-spacing: normal;
+  padding: 8px 22px;
+  transition: 0.3s all;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+html body #reservation .container .full-row .reservation-input form input[type=submit]:hover, html body #reservation .container .full-row .reservation-input form header #auth .form .input .inputBox textarea[type=submit]:hover, html body header #auth .form .input .inputBox #reservation .container .full-row .reservation-input form textarea[type=submit]:hover {
+  background-color: #32323d;
+}
 html body .order-modal {
   top: 0;
   width: 100%;
