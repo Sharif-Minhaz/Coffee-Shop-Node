@@ -1159,6 +1159,86 @@ html body #reservation .container .full-row .reservation-input form input[type=s
 html body #reservation .container .full-row .reservation-input form input[type=submit]:hover, html body #reservation .container .full-row .reservation-input form header #auth .form .input .inputBox textarea[type=submit]:hover, html body header #auth .form .input .inputBox #reservation .container .full-row .reservation-input form textarea[type=submit]:hover {
   background-color: #32323d;
 }
+html body #our-blog {
+  margin: 70px 0px 70px 0px;
+}
+html body #our-blog .container-sm {
+  padding: 20px 8% 20px 8%;
+  margin: auto;
+  display: flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+html body #our-blog .container-sm .sm-heading span {
+  color: #ffffff;
+  display: inline-block;
+  padding: 4px 13px;
+  background-color: #c7a17a;
+  border-radius: 4px;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+html body #our-blog .container-sm h1 {
+  font: 500 60px "Bebas Neue", cursive;
+  color: #ffffff;
+}
+html body #our-blog .container-sm .full-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+html body #our-blog .container-sm .full-row .single-blog {
+  flex-basis: 33.3333%;
+}
+html body #our-blog .container-sm .full-row .single-blog .blog-img {
+  font-size: 0;
+  line-height: 0;
+  overflow: hidden;
+}
+html body #our-blog .container-sm .full-row .single-blog .blog-img img {
+  max-width: 100%;
+  width: 100%;
+  transition: 0.3s;
+  height: 100%;
+}
+html body #our-blog .container-sm .full-row .single-blog .blog-des {
+  border: 1px solid #32323d;
+  border-top: none;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 10px;
+  margin-top: -4px;
+}
+html body #our-blog .container-sm .full-row .single-blog .blog-des small span {
+  color: #c7c6c6;
+}
+html body #our-blog .container-sm .full-row .single-blog .blog-des small span:first-child {
+  color: #c7a17a;
+}
+html body #our-blog .container-sm .full-row .single-blog .blog-des h3 a {
+  color: #ffffff;
+  font: 500 20px/1.9rem arial;
+  margin-bottom: 7px;
+  position: relative;
+}
+html body #our-blog .container-sm .full-row .single-blog .blog-des a {
+  font-size: 15px;
+  color: #c7c6c6;
+  text-decoration: none;
+}
+html body #our-blog .container-sm .full-row .single-blog .blog-des a i {
+  margin-left: 5px;
+}
+html body #our-blog .container-sm .full-row .single-blog:hover .blog-img img {
+  transform: scale(1.1);
+}
 html body .order-modal {
   top: 0;
   width: 100%;
@@ -1673,6 +1753,13 @@ html body footer .footer-wrapper .final-footer span {
   #coffee-machine .container-sm .full-row .product-img {
     width: 100% !important;
   }
+
+  #our-blog .container-sm .full-row {
+    flex-wrap: wrap;
+  }
+  #our-blog .container-sm .full-row .single-blog {
+    flex-basis: 48% !important;
+  }
 }
 @media (max-width: 972px) {
   html body {
@@ -1864,8 +1951,24 @@ html body footer .footer-wrapper .final-footer span {
   #review-product .container-sm .full-row .owl-carousel .owl-nav {
     top: 77% !important;
   }
+
+  #reservation .container .full-row {
+    flex-wrap: wrap-reverse;
+  }
+  #reservation .container .full-row .location {
+    flex-basis: 100% !important;
+    width: 100%;
+    height: 300px !important;
+  }
+  #reservation .container .full-row .reservation-input {
+    flex-basis: 100% !important;
+  }
 }
 @media (max-width: 660px) {
+  .container-sm {
+    padding: 20px !important;
+  }
+
   #menu .container-sm .full-row {
     width: 100%;
     row-gap: 70px !important;
@@ -1878,6 +1981,10 @@ html body footer .footer-wrapper .final-footer span {
     top: -47px;
     left: 50% !important;
     transform: translate(-50%);
+  }
+
+  #our-blog .container-sm .full-row .single-blog {
+    flex-basis: 100% !important;
   }
 }
 @media (max-width: 592px) {

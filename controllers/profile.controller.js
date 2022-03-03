@@ -44,7 +44,7 @@ exports.createProfilePostController = async (req, res, next) => {
 	});
 	try {
 		await profile.save();
-		req.flash("Success", "Profile created successfully");
+		req.flash("success", "Profile created successfully");
 		return res.redirect("/profile/show-profile");
 	} catch (err) {
 		next(err);
