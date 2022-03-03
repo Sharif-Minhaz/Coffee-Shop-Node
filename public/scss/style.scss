@@ -1107,6 +1107,7 @@ html {
 				h1 {
 					font: 500 60px $bebas;
 					color: $font-color;
+					text-align: center;
 				}
 				.full-row {
 					@include flex();

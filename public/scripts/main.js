@@ -47,6 +47,7 @@ window.onload = () => {
 	const singleMenu = document.querySelectorAll(".single-menu");
 	const orderModal = document.querySelector(".order-modal");
 	const orderCount = document.querySelector(".inc-dec span:nth-child(2)");
+
 	let singleMenuPrice;
 	singleMenu.forEach(function (menu) {
 		menu.addEventListener("click", function () {
@@ -64,6 +65,17 @@ window.onload = () => {
 	orderModalCls.addEventListener("click", function () {
 		orderModal.style.display = "none";
 	});
+
+	// hidden modal feature experimenting
+	// document.addEventListener(
+	// 	"click",
+	// 	function (e) {
+	// 		if (!e.target.classList.contains("modal-section")) {
+	// 			orderModal.style.display = "none";
+	// 		}
+	// 	},
+	// 	false
+	// );
 
 	const dec = document.querySelector(".inc-dec span:first-child");
 	const inc = document.querySelector(".inc-dec span:nth-child(3)");

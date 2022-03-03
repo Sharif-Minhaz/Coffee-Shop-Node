@@ -1185,6 +1185,7 @@ html body #our-blog .container-sm .sm-heading span {
 html body #our-blog .container-sm h1 {
   font: 500 60px "Bebas Neue", cursive;
   color: #ffffff;
+  text-align: center;
 }
 html body #our-blog .container-sm .full-row {
   display: flex;
