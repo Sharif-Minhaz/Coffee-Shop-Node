@@ -67,15 +67,7 @@ window.onload = () => {
 	});
 
 	// hidden modal feature experimenting
-	// document.addEventListener(
-	// 	"click",
-	// 	function (e) {
-	// 		if (!e.target.classList.contains("modal-section")) {
-	// 			orderModal.style.display = "none";
-	// 		}
-	// 	},
-	// 	false
-	// );
+	closeModalClickOutside(".order-modal", ".modal-wrapper", ".modal-section");
 
 	const dec = document.querySelector(".inc-dec span:first-child");
 	const inc = document.querySelector(".inc-dec span:nth-child(3)");
@@ -125,11 +117,15 @@ window.onload = () => {
 		});
 	});
 
+	// hide coffee machine modal by clicking outside
+	closeModalClickOutside(".coffee-modal", ".coffee-modal-wrapper", ".coffee-modal-section");
+
 	// now to future
 	let today = new Date().toISOString().split("T")[0];
 	document.getElementsByName("date")[0].setAttribute("min", today);
 };
 
+// sticky navigation
 function sticky() {
 	let nav = document.querySelector("nav");
 	let searchBox = document.querySelector(".search-input");
@@ -140,6 +136,18 @@ function sticky() {
 		nav.classList.remove("sticky");
 		searchBox.classList.remove("search-fading");
 	}
+}
+
+function closeModalClickOutside(modal, selector, targetSelector) {
+	document.querySelector(selector).addEventListener(
+		"click",
+		function (e) {
+			if (!e.target.closest(targetSelector)) {
+				document.querySelector(modal).style.display = "none";
+			}
+		},
+		false
+	);
 }
 
 window.onscroll = function () {
