@@ -252,20 +252,7 @@ html {
 					}
 				}
 				.dark-wrapper {
-					position: fixed;
-					top: 0;
-					left: 0;
-					width: 100%;
-					background-color: $form-background-op;
-					transition: 0.4s ease-in-out all;
-					height: 100vh;
-					z-index: 999;
-					opacity: 0;
-					visibility: hidden;
-				}
-				.dark-wrapper-visible {
-					opacity: 1;
-					visibility: visible;
+					display: none;
 				}
 			}
 			.sticky {
@@ -1611,6 +1598,10 @@ html {
 			overflow-x: hidden;
 			header {
 				nav {
+					position: fixed;
+					width: 100%;
+					z-index: 999;
+					background-color: $nav-bg;
 					ul {
 						padding: 6px 20px;
 						.left-menu {
@@ -1636,7 +1627,18 @@ html {
 						}
 					}
 					.dark-wrapper {
+						display: inherit;
 						transition: 0.4s ease-in-out all;
+						position: fixed;
+						top: 0;
+						left: 0;
+						width: 100%;
+						background-color: $form-background-op;
+						transition: 0.4s ease-in-out all;
+						height: 100vh;
+						z-index: 999;
+						opacity: 0;
+						visibility: hidden;
 						.vertical-menu {
 							position: fixed;
 							right: -300px;
@@ -1707,13 +1709,22 @@ html {
 							right: 0;
 						}
 					}
+					.dark-wrapper-visible {
+						opacity: 1;
+						visibility: visible;
+					}
 				}
 				.intro {
+					padding-top: 123px;
 					height: 86vh;
 				}
 				.search-fading {
 					z-index: 99;
 					top: 87px;
+				}
+				.search-input {
+					top: 83px;
+					position: fixed;
 				}
 				#error-404-500 {
 					div {

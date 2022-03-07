@@ -166,5 +166,7 @@ function closeModalClickOutside(modal, selector, targetSelector) {
 }
 
 window.onscroll = function () {
+	// alert("nothing happening");
+	console.log("What should i told you minhaz");
 	sticky();
 };

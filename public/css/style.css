@@ -189,20 +189,7 @@ html body header nav ul .btns .search-section .set-invisible {
   display: none;
 }
 html body header nav .dark-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: #131419ed;
-  transition: 0.4s ease-in-out all;
-  height: 100vh;
-  z-index: 999;
-  opacity: 0;
-  visibility: hidden;
-}
-html body header nav .dark-wrapper-visible {
-  opacity: 1;
-  visibility: visible;
+  display: none;
 }
 html body header .sticky {
   width: 100%;
@@ -1779,6 +1766,12 @@ html body footer .footer-wrapper .final-footer span {
   html body {
     overflow-x: hidden;
   }
+  html body header nav {
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    background-color: #040509;
+  }
   html body header nav ul {
     padding: 6px 20px;
   }
@@ -1800,7 +1793,18 @@ html body footer .footer-wrapper .final-footer span {
     display: inherit;
   }
   html body header nav .dark-wrapper {
+    display: inherit;
     transition: 0.4s ease-in-out all;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #131419ed;
+    transition: 0.4s ease-in-out all;
+    height: 100vh;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
   }
   html body header nav .dark-wrapper .vertical-menu {
     position: fixed;
@@ -1871,12 +1875,21 @@ html body footer .footer-wrapper .final-footer span {
     z-index: 9999;
     right: 0;
   }
+  html body header nav .dark-wrapper-visible {
+    opacity: 1;
+    visibility: visible;
+  }
   html body header .intro {
+    padding-top: 123px;
     height: 86vh;
   }
   html body header .search-fading {
     z-index: 99;
     top: 87px;
+  }
+  html body header .search-input {
+    top: 83px;
+    position: fixed;
   }
   html body header #error-404-500 div h1 {
     font-size: 50px;
