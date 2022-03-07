@@ -3,12 +3,15 @@ window.onload = () => {
 	const revealList = document.querySelector(".bi-list");
 	const closeMenu = document.querySelector(".bi-x-circle-fill");
 	const alertDiv = document.getElementById("alert-div");
+	const darkWrapper = document.querySelector(".dark-wrapper");
 
 	closeMenu.addEventListener("click", function () {
 		verticalMenu.classList.remove("reveal-sidebar");
+		darkWrapper.classList.remove("dark-wrapper-visible");
 	});
 	revealList.addEventListener("click", function () {
 		verticalMenu.classList.add("reveal-sidebar");
+		darkWrapper.classList.add("dark-wrapper-visible");
 	});
 
 	const searchIcon = document.getElementById("search-icon");
@@ -119,6 +122,18 @@ window.onload = () => {
 
 	// hide coffee machine modal by clicking outside
 	closeModalClickOutside(".coffee-modal", ".coffee-modal-wrapper", ".coffee-modal-section");
+
+	// hide sidebar when clicking outside
+	darkWrapper.addEventListener(
+		"click",
+		function (e) {
+			if (!e.target.closest(".vertical-menu")) {
+				verticalMenu.classList.remove("reveal-sidebar");
+				darkWrapper.classList.remove("dark-wrapper-visible");
+			}
+		},
+		false
+	);
 
 	// now to future
 	let today = new Date().toISOString().split("T")[0];

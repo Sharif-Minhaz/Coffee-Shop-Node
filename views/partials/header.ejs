@@ -36,32 +36,34 @@
 				<li><i class="bi bi-basket2-fill"></i></li>
 			</div>
 		</ul>
-		<div class="vertical-menu">
-			<div class="functionality">
-				<a href="/">
-					<img src="/images/brand.png" alt="brand" />
-				</a>
-				<i class="bi bi-x-circle-fill"></i>
+		<div class="dark-wrapper">
+			<div class="vertical-menu">
+				<div class="functionality">
+					<a href="/">
+						<img src="/images/brand.png" alt="brand" />
+					</a>
+					<i class="bi bi-x-circle-fill"></i>
+				</div>
+				<ul>
+					<li><a href="/">Home</a></li>
+					<li><a href="#about">About</a></li>
+					<li><a href="#menu">Menu</a></li>
+					<li><a href="/">Reservation</a></li>
+					<li><a href="#">Shop</a></li>
+					<li><a href="#">Contact</a></li>
+					<li class="user-det">
+						<% if (!user) { %>
+							<a href="/auth/login">Login</a>
+						<% } else { %>
+							<img class="profile-pic" src="<%= user.profilePics %>" alt="profile_pic" />
+							<div class="dropdown-menu">
+								<a href="/profile/create-profile"><i class="bi bi-person-circle"></i> Profile</a>
+								<a href="/auth/logout"><i class="bi bi-box-arrow-left"></i> Logout</a>
+							</div>
+						<% } %>
+					</li>
+				</ul>
 			</div>
-			<ul>
-				<li><a href="/">Home</a></li>
-				<li><a href="#about">About</a></li>
-				<li><a href="#menu">Menu</a></li>
-				<li><a href="/">Reservation</a></li>
-				<li><a href="#">Shop</a></li>
-				<li><a href="#">Contact</a></li>
-				<li class="user-det">
-					<% if (!user) { %>
-						<a href="/auth/login">Login</a>
-					<% } else { %>
-						<img class="profile-pic" src="<%= user.profilePics %>" alt="profile_pic" />
-						<div class="dropdown-menu">
-							<a href="/profile/create-profile"><i class="bi bi-person-circle"></i> Profile</a>
-							<a href="/auth/logout"><i class="bi bi-box-arrow-left"></i> Logout</a>
-						</div>
-					<% } %>
-				</li>
-			</ul>
 		</div>
 	</nav>
 	<div class="search-input">
