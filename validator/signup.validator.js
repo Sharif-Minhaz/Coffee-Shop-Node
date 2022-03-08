@@ -1,5 +1,6 @@
 const { body } = require("express-validator");
 const User = require("../models/User.model");
+const emailValidator = require("deep-email-validator");
 
 module.exports = [
 	body("username")
@@ -20,6 +21,11 @@ module.exports = [
 			if (user) {
 				return Promise.reject("Email already used");
 			}
+			const { valid, reason, validators } = await isEmailValid(email);
+			if (!valid) {
+				return Promise.reject("Invalid email address");
+			}
+
 		})
 		.normalizeEmail(),
 	body("password")
@@ -36,3 +42,8 @@ module.exports = [
 			return true;
 		}),
 ];
+
+// calling email validator.
+async function isEmailValid(email) {
+	return emailValidator.validate(email);
+}
