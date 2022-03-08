@@ -141,6 +141,15 @@ window.onload = () => {
 		false
 	);
 
+	// reservation feature for disabling user input
+	const date = document.getElementById("choose-date");
+	const time = document.getElementById("choose-time");
+	[date, time].forEach((element) => {
+		element.addEventListener("keydown", function (e) {
+			e.preventDefault();
+		});
+	});
+
 	// now to future
 	let today = new Date().toISOString().split("T")[0];
 	document.getElementsByName("date")[0].setAttribute("min", today);
