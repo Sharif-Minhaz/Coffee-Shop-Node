@@ -6,6 +6,30 @@
   font-family: "Jost", sans-serif;
 }
 
+/* <--<==========scrollbar==========>--> */
+/* width */
+::-webkit-scrollbar {
+  width: 11px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #686666;
+  height: 10px;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #a8a8a8;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #575656;
+}
+
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
@@ -1303,6 +1327,16 @@ html body .order-modal .modal-wrapper .modal-section .modal-body .prod-des #plac
   font: 500 23px "Bebas Neue", cursive;
   text-align: center;
 }
+html body .order-modal .modal-wrapper .modal-section .modal-body .prod-des #price {
+  text-align: center;
+  width: 124px;
+  font-size: 20px;
+  padding: 7px 5px;
+  color: #010103;
+}
+html body .order-modal .modal-wrapper .modal-section .modal-body .prod-des .inc-dec {
+  display: flex;
+}
 html body .order-modal .modal-wrapper .modal-section .modal-body .prod-des .inc-dec span {
   display: inline-block;
   border: 1px solid #32323d;
@@ -1323,10 +1357,43 @@ html body .order-modal .modal-wrapper .modal-section .modal-body .prod-des .inc-
   border-right: none;
   cursor: auto;
 }
+html body .order-modal .modal-wrapper .modal-section .modal-body .prod-des .inc-dec input[type=number], html body .order-modal .modal-wrapper .modal-section .modal-body .prod-des .inc-dec header #auth .form .input .inputBox textarea[type=number], html body header #auth .form .input .inputBox .order-modal .modal-wrapper .modal-section .modal-body .prod-des .inc-dec textarea[type=number] {
+  display: inline-block;
+  border: 1px solid #32323d;
+  width: 45px;
+  text-align: center;
+  -moz-user-select: none;
+   -ms-user-select: none;
+       user-select: none;
+  -webkit-user-select: none;
+  margin-left: -5px;
+  cursor: pointer;
+  width: 43px;
+  padding-right: 5px;
+  -moz-appearance: textfield;
+  color: #010103;
+}
+html body .order-modal .modal-wrapper .modal-section .modal-body .prod-des .inc-dec input[type=number]:first-child, html body .order-modal .modal-wrapper .modal-section .modal-body .prod-des .inc-dec header #auth .form .input .inputBox textarea[type=number]:first-child, html body header #auth .form .input .inputBox .order-modal .modal-wrapper .modal-section .modal-body .prod-des .inc-dec textarea[type=number]:first-child {
+  margin-left: 0px;
+  border-right: none;
+}
+html body .order-modal .modal-wrapper .modal-section .modal-body .prod-des .inc-dec input[type=number]:nth-child(2), html body .order-modal .modal-wrapper .modal-section .modal-body .prod-des .inc-dec header #auth .form .input .inputBox textarea[type=number]:nth-child(2), html body header #auth .form .input .inputBox .order-modal .modal-wrapper .modal-section .modal-body .prod-des .inc-dec textarea[type=number]:nth-child(2) {
+  border-right: none;
+  cursor: auto;
+}
+html body .order-modal .modal-wrapper .modal-section .modal-body .prod-des .inc-dec input[type=number]:focus, html body .order-modal .modal-wrapper .modal-section .modal-body .prod-des .inc-dec header #auth .form .input .inputBox textarea[type=number]:focus, html body header #auth .form .input .inputBox .order-modal .modal-wrapper .modal-section .modal-body .prod-des .inc-dec textarea[type=number]:focus {
+  outline: none;
+}
+html body .order-modal .modal-wrapper .modal-section .modal-body .prod-des .inc-dec input::-webkit-outer-spin-button, html body .order-modal .modal-wrapper .modal-section .modal-body .prod-des .inc-dec header #auth .form .input .inputBox textarea::-webkit-outer-spin-button, html body header #auth .form .input .inputBox .order-modal .modal-wrapper .modal-section .modal-body .prod-des .inc-dec textarea::-webkit-outer-spin-button,
+html body .order-modal .modal-wrapper .modal-section .modal-body .prod-des .inc-dec input::-webkit-inner-spin-button,
+html body .order-modal .modal-wrapper .modal-section .modal-body .prod-des .inc-dec header #auth .form .input .inputBox textarea::-webkit-inner-spin-button,
+html body header #auth .form .input .inputBox .order-modal .modal-wrapper .modal-section .modal-body .prod-des .inc-dec textarea::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
 html body .order-modal .modal-wrapper .modal-section .modal-footer {
   text-align: right;
 }
-html body .order-modal .modal-wrapper .modal-section .modal-footer a {
+html body .order-modal .modal-wrapper .modal-section .modal-footer input, html body .order-modal .modal-wrapper .modal-section .modal-footer header #auth .form .input .inputBox textarea, html body header #auth .form .input .inputBox .order-modal .modal-wrapper .modal-section .modal-footer textarea {
   color: #ffffff;
   display: inline-block;
   padding: 4px 13px;
@@ -1340,9 +1407,13 @@ html body .order-modal .modal-wrapper .modal-section .modal-footer a {
   letter-spacing: normal;
   padding: 8px 22px;
   transition: 0.3s all;
+  border: none;
 }
-html body .order-modal .modal-wrapper .modal-section .modal-footer a:hover {
+html body .order-modal .modal-wrapper .modal-section .modal-footer input:hover, html body .order-modal .modal-wrapper .modal-section .modal-footer header #auth .form .input .inputBox textarea:hover, html body header #auth .form .input .inputBox .order-modal .modal-wrapper .modal-section .modal-footer textarea:hover {
   background-color: #32323d;
+}
+html body .order-modal .modal-wrapper .modal-section .modal-footer input:hover, html body .order-modal .modal-wrapper .modal-section .modal-footer header #auth .form .input .inputBox textarea:hover, html body header #auth .form .input .inputBox .order-modal .modal-wrapper .modal-section .modal-footer textarea:hover {
+  cursor: pointer;
 }
 html body #crop-modal {
   top: 0;
@@ -1486,6 +1557,16 @@ html body .coffee-modal .modal-wrapper .modal-section .modal-body-machine .prod-
   font: 500 23px "Bebas Neue", cursive;
   text-align: center;
 }
+html body .coffee-modal .modal-wrapper .modal-section .modal-body-machine .prod-des #price-machine {
+  text-align: center;
+  width: 124px;
+  font-size: 20px;
+  padding: 7px 5px;
+  color: #010103;
+}
+html body .coffee-modal .modal-wrapper .modal-section .modal-body-machine .prod-des .inc-dec-machine {
+  display: flex;
+}
 html body .coffee-modal .modal-wrapper .modal-section .modal-body-machine .prod-des .inc-dec-machine span {
   display: inline-block;
   border: 1px solid #32323d;
@@ -1506,12 +1587,45 @@ html body .coffee-modal .modal-wrapper .modal-section .modal-body-machine .prod-
   border-right: none;
   cursor: auto;
 }
+html body .coffee-modal .modal-wrapper .modal-section .modal-body-machine .prod-des .inc-dec-machine input[type=number], html body .coffee-modal .modal-wrapper .modal-section .modal-body-machine .prod-des .inc-dec-machine header #auth .form .input .inputBox textarea[type=number], html body header #auth .form .input .inputBox .coffee-modal .modal-wrapper .modal-section .modal-body-machine .prod-des .inc-dec-machine textarea[type=number] {
+  display: inline-block;
+  border: 1px solid #32323d;
+  width: 45px;
+  text-align: center;
+  -moz-user-select: none;
+   -ms-user-select: none;
+       user-select: none;
+  -webkit-user-select: none;
+  margin-left: -5px;
+  cursor: pointer;
+  width: 43px;
+  padding-right: 5px;
+  -moz-appearance: textfield;
+  color: #010103;
+}
+html body .coffee-modal .modal-wrapper .modal-section .modal-body-machine .prod-des .inc-dec-machine input[type=number]:first-child, html body .coffee-modal .modal-wrapper .modal-section .modal-body-machine .prod-des .inc-dec-machine header #auth .form .input .inputBox textarea[type=number]:first-child, html body header #auth .form .input .inputBox .coffee-modal .modal-wrapper .modal-section .modal-body-machine .prod-des .inc-dec-machine textarea[type=number]:first-child {
+  margin-left: 0px;
+  border-right: none;
+}
+html body .coffee-modal .modal-wrapper .modal-section .modal-body-machine .prod-des .inc-dec-machine input[type=number]:nth-child(2), html body .coffee-modal .modal-wrapper .modal-section .modal-body-machine .prod-des .inc-dec-machine header #auth .form .input .inputBox textarea[type=number]:nth-child(2), html body header #auth .form .input .inputBox .coffee-modal .modal-wrapper .modal-section .modal-body-machine .prod-des .inc-dec-machine textarea[type=number]:nth-child(2) {
+  border-right: none;
+  cursor: auto;
+}
+html body .coffee-modal .modal-wrapper .modal-section .modal-body-machine .prod-des .inc-dec-machine input[type=number]:focus, html body .coffee-modal .modal-wrapper .modal-section .modal-body-machine .prod-des .inc-dec-machine header #auth .form .input .inputBox textarea[type=number]:focus, html body header #auth .form .input .inputBox .coffee-modal .modal-wrapper .modal-section .modal-body-machine .prod-des .inc-dec-machine textarea[type=number]:focus {
+  outline: none;
+}
+html body .coffee-modal .modal-wrapper .modal-section .modal-body-machine .prod-des .inc-dec-machine input::-webkit-outer-spin-button, html body .coffee-modal .modal-wrapper .modal-section .modal-body-machine .prod-des .inc-dec-machine header #auth .form .input .inputBox textarea::-webkit-outer-spin-button, html body header #auth .form .input .inputBox .coffee-modal .modal-wrapper .modal-section .modal-body-machine .prod-des .inc-dec-machine textarea::-webkit-outer-spin-button,
+html body .coffee-modal .modal-wrapper .modal-section .modal-body-machine .prod-des .inc-dec-machine input::-webkit-inner-spin-button,
+html body .coffee-modal .modal-wrapper .modal-section .modal-body-machine .prod-des .inc-dec-machine header #auth .form .input .inputBox textarea::-webkit-inner-spin-button,
+html body header #auth .form .input .inputBox .coffee-modal .modal-wrapper .modal-section .modal-body-machine .prod-des .inc-dec-machine textarea::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
 html body .coffee-modal .modal-wrapper .modal-section .modal-footer {
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
-html body .coffee-modal .modal-wrapper .modal-section .modal-footer a {
+html body .coffee-modal .modal-wrapper .modal-section .modal-footer input, html body .coffee-modal .modal-wrapper .modal-section .modal-footer header #auth .form .input .inputBox textarea, html body header #auth .form .input .inputBox .coffee-modal .modal-wrapper .modal-section .modal-footer textarea {
   color: #ffffff;
   display: inline-block;
   padding: 4px 13px;
@@ -1525,10 +1639,14 @@ html body .coffee-modal .modal-wrapper .modal-section .modal-footer a {
   letter-spacing: normal;
   padding: 8px 22px;
   transition: 0.3s all;
+  border: none;
   margin-top: 20px;
 }
-html body .coffee-modal .modal-wrapper .modal-section .modal-footer a:hover {
+html body .coffee-modal .modal-wrapper .modal-section .modal-footer input:hover, html body .coffee-modal .modal-wrapper .modal-section .modal-footer header #auth .form .input .inputBox textarea:hover, html body header #auth .form .input .inputBox .coffee-modal .modal-wrapper .modal-section .modal-footer textarea:hover {
   background-color: #32323d;
+}
+html body .coffee-modal .modal-wrapper .modal-section .modal-footer input:hover, html body .coffee-modal .modal-wrapper .modal-section .modal-footer header #auth .form .input .inputBox textarea:hover, html body header #auth .form .input .inputBox .coffee-modal .modal-wrapper .modal-section .modal-footer textarea:hover {
+  cursor: pointer;
 }
 html body footer {
   position: relative;

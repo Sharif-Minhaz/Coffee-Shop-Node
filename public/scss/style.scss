@@ -1,5 +1,6 @@
 @import "reset";
 @import "variable";
+@import "scrollbar";
 
 @mixin flex($just: center, $align: center) {
 	display: flex;
@@ -1219,17 +1220,43 @@ html {
 								font: 500 23px $bebas;
 								text-align: center;
 							}
+							#price {
+								text-align: center;
+								width: 124px;
+								font-size: 20px;
+								padding: 7px 5px;
+								color: $main-bg;
+							}
 							.inc-dec {
+								display: flex;
 								span {
 									@include counter();
+								}
+								input[type="number"] {
+									@include counter();
+									width: 43px;
+									padding-right: 5px;
+									-moz-appearance: textfield;
+									color: $main-bg;
+									&:focus {
+										outline: none;
+									}
+								}
+								input::-webkit-outer-spin-button,
+								input::-webkit-inner-spin-button {
+									-webkit-appearance: none;
 								}
 							}
 						}
 					}
 					.modal-footer {
 						text-align: right;
-						a {
+						input {
 							@include big-heading();
+							border: none;
+							&:hover {
+								cursor: pointer;
+							}
 						}
 					}
 				}
@@ -1335,18 +1362,44 @@ html {
 								font: 500 23px $bebas;
 								text-align: center;
 							}
+							#price-machine {
+								text-align: center;
+								width: 124px;
+								font-size: 20px;
+								padding: 7px 5px;
+								color: $main-bg;
+							}
 							.inc-dec-machine {
+								display: flex;
 								span {
 									@include counter();
+								}
+								input[type="number"] {
+									@include counter();
+									width: 43px;
+									padding-right: 5px;
+									-moz-appearance: textfield;
+									color: $main-bg;
+									&:focus {
+										outline: none;
+									}
+								}
+								input::-webkit-outer-spin-button,
+								input::-webkit-inner-spin-button {
+									-webkit-appearance: none;
 								}
 							}
 						}
 					}
 					.modal-footer {
 						@include flex(flex-end, center);
-						a {
+						input {
 							@include big-heading();
+							border: none;
 							margin-top: 20px;
+							&:hover {
+								cursor: pointer;
+							}
 						}
 					}
 				}

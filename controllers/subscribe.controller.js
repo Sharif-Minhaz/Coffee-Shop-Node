@@ -14,6 +14,7 @@ exports.subscribePostController = async (req, res, next) => {
 			subEmail,
 		});
 		await subscribed.save();
+		req.flash("success","Subscribed successfully")
 		res.redirect("/blogs");
 	} catch (err) {
 		next(err);

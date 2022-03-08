@@ -339,7 +339,7 @@
     <!-- modal for menu order -->
     <div class="order-modal">
         <div class="modal-wrapper">
-            <div class="modal-section">
+            <form class="modal-section" action="/checkout" method="post">
                 <div class="heading">
                     <h3>ORDER NOW!</h3>
                     <span id="order-modal-close"><i class="bi bi-x-lg"></i></span>
@@ -350,24 +350,24 @@
                     </div>
                     <div class="prod-des">
                         <h3 id="placeName">name</h3>
-                        <p id="price">price</p>
+                        <input type="text" id="price" disabled>
                         <div class="inc-dec">
                             <span> - </span>
-                            <span> 1 </span>
+                            <input type="number" disabled value="1">
                             <span> + </span>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a href="/checkout">BUY NOW</a>
+                    <input type="submit" value="BUY NOW">
                 </div>
-            </div>
+            </form>
         </div>
     </div>
     <!-- buy coffee machine -->
     <div class="coffee-modal">
         <div class="modal-wrapper coffee-modal-wrapper">
-            <div class="modal-section coffee-modal-section">
+            <form class="modal-section coffee-modal-section" action="/checkout" method="post">
                 <div class="heading">
                     <h3>ORDER NOW!</h3>
                     <span id="order-modal-close-machine"><i class="bi bi-x-lg"></i></span>
@@ -378,18 +378,18 @@
                     </div>
                     <div class="prod-des">
                         <h3>COFFEE MACHINE FOR HOME</h3>
-                        <p id="price-machine">$150.00</p>
+                        <input id="price-machine" value="$150.00" disabled>
                         <div class="inc-dec-machine">
                             <span id="min"> - </span>
-                            <span id="count-res"> 1 </span>
+                            <input type="number" value="1" id="count-res" disabled>
                             <span id="inc"> + </span>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a href="/checkout">BUY NOW</a>
+                    <input type="submit" value="BUY NOW">
                 </div>
-            </div>
+            </form>
         </div>
     </div>    
     

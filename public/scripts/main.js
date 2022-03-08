@@ -1,4 +1,5 @@
 window.onload = () => {
+	// vertical menu in the small screen effect
 	const verticalMenu = document.querySelector(".vertical-menu");
 	const revealList = document.querySelector(".bi-list");
 	const closeMenu = document.querySelector(".bi-x-circle-fill");
@@ -14,6 +15,7 @@ window.onload = () => {
 		darkWrapper.classList.add("dark-wrapper-visible");
 	});
 
+	// search box javascript
 	const searchIcon = document.getElementById("search-icon");
 	const searchBox = document.querySelector(".search-input");
 	searchIcon.addEventListener("click", function () {
@@ -36,83 +38,87 @@ window.onload = () => {
 		});
 	}
 
+	// close alert boxes with timeout and x button
 	const closeAlert = document.querySelectorAll(".close-alert");
 	for (let i = 0; i < closeAlert.length; i++) {
 		closeAlert[i].addEventListener("click", function () {
 			alertDiv.style.display = "none";
 		});
 	}
-
 	setTimeout(() => {
 		alertDiv.style.display = "none";
 	}, 3000);
 
+	// single menu modal
 	const singleMenu = document.querySelectorAll(".single-menu");
 	const orderModal = document.querySelector(".order-modal");
-	const orderCount = document.querySelector(".inc-dec span:nth-child(2)");
+	const orderCount = document.querySelector(".inc-dec input");
 
 	let singleMenuPrice;
 	singleMenu.forEach(function (menu) {
 		menu.addEventListener("click", function () {
 			singleMenuPrice = this.lastElementChild.children[1].innerHTML;
-			document.getElementById("price").innerHTML = singleMenuPrice;
+			document.getElementById("price").value = singleMenuPrice;
 			document.getElementById("prod-img").src = this.firstElementChild.src;
 			document.getElementById("placeName").innerHTML =
 				this.lastElementChild.firstElementChild.innerHTML;
 			orderModal.style.display = "block";
-			orderCount.innerHTML = 1;
+			orderCount.value = 1;
 		});
 	});
 
+	// order modal close by clicking x
 	const orderModalCls = document.getElementById("order-modal-close");
 	orderModalCls.addEventListener("click", function () {
 		orderModal.style.display = "none";
 	});
 
-	// hidden modal feature experimenting
+	// hidden modal feature
 	closeModalClickOutside(".order-modal", ".modal-wrapper", ".modal-section");
 
+	// product count activation
 	const dec = document.querySelector(".inc-dec span:first-child");
 	const inc = document.querySelector(".inc-dec span:nth-child(3)");
 
 	dec.addEventListener("click", function () {
-		let count = Number(orderCount.innerHTML);
+		let count = Number(orderCount.value);
 		if (count > 1) {
-			orderCount.innerHTML = count - 1;
-			price.innerHTML = "$" + ((count - 1) * singleMenuPrice.substring(1)).toFixed(2);
+			orderCount.value = count - 1;
+			price.value = "$" + ((count - 1) * singleMenuPrice.substring(1)).toFixed(2);
 		}
 	});
 	inc.addEventListener("click", function () {
-		let count = Number(orderCount.innerHTML);
+		let count = Number(orderCount.value);
 		if (count < 50) {
-			orderCount.innerHTML = count + 1;
-			price.innerHTML = "$" + ((count + 1) * singleMenuPrice.substring(1)).toFixed(2);
+			orderCount.value = count + 1;
+			price.value = "$" + ((count + 1) * singleMenuPrice.substring(1)).toFixed(2);
 		}
 	});
 
+	// coffee machine modal
 	const discoverMachine = document.getElementById("discover-machine");
 	const coffeeMachineModal = document.getElementsByClassName("coffee-modal")[0];
 	const coffeeMachinePrice = document.getElementById("price-machine");
-	const currentPrice = Number(coffeeMachinePrice.innerHTML.substring(1));
+	const currentPrice = Number(coffeeMachinePrice.value.substring(1));
 	discoverMachine.addEventListener("click", function () {
 		coffeeMachineModal.style.display = "block";
 		let min = document.getElementById("min");
 		let res = document.getElementById("count-res");
 		let inc = document.getElementById("inc");
 		inc.addEventListener("click", function () {
-			let count = Number(res.innerHTML);
+			let count = Number(res.value);
 			if (count < 50) {
 				count++;
-				res.innerHTML = count;
-				coffeeMachinePrice.innerHTML = "$" + (currentPrice * count).toFixed(2);
+				res.value = count;
+				coffeeMachinePrice.value = "$" + (currentPrice * count).toFixed(2);
 			}
 		});
 		min.addEventListener("click", function () {
-			let count = Number(res.innerHTML);
+			let count = Number(res.value);
 			if (count > 1) {
 				count--;
-				res.innerHTML = count;
-				coffeeMachinePrice.innerHTML = "$" + (currentPrice * count).toFixed(2);
+				res.value = count;
+				coffeeMachinePrice.value = "$" + (currentPrice * count).toFixed(2);
 			}
 		});
 		document.getElementById("order-modal-close-machine").addEventListener("click", function () {
@@ -153,6 +159,7 @@ function sticky() {
 	}
 }
 
+// close modal by clicking outside function
 function closeModalClickOutside(modal, selector, targetSelector) {
 	document.querySelector(selector).addEventListener(
 		"click",
@@ -165,6 +172,7 @@ function closeModalClickOutside(modal, selector, targetSelector) {
 	);
 }
 
+// manage sticky class with onscroll effect
 window.onscroll = function () {
 	// alert("nothing happening");
 	console.log("What should i told you minhaz");
