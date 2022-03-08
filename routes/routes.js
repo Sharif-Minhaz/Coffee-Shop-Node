@@ -4,6 +4,7 @@ const profileRoute = require("./profile.route");
 const uploadRoute = require("./upload.route");
 const menuRoute = require("./menu.route");
 const reservationRoute = require("./reservation.route");
+const subscribeRoute = require("./subscribe.route")
 
 const routes = [
 	{
@@ -25,6 +26,10 @@ const routes = [
 	{
 		path: "/reservation",
 		handler: reservationRoute,
+	},
+	{
+		path: "/subscribe",
+		handler: subscribeRoute,
 	},
 	{
 		path: "/uploads",

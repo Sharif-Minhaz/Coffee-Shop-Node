@@ -107,7 +107,6 @@ window.onload = function () {
 			})
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data);
 				document.getElementById("removeProfilePicsBtn").style.display = "block";
 				document.getElementById("profilePics").src = data.profilePics;
 				document.getElementById("profilePicsForm").reset();

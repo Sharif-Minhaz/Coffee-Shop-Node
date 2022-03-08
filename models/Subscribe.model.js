@@ -5,7 +5,6 @@ const subscribeSchema = new Schema(
 		subEmail: {
 			type: String,
 			trim: true,
-			maxLength: 100,
 		},
 	},
 	{
