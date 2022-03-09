@@ -259,14 +259,14 @@
                     <h1>BOOKING A TABLE</h1>
                     <form action="/reservation/table" method="post">
                         <div class="single-box">
-                            <input type="number" name="person" placeholder="Person" required>
+                            <input type="number" min="1" max="30" name="person" placeholder="Person" required >
                             <i class="bi bi-person"></i>
                         </div>
                         <div class="single-box">
-                            <input id="choose-date" name="date" type="date" required  >
+                            <input id="choose-date" name="date" type="date" required >
                         </div>
                         <div class="single-box">
-                            <input id="choose-time" name="time" type="time" required>
+                            <input id="choose-time" name="time" type="time" required >
                         </div>
                         <input type="submit" value="BOOK A TABLE">
                     </form>

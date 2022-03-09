@@ -1,13 +1,73 @@
-<%- include("../../partials/head.ejs")  %>
+<%- include("../../partials/head.ejs") %>
 </head>
 <body>
-    <%- include("../../partials/alert.ejs")  %>
+    <%- include("../../partials/alert.ejs") %>
     <%- include("../../partials/header.ejs") %>
         <section id="checkout">
+            <div class="main-wrapper">
+                <form class="checkout-box" action="/" method="post">
+                    <div class="left">
+                        <h3>Your Shopping Cart</h3>
+                        <div class="carted-product">
+                            <img src="/images/pp-1.png" alt="product-img">
+                            <div class="inner-cart-box">
+                                <input type="text" name="product-name" id="product-name" value="product name here" disabled>
+                                <div class="inc-dec-loop">
+                                    <div class="inc-dec-cart">
+                                        <span> - </span>
+                                        <input type="number" disabled value="1">
+                                        <span> + </span>
+                                    </div>
+                                    <input type="text" value="$150" id="price" disabled>
+                                </div>
+                            </div>
+                            <div class="remove-product">
+                                <a href="/menu/all"><i class="bi bi-x-lg"></i></a>
+                            </div>
+                        </div>
+                        <input type="submit" value="Complete Purchase">
+                    </div>
+                    <div class="right">
+                        <h3>Your Card Details</h3>
+                        <small style="margin-top: 0px;">Card Type</small>
+                        <div class="cards">
+                            <img class="selected-card" src="/images/visa.png" alt="visa" title="visa">
+                            <img src="/images/mastercard.png" alt="mastercard" title="mastercard">
+                            <img src="/images/paypal.png" alt="paypal" title="paypal">
+                        </div>
+                        <small>Name on Card</small>
+                        <input type="text" required>
+                        <small>Card Number</small>
+                        <input type="text" required>
+                        <div class="expiry-cvv">
+                            <div class="expiry">
+                                <small>Expiry Date</small>
+                                <input type="date" required>
+                            </div>
+                            <div class="cvv">
+                                <small>CVV</small>
+                                <input type="text" required>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </section>
 
     </header>
 
     <%- include("../../partials/footer.ejs") %>
+    <script>
+        const cards = document.querySelectorAll(".right .cards img");
+        cards.forEach((card) => {
+            card.addEventListener("click", function(e) {
+                if(!card.classList.contains("selected-card")) {
+                    card.classList.add("selected-card");
+                } else {
+                    card.classList.remove("selected-card");
+                }
+            })
+        })
+    </script>
 </body>
 </html>
