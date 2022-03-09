@@ -623,6 +623,7 @@ html {
 					.checkout-box {
 						margin: 1px auto;
 						display: flex;
+						box-shadow: 0 0 10px;
 						.left {
 							padding: 30px;
 							background-color: $form-background;
@@ -1380,9 +1381,14 @@ html {
 							@include flex();
 							flex-direction: column;
 							row-gap: 20px;
-							#placeName {
-								font: 500 23px $bebas;
+							input[id="placeName"] {
+								font: 500 22px $bebas;
 								text-align: center;
+								border: none;
+								background: transparent;
+								box-shadow: none;
+								outline: none;
+								color: $dark-bat;
 							}
 							#price {
 								text-align: center;

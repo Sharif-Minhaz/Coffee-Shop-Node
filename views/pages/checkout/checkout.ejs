@@ -59,15 +59,24 @@
     <%- include("../../partials/footer.ejs") %>
     <script>
         const cards = document.querySelectorAll(".right .cards img");
-        cards.forEach((card) => {
-            card.addEventListener("click", function(e) {
-                if(!card.classList.contains("selected-card")) {
-                    card.classList.add("selected-card");
-                } else {
-                    card.classList.remove("selected-card");
-                }
-            })
+
+        cards[0].addEventListener("click", function() {
+            cards[0].classList.add("selected-card");
+            cards[1].classList.remove("selected-card");
+            cards[2].classList.remove("selected-card");
         })
+
+        cards[1].addEventListener("click", function() {
+            cards[0].classList.remove("selected-card");
+            cards[1].classList.add("selected-card");
+            cards[2].classList.remove("selected-card");
+        })
+        cards[2].addEventListener("click", function() {
+            cards[0].classList.remove("selected-card");
+            cards[1].classList.remove("selected-card");
+            cards[2].classList.add("selected-card");
+        })
+        
     </script>
 </body>
 </html>
