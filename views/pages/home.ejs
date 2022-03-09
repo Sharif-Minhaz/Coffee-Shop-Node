@@ -348,12 +348,14 @@
                     <div class="prod-img-div">
                         <img id="prod-img" src="" alt="prod-img">
                     </div>
+                    <!-- hidden input for passing image source -->
+                    <input type="hidden" value="" id="img-src" name="imageMenu" >
                     <div class="prod-des">
-                        <input name="productName" id="placeName" disabled>
-                        <input name="productPrice" type="text" id="price" disabled>
+                        <input name="productName" type="text" id="placeName" readonly >
+                        <input name="productPrice" type="text" id="price" readonly >
                         <div class="inc-dec">
                             <span> - </span>
-                            <input name="productCount" type="number" disabled value="1">
+                            <input name="productCount" type="number" value="1" readonly>
                             <span> + </span>
                         </div>
                     </div>
@@ -412,6 +414,7 @@
                 }
             }
         })
+
     </script>
 </body>
 </html>

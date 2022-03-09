@@ -60,6 +60,7 @@ window.onload = () => {
 			singleMenuPrice = this.lastElementChild.children[1].innerHTML;
 			document.getElementById("price").value = singleMenuPrice;
 			document.getElementById("prod-img").src = this.firstElementChild.src;
+			document.getElementById("img-src").value = this.firstElementChild.src;
 			document.getElementById("placeName").value =
 				this.lastElementChild.firstElementChild.innerHTML;
 			orderModal.style.display = "block";

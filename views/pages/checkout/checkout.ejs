@@ -9,16 +9,16 @@
                     <div class="left">
                         <h3>Your Shopping Cart</h3>
                         <div class="carted-product">
-                            <img src="/images/pp-1.png" alt="product-img">
+                            <img src="<%= productDetails.imageMenu %> " alt="product-img">
                             <div class="inner-cart-box">
-                                <input type="text" name="product-name" id="product-name" value="product name here" disabled>
+                                <input type="text" name="product-name" id="product-name" value="<%= productDetails.productName %>" readonly>
                                 <div class="inc-dec-loop">
                                     <div class="inc-dec-cart">
                                         <span> - </span>
-                                        <input type="number" disabled value="1">
+                                        <input type="number" value="<%= productDetails.productCount %>" readonly>
                                         <span> + </span>
                                     </div>
-                                    <input type="text" value="$150" id="price" disabled>
+                                    <input type="text" value="<%= productDetails.productPrice %>" id="price" readonly>
                                 </div>
                             </div>
                             <div class="remove-product">
@@ -65,7 +65,6 @@
             enableDisableInputBox(false);
 
         })
-
         cards[1].addEventListener("click", function() {
             activeDeactiveCard(1, 0, 2);
             enableDisableInputBox(false);
@@ -82,7 +81,10 @@
             cards[active].classList.add("selected-card");
         }
 
+        const menuForm = document.getElementsByClassName("checkout-box")[0];
+
         function enableDisableInputBox(bool) {
+            bool && menuForm.reset();
             document.querySelector("input[name='cardName']").disabled = bool;
             document.querySelector("input[name='cardNumber']").disabled = bool;
             document.querySelector("input[name='expireDate']").disabled = bool;
