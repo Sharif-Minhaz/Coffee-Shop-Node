@@ -36,17 +36,17 @@
                             <img src="/images/paypal.png" alt="paypal" title="paypal">
                         </div>
                         <small>Name on Card</small>
-                        <input type="text" required>
+                        <input name="cardName" type="text" required>
                         <small>Card Number</small>
-                        <input type="text" required>
+                        <input name="cardNumber" type="text" required>
                         <div class="expiry-cvv">
                             <div class="expiry">
                                 <small>Expiry Date</small>
-                                <input type="date" required>
+                                <input name="expireDate" type="date" required>
                             </div>
                             <div class="cvv">
                                 <small>CVV</small>
-                                <input type="text" required>
+                                <input name="cvv" type="text" required>
                             </div>
                         </div>
                     </div>
@@ -61,21 +61,33 @@
         const cards = document.querySelectorAll(".right .cards img");
 
         cards[0].addEventListener("click", function() {
-            cards[0].classList.add("selected-card");
-            cards[1].classList.remove("selected-card");
-            cards[2].classList.remove("selected-card");
+            activeDeactiveCard(0, 1, 2);
+            enableDisableInputBox(false);
+
         })
 
         cards[1].addEventListener("click", function() {
-            cards[0].classList.remove("selected-card");
-            cards[1].classList.add("selected-card");
-            cards[2].classList.remove("selected-card");
+            activeDeactiveCard(1, 0, 2);
+            enableDisableInputBox(false);
+
         })
         cards[2].addEventListener("click", function() {
-            cards[0].classList.remove("selected-card");
-            cards[1].classList.remove("selected-card");
-            cards[2].classList.add("selected-card");
+            activeDeactiveCard(2, 0, 1);
+            enableDisableInputBox(true);
         })
+
+        function activeDeactiveCard(active, deactive1, deactive2) {
+            cards[deactive1].classList.remove("selected-card");
+            cards[deactive2].classList.remove("selected-card");
+            cards[active].classList.add("selected-card");
+        }
+
+        function enableDisableInputBox(bool) {
+            document.querySelector("input[name='cardName']").disabled = bool;
+            document.querySelector("input[name='cardNumber']").disabled = bool;
+            document.querySelector("input[name='expireDate']").disabled = bool;
+            document.querySelector("input[name='cvv']").disabled = bool;
+        }
         
     </script>
 </body>
