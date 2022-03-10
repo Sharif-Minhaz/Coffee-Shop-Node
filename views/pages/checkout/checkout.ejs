@@ -11,14 +11,15 @@
                         <div class="carted-product">
                             <img src="<%= productDetails.imageMenu %> " alt="product-img">
                             <div class="inner-cart-box">
-                                <input type="text" name="product-name" id="product-name" value="<%= productDetails.productName %>" readonly>
+                                <input type="hidden" name="productImgSource" value="<%= productDetails.imageMenu %>">
+                                <input type="text" name="checkoutProductName" id="checkout-product-name" value="<%= productDetails.productName %>" readonly>
                                 <div class="inc-dec-loop">
                                     <div class="inc-dec-cart">
                                         <span> - </span>
-                                        <input type="number" value="<%= productDetails.productCount %>" readonly>
+                                        <input name="quantity" id="quantity" type="number" value="<%= productDetails.productCount %>" readonly>
                                         <span> + </span>
                                     </div>
-                                    <input type="text" value="<%= productDetails.productPrice %>" id="price" readonly>
+                                    <input type="text" name="checkoutPrice" value="<%= productDetails.productPrice %>" id="checkoutPrice" readonly>
                                 </div>
                             </div>
                             <div class="remove-product">
@@ -55,6 +56,15 @@
         </section>
 
     </header>
+    <!-------------------- javascript code not found error start --------------->
+    <div hidden class="order-modal">
+        <div id="order-modal-close" class="modal-wrapper modal-section inc-dec">
+            <span id="discover-machine"></span>
+            <input type="hidden" id="price-machine">
+            <span></span>
+        </div>
+    </div>
+    <!-------------------- javascript code not found error end ----------------->
 
     <%- include("../../partials/footer.ejs") %>
     <script>
@@ -91,6 +101,26 @@
             document.querySelector("input[name='cvv']").disabled = bool;
         }
         
+        let totalPrice = document.getElementById("checkoutPrice");
+        let quantity = document.getElementById("quantity");
+        let price = Number(totalPrice.value.substring(1)) / Number(quantity.value);
+        let dec = document.querySelector(".inc-dec-cart span:first-child");
+        let inc = document.querySelector(".inc-dec-cart span:nth-child(3)");
+    
+        inc.addEventListener("click", function() {
+            if(Number(quantity.value) < 50) {
+                quantity.value = Number(quantity.value) + 1;
+                totalPrice.value = "$" + (price * Number(quantity.value)).toFixed(2);
+            }
+        })
+
+        dec.addEventListener("click", function() {
+            if(Number(quantity.value) > 1) {
+                quantity.value = Number(quantity.value) - 1;
+                totalPrice.value = "$" + (price * Number(quantity.value)).toFixed(2);
+            }
+        })
+
     </script>
 </body>
 </html>

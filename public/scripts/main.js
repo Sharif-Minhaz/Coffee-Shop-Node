@@ -15,6 +15,21 @@ window.onload = () => {
 		darkWrapper.classList.add("dark-wrapper-visible");
 	});
 
+	// bucket or cart menu system
+	let basket = document.querySelector(".bi-basket2-fill");
+	let checkoutWrapper = document.querySelector(".checkout-dark-wrapper");
+	let checkoutMenu = document.querySelector(".checkout-menu");
+	let closeCheckout = document.getElementById("close-checkout");
+
+	basket.addEventListener("click", function () {
+		checkoutWrapper.classList.add("checkout-dark-wrapper-visible");
+		checkoutMenu.classList.add("reveal-checkout-sidebar");
+	});
+	closeCheckout.addEventListener("click", function () {
+		checkoutWrapper.classList.remove("checkout-dark-wrapper-visible");
+		checkoutMenu.classList.remove("reveal-checkout-sidebar");
+	});
+
 	// search box javascript
 	const searchIcon = document.getElementById("search-icon");
 	const searchBox = document.querySelector(".search-input");

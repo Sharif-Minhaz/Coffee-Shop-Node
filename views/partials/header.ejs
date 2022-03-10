@@ -33,9 +33,15 @@
 					<i class="bi bi-search" id="search-icon"></i>
 					<i class="bi bi-x-lg set-invisible"></i>
 				</li>
-				<li><i class="bi bi-basket2-fill"></i></li>
+				<% if(user) { %> 
+					<li>
+						<i class="bi bi-basket2-fill"></i>
+						<span>1</span>
+					</li>
+				<% } %> 
 			</div>
 		</ul>
+		<!-- vertical menu -->
 		<div class="dark-wrapper">
 			<div class="vertical-menu">
 				<div class="functionality">
@@ -65,10 +71,68 @@
 				</ul>
 			</div>
 		</div>
+		<!-- checkout bucket -->
+		<div class="checkout-dark-wrapper">
+			<div class="checkout-menu">
+				<div class="functionality">
+					<a href="/">
+						<img src="/images/brand.png" alt="brand" />
+					</a>
+					<i id="close-checkout" class="bi bi-x-circle-fill"></i>
+				</div>
+				<ul>
+					<li>
+						<div class="checkout-img">
+							<img src="/images/s-p-10.png" alt="product">
+							<span class="quantity">3x</span>
+						</div>
+						<div class="checkout-details">
+							<h3>American vast roast</h3>
+							<div class="price-time">
+								<span title="total">Price: 100$</span>
+								<span title="shipping time" id="order-date"></span>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
 	</nav>
+	<!-- search box -->
 	<div class="search-input">
 		<form action="/" method="post">
 			<input type="search" name="search" id="search" placeholder="Search keywords" />
 			<button type="submit"><i class="bi bi-search"></i></button>
 		</form>
 	</div>
+	<!-- shipping time required -->
+	<script>
+		const orderDate = document.getElementById("order-date");
+		// Set the date we're counting down to
+		let countDownDate = new Date("may 5, 2022 15:37:25").getTime();
+
+		// Update the count down every 1 second
+		let countdownFunction = setInterval(function() {
+			// Get todays date and time
+			let now = new Date().getTime();
+			
+			// Find the distance between now an the count down date
+			let distance = countDownDate - now;
+			
+			// Time calculations for days, hours, minutes and seconds
+			let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+			let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+			let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+			
+			// Output the result in an element with id="demo"
+			orderDate.innerHTML = days + "d " + hours + "h "
+			+ minutes + "m " + seconds + "s ";
+			
+			// If the count down is over, write some text 
+			if (distance < 0) {
+				clearInterval(countdownFunction);
+				document.getElementById("demo").innerHTML = "EXPIRED";
+			}
+		}, 1000);
+	</script>
