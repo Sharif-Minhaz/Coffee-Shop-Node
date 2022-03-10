@@ -49,6 +49,7 @@ const routes = [
  */
 module.exports = (app) => {
 	routes.forEach((route) => {
-		route.path == "/" ? app.get(route.path, route.handler) : app.use(route.path, route.handler);
+		app.use(route.path, route.handler);
+		// route.path == "/" ? app.get(route.path, route.handler) : app.use(route.path, route.handler);
 	});
 };
