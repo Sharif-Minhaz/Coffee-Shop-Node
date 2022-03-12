@@ -3,13 +3,22 @@ const Flash = require("../utils/Flash");
 
 exports.homeGetController = async (req, res, next) => {
 	try {
-		let orders = await Checkout.find({ user: req.user._id });
+		if (req.user) {
+			let orders = await Checkout.find({ user: req.user._id });
+			return res.render("pages/home", {
+				title: "Coffee Shop",
+				values: {},
+				flashMessage: Flash.getMessage(req),
+				errors: {},
+				orders,
+			});
+		}
 		res.render("pages/home", {
 			title: "Coffee Shop",
 			values: {},
 			flashMessage: Flash.getMessage(req),
 			errors: {},
-			orders,
+			orders: {},
 		});
 	} catch (err) {
 		next(err);

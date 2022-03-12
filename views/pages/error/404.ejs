@@ -1,7 +1,7 @@
 <%- include("../../partials/head.ejs")  %>
 </head>
 <body>
-    <%- include("../../partials/header.ejs", {orders})  %>
+    <%- include("../../partials/header.ejs", {orders: orders || false})  %>
         <section id="error-404-500">
             <div>
                 <h1>Oops, 404 Page Not Found</h1>

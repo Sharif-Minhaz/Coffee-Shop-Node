@@ -2,7 +2,7 @@
 </head>
 <body>
     <%- include("../../partials/alert.ejs") %>
-    <%- include("../../partials/header.ejs", {orders}) %>
+    <%- include("../../partials/header.ejs", {orders: orders || false}) %>
         <section id="checkout">
             <div class="main-wrapper">
                 <form class="checkout-box" action="/" method="post">

@@ -289,7 +289,7 @@ html {
 						position: fixed;
 						right: -300px;
 						top: 0;
-						width: 314px;
+						width: 358px;
 						background-color: $font-color;
 						height: 100vh;
 						display: inherit;
@@ -316,6 +316,8 @@ html {
 						}
 						ul {
 							padding-top: 10px;
+							display: flex;
+							flex-direction: column;
 							li {
 								width: 100%;
 								display: flex;
@@ -354,6 +356,7 @@ html {
 										font-weight: 500;
 										font-size: 24px;
 										font-family: $bebas;
+										text-align: center;
 									}
 									.price-time {
 										display: flex;

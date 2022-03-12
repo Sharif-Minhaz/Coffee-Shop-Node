@@ -83,19 +83,23 @@
 					<i id="close-checkout" class="bi bi-x-circle-fill"></i>
 				</div>
 				<ul>
-					<li>
-						<div class="checkout-img">
-							<img src="/images/s-p-10.png" alt="product">
-							<span class="quantity">3x</span>
-						</div>
-						<div class="checkout-details">
-							<h3>American vast roast</h3>
-							<div class="price-time">
-								<span title="total">Price: 100$</span>
-								<span title="shipping time" id="order-date"></span>
-							</div>
-						</div>
-					</li>
+					<% if(orders.length > 0) { %>
+						<% orders.forEach((order) => { %>
+							<li>
+								<div class="checkout-img">
+									<img src="<%= order.productImg %>" alt="product">
+									<span class="quantity"><%= order.quantity %>x</span>
+								</div>
+								<div class="checkout-details">
+									<h3><%= order.checkoutProductName %></h3>
+									<div class="price-time">
+										<span title="total"><%= order.checkoutPrice %></span>
+										<span title="shipping time" class="order-date"></span>
+									</div>
+								</div>
+							</li>
+						<% }) %>
+					<% } %>  
 				</ul>
 			</div>
 		</div>
@@ -109,7 +113,7 @@
 	</div>
 	<!-- shipping time required -->
 	<script>
-		const orderDate = document.getElementById("order-date");
+		let orderDate = document.getElementsByClassName("order-date");
 		// Set the date we're counting down to
 		let countDownDate = new Date("may 5, 2022 15:37:25").getTime();
 
@@ -128,8 +132,11 @@
 			let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 			
 			// Output the result in an element with id="demo"
-			orderDate.innerHTML = days + "d " + hours + "h "
-			+ minutes + "m " + seconds + "s ";
+			
+			for(let i = 0; i < orderDate.length; i++) {
+				orderDate[i].innerHTML = days + "d " + hours + "h "
+				+ minutes + "m " + seconds + "s ";
+			}
 			
 			// If the count down is over, write some text 
 			if (distance < 0) {

@@ -3,7 +3,7 @@
 </head>
 <body>
     <%- include("../partials/alert.ejs") %>
-    <%- include("../partials/header.ejs", {orders}) %>
+    <%- include("../partials/header.ejs", {orders: orders || false}) %>
         <div class="intro">
             <h1>
                 roasted coffee <br />

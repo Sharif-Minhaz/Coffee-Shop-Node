@@ -2,7 +2,7 @@
 </head>
 <body>
     <%- include("../../partials/alert.ejs")  %>
-    <%- include("../../partials/header.ejs", {orders}) %>
+    <%- include("../../partials/header.ejs", {orders: orders || false}) %>
         <section id="auth" class="<%= (errors.username || errors.email || errors.password) ? "auth-height" : "auth-height-def"  %> ">
             <form class="form" action="/auth/signup" method="post">
                 <h2>SIGNUP</h2>

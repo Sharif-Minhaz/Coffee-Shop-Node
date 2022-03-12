@@ -3,7 +3,7 @@
 </head>
 <body>
     <%- include("../../partials/alert.ejs") %>
-    <%- include("../../partials/header.ejs", {orders}) %>
+    <%- include("../../partials/header.ejs", {orders: orders || false}) %>
         <section id="auth" style="max-height: 200vh; height: 194vh;">
             <div class="form" style="width: 600px">
                 <h2>EDIT PROFILE</h2>

@@ -14,6 +14,7 @@ exports.createProfileGetController = async (req, res, next) => {
 			flashMessage: {},
 			errors: {},
 			values: {},
+			orders: {},
 		});
 	} catch (err) {
 		next(err);
@@ -31,6 +32,7 @@ exports.createProfilePostController = async (req, res, next) => {
 			flashMessage: Flash.getMessage(req),
 			errors: errors.mapped(),
 			values: req.body,
+			orders: {},
 		});
 	}
 
@@ -64,6 +66,7 @@ exports.profileGetController = async (req, res, next) => {
 			flashMessage: Flash.getMessage(req),
 			values: {},
 			profile,
+			orders: {},
 		});
 	} catch (err) {
 		next(err);
@@ -82,6 +85,7 @@ exports.updateProfileGetController = async (req, res, next) => {
 			flashMessage: {},
 			values: {},
 			profile,
+			orders: {},
 		});
 	} catch (err) {
 		next(err);
@@ -98,6 +102,7 @@ exports.updateProfilePostController = async (req, res, next) => {
 			flashMessage: Flash.getMessage(req),
 			errors: errors.mapped(),
 			values: req.body,
+			orders: {},
 		});
 	}
 
