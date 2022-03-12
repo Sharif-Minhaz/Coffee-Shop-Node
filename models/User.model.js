@@ -28,6 +28,10 @@ const userSchema = new Schema(
 			type: String,
 			default: "user",
 		},
+		order: {
+			type: Schema.Types.ObjectId,
+			ref: "Checkout",
+		},
 	},
 	{
 		timestamps: true,

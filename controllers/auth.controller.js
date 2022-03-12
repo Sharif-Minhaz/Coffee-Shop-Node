@@ -10,6 +10,7 @@ exports.signupGetController = (req, res, next) => {
 		flashMessage: {},
 		errors: {},
 		values: {},
+		orders: {},
 	});
 };
 
@@ -24,6 +25,7 @@ exports.signupPostController = async (req, res, next) => {
 			errors: errors.mapped(),
 			values: req.body,
 			flashMessage: Flash.getMessage(req),
+			orders: {},
 		});
 	}
 
@@ -50,6 +52,7 @@ exports.loginGetController = (req, res, next) => {
 		flashMessage: Flash.getMessage(req),
 		errors: {},
 		values: {},
+		orders: {},
 	});
 };
 
@@ -65,6 +68,7 @@ exports.loginPostController = async (req, res, next) => {
 			flashMessage: Flash.getMessage(req),
 			errors: errors.mapped(),
 			values: req.body,
+			orders: {},
 		});
 	}
 

@@ -2,7 +2,7 @@
 </head>
 <body>
     <%- include("../../partials/alert.ejs") %>
-    <%- include("../../partials/header.ejs") %>
+    <%- include("../../partials/header.ejs", {orders}) %>
         <section id="checkout">
             <div class="main-wrapper">
                 <form class="checkout-box" action="/" method="post">
@@ -11,7 +11,7 @@
                         <div class="carted-product">
                             <img src="<%= productDetails.imageMenu %> " alt="product-img">
                             <div class="inner-cart-box">
-                                <input type="hidden" name="productImgSource" value="<%= productDetails.imageMenu %>">
+                                <input type="hidden" name="productImg" value="<%= productDetails.imageMenu %>">
                                 <input type="text" name="checkoutProductName" id="checkout-product-name" value="<%= productDetails.productName %>" readonly>
                                 <div class="inc-dec-loop">
                                     <div class="inc-dec-cart">
