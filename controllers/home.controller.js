@@ -4,13 +4,12 @@ const Flash = require("../utils/Flash");
 exports.homeGetController = async (req, res, next) => {
 	try {
 		if (req.user) {
-			let orders = await Checkout.find({ user: req.user._id });
 			return res.render("pages/home", {
 				title: "Coffee Shop",
 				values: {},
 				flashMessage: Flash.getMessage(req),
 				errors: {},
-				orders,
+				orders: req.session.orders,
 			});
 		}
 		res.render("pages/home", {
@@ -38,12 +37,13 @@ exports.homePostController = async (req, res, next) => {
 		await order.save();
 		req.flash("success", "Order placed successfully");
 		let orders = await Checkout.find({ user: req.user._id });
+		req.session.orders = orders;
 		res.render("pages/home", {
 			title: "Coffee Shop",
 			values: {},
 			flashMessage: Flash.getMessage(req),
 			errors: {},
-			orders,
+			orders: req.session.orders,
 		});
 	} catch (err) {
 		next(err);

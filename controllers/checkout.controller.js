@@ -5,6 +5,6 @@ exports.checkoutPostController = async (req, res, next) => {
 		title: "Checkout Product",
 		flashMessage: Flash.getMessage(req),
 		productDetails: req.body,
-		orders: {},
+		orders: req.session.orders,
 	});
 };

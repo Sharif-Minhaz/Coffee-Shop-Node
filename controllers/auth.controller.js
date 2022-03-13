@@ -1,4 +1,5 @@
 const User = require("../models/User.model");
+const Checkout = require("../models/Checkout.model");
 const bcrypt = require("bcrypt");
 const { validationResult } = require("express-validator");
 const errorFormatter = require("../utils/validatorErrorFormatter");
@@ -73,15 +74,18 @@ exports.loginPostController = async (req, res, next) => {
 	}
 
 	let user;
-
+	let orders;
 	try {
 		user = await User.findOne({ email });
+		orders = await Checkout.find({user: user._id});
 	} catch (err) {
 		next(err);
 	}
 
 	req.session.isLoggedIn = true;
 	req.session.user = user;
+	req.session.orders = orders;
+
 	req.session.save((err) => {
 		if (err) {
 			next(err);

@@ -22,8 +22,8 @@ const PORT = process.env.PORT || 5000;
 
 // <=======< Set all routes and middlewares >=======> //
 /**
- * Sets up the routes for the application. 
- * @param app - The express app to set up the routes for. 
+ * Sets up the routes for the application.
+ * @param app - The express app to set up the routes for.
  * @returns None
  */
 
@@ -31,7 +31,7 @@ middlewares(app);
 setRoutes(app);
 
 /**
- * Handles errors that are thrown by the application. 
+ * Handles errors that are thrown by the application.
  * @param error - The error that was thrown.
  * @param req - The request that was made.
  * @param res - The response that was sent.
@@ -54,9 +54,15 @@ app.use((req, res, next) => {
 app.use((error, req, res, next) => {
 	console.error(error);
 	if (error.status === 404) {
-		return res.render("pages/error/404", { title: "404 page not found", orders: {} });
+		return res.render("pages/error/404", {
+			title: "404 page not found",
+			orders: {},
+		});
 	}
-	res.render("pages/error/500", { title: "server error", orders: {} });
+	res.render("pages/error/500", {
+		title: "server error",
+		orders: {},
+	});
 });
 
 // <=======< connect to the database >=======> //
