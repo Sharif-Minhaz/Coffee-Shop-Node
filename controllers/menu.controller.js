@@ -5,3 +5,7 @@ exports.menuGetController = (req, res, next) => {
 		orders: req.session.orders,
 	});
 };
+
+exports.menuAddPostController = (req, res, next) => {
+	res.send("nothing");
+}

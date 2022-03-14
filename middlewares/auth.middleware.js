@@ -29,3 +29,10 @@ exports.isUnAuthenticated = (req, res, next) => {
 	}
 	next();
 };
+
+exports.isAdmin = (req, res, next) => {
+	if(req.session.user.role != "admin") {
+		res.redirect("/");
+	}
+	next();
+}
