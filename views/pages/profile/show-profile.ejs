@@ -28,6 +28,53 @@
             </div>
         </section>
     </header>
+    <!-- Show reservation details -->
+    <section id="reservation-details">
+        <div class="sm-heading">
+            <span>RESERVATION</span>
+            <h1>RESERVATION DETAILS</h1>
+        </div>
+        <div class="container-sm">
+            <div class="full-row">
+                <div class="table-holder">
+                    <table>
+                        <tr>
+                            <th>#</th>
+                            <th>Floor</th>
+                            <th>Person</th>
+                            <th>Table Type</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Booked</th>
+                        </tr>
+                        <% if(reservation) { %> 
+                            <% let i = 0 %> 
+                            <% reservation.forEach((reserve) => { %> 
+                                <% i++ %>
+                                <tr>
+                                    <td><%= i %></td>
+                                    <td><%= reserve.floor %></td>
+                                    <td><%= reserve.person %></td>
+                                    <% if(reserve.person <4) { %>
+                                        <td>SMALL</td>
+                                    <% } else { %>
+                                        <td>LARGE</td>
+                                    <% } %>   
+                                    <td><%= (reserve.date).toDateString() %></td>
+                                    <td><%= reserve.time %></td>
+                                    <td><%= (reserve.createdAt).toDateString() + " " + (reserve.createdAt).toLocaleTimeString() %></td>
+                                </tr>
+                            <% }) %> 
+                        <% } else { %>
+                            <tr>
+                                No reserved table found
+                            </tr>
+                        <% } %>  
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <%- include("../../partials/footer.ejs") %>
     <script

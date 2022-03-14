@@ -8,9 +8,26 @@ exports.reservationPostController = async (req, res, next) => {
 		req.flash("fail", "Create profile to book a table");
 		res.redirect("/profile/create-profile");
 	}
+	let floor = Math.ceil(Math.random() * 4);
+	switch (floor) {
+		case 1:
+			floor = floor + "ST"
+			break;
+		case 2:
+			floor = floor + "ND"
+			break;
+		case 3:
+			floor = floor + "RD"
+			break;
+		case 4:
+			floor = floor + "TH"
+			break;
+	}
 	try {
 		let reserve = new Reservation({
+			user: req.user._id,
 			person,
+			floor,
 			date,
 			time,
 		});

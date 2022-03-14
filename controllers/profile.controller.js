@@ -1,4 +1,5 @@
 const Profile = require("../models/Profile.model");
+const Reservation = require("../models/Reservation.model");
 const Flash = require("../utils/Flash");
 const { validationResult } = require("express-validator");
 const errorFormatter = require("../utils/validatorErrorFormatter");
@@ -57,6 +58,7 @@ exports.createProfilePostController = async (req, res, next) => {
 exports.profileGetController = async (req, res, next) => {
 	try {
 		const profile = await Profile.findOne({ user: req.user._id });
+		const reservation = await Reservation.find({ user: req.user._id });
 		if (!profile) {
 			return res.redirect("/profile/create-profile");
 		}
@@ -67,6 +69,7 @@ exports.profileGetController = async (req, res, next) => {
 			values: {},
 			profile,
 			orders: req.session.orders,
+			reservation,
 		});
 	} catch (err) {
 		next(err);

@@ -1407,6 +1407,58 @@ html {
 				}
 			}
 		}
+		#reservation-details {
+			margin-top: 50px;
+			margin-bottom: 50px;
+			.sm-heading {
+				@include flex();
+				flex-direction: column;
+				span {
+					@include sm-heading();
+					margin-bottom: 20px;
+				}
+				h1 {
+					color: $font-color;
+					margin-bottom: 30px;
+					font: {
+						weight: 500;
+						family: $bebas;
+						size: 55px;
+					}
+				}
+			}
+			.container-sm {
+				@include container-sm();
+				.full-row {
+					@include flex();
+					width: 100%;
+					.table-holder {
+						overflow-x: auto;
+						table {
+							font-family: arial, sans-serif;
+							border-collapse: collapse;
+							width: 100%;
+							tr {
+								color: $input-field;
+								td {
+									border: 1px solid $highlight;
+									text-align: left;
+									padding: 12px;
+									min-width: 120px;
+								}
+								th {
+									@extend td;
+									color: $highlight;
+								}
+								&:nth-child(even) {
+									background-color: $sec-bg;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 		#our-blog {
 			margin: 70px 0px 70px 0px;
 			.container-sm {
