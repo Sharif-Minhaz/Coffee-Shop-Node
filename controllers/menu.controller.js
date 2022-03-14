@@ -7,5 +7,13 @@ exports.menuGetController = (req, res, next) => {
 };
 
 exports.menuAddPostController = (req, res, next) => {
-	res.send("nothing");
+	res.send("Add menu");
+};
+
+exports.checkoutProduct = (req, res, next) => {
+	res.send("Checkout product");
+};
+
+exports.productAddPostController = (req, res, next) => {
+	res.send("add product");
 }
