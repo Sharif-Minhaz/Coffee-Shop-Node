@@ -81,6 +81,22 @@
 	z-index: 9999;
 	display: none;
 }
+@mixin breadcrumbs {
+	h1 {
+		margin-bottom: 20px;
+		color: $font-color;
+		font: 500 55px $bebas;
+		text-align: center;
+	}
+	p {
+		text-align: center;
+		font: 400 17px "Jost";
+		color: $font-color;
+		span {
+			color: $highlight;
+		}
+	}
+}
 html {
 	scroll-behavior: smooth;
 	overflow-x: hidden;
@@ -917,6 +933,23 @@ html {
 							}
 						}
 					}
+				}
+			}
+			// all menu
+			#all-menu {
+				background: {
+					image: url(/images/breadcrumb-light.jpg);
+					size: cover;
+					position: center;
+					repeat: no-repeat;
+				}
+				height: 100vh;
+				.breadcrumb {
+					background-color: $wrapper-bg;
+					@include flex(center, center);
+					flex-direction: column;
+					@include breadcrumbs();
+					height: inherit;
 				}
 			}
 		}
