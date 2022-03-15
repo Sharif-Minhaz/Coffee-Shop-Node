@@ -36,14 +36,12 @@
 					<i class="bi bi-search" id="search-icon"></i>
 					<i class="bi bi-x-lg set-invisible"></i>
 				</li>
-				<% if(user) { %> 
-					<li>
-						<i class="bi bi-basket2-fill"></i>
-						<% if(orders.length > 0){ %>
-							<span><%= orders.length %></span> 
-						<% } %> 
-					</li>
-				<% } %> 
+				<li>
+					<i class="bi bi-basket2-fill"></i>
+					<% if(user) { %>
+						<span><%= orders.length %></span> 
+					<% } %> 
+				</li>
 			</div>
 		</ul>
 		<!-- vertical menu -->
@@ -89,7 +87,7 @@
 					<i id="close-checkout" class="bi bi-x-circle-fill"></i>
 				</div>
 				<ul>
-					<% if(orders.length > 0) { %>
+					<% if(user) { %>
 						<% orders.forEach((order) => { %>
 							<li>
 								<div class="checkout-img">

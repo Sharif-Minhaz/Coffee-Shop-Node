@@ -56,12 +56,10 @@ app.use((error, req, res, next) => {
 	if (error.status === 404) {
 		return res.render("pages/error/404", {
 			title: "404 page not found",
-			orders: {},
 		});
 	}
 	res.render("pages/error/500", {
 		title: "server error",
-		orders: {},
 	});
 });
 
