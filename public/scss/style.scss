@@ -1130,6 +1130,7 @@ html {
 				gap: 10px;
 				a {
 					@include big-heading();
+					margin-bottom: 60px;
 					&:last-child {
 						background-color: $light-dark;
 					}
@@ -1811,7 +1812,6 @@ html {
 		}
 		.add-menu-modal {
 			@include modal();
-			display: block;
 			.modal-wrapper {
 				@include flex();
 				height: 100vh;
@@ -1850,7 +1850,6 @@ html {
 								font-size: 15px;
 								&:focus {
 									border-color: $highlight;
-									// border-color: transparent;
 									outline-color: $highlight;
 								}
 							}

@@ -51,7 +51,7 @@
         </div>
         <div class="menu-footer">
             <% if(user && user.role == "admin") { %> 
-                <a href="/add/menu">Add Menu</a>
+                <a onclick="revealModal();" href="javascript:void(0)">Add Menu</a>
             <% } %> 
         </div>
     </section>
@@ -62,7 +62,7 @@
             <form action="/menu/add-menu" class="modal-section" enctype="multipart/form-data" method="post">
                 <div class="heading">
                     <h3>ADD PRODUCT</h3>
-                    <span id="order-modal-close"><i class="bi bi-x-lg"></i></span>
+                    <span id="order-modal-close" onclick="closeModal();"><i class="bi bi-x-lg"></i></span>
                 </div>
                 <div class="modal-body">
                     <div class="prod-des">
@@ -79,5 +79,18 @@
     </div>
 
     <%- include("../../partials/footer.ejs") %>
+
+    <script>
+        const addMenuModal = document.querySelector(".add-menu-modal");
+
+        function closeModal() {
+            addMenuModal.style.display = 'none';
+        }
+
+        function revealModal() {
+            addMenuModal.style.display = 'block';
+        }
+
+    </script>
 </body>
 </html>
