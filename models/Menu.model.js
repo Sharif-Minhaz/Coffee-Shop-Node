@@ -14,6 +14,10 @@ const menuSchema = new Schema({
 		type: String,
 		required: true,
 	},
+	category: {
+		type: String,
+		default: "menu",
+	},
 });
 
 const Menu = model("Menu", menuSchema);

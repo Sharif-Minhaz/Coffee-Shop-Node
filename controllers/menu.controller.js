@@ -5,7 +5,7 @@ const fs = require("fs");
 exports.menuGetController = async (req, res, next) => {
 	let menus;
 	try {
-		menus = await Menu.find();
+		menus = await Menu.find({category: "menu"});
 	} catch (err) {
 		next(err);
 	}
@@ -18,7 +18,7 @@ exports.menuGetController = async (req, res, next) => {
 };
 
 exports.menuAddPostController = async (req, res, next) => {
-	let { addProductName, addProductPrice } = req.body;
+	let { addProductName, addProductPrice, category } = req.body;
 	let onlyPrice = Number(addProductPrice).toFixed(2);
 	addProductPrice = "$" + onlyPrice;
 
@@ -36,6 +36,7 @@ exports.menuAddPostController = async (req, res, next) => {
 			name: addProductName,
 			image: req.file.filename,
 			price: addProductPrice,
+			category,
 		});
 
 		await newMenu.save();
