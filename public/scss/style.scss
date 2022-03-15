@@ -1089,6 +1089,9 @@ html {
 							position: absolute;
 							left: -42px;
 							z-index: 99;
+							height: 86px;
+							width: 86px;
+							border-radius: 50%;
 						}
 						.inner-section {
 							@include flex(space-between, center);

@@ -19,39 +19,25 @@
         </div>
         <div class="container-sm">
             <div class="full-row">
-                <div class="single-menu">
-                    <img src="/images/menu-1.png" alt="menu">
-                    <div class="inner-section">
-                        <span>American Roasted GREED</span>
-                        <span>$11.00</span>
-                    </div>
-                </div>
-                <div class="single-menu">
-                    <img src="/images/menu-3.png" alt="menu">
-                    <div class="inner-section">
-                        <span>CAFÈ AU LAIT Coffee</span>
-                        <span>$12.00</span>
-                    </div>
-                </div>
-                <div class="single-menu">
-                    <img src="/images/menu-2.png" alt="menu">
-                    <div class="inner-section">
-                        <span>Pure Roasted GREED</span>
-                        <span>$8.20</span>
-                    </div>
-                </div>
-                <div class="single-menu">
-                    <img src="/images/menu-5.png" alt="menu">
-                    <div class="inner-section">
-                        <span>JAPANESE COFFEE GREED</span>
-                        <span>$10.50</span>
-                    </div>
-                </div>
+                <% if(menus.length == 0){ %>
+                    <p style="color: #c7a17a">No menu available right now.</p>
+                <% } else { %>
+                    <% menus.length > 0 && menus.forEach(menu => { %> 
+                        <!-- single menu showing -->
+                        <div class="single-menu">
+                            <img src="/uploads/<%= menu.image %> " alt="menu">
+                            <div class="inner-section">
+                                <span><%= menu.name %> </span>
+                                <span><%= menu.price %> </span>
+                            </div>
+                        </div>
+                    <% }) %> 
+                <% } %>   
             </div>
         </div>
         <div class="menu-footer">
             <% if(user && user.role == "admin") { %> 
-                <a onclick="revealModal();" href="javascript:void(0)">Add Menu</a>
+                <a onclick="revealModal();" href="javascript:void(0)">Add New Menu</a>
             <% } %> 
         </div>
     </section>
@@ -68,7 +54,7 @@
                     <div class="prod-des">
                         <input type="file" name="menu" required>
                         <input name="addProductName" type="text" id="addProductName" placeholder="Enter product name" required >
-                        <input name="addProductPrice" type="number" id="addProductPrice" placeholder="Enter product price" required >
+                        <input name="addProductPrice" type="number" id="addProductPrice" placeholder="Enter product price" step="any" required >
                     </div>
                 </div>
                 <div class="modal-footer">

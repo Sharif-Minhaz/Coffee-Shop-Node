@@ -2,11 +2,18 @@ const Menu = require("../models/Menu.model");
 const Flash = require("../utils/Flash");
 const fs = require("fs");
 
-exports.menuGetController = (req, res, next) => {
+exports.menuGetController = async (req, res, next) => {
+	let menus;
+	try {
+		menus = await Menu.find();
+	} catch (err) {
+		next(err);
+	}
 	res.render("pages/menu/menu", {
 		title: "Coffee Shop | Menu",
 		flashMessage: Flash.getMessage(req),
 		orders: req.session.orders,
+		menus,
 	});
 };
 
