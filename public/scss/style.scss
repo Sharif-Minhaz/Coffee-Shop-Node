@@ -1849,7 +1849,9 @@ html {
 								padding: 6px 10px;
 								font-size: 15px;
 								&:focus {
-									outline: 1px solid $highlight;
+									border-color: $highlight;
+									// border-color: transparent;
+									outline-color: $highlight;
 								}
 							}
 							input[type="file"] {
