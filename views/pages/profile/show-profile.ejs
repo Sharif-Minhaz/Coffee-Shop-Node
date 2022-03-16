@@ -46,6 +46,7 @@
                             <th>Date</th>
                             <th>Time</th>
                             <th>Booked</th>
+                            <th>Status</th>
                         </tr>
                         <% if(reservation) { %> 
                             <% let i = 0 %> 
@@ -63,6 +64,7 @@
                                     <td><%= (reserve.date).toDateString() %></td>
                                     <td><%= reserve.time %></td>
                                     <td><%= (reserve.createdAt).toDateString() + " " + (reserve.createdAt).toLocaleTimeString() %></td>
+                                    <td id="booking-status"><span><%= reserve.status %></span></td>
                                 </tr>
                             <% }) %> 
                         <% } else { %>
@@ -77,11 +79,9 @@
     </section>
 
     <%- include("../../partials/footer.ejs") %>
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"
-        integrity="sha512-Gs+PsXsGkmr+15rqObPJbenQ2wB3qYvTHuJO6YJzPe/dTLvhy0fmae2BcnaozxDo5iaF8emzmCZWbQ1XXiX2Ig=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer"
-    ></script>
+    <script>
+        const bookingStatus = document.querySelector("#booking-status span");
+        (bookingStatus.innerHTML == "accepted") ? bookingStatus.classList.add("accepted") : bookingStatus.classList.remove("accepted");
+    </script>
 </body>
 </html>
