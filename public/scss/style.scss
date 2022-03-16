@@ -1070,6 +1070,26 @@ html {
 					}
 				}
 			}
+			.controls {
+				display: flex;
+				justify-content: center;
+				border-bottom: 1px solid $highlight;
+				margin: 30px 20px 40px 20px;
+				.filter {
+					all: unset;
+					color: white;
+					width: 80px;
+					text-align: center;
+					cursor: pointer;
+					text-transform: uppercase;
+					border: 1px solid $highlight;
+					padding: 5px 9px;
+					transition: 0.3s;
+					&:first-child {
+						color: $highlight;
+					}
+				}
+			}
 			.container-sm {
 				@include container-sm();
 				.full-row {
