@@ -14,8 +14,8 @@
                 coals in a brazier. given an opportunity to sample.
             </p>
             <div class="intro-btns">
-                <button>Testy Coffee</button>
-                <button>Read More</button>
+                <button onclick="window.location='/menu/all';">Testy Coffee</button>
+                <a href="#about"><button>Read More</button></a>
             </div>
             <div class="social-media">
                 <span>
@@ -107,7 +107,7 @@
         </div>
         <div class="menu-footer">
             <a href="/menu/all">view all menu</a>
-            <a href="#">Other Products</a>
+            <a href="#other-product">Other Products</a>
         </div>
     </section>
     <!-- buy coffee machine -->
@@ -143,7 +143,7 @@
                     <% products.forEach((product) => { %> 
                         <div class="single-item">
                             <div class="img">
-                                <img src="uploads/<%= product.image %>" alt="item">
+                                <img id="product-main-image" src="uploads/<%= product.image %>" alt="item">
                             </div>
                             <div class="item-des">
                                 <span><%= product.name %></span>
@@ -307,7 +307,7 @@
                         <input name="productPrice" type="text" id="price" readonly >
                         <div class="inc-dec">
                             <span> - </span>
-                            <input name="productCount" type="number" value="1" readonly>
+                            <input name="productCount" type="number" value="1" readonly >
                             <span> + </span>
                         </div>
                     </div>
@@ -330,12 +330,14 @@
                     <div class="prod-img-machine">
                         <img id="prod-img" src="/images/product-big.png" alt="prod-img">
                     </div>
+                    <!-- hidden input for passing image source -->
+                    <input type="hidden" value="/images/product-big.png" id="img-src-machine" name="imageMenu" >
                     <div class="prod-des">
-                        <h3>COFFEE MACHINE FOR HOME</h3>
-                        <input id="price-machine" value="$150.00" disabled>
+                        <input name="productName" value="COFFEE MACHINE FOR HOME">
+                        <input id="price-machine" name="productPrice" value="$150.00" readonly>
                         <div class="inc-dec-machine">
                             <span id="min"> - </span>
-                            <input type="number" value="1" id="count-res" disabled>
+                            <input name="productCount" type="number" value="1" id="count-res" readonly>
                             <span id="inc"> + </span>
                         </div>
                     </div>
@@ -345,7 +347,37 @@
                 </div>
             </form>
         </div>
-    </div>    
+    </div>   
+    <!-- modal for product order -->
+    <div class="order-modal product-plus">
+        <div class="modal-wrapper">
+            <form class="modal-section" action="/checkout" method="post">
+                <div class="heading">
+                    <h3>ORDER NOW!</h3>
+                    <span id="product-modal-close"><i class="bi bi-x-lg"></i></span>
+                </div>
+                <div class="modal-body">
+                    <div class="prod-img-div">
+                        <img id="product-img-plus" src="" alt="prod-img">
+                    </div>
+                    <!-- hidden input for passing image source -->
+                    <input type="hidden" value="" id="img-src-product" name="imageMenu" >
+                    <div class="prod-des">
+                        <input name="productName" type="text" id="placeProductName" readonly >
+                        <input name="productPrice" type="text" id="productPrice" readonly >
+                        <div class="inc-dec-product">
+                            <span> - </span>
+                            <input name="productCount" type="number" value="1" readonly >
+                            <span> + </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" value="BUY NOW">
+                </div>
+            </form>
+        </div>
+    </div> 
     
     <%- include("../partials/footer.ejs") %>
     <script src="/dist/js/owl.carousel.min.js"></script>

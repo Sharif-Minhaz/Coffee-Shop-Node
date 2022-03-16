@@ -24,6 +24,7 @@ exports.homeGetController = async (req, res, next) => {
 			errors: {},
 			orders: {},
 			menus,
+			products,
 		});
 	} catch (err) {
 		next(err);

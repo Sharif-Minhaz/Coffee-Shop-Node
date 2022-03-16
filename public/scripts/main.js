@@ -145,6 +145,56 @@ window.onload = () => {
 	// hide coffee machine modal by clicking outside
 	closeModalClickOutside(".coffee-modal", ".coffee-modal-wrapper", ".coffee-modal-section");
 
+	// product plus modal
+	const productModal = document.querySelector(".product-plus");
+	const singleProduct = document.querySelectorAll(".single-item");
+	const orderProductCount = document.querySelector(".inc-dec-product input");
+	const productPrice = document.getElementById("productPrice");
+
+	let singleProductPrice;
+	singleProduct.forEach(function (product) {
+		product.addEventListener("click", function () {
+			singleProductPrice = (this.lastElementChild.children[1].innerHTML).substring(8);
+			productPrice.value = singleProductPrice;
+			document.getElementById("product-img-plus").src =
+				this.firstElementChild.firstElementChild.src;
+			document.getElementById("img-src-product").value =
+				this.firstElementChild.firstElementChild.src;
+			document.getElementById("placeProductName").value =
+				this.lastElementChild.firstElementChild.innerHTML;
+			productModal.style.display = "block";
+			orderProductCount.value = 1;
+		});
+	});
+
+	// order modal close by clicking x
+	const orderProductModalCls = document.getElementById("product-modal-close");
+	orderProductModalCls.addEventListener("click", function () {
+		productModal.style.display = "none";
+	});
+
+	// hidden modal feature
+	closeModalClickOutside(".product-plus", ".modal-wrapper", ".modal-section");
+
+	// product count activation
+	const decProduct = document.querySelector(".inc-dec-product span:first-child");
+	const incProduct = document.querySelector(".inc-dec-product span:nth-child(3)");
+
+	decProduct.addEventListener("click", function () {
+		let count = Number(orderProductCount.value);
+		if (count > 1) {
+			orderProductCount.value = count - 1;
+			productPrice.value = "$" + ((count - 1) * singleProductPrice.substring(1)).toFixed(2);
+		}
+	});
+	incProduct.addEventListener("click", function () {
+		let count = Number(orderProductCount.value);
+		if (count < 50) {
+			orderProductCount.value = count + 1;
+			productPrice.value = "$" + ((count + 1) * singleProductPrice.substring(1)).toFixed(2);
+		}
+	});
+
 	// hide sidebar when clicking outside
 	darkWrapper.addEventListener(
 		"click",

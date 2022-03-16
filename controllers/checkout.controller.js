@@ -1,5 +1,9 @@
 const Flash = require("../utils/Flash");
 
+exports.checkoutGetController = (req, res, next) => {
+	res.redirect('/');
+}
+
 exports.checkoutPostController = async (req, res, next) => {
 	res.render("pages/checkout/checkout", {
 		title: "Checkout Product",

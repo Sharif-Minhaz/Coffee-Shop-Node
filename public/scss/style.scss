@@ -383,9 +383,8 @@ html {
 											font-size: 17px;
 											margin-right: 7px;
 											&:first-child {
-												padding: 1px 5px;
 												text-align: center;
-												margin-bottom: 4px;
+												margin: 7px;
 												@include sm-heading();
 											}
 											&:nth-child(2) {
@@ -1232,6 +1231,7 @@ html {
 						padding: 110px 20px 40px 20px;
 						transition: 0.3s background-color;
 						height: 470px;
+						cursor: pointer;
 						.img {
 							text-align: center;
 							margin-bottom: 30px;
@@ -1258,10 +1258,6 @@ html {
 						&:hover {
 							& {
 								background-color: $sec-bg;
-							}
-							.tools {
-								opacity: 1;
-								visibility: visible;
 							}
 							.img {
 								transform: scale(1.08);
@@ -1635,6 +1631,99 @@ html {
 								color: $main-bg;
 							}
 							.inc-dec {
+								display: flex;
+								span {
+									@include counter();
+								}
+								input[type="number"] {
+									@include counter();
+									width: 43px;
+									padding-right: 5px;
+									-moz-appearance: textfield;
+									color: $main-bg;
+									&:focus {
+										outline: none;
+									}
+								}
+								input::-webkit-outer-spin-button,
+								input::-webkit-inner-spin-button {
+									-webkit-appearance: none;
+								}
+							}
+						}
+					}
+					.modal-footer {
+						text-align: right;
+						input {
+							@include big-heading();
+							border: none;
+							&:hover {
+								cursor: pointer;
+							}
+						}
+					}
+				}
+			}
+		}
+		.product-plus {
+			@include modal();
+			.modal-wrapper {
+				@include flex();
+				height: 100vh;
+				.modal-section {
+					background-color: $font-color;
+					padding: 30px;
+					border-radius: 4px;
+					width: 400px;
+					height: 360px;
+					.heading {
+						@include flex(space-between, center);
+						h3 {
+							margin-bottom: 10px;
+							font: 500 23px $bebas;
+						}
+						span {
+							cursor: pointer;
+							margin-bottom: 10px;
+						}
+					}
+					.modal-body {
+						display: flex;
+						height: 69.5%;
+						border: 1px solid $border-color-lite;
+						margin-bottom: 20px;
+						padding: 20px;
+						.prod-img-div {
+							width: 50%;
+							display: flex;
+							align-items: center;
+							#product-img-plus {
+								width: 110px;
+							}
+						}
+						.prod-des {
+							width: 50%;
+							height: 100%;
+							@include flex();
+							flex-direction: column;
+							row-gap: 20px;
+							input[id="placeProductName"] {
+								font: 500 22px $bebas;
+								text-align: center;
+								border: none;
+								background: transparent;
+								box-shadow: none;
+								outline: none;
+								color: $dark-bat;
+							}
+							#productPrice {
+								text-align: center;
+								width: 124px;
+								font-size: 20px;
+								padding: 7px 5px;
+								color: $main-bg;
+							}
+							.inc-dec-product {
 								display: flex;
 								span {
 									@include counter();
