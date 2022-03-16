@@ -139,48 +139,19 @@
                 <a href="/menu/all">VIEW ALL</a>
             </div>
             <div class="full-row">
-                <div class="single-item">
-                    <div class="tools">
-                        <span><i class="bi bi-basket-fill"></i></span>
-                        <span><i class="bi bi-eye"></i></span>
-                        <span><i class="bi bi-heart"></i></span>
-                    </div>
-                    <div class="img">
-                        <img src="/images/pp-1.png" alt="item">
-                    </div>
-                    <div class="item-des">
-                        <span>BRAZIL COFFEE GREED</span>
-                        <span>PRICE - $325.00</span>
-                    </div>
-                </div>
-                <div class="single-item">
-                    <div class="tools">
-                        <span><i class="bi bi-basket-fill"></i></span>
-                        <span><i class="bi bi-eye"></i></span>
-                        <span><i class="bi bi-heart"></i></span>
-                    </div>
-                    <div class="img">
-                        <img src="/images/pp-2.png" alt="item">
-                    </div>
-                    <div class="item-des">
-                        <span>BRAZIL COFFEE GREED</span>
-                        <span>PRICE - $325.00</span>
-                    </div>
-                </div>
-                <div class="single-item">
-                    <div class="tools">
-                        <span><i class="bi bi-basket-fill"></i></span>
-                        <span><i class="bi bi-eye"></i></span>
-                        <span><i class="bi bi-heart"></i></span>
-                    </div>
-                    <div class="img">
-                        <img src="/images/pp-3.png" alt="item">
-                    </div>
-                    <div class="item-des">
-                        <span>BRAZIL COFFEE GREED</span>
-                        <span>PRICE - $325.00</span>
-                    </div>
-                </div>
+                <% if(products) { %>
+                    <% products.forEach((product) => { %> 
+                        <div class="single-item">
+                            <div class="img">
+                                <img src="uploads/<%= product.image %>" alt="item">
+                            </div>
+                            <div class="item-des">
+                                <span><%= product.name %></span>
+                                <span>PRICE - <%= product.price %> </span>
+                            </div>
+                        </div>
+                    <% }) %> 
+                <% } %>  
             </div>
         </div>
     </section>

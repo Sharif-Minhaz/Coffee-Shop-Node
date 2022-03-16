@@ -15,7 +15,7 @@
     <section id="menu">
         <div class="sm-heading">
             <span>MENU</span>
-            <h1>CAFE ALL MENU</h1>
+            <h1>CAFE ALL MENU & PRODUCT</h1>
         </div>
         <div class="container-sm">
             <div class="full-row">
@@ -24,7 +24,7 @@
                 <% } else { %>
                     <% menus.length > 0 && menus.forEach(menu => { %> 
                         <!-- single menu showing -->
-                        <div class="single-menu">
+                        <div class="single-menu" data-category="<%= menu.category %>">
                             <img src="/uploads/<%= menu.image %> " alt="menu">
                             <div class="inner-section">
                                 <span><%= menu.name %> </span>

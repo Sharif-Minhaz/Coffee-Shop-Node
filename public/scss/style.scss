@@ -1211,31 +1211,31 @@ html {
 						position: relative;
 						padding: 110px 20px 40px 20px;
 						transition: 0.3s background-color;
-						.tools {
-							display: flex;
-							gap: 10px;
-							position: absolute;
-							top: 30px;
-							left: 50%;
-							transform: translate(-50%);
-							opacity: 0;
-							visibility: hidden;
-							transition: 0.5s all;
-							span {
-								color: $muted;
-								width: 40px;
-								height: 40px;
-								border-radius: 4px;
-								@include flex();
-								border: 1px solid $muted;
-								transition: 0.3s all;
-								cursor: pointer;
-								&:hover {
-									border-color: $font-color;
-									color: $font-color;
-								}
-							}
-						}
+						// .tools {
+						// 	display: flex;
+						// 	gap: 10px;
+						// 	position: absolute;
+						// 	top: 30px;
+						// 	left: 50%;
+						// 	transform: translate(-50%);
+						// 	opacity: 0;
+						// 	visibility: hidden;
+						// 	transition: 0.5s all;
+						// 	span {
+						// 		color: $muted;
+						// 		width: 40px;
+						// 		height: 40px;
+						// 		border-radius: 4px;
+						// 		@include flex();
+						// 		border: 1px solid $muted;
+						// 		transition: 0.3s all;
+						// 		cursor: pointer;
+						// 		&:hover {
+						// 			border-color: $font-color;
+						// 			color: $font-color;
+						// 		}
+						// 	}
+						// }
 						.img {
 							text-align: center;
 							margin-bottom: 30px;

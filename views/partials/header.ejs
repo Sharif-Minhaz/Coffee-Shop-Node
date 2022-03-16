@@ -38,7 +38,7 @@
 				</li>
 				<li>
 					<i class="bi bi-basket2-fill"></i>
-					<% if(user) { %>
+					<% if(user && orders.length > 0) { %>
 						<span><%= orders.length %></span> 
 					<% } %> 
 				</li>

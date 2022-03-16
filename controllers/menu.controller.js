@@ -5,7 +5,7 @@ const fs = require("fs");
 exports.menuGetController = async (req, res, next) => {
 	let menus;
 	try {
-		menus = await Menu.find({category: "menu"});
+		menus = await Menu.find();
 	} catch (err) {
 		next(err);
 	}

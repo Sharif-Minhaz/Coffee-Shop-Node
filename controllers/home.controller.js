@@ -5,6 +5,7 @@ const Flash = require("../utils/Flash");
 exports.homeGetController = async (req, res, next) => {
 	try {
 		let menus = await Menu.find({ category: "menu" }).limit(6);
+		let products = await Menu.find({ category: "product" }).limit(3);
 		if (req.user) {
 			return res.render("pages/home", {
 				title: "Coffee Shop",
@@ -13,6 +14,7 @@ exports.homeGetController = async (req, res, next) => {
 				errors: {},
 				orders: req.session.orders,
 				menus,
+				products,
 			});
 		}
 		res.render("pages/home", {
@@ -41,6 +43,7 @@ exports.homePostController = async (req, res, next) => {
 		await order.save();
 		req.flash("success", "Order placed successfully");
 		let menus = await Menu.find({ category: "menu" }).limit(6);
+		let products = await Menu.find({ category: "products" }).limit(3);
 		let orders = await Checkout.find({ user: req.user._id });
 		req.session.orders = orders;
 		res.render("pages/home", {
@@ -50,6 +53,7 @@ exports.homePostController = async (req, res, next) => {
 			errors: {},
 			orders: req.session.orders,
 			menus,
+			products,
 		});
 	} catch (err) {
 		next(err);
