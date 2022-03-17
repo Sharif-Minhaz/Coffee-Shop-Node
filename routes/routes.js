@@ -6,6 +6,7 @@ const menuRoute = require("./menu.route");
 const reservationRoute = require("./reservation.route");
 const subscribeRoute = require("./subscribe.route");
 const checkoutRoute = require("./checkout.route");
+const dashboardRoute = require("./dashboard.route");
 
 const routes = [
 	{
@@ -39,6 +40,10 @@ const routes = [
 	{
 		path: "/uploads",
 		handler: uploadRoute,
+	},
+	{
+		path: "/dashboard",
+		handler: dashboardRoute,
 	},
 ];
 

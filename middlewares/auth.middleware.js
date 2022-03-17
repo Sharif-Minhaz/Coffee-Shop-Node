@@ -31,8 +31,9 @@ exports.isUnAuthenticated = (req, res, next) => {
 };
 
 exports.isAdmin = (req, res, next) => {
-	if(req.session.user.role != "admin") {
+	if (req.session.user.role != "admin") {
+		req.flash("fail", "You are not an admin");
 		res.redirect("/");
 	}
 	next();
-}
+};

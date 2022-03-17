@@ -1,7 +1,7 @@
 const Flash = require("../utils/Flash");
 
 exports.checkoutGetController = (req, res, next) => {
-	res.redirect('/');
+	res.redirect('/menu/all');
 }
 
 exports.checkoutPostController = async (req, res, next) => {

@@ -18,7 +18,7 @@
 					<li><a href="#footer">Contact</a></li>
 				<% } %>
 				<% if(user && user.role == "admin") { %>
-					<li><a href="/">Dashboard</a></li>
+					<li><a href="/dashboard">Dashboard</a></li>
 				<% } %>  
 				<li class="user-det">
 					<% if (!user) { %>
@@ -40,7 +40,7 @@
 				</li>
 				<li>
 					<i class="bi bi-basket2-fill"></i>
-					<% if(user && orders.length > 0) { %>
+					<% if(user && orders && orders.length > 0) { %>
 						<span><%= orders.length %></span> 
 					<% } %> 
 				</li>
@@ -63,7 +63,7 @@
 					<li><a href="#other-product">Shop</a></li>
 					<li><a href="#footer">Contact</a></li>
 					<% if(user && user.role == "admin") { %>
-						<li><a href="/">Dashboard</a></li>
+						<li><a href="/dashboard">Dashboard</a></li>
 					<% } %>  
 					<li class="user-det">
 						<% if (!user) { %>
@@ -89,7 +89,7 @@
 					<i id="close-checkout" class="bi bi-x-circle-fill"></i>
 				</div>
 				<ul>
-					<% if(user) { %>
+					<% if(user && orders) { %>
 						<% orders.forEach((order) => { %>
 							<li>
 								<div class="checkout-img">
