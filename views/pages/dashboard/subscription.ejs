@@ -11,13 +11,43 @@
         </section>
     </header>
     <section id="all-subscribed-mail">
-        <ul>
-            <% if(subscribedMail) { %> 
-                <% subscribedMail.forEach((mail) => { %>
-                    <li><%= mail.subEmail %></li>
-                <% }) %>  
-            <% } %>
-        </ul> 
+        <div class="sm-heading">
+            <span>SUBSCRIPTION</span>
+            <h1>SUBSCRIBED MAIL</h1>
+        </div> 
+        <div class="container-sm">
+            <div class="full-row">
+                <div class="table-holder">
+                    <table>
+                        <tr>
+                            <th>#</th>
+                            <th>Email</th>
+                            <th>Subscribe time</th>
+                            <th>Status</th>
+                        </tr>
+                        <% if(subscribedMail) { %> 
+                            <% let i = 0 %> 
+                            <% subscribedMail.forEach((mail) => { %> 
+                                <% i++ %>
+                                <tr>
+                                    <td><%= i %></td>
+                                    <td><%= mail.subEmail %></td>  
+                                    <td><%= (mail.createdAt) %></td>
+                                    <td id="mail-status">
+                                        <a href="mailto:<%= mail.subEmail %>"><span>Compose</span></a>
+                                        <a href="/dashboard/deleteMail/<%= mail._id %>"><span>Delete</span></a>
+                                    </td>
+                                </tr>
+                            <% }) %> 
+                        <% } else { %>
+                            <tr>
+                                No subscribed mail found
+                            </tr>
+                        <% } %>  
+                    </table>
+                </div>
+            </div>
+        </div>
     </section>
     <%- include("./side-panel.ejs") %> 
     <%- include("../../partials/footer.ejs") %>

@@ -1533,8 +1533,7 @@ html {
 			}
 		}
 		#reservation-details {
-			margin-top: 50px;
-			margin-bottom: 50px;
+			margin: 50px 0 50px 0;
 			.sm-heading {
 				@include flex();
 				flex-direction: column;
@@ -1670,6 +1669,78 @@ html {
 							.blog-img {
 								img {
 									transform: scale(1.1);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		#all-subscribed-mail {
+			margin: 50px 0 50px 0;
+			.sm-heading {
+				@include flex();
+				flex-direction: column;
+				span {
+					@include sm-heading();
+					margin-bottom: 20px;
+				}
+				h1 {
+					color: $font-color;
+					margin-bottom: 30px;
+					font: {
+						weight: 500;
+						family: $bebas;
+						size: 55px;
+					}
+				}
+			}
+			.container-sm {
+				@include container-sm();
+				.full-row {
+					@include flex();
+					width: 100%;
+					.table-holder {
+						overflow-x: auto;
+						table {
+							font-family: arial, sans-serif;
+							border-collapse: collapse;
+							width: 100%;
+							tr {
+								color: $input-field;
+								td {
+									border: 1px solid $highlight;
+									text-align: left;
+									padding: 12px;
+									min-width: 120px;
+								}
+								#mail-status {
+									a {
+										&:first-child {
+											margin-right: 8px;
+										}
+										span {
+											display: inline-block;
+											color: $font-color;
+											background-color: $valid-color;
+											border-radius: 9px;
+											padding: 2px 13px;
+											transition: 0.3s;
+											&:hover { 
+												color: rgb(233, 233, 233);
+											}
+										}
+										&:nth-child(2) span {
+											background-color: $invalid-color;
+										}
+									}
+								}
+								th {
+									@extend td;
+									color: $highlight;
+								}
+								&:nth-child(even) {
+									background-color: $sec-bg;
 								}
 							}
 						}

@@ -16,3 +16,13 @@ exports.subscribeGetController = async (req, res, next) => {
 		next(err);
 	}
 };
+
+exports.deleteMailGetController = async (req, res, next) => {
+	const mailId = req.params.id;
+	try {
+		await Subscribe.findByIdAndDelete(mailId);
+		res.redirect("/dashboard/subscription");
+	} catch (err) {
+		next(err);
+	}
+};
