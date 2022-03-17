@@ -32,13 +32,17 @@ exports.homeGetController = async (req, res, next) => {
 };
 
 exports.homePostController = async (req, res, next) => {
-	const { checkoutProductName, productImg, checkoutPrice, quantity } = req.body;
+	const { checkoutProductName, productImg, checkoutPrice, quantity, name, address, phone } =
+		req.body;
 	let order = new Checkout({
 		user: req.user._id,
 		checkoutProductName,
 		productImg,
 		checkoutPrice,
 		quantity,
+		name,
+		address,
+		phone,
 	});
 	try {
 		await order.save();

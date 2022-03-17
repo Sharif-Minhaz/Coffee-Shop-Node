@@ -69,6 +69,12 @@ window.onload = () => {
 	const orderModal = document.querySelector(".order-modal");
 	const orderCount = document.querySelector(".inc-dec input");
 
+	// order modal close by clicking x
+	let orderModalCls = document.getElementById("order-modal-close");
+	orderModalCls.addEventListener("click", function () {
+		orderModal.style.display = "none";
+	});
+	
 	let singleMenuPrice;
 	singleMenu.forEach(function (menu) {
 		menu.addEventListener("click", function () {
@@ -81,12 +87,6 @@ window.onload = () => {
 			orderModal.style.display = "block";
 			orderCount.value = 1;
 		});
-	});
-
-	// order modal close by clicking x
-	const orderModalCls = document.getElementById("order-modal-close");
-	orderModalCls.addEventListener("click", function () {
-		orderModal.style.display = "none";
 	});
 
 	// hidden modal feature
@@ -154,7 +154,7 @@ window.onload = () => {
 	let singleProductPrice;
 	singleProduct.forEach(function (product) {
 		product.addEventListener("click", function () {
-			singleProductPrice = (this.lastElementChild.children[1].innerHTML).substring(8);
+			singleProductPrice = this.lastElementChild.children[1].innerHTML.substring(8);
 			productPrice.value = singleProductPrice;
 			document.getElementById("product-img-plus").src =
 				this.firstElementChild.firstElementChild.src;

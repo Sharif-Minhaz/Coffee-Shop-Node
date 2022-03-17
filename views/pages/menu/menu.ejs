@@ -30,7 +30,7 @@
                     <% menus.length > 0 && menus.forEach(menu => { %> 
                         <!-- single menu showing -->
                         <div class="single-menu" data-category="<%= menu.category %>">
-                            <img src="/uploads/<%= menu.image %> " alt="menu">
+                            <img src="/uploads/<%= menu.image %>" alt="menu">
                             <div class="inner-section">
                                 <span><%= menu.name %> </span>
                                 <span><%= menu.price %> </span>
@@ -75,9 +75,44 @@
             </form>
         </div>
     </div>
+    <!-- modal for menu order -->
+    <div class="order-modal">
+        <div class="modal-wrapper">
+            <form class="modal-section" action="/checkout" method="post">
+                <div class="heading">
+                    <h3>ORDER NOW!</h3>
+                    <span id="order-modal-close" onclick="clsModal();"><i class="bi bi-x-lg"></i></span>
+                </div>
+                <div class="modal-body">
+                    <div class="prod-img-div">
+                        <img id="prod-img" src="" alt="prod-img">
+                    </div>
+                    <!-- hidden input for passing image source -->
+                    <input type="hidden" value="" id="img-src" name="imageMenu" >
+                    <div class="prod-des">
+                        <input name="productName" type="text" id="placeName" readonly >
+                        <input name="productPrice" type="text" id="price" readonly >
+                        <div class="inc-dec">
+                            <span> - </span>
+                            <input name="productCount" type="number" value="1" readonly >
+                            <span> + </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" value="BUY NOW">
+                </div>
+            </form>
+        </div>
+    </div>
 
     <%- include("../../partials/footer.ejs") %>
     <script>
+        const orderModal = document.querySelector(".order-modal");
+        function clsModal() {
+            orderModal.style.display = "none";
+        };
+
         const addMenuModal = document.querySelector(".add-menu-modal");
         function closeModal() {
             addMenuModal.style.display = 'none';
