@@ -1,11 +1,26 @@
 <%- include("../../partials/head.ejs") %>
 </head>
 <body>
-    <%- include("../../partials/alert.ejs") %>
-    <%- include("../../partials/header.ejs") %>
-
-    
-
+        <%- include("../../partials/alert.ejs") %>
+        <%- include("../../partials/header.ejs") %>
+        <section id="admin-intro">
+            <div class="breadcrumb">
+                <h1>ADMIN DASHBOARD</h1>
+                <p><span>HOME</span> / DASHBOARD</p>
+            </div>
+        </section>
+        
+    </header>
+    <%- include("./side-panel.ejs") %> 
     <%- include("../../partials/footer.ejs") %>
+    <script>
+        const adminOpt = document.getElementById("reveal-admin-opt");
+        adminOpt.addEventListener("click", function() {
+            let revealOptBtn = this.firstElementChild;
+            revealOptBtn.classList.toggle("bi-caret-right-fill");
+            revealOptBtn.classList.toggle("bi-caret-left-fill");
+            document.querySelector("aside").classList.toggle("back-opt");
+        })
+    </script>
 </body>
 </html>
