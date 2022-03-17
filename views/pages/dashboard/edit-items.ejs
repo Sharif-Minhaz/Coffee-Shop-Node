@@ -1,0 +1,97 @@
+<%- include("../../partials/head.ejs") %>
+</head>
+<body>
+        <%- include("../../partials/alert.ejs") %>
+        <%- include("../../partials/header.ejs") %>
+        <section id="admin-intro">
+            <div class="breadcrumb">
+                <h1>ADMIN DASHBOARD</h1>
+                <p><span>HOME</span> / DASHBOARD / EDIT ITEMS</p>
+            </div>
+        </section>
+    </header>
+    <section id="menu">
+        <div class="sm-heading">
+            <span>EDIT ITEMS</span>
+            <h1>MODIFY ALL ITEMS</h1>
+        </div> 
+        <div class="controls">           
+            <button class="filter" title="All items">All</button>
+            <button class="filter" title="Only menus">Menu</button>
+            <button class="filter" title="Only products">Product</button>
+        </div>
+        <div class="container-sm">
+            <div class="full-row">
+                <% if(menus.length == 0){ %>
+                    <p style="color: #c7a17a">No menu available right now.</p>
+                <% } else { %>
+                    <% menus.length > 0 && menus.forEach(menu => { %> 
+                        <!-- single menu showing -->
+                        <div class="single-menu" data-category="<%= menu.category %>">
+                            <img src="/uploads/<%= menu.image %>" alt="menu">
+                            <div class="inner-section">
+                                <span><%= menu.name %> </span>
+                                <span><%= menu.price %> </span>
+                            </div>
+                            <!-- edit option -->
+                            <div class="edit-opt">
+                                <a href="/dashboard/deleteItem/<%= menu._id %>"><span title="Delete Product"><i class="bi bi-trash"></i></span></a>
+                                <span title="Edit Product"><i class="bi bi-pen"></i></span>
+                            </div>
+                        </div>
+                    <% }) %> 
+                <% } %>   
+            </div>
+        </div>
+    </section>
+    <%- include("./side-panel.ejs") %> 
+    <%- include("../../partials/footer.ejs") %>
+    <script>
+        const adminOpt = document.getElementById("reveal-admin-opt");
+        adminOpt.addEventListener("click", function() {
+            let revealOptBtn = this.firstElementChild;
+            revealOptBtn.classList.toggle("bi-caret-right-fill");
+            revealOptBtn.classList.toggle("bi-caret-left-fill");
+            document.querySelector("aside").classList.toggle("back-opt");
+        })
+        // <---------- filter --------->
+        let all = document.querySelectorAll("div[data-category]");
+        let menu = document.querySelectorAll("div[data-category='menu']");
+        let product = document.querySelectorAll("div[data-category='product']");
+        let filter = document.getElementsByClassName("filter");
+        // all items
+        filter[0].addEventListener("click", function() {
+            activeDeactive(0, 1, 2);
+            returningItems();
+        })
+        // only menu
+        filter[1].addEventListener("click", function() {
+            activeDeactive(1, 0, 2);
+            returningItems();
+            for (let i = 0; i < product.length; i++) {
+                product[i].style.display = "none";
+            }
+        })
+        // only product
+        filter[2].addEventListener("click", function() {
+            activeDeactive(2, 0, 1);
+            returningItems();
+            for (let i = 0; i < menu.length; i++) {
+                menu[i].style.display = "none";
+            }
+        })
+        // returning all products and items
+        function returningItems() {
+            for (let i = 0; i < all.length; i++) {
+                all[i].style.display="flex";
+            }
+        }
+        // active and deactive filter
+        function activeDeactive(active, deactive1, deactive2) {
+            filter[active].style.color = "#C7A17A";
+            filter[deactive1].style.color = "#ffffff";
+            filter[deactive2].style.color = "#ffffff";
+        }
+    </script>
+</body>
+</html>

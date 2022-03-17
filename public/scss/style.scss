@@ -1234,6 +1234,40 @@ html {
 						&:hover .inner-section::before {
 							width: 100%;
 						}
+						.edit-opt {
+							position: absolute;
+							border: 1px solid $grey;
+							bottom: -34px;
+							opacity: 0;
+							visibility: hidden;
+							left: 50%;
+							transform: translate(-50%);
+							border: 1px solid $border-color;
+							border-bottom: none;
+							padding: 5px 12px;
+							color: $grey;
+							transition: 0.2s;
+							a {
+								color: unset;
+								span {
+									padding: 5px;
+									transition: 0.2s;
+									&:hover {
+										color: $invalid-color;
+									}
+								}
+							}
+							span {
+								&:hover {
+									color: $valid-color;
+								}
+							}
+						}
+						&:hover .edit-opt {
+							bottom: 0;
+							opacity: 1;
+							visibility: visible;
+						}
 					}
 				}
 			}
@@ -1716,8 +1750,9 @@ html {
 								}
 								#mail-status {
 									a {
+										display: inline-block;
 										&:first-child {
-											margin-right: 8px;
+											margin: 6px 8px 6px 0;
 										}
 										span {
 											display: inline-block;
@@ -1726,7 +1761,7 @@ html {
 											border-radius: 9px;
 											padding: 2px 13px;
 											transition: 0.3s;
-											&:hover { 
+											&:hover {
 												color: rgb(233, 233, 233);
 											}
 										}
