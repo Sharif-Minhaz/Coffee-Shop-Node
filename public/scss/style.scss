@@ -1898,6 +1898,77 @@ html {
 				}
 			}
 		}
+		// confirmation modal
+		.confirmation-modal {
+			@include modal();
+			align-items: center;
+			justify-content: center;
+			.modal-section {
+				border-radius: 5px;
+				padding: 20px;
+				margin: 20px;
+				max-width: 380px;
+				background-color: $font-color;
+				position: relative;
+				font-size: 14px;
+				span[class="closeModal"] {
+					position: absolute;
+					right: 7px;
+					top: 5px;
+					cursor: pointer;
+				}
+				.heading {
+					@include flex(center, center);
+					span {
+						color: $close-btn;
+						font-size: 80px;
+					}
+				}
+				.modal-body {
+					h4 {
+						text-align: center;
+						font-size: 26px;
+						margin: 10px 0px;
+						font-family: Arial, Helvetica, sans-serif;
+						font-weight: 500;
+						color: #636363;
+					}
+					p {
+						text-align: center;
+						color: #999;
+						font-size: 16px;
+						line-height: 1.2rem;
+						margin: 25px 0;
+					}
+				}
+				.modal-footer {
+					text-align: center;
+					button {
+						all: unset;
+						background-color: #c1c1c1;
+						color: $font-color;
+						border-radius: 4px;
+						transition: all 0.4s;
+						line-height: normal;
+						min-width: 120px;
+						min-height: 40px;
+						border-radius: 3px;
+						margin: 0 5px;
+						cursor: pointer;
+						font-size: 16px;
+						&:first-child:hover {
+							background-color: #a8a8a8;
+						}
+						&:last-child {
+							background-color: $close-btn;
+							&:hover {
+								background-color: #ee3535;
+							}
+						}
+					}
+				}
+			}
+		}
 		.product-plus {
 			@include modal();
 			.modal-wrapper {

@@ -6,6 +6,23 @@ adminOpt.addEventListener("click", function () {
 	document.querySelector("aside").classList.toggle("back-opt");
 });
 
+// close deletion confirm modal
+const confirmModalBtn = document.getElementById("closeConfirmModal");
+const confirmModal = document.getElementsByClassName("confirmation-modal")[0];
+const closeModal = document.getElementsByClassName("closeModal")[0];
+
+confirmModalBtn.addEventListener("click", function () {
+	confirmModal.style.display = "none";
+});
+
+closeModal.addEventListener("click", function () {
+	confirmModal.style.display = "none";
+})
+
+function revealConfirmation() {
+	confirmModal.style.display = "flex";
+}
+
 // modal single menu modal
 const orderModal = document.querySelector(".order-modal-edit");
 function clsModal() {

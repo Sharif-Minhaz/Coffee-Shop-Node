@@ -78,6 +78,5 @@ exports.editItemPostController = async (req, res, next) => {
 	} catch (err) {
 		next(err);
 	}
-
 	res.redirect("/dashboard/edit-item");
 };

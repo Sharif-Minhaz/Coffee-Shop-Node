@@ -36,7 +36,8 @@
                             </div>
                             <!-- edit option -->
                             <div class="edit-opt">
-                                <a href="/dashboard/deleteItem/<%= menu._id %>"><span title="Delete Item"><i class="bi bi-trash"></i></span></a>
+                                <input type="hidden" value="<%= menu._id %>">
+                                <a onclick="revealConfirmation();" href="javascript:void(0);"><span title="Delete Item"><i class="bi bi-trash"></i></span></a>
                                 <span class="edit-product" title="Edit Item"><i class="bi bi-pen"></i></span>
                             </div>
                         </div>
@@ -72,6 +73,23 @@
                     <input type="submit" value="UPDATE INFO">
                 </div>
             </form>
+        </div>
+    </div>
+    <!-- confirmation modal -->
+    <div class="confirmation-modal">
+        <div class="modal-section">
+            <span class="closeModal"><i class="bi bi-x-lg"></i></span>
+            <div class="heading">
+                <span><i class="bi bi-x-circle"></i></span>
+            </div>
+            <div class="modal-body">
+                <h4>Are you sure?</h4>
+                <p>Do you really want to delete this item? This process cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button id="closeConfirmModal">Cancel</button>
+                <button onclick="window.location='/dashboard/deleteItem/'">Delete</button>
+            </div>
         </div>
     </div>
 
