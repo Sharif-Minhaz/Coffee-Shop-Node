@@ -60,12 +60,12 @@
                         <input type="file" id="changeImg" name="changedImg" onchange="uploadFile(this);">
                     </div>
                     <!-- hidden input for passing item id -->
-                    <input type="hidden" value="" id="item-src" name="itemId" >
+                    <input type="hidden" id="prod-main-id" name="itemId" value="" >
                     <div class="prod-des">
                         <p>EDIT NAME & PRICE</p>
                         <input name="productName" type="text" id="placeName" >
                         <input name="productPrice" type="number" step="any" min="0.1" id="priceEdit">
-                        <input name="prodMainId" id="prod-main-id" type="hidden" value="">
+                        <input name="prevImg" type="hidden" id="prev-img" value="">
                     </div>
                 </div>
                 <div class="modal-footer">

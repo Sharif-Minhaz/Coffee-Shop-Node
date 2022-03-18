@@ -48,14 +48,36 @@ exports.deleteItemGetController = async (req, res, next) => {
 		let itemImg = await Menu.findById(menuId).select({ image: 1, _id: 0 });
 		fs.unlink(`public/uploads/${itemImg.image}`, (err) => {
 			err && console.log(err);
-		})
+		});
 		await Menu.findByIdAndDelete(menuId);
 		res.redirect("/dashboard/edit-item");
 	} catch (err) {
 		next(err);
 	}
-}
+};
 
 exports.editItemPostController = async (req, res, next) => {
+	const { itemId, productName, productPrice, prevImg } = req.body;
+	let modImg;
+	if (req.file) {
+		modImg = req.file.filename;
+		// removing the previous image from local storage
+		fs.unlink(`public/uploads/${prevImg}`, (err) => {
+			err && console.error(err);
+		});
+	} else {
+		modImg = prevImg;
+	}
+
+	try {
+		await Menu.findByIdAndUpdate(itemId, {
+			name: productName,
+			image: modImg,
+			price: "$" + productPrice,
+		});
+	} catch (err) {
+		next(err);
+	}
+
 	res.redirect("/dashboard/edit-item");
-}
+};

@@ -1826,6 +1826,10 @@ html {
 								border: 1px solid $dark-as-hell;
 								border-radius: 5px;
 								padding: 3px 7px;
+								width: 122px;
+								white-space: nowrap;
+								text-overflow: ellipsis;
+								overflow: hidden;
 							}
 							input[type="file"] {
 								opacity: 0;

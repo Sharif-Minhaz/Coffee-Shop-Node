@@ -32,10 +32,9 @@ singleItem.forEach(function (item) {
 		document.getElementById("priceEdit").value = singleMenuPrice;
 		document.getElementById("prod-main-id").value =
 			this.parentElement.previousElementSibling.children[1].value;
-		document.getElementById("prod-img").src =
-			this.parentElement.previousElementSibling.previousElementSibling.src;
-		document.getElementById("img-src").value =
-			this.parentElement.previousElementSibling.previousElementSibling.src;
+		let imageSrc = this.parentElement.previousElementSibling.previousElementSibling.src;
+		document.getElementById("prod-img").src = imageSrc;
+		document.getElementById("prev-img").value = imageSrc.substring(30);
 	});
 });
 // <---------- filter --------->
