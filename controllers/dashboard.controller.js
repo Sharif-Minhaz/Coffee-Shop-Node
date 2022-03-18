@@ -68,12 +68,12 @@ exports.editItemPostController = async (req, res, next) => {
 	} else {
 		modImg = prevImg;
 	}
-
+	let price = "$" + Number(productPrice).toFixed(2);
 	try {
 		await Menu.findByIdAndUpdate(itemId, {
 			name: productName,
 			image: modImg,
-			price: "$" + productPrice,
+			price,
 		});
 	} catch (err) {
 		next(err);

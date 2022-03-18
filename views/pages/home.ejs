@@ -333,8 +333,12 @@
                     <!-- hidden input for passing image source -->
                     <input type="hidden" value="/images/product-big.png" id="img-src-machine" name="imageMenu" >
                     <div class="prod-des">
-                        <input name="productName" value="COFFEE MACHINE FOR HOME">
-                        <input id="price-machine" name="productPrice" value="$150.00" readonly>
+                        <input type="text" name="productName" style="all:unset; text-align: center;" value="COFFEE MACHINE" readonly>
+                        <% if(coffeeMachine) { %>
+                            <input type="text" id="price-machine" name="productPrice" value="<%= coffeeMachine.price %>" readonly>
+                        <% } else { %>
+                            <input type="text" id="price-machine" name="productPrice" value="$150.00" readonly>
+                        <% } %>   
                         <div class="inc-dec-machine">
                             <span id="min"> - </span>
                             <input name="productCount" type="number" value="1" id="count-res" readonly>
