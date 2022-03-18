@@ -1784,7 +1784,7 @@ html {
 			}
 		}
 		// <<============<< <==modals==> >>===========>> //
-		.order-modal {
+		[class^="order-modal"] {
 			@include modal();
 			.modal-wrapper {
 				@include flex();
@@ -1814,11 +1814,23 @@ html {
 						padding: 20px;
 						.prod-img-div {
 							width: 50%;
-							display: flex;
-							align-items: center;
+							@include flex(center, center);
+							flex-direction: column;
 							#prod-img {
 								width: 110px;
 								border-radius: 50%;
+							}
+							label {
+								margin-top: 14px;
+								cursor: pointer;
+								border: 1px solid $dark-as-hell;
+								border-radius: 5px;
+								padding: 3px 7px;
+							}
+							input[type="file"] {
+								opacity: 0;
+								position: absolute;
+								z-index: -1;
 							}
 						}
 						.prod-des {
@@ -1836,7 +1848,11 @@ html {
 								outline: none;
 								color: $dark-bat;
 							}
-							#price {
+							p {
+								color: $grey;
+							}
+							#price,
+							#priceEdit {
 								text-align: center;
 								width: 124px;
 								font-size: 20px;

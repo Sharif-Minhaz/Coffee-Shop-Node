@@ -55,3 +55,7 @@ exports.deleteItemGetController = async (req, res, next) => {
 		next(err);
 	}
 }
+
+exports.editItemPostController = async (req, res, next) => {
+	res.redirect("/dashboard/edit-item");
+}
