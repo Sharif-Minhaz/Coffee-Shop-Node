@@ -17,10 +17,16 @@ confirmModalBtn.addEventListener("click", function () {
 
 closeModal.addEventListener("click", function () {
 	confirmModal.style.display = "none";
-})
+});
 
-function revealConfirmation() {
+// deleting link
+let prodId;
+let delLink = document.getElementById("delCmdItem");
+
+function revealConfirmation(target) {
 	confirmModal.style.display = "flex";
+	prodId = target.previousElementSibling.value;
+	delLink.href = `/dashboard/deleteItem/${prodId}`;
 }
 
 // modal single menu modal

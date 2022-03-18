@@ -1,5 +1,6 @@
 const Subscribe = require("../models/Subscribe.model");
 const Menu = require("../models/Menu.model");
+const Flash = require("../utils/Flash");
 const fs = require("fs");
 
 exports.dashboardGetController = (req, res) => {
@@ -11,7 +12,7 @@ exports.subscribeGetController = async (req, res, next) => {
 		const subscribedMail = await Subscribe.find();
 		return res.render("pages/dashboard/subscription", {
 			title: "Show Subscription",
-			flashMessage: {},
+			flashMessage: Flash.getMessage(req),
 			subscribedMail,
 		});
 	} catch (err) {
@@ -23,6 +24,7 @@ exports.deleteMailGetController = async (req, res, next) => {
 	const mailId = req.params.id;
 	try {
 		await Subscribe.findByIdAndDelete(mailId);
+		req.flash("success", "Mail deleted successfully");
 		res.redirect("/dashboard/subscription");
 	} catch (err) {
 		next(err);

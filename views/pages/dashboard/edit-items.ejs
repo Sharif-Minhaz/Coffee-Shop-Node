@@ -37,7 +37,7 @@
                             <!-- edit option -->
                             <div class="edit-opt">
                                 <input type="hidden" value="<%= menu._id %>">
-                                <a onclick="revealConfirmation();" href="javascript:void(0);"><span title="Delete Item"><i class="bi bi-trash"></i></span></a>
+                                <a onclick="revealConfirmation(this);" href="javascript:void(0);"><span title="Delete Item"><i class="bi bi-trash"></i></span></a>
                                 <span class="edit-product" title="Edit Item"><i class="bi bi-pen"></i></span>
                             </div>
                         </div>
@@ -88,7 +88,7 @@
             </div>
             <div class="modal-footer">
                 <button id="closeConfirmModal">Cancel</button>
-                <button onclick="window.location='/dashboard/deleteItem/'">Delete</button>
+                <a id="delCmdItem" style="all: unset;" href=""><button>Delete</button></a>
             </div>
         </div>
     </div>
