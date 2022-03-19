@@ -19,7 +19,6 @@ exports.uploadProfilePics = async (req, res, next) => {
 			);
 
 			if (oldProfilePics != "/images/default.jpg") {
-				console.log(oldProfilePics);
 				fs.unlink(`public/${oldProfilePics}`, (err) => {
 					err && console.error(err);
 				});

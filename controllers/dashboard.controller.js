@@ -1,11 +1,16 @@
 const Subscribe = require("../models/Subscribe.model");
 const Reservation = require("../models/Reservation.model");
+const Checkout = require("../models/Checkout.model");
 const Menu = require("../models/Menu.model");
 const Flash = require("../utils/Flash");
 const fs = require("fs");
 
 exports.dashboardGetController = (req, res) => {
-	res.render("pages/dashboard/dashboard", { title: "Admin Dashboard", flashMessage: {} });
+	res.render("pages/dashboard/dashboard", {
+		title: "Admin Dashboard",
+		flashMessage: {},
+		orders: req.session.orders,
+	});
 };
 
 exports.subscribeGetController = async (req, res, next) => {
@@ -15,6 +20,7 @@ exports.subscribeGetController = async (req, res, next) => {
 			title: "Show Subscription",
 			flashMessage: Flash.getMessage(req),
 			subscribedMail,
+			orders: req.session.orders,
 		});
 	} catch (err) {
 		next(err);
@@ -39,6 +45,7 @@ exports.editItemGetController = async (req, res, next) => {
 			title: "Edit Items",
 			flashMessage: {},
 			menus,
+			orders: req.session.orders,
 		});
 	} catch (err) {
 		next(err);
@@ -50,7 +57,7 @@ exports.deleteItemGetController = async (req, res, next) => {
 	try {
 		let itemImg = await Menu.findById(menuId).select({ image: 1, _id: 0 });
 		fs.unlink(`public/uploads/${itemImg.image}`, (err) => {
-			err && console.log(err);
+			err && console.error(err);
 		});
 		await Menu.findByIdAndDelete(menuId);
 		res.redirect("/dashboard/edit-item");
@@ -91,6 +98,7 @@ exports.reservationGetController = async (req, res, next) => {
 			title: "Reservation",
 			flashMessage: {},
 			reservation,
+			orders: req.session.orders,
 		});
 	} catch (err) {
 		next(err);
@@ -114,6 +122,20 @@ exports.reservationRejectGetController = async (req, res, next) => {
 	try {
 		await Reservation.findByIdAndDelete(reserveId);
 		res.redirect("/dashboard/reservation");
+	} catch (err) {
+		next(err);
+	}
+};
+
+exports.showAllCheckoutGetController = async (req, res, next) => {
+	try {
+		const allOrders = await Checkout.find().populate("user", "username");
+		res.render("pages/dashboard/show-checkout", {
+			title: "All Checkout Details",
+			flashMessage: {},
+			allOrders,
+			orders: req.session.orders,
+		});
 	} catch (err) {
 		next(err);
 	}

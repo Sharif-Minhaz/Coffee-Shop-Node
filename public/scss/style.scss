@@ -987,6 +987,50 @@ html {
 				@include breadcrumbs();
 			}
 		}
+		// all checkout details
+		#all-subscribed-mail {
+			.container-sm {
+				.full-row {
+					ul {
+						width: 100%;
+						li {
+							color: $input-field;
+							list-style: none;
+							border: 1px solid $highlight;
+							width: 100%;
+							margin: 20px 0px 20px 0px;
+							@include flex(flex-start);
+							padding: 15px;
+							&:nth-child(even) {
+								background-color: $sec-bg;
+							}
+							.checkout-img {
+								line-height: 0;
+								img {
+									width: 80px;
+								}
+							}
+							.checkout-details {
+								padding-left: 20px;
+								h3 {
+									font-family: Arial, Helvetica, sans-serif;
+									font-weight: 500;
+								}
+								.quantity-sl {
+									height: 26px;
+									width: 26px;
+									background-color: $highlight;
+									border-radius: 50%;
+									@include flex();
+									display: inline-flex;
+									margin: 8px 8px 8px 0px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 		// Aside section
 		aside {
 			position: fixed;

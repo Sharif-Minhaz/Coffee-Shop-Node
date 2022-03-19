@@ -13,7 +13,7 @@ const store = new MongoDBStore({
 });
 // Catch errors
 store.on("error", function (error) {
-	console.log(error);
+	console.error(error);
 });
 
 const middlewares = [
@@ -25,7 +25,7 @@ const middlewares = [
 		resave: false,
 		saveUninitialized: false,
 		cookie: {
-			maxAge: 1000 * 60 * 60 * 2, // 2 hours
+			maxAge: 1000 * 60 * 60 * 12, // 12 hours
 		},
 		store: store,
 	}),
