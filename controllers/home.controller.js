@@ -9,7 +9,7 @@ exports.homeGetController = async (req, res, next) => {
 		let coffeeMachine = await Menu.findOne({ name: "Coffee Machine" });
 		if (req.user) {
 			return res.render("pages/home", {
-				title: "Coffee Shop",
+				title: "Coffee Shop | Home",
 				values: {},
 				flashMessage: Flash.getMessage(req),
 				errors: {},
@@ -20,7 +20,7 @@ exports.homeGetController = async (req, res, next) => {
 			});
 		}
 		res.render("pages/home", {
-			title: "Coffee Shop",
+			title: "Coffee Shop | Home",
 			values: {},
 			flashMessage: Flash.getMessage(req),
 			errors: {},
@@ -56,7 +56,7 @@ exports.homePostController = async (req, res, next) => {
 		let coffeeMachine = await Menu.findOne({ name: "Coffee Machine" });
 		req.session.orders = orders;
 		res.render("pages/home", {
-			title: "Coffee Shop",
+			title: "Coffee Shop | Home",
 			values: {},
 			flashMessage: Flash.getMessage(req),
 			errors: {},
