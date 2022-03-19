@@ -1768,6 +1768,9 @@ html {
 										&:nth-child(2) span {
 											background-color: $invalid-color;
 										}
+										.rejected {
+											background-color: $invalid-color;
+										}
 									}
 								}
 								th {

@@ -1,4 +1,5 @@
 const Subscribe = require("../models/Subscribe.model");
+const Reservation = require("../models/Reservation.model");
 const Menu = require("../models/Menu.model");
 const Flash = require("../utils/Flash");
 const fs = require("fs");
@@ -81,4 +82,39 @@ exports.editItemPostController = async (req, res, next) => {
 		next(err);
 	}
 	res.redirect("/dashboard/edit-item");
+};
+
+exports.reservationGetController = async (req, res, next) => {
+	try {
+		const reservation = await Reservation.find().populate("user", "username");
+		res.render("pages/dashboard/reservation", {
+			title: "Reservation",
+			flashMessage: {},
+			reservation,
+		});
+	} catch (err) {
+		next(err);
+	}
+};
+
+exports.reservationApproveGetController = async (req, res, next) => {
+	let reserveId = req.params.id;
+	try {
+		await Reservation.findByIdAndUpdate(reserveId, {
+			status: "Approved",
+		});
+		res.redirect("/dashboard/reservation");
+	} catch (err) {
+		next(err);
+	}
+};
+
+exports.reservationRejectGetController = async (req, res, next) => {
+	let reserveId = req.params.id;
+	try {
+		await Reservation.findByIdAndDelete(reserveId);
+		res.redirect("/dashboard/reservation");
+	} catch (err) {
+		next(err);
+	}
 };

@@ -20,6 +20,19 @@ const menuSchema = new Schema({
 	},
 });
 
+menuSchema.index(
+	{
+		name: "text",
+		price: "text",
+	},
+	{
+		weights: {
+			name: 5,
+			price: 5,
+		},
+	}
+);
+
 const Menu = model("Menu", menuSchema);
 
 module.exports = Menu;

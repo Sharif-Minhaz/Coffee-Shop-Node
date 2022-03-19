@@ -5,6 +5,7 @@ const reservationSchema = new Schema(
 		user: {
 			type: Schema.Types.ObjectId,
 			ref: "User",
+			required: true,
 		},
 		person: {
 			type: Number,
@@ -26,7 +27,7 @@ const reservationSchema = new Schema(
 		},
 		status: {
 			type: String,
-			default: "pending",
+			default: "Pending",
 		},
 	},
 	{

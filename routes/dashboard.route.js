@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const upload = require("../middlewares/upload.middleware")
+const upload = require("../middlewares/upload.middleware");
 const { isAuthenticated, isAdmin } = require("../middlewares/auth.middleware");
 const {
 	dashboardGetController,
@@ -8,6 +8,9 @@ const {
 	editItemGetController,
 	deleteItemGetController,
 	editItemPostController,
+	reservationGetController,
+	reservationApproveGetController,
+	reservationRejectGetController,
 } = require("../controllers/dashboard.controller");
 
 router.get("/", isAuthenticated, isAdmin, dashboardGetController);
@@ -16,6 +19,10 @@ router.get("/deleteMail/:id", isAuthenticated, isAdmin, deleteMailGetController)
 
 router.get("/edit-item", isAuthenticated, isAdmin, editItemGetController);
 router.get("/deleteItem/:id", isAuthenticated, isAdmin, deleteItemGetController);
+
+router.get("/reservation", isAuthenticated, isAdmin, reservationGetController);
+router.get("/approveReservation/:id", isAuthenticated, isAdmin, reservationApproveGetController);
+router.get("/rejectReservation/:id", isAuthenticated, isAdmin, reservationRejectGetController);
 
 router.post(
 	"/edit-item",

@@ -48,7 +48,7 @@
                             <th>Booked</th>
                             <th>Status</th>
                         </tr>
-                        <% if(reservation) { %> 
+                        <% if(reservation && reservation.length > 0) { %> 
                             <% let i = 0 %> 
                             <% reservation.forEach((reserve) => { %> 
                                 <% i++ %>
@@ -68,8 +68,8 @@
                                 </tr>
                             <% }) %> 
                         <% } else { %>
-                            <tr>
-                                No reserved table found
+                            <tr style="color: red;">
+                                <td colspan="8" style="text-align: center;">Rejected or no reserved table request. <a href="/#reservation">Request Now</a></td>
                             </tr>
                         <% } %>  
                     </table>
@@ -81,7 +81,7 @@
     <%- include("../../partials/footer.ejs") %>
     <script>
         const bookingStatus = document.querySelector("#booking-status span");
-        (bookingStatus.innerHTML == "accepted") ? bookingStatus.classList.add("accepted") : bookingStatus.classList.remove("accepted");
+        (bookingStatus.innerHTML == "Approved") ? bookingStatus.classList.add("accepted") : bookingStatus.classList.remove("accepted");
     </script>
 </body>
 </html>
