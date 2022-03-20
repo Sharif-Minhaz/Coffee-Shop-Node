@@ -1,5 +1,6 @@
 const Menu = require("../models/Menu.model");
 const Flash = require("../utils/Flash");
+const Checkout = require("../models/Checkout.model");
 const fs = require("fs");
 
 let orders;

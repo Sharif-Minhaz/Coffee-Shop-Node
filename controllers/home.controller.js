@@ -78,7 +78,11 @@ exports.homePostController = async (req, res, next) => {
 // getting orders
 const gettingAllOrder = async (req, next) => {
 	try {
-		orders = await Checkout.find({ user: req.user._id });
+		if(req.user) {
+			orders = await Checkout.find({ user: req.user._id });
+		} else {
+			orders = false;
+		}
 	} catch (err) {
 		next(err);
 	}
