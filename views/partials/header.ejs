@@ -100,7 +100,11 @@
 									<h3><%= order.checkoutProductName %></h3>
 									<div class="price-time">
 										<span title="total">Total - <%= order.checkoutPrice %></span>
-										<span title="shipping time" class="order-date"></span>
+										<% if(order.status == "pending") { %> 
+											<span title="shipping time" class="order-date"></span>
+										<% } else { %> 
+											<p>Order will be delivered soon.</p>
+										<% } %> 
 									</div>
 								</div>
 							</li>

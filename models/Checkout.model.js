@@ -33,7 +33,11 @@ const checkoutSchema = new Schema({
 	phone: {
 		type: String,
 		required: true,
-	}
+	},
+	status: {
+		type: String,
+		default: "pending",
+	},
 });
 
 const Checkout = model("Checkout", checkoutSchema);

@@ -12,6 +12,8 @@ const {
 	reservationApproveGetController,
 	reservationRejectGetController,
 	showAllCheckoutGetController,
+	deliverOrderGetController,
+	cancelOrderGetController,
 } = require("../controllers/dashboard.controller");
 
 router.get("/", isAuthenticated, isAdmin, dashboardGetController);
@@ -26,6 +28,9 @@ router.get("/approveReservation/:id", isAuthenticated, isAdmin, reservationAppro
 router.get("/rejectReservation/:id", isAuthenticated, isAdmin, reservationRejectGetController);
 
 router.get("/checkouts/all", isAuthenticated, isAdmin, showAllCheckoutGetController);
+
+router.get("/deliver/:id", isAuthenticated, isAdmin, deliverOrderGetController);
+router.get("/cancel/:id", isAuthenticated, isAdmin, cancelOrderGetController);
 
 router.post(
 	"/edit-item",

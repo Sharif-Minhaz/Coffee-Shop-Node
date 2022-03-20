@@ -1026,6 +1026,34 @@ html {
 									margin: 8px 8px 8px 0px;
 								}
 							}
+							.step {
+								margin-left: auto;
+								display: flex;
+								flex-direction: column;
+								gap: 10px;
+								a {
+									all: unset;
+									button {
+										all: unset;
+										width: 70px;
+										background-color: $valid-color;
+										padding: 6px 14px;
+										border-radius: 4px;
+										text-transform: uppercase;
+										text-align: center;
+										transition: 0.3s;
+										&:hover {
+											color: $muted;
+										}
+									}
+									#o-cancel {
+										background-color: $invalid-color;
+									}
+									&:hover {
+										cursor: pointer;
+									}
+								}
+							}
 						}
 					}
 				}

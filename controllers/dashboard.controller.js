@@ -60,7 +60,7 @@ exports.deleteItemGetController = async (req, res, next) => {
 			err && console.error(err);
 		});
 		await Menu.findByIdAndDelete(menuId);
-		res.redirect("/dashboard/edit-item");
+		res.redirect("/dashboard/edit-item#menu");
 	} catch (err) {
 		next(err);
 	}
@@ -88,7 +88,7 @@ exports.editItemPostController = async (req, res, next) => {
 	} catch (err) {
 		next(err);
 	}
-	res.redirect("/dashboard/edit-item");
+	res.redirect("/dashboard/edit-item#menu");
 };
 
 exports.reservationGetController = async (req, res, next) => {
@@ -96,7 +96,7 @@ exports.reservationGetController = async (req, res, next) => {
 		const reservation = await Reservation.find().populate("user", "username");
 		res.render("pages/dashboard/reservation", {
 			title: "Reservation",
-			flashMessage: {},
+			flashMessage: Flash.getMessage(req),
 			reservation,
 			orders: req.session.orders,
 		});
@@ -111,6 +111,7 @@ exports.reservationApproveGetController = async (req, res, next) => {
 		await Reservation.findByIdAndUpdate(reserveId, {
 			status: "Approved",
 		});
+		req.flash("success", "Reservation request approved!");
 		res.redirect("/dashboard/reservation");
 	} catch (err) {
 		next(err);
@@ -121,7 +122,9 @@ exports.reservationRejectGetController = async (req, res, next) => {
 	let reserveId = req.params.id;
 	try {
 		await Reservation.findByIdAndDelete(reserveId);
-		res.redirect("/dashboard/reservation");
+		req.flash("success", "Reservation request rejected!");
+
+		res.redirect("/dashboard/reservation#all-subscribed-mail");
 	} catch (err) {
 		next(err);
 	}
@@ -129,12 +132,57 @@ exports.reservationRejectGetController = async (req, res, next) => {
 
 exports.showAllCheckoutGetController = async (req, res, next) => {
 	try {
+		showAllCheckout(req, res);
+	} catch (err) {
+		next(err);
+	}
+};
+
+exports.deliverOrderGetController = async (req, res, next) => {
+	let orderId = req.params.id;
+	try {
+		await Checkout.findByIdAndUpdate(orderId, {
+			status: "delivering",
+		});
+		req.flash("success", "Delivery sent to the Delivery boy");
+		showAllCheckout(req, res, next);
+	} catch (err) {
+		next(err);
+	}
+};
+
+exports.cancelOrderGetController = async (req, res, next) => {
+	let orderId = req.params.id;
+	try {
+		await Checkout.findByIdAndUpdate(orderId, {
+			status: "pending",
+		});
+		req.flash("success", "Order cancelled successfully");
+		showAllCheckout(req, res, next);
+	} catch (err) {
+		next(err);
+	}
+};
+
+// show all checkout...
+
+const showAllCheckout = async (req, res, next) => {
+	try {
 		const allOrders = await Checkout.find().populate("user", "username");
-		res.render("pages/dashboard/show-checkout", {
-			title: "All Checkout Details",
-			flashMessage: {},
-			allOrders,
-			orders: req.session.orders,
+		const orders = await Checkout.find({ user: req.user._id });
+		console.log(orders);
+		req.session.orders = orders;
+		req.session.save((err) => {
+			if (err) {
+				next(err);
+			} else {
+				res.render("pages/dashboard/show-checkout", {
+					title: "All Checkout Details",
+					flashMessage: Flash.getMessage(req),
+					allOrders,
+					orders: req.session.orders,
+				});
+			}
 		});
 	} catch (err) {
 		next(err);

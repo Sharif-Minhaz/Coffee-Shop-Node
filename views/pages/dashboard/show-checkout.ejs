@@ -30,6 +30,13 @@
                                     <span title="total">Total - <%= order.checkoutPrice %></span>
                                     <p>Order By - <%= order.user.username %></p>
                                 </div>
+                                <!-- steps -->
+                                <div class="step">
+                                    <% if(order.status != "delivering") { %> 
+                                        <a href="/dashboard/deliver/<%= order._id %>"><button>Deliver</button></a>
+                                    <% } %> 
+                                    <a href="/dashboard/cancel/<%= order._id %>"><button id="o-cancel">Cancel</button></a>
+                                </div>
                             </li>
                         <% }) %>
                     <% } %> 
