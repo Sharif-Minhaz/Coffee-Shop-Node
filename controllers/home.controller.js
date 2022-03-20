@@ -11,7 +11,7 @@ exports.homeGetController = async (req, res, next) => {
 		let products = await Menu.find({ category: "product" }).limit(3);
 		let coffeeMachine = await Menu.findOne({ name: "Coffee Machine" });
 		// calling gettingAllOrder
-		gettingAllOrder(req, next);
+		await gettingAllOrder(req, next);
 		if (req.user) {
 			return res.render("pages/home", {
 				title: "Coffee Shop | Home",
@@ -59,7 +59,7 @@ exports.homePostController = async (req, res, next) => {
 		let products = await Menu.find({ category: "products" }).limit(3);
 		let coffeeMachine = await Menu.findOne({ name: "Coffee Machine" });
 		// calling gettingAllOrder
-		gettingAllOrder(req, next);
+		await gettingAllOrder(req, next);
 		res.render("pages/home", {
 			title: "Coffee Shop | Home",
 			values: {},
@@ -78,7 +78,7 @@ exports.homePostController = async (req, res, next) => {
 // getting orders
 const gettingAllOrder = async (req, next) => {
 	try {
-		if(req.user) {
+		if (req.user) {
 			orders = await Checkout.find({ user: req.user._id });
 		} else {
 			orders = false;

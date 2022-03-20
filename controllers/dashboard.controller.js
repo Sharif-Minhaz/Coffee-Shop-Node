@@ -7,9 +7,9 @@ const fs = require("fs");
 
 let orders;
 
-exports.dashboardGetController = (req, res, next) => {
+exports.dashboardGetController = async (req, res, next) => {
 	// calling gettingAllOrder
-	gettingAllOrder(req, next);
+	await gettingAllOrder(req, next);
 	res.render("pages/dashboard/dashboard", {
 		title: "Admin Dashboard",
 		flashMessage: {},
@@ -21,7 +21,7 @@ exports.subscribeGetController = async (req, res, next) => {
 	try {
 		const subscribedMail = await Subscribe.find();
 		// calling gettingAllOrder
-		gettingAllOrder(req, next);
+		await gettingAllOrder(req, next);
 		return res.render("pages/dashboard/subscription", {
 			title: "Show Subscription",
 			flashMessage: Flash.getMessage(req),
@@ -48,7 +48,7 @@ exports.editItemGetController = async (req, res, next) => {
 	try {
 		const menus = await Menu.find();
 		// calling gettingAllOrder
-		gettingAllOrder(req, next);
+		await gettingAllOrder(req, next);
 		res.render("pages/dashboard/edit-items", {
 			title: "Edit Items",
 			flashMessage: {},
@@ -103,7 +103,7 @@ exports.reservationGetController = async (req, res, next) => {
 	try {
 		const reservation = await Reservation.find().populate("user", "username");
 		// calling gettingAllOrder
-		gettingAllOrder(req, next);
+		await gettingAllOrder(req, next);
 		res.render("pages/dashboard/reservation", {
 			title: "Reservation",
 			flashMessage: Flash.getMessage(req),
@@ -179,7 +179,7 @@ const showAllCheckout = async (req, res, next) => {
 	try {
 		const allOrders = await Checkout.find().populate("user", "username");
 		// calling gettingAllOrder
-		gettingAllOrder(req, next);
+		await gettingAllOrder(req, next);
 		res.render("pages/dashboard/show-checkout", {
 			title: "All Checkout Details",
 			flashMessage: Flash.getMessage(req),
@@ -191,11 +191,11 @@ const showAllCheckout = async (req, res, next) => {
 	}
 };
 
-// getting orders 
+// getting orders
 const gettingAllOrder = async (req, next) => {
 	try {
 		orders = await Checkout.find({ user: req.user._id });
 	} catch (err) {
 		next(err);
 	}
-}
+};

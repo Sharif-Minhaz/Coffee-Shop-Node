@@ -10,7 +10,7 @@ exports.menuGetController = async (req, res, next) => {
 	try {
 		menus = await Menu.find();
 		// calling gettingAllOrder
-		gettingAllOrder(req, next);
+		await gettingAllOrder(req, next);
 	} catch (err) {
 		next(err);
 	}
@@ -52,11 +52,11 @@ exports.menuAddPostController = async (req, res, next) => {
 	}
 };
 
-// getting orders 
+// getting orders
 const gettingAllOrder = async (req, next) => {
 	try {
 		orders = await Checkout.find({ user: req.user._id });
 	} catch (err) {
 		next(err);
 	}
-}
+};
