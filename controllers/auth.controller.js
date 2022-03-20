@@ -74,17 +74,14 @@ exports.loginPostController = async (req, res, next) => {
 	}
 
 	let user;
-	let orders;
 	try {
 		user = await User.findOne({ email });
-		orders = await Checkout.find({user: user._id});
 	} catch (err) {
 		next(err);
 	}
 
 	req.session.isLoggedIn = true;
 	req.session.user = user;
-	req.session.orders = orders;
 
 	req.session.save((err) => {
 		if (err) {

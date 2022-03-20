@@ -11,7 +11,7 @@
         </section>
     </header>
     <section id="all-subscribed-mail">
-        <div class="sm-heading">
+        <div class="sm-heading" id="show-checkout">
             <span>CHECKOUTS</span>
             <h1>ALL CHECKOUT</h1>
         </div> 
@@ -34,8 +34,9 @@
                                 <div class="step">
                                     <% if(order.status != "delivering") { %> 
                                         <a href="/dashboard/deliver/<%= order._id %>"><button>Deliver</button></a>
+                                    <% } else { %> 
+                                        <a href="/dashboard/cancel/<%= order._id %>"><button id="o-cancel">Cancel</button></a>
                                     <% } %> 
-                                    <a href="/dashboard/cancel/<%= order._id %>"><button id="o-cancel">Cancel</button></a>
                                 </div>
                             </li>
                         <% }) %>

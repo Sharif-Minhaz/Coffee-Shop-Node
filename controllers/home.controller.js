@@ -2,18 +2,23 @@ const Checkout = require("../models/Checkout.model");
 const Menu = require("../models/Menu.model");
 const Flash = require("../utils/Flash");
 
+// reading users all checkout orders
+let orders;
+
 exports.homeGetController = async (req, res, next) => {
 	try {
 		let menus = await Menu.find({ category: "menu" }).limit(6);
 		let products = await Menu.find({ category: "product" }).limit(3);
 		let coffeeMachine = await Menu.findOne({ name: "Coffee Machine" });
+		// calling gettingAllOrder
+		gettingAllOrder(req, next);
 		if (req.user) {
 			return res.render("pages/home", {
 				title: "Coffee Shop | Home",
 				values: {},
 				flashMessage: Flash.getMessage(req),
 				errors: {},
-				orders: req.session.orders,
+				orders,
 				menus,
 				products,
 				coffeeMachine,
@@ -52,19 +57,28 @@ exports.homePostController = async (req, res, next) => {
 		req.flash("success", "Order placed successfully");
 		let menus = await Menu.find({ category: "menu" }).limit(6);
 		let products = await Menu.find({ category: "products" }).limit(3);
-		let orders = await Checkout.find({ user: req.user._id });
 		let coffeeMachine = await Menu.findOne({ name: "Coffee Machine" });
-		req.session.orders = orders;
+		// calling gettingAllOrder
+		gettingAllOrder(req, next);
 		res.render("pages/home", {
 			title: "Coffee Shop | Home",
 			values: {},
 			flashMessage: Flash.getMessage(req),
 			errors: {},
-			orders: req.session.orders,
+			orders,
 			menus,
 			products,
 			coffeeMachine,
 		});
+	} catch (err) {
+		next(err);
+	}
+};
+
+// getting orders
+const gettingAllOrder = async (req, next) => {
+	try {
+		orders = await Checkout.find({ user: req.user._id });
 	} catch (err) {
 		next(err);
 	}

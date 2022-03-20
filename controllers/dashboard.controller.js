@@ -5,22 +5,28 @@ const Menu = require("../models/Menu.model");
 const Flash = require("../utils/Flash");
 const fs = require("fs");
 
-exports.dashboardGetController = (req, res) => {
+let orders;
+
+exports.dashboardGetController = (req, res, next) => {
+	// calling gettingAllOrder
+	gettingAllOrder(req, next);
 	res.render("pages/dashboard/dashboard", {
 		title: "Admin Dashboard",
 		flashMessage: {},
-		orders: req.session.orders,
+		orders,
 	});
 };
 
 exports.subscribeGetController = async (req, res, next) => {
 	try {
 		const subscribedMail = await Subscribe.find();
+		// calling gettingAllOrder
+		gettingAllOrder(req, next);
 		return res.render("pages/dashboard/subscription", {
 			title: "Show Subscription",
 			flashMessage: Flash.getMessage(req),
 			subscribedMail,
-			orders: req.session.orders,
+			orders,
 		});
 	} catch (err) {
 		next(err);
@@ -41,11 +47,13 @@ exports.deleteMailGetController = async (req, res, next) => {
 exports.editItemGetController = async (req, res, next) => {
 	try {
 		const menus = await Menu.find();
+		// calling gettingAllOrder
+		gettingAllOrder(req, next);
 		res.render("pages/dashboard/edit-items", {
 			title: "Edit Items",
 			flashMessage: {},
 			menus,
-			orders: req.session.orders,
+			orders,
 		});
 	} catch (err) {
 		next(err);
@@ -94,11 +102,13 @@ exports.editItemPostController = async (req, res, next) => {
 exports.reservationGetController = async (req, res, next) => {
 	try {
 		const reservation = await Reservation.find().populate("user", "username");
+		// calling gettingAllOrder
+		gettingAllOrder(req, next);
 		res.render("pages/dashboard/reservation", {
 			title: "Reservation",
 			flashMessage: Flash.getMessage(req),
 			reservation,
-			orders: req.session.orders,
+			orders,
 		});
 	} catch (err) {
 		next(err);
@@ -165,26 +175,27 @@ exports.cancelOrderGetController = async (req, res, next) => {
 };
 
 // show all checkout...
-
 const showAllCheckout = async (req, res, next) => {
 	try {
 		const allOrders = await Checkout.find().populate("user", "username");
-		const orders = await Checkout.find({ user: req.user._id });
-		console.log(orders);
-		req.session.orders = orders;
-		req.session.save((err) => {
-			if (err) {
-				next(err);
-			} else {
-				res.render("pages/dashboard/show-checkout", {
-					title: "All Checkout Details",
-					flashMessage: Flash.getMessage(req),
-					allOrders,
-					orders: req.session.orders,
-				});
-			}
+		// calling gettingAllOrder
+		gettingAllOrder(req, next);
+		res.render("pages/dashboard/show-checkout", {
+			title: "All Checkout Details",
+			flashMessage: Flash.getMessage(req),
+			allOrders,
+			orders,
 		});
 	} catch (err) {
 		next(err);
 	}
 };
+
+// getting orders 
+const gettingAllOrder = async (req, next) => {
+	try {
+		orders = await Checkout.find({ user: req.user._id });
+	} catch (err) {
+		next(err);
+	}
+}
