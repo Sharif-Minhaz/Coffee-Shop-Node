@@ -1081,6 +1081,19 @@ html {
 					}
 				}
 			}
+			.send-all {
+				margin-top: 10px;
+				text-align: center;
+				a {
+					button {
+						@include big-heading();
+						border: none;
+						&:hover {
+							cursor: pointer;
+						}
+					}
+				}
+			}
 		}
 		// Aside section
 		aside {

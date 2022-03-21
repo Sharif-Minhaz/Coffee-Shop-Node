@@ -48,6 +48,16 @@
                 </div>
             </div>
         </div>
+        <!-- send mail to all subscribed user -->
+        <% if(subscribedMail) { %>
+            <% let allMail = [] %> 
+            <% subscribedMail.forEach((mail) => { %>
+                <% allMail.push(mail.subEmail) %> 
+            <% }) %> 
+            <div class="send-all">
+                <a href="mailto:<%= allMail.join(",") %> "><button><i class="bi bi-pencil"></i> Compose for all</button></a>
+            </div>
+        <% } %>  
     </section>
     <%- include("./side-panel.ejs") %> 
     <%- include("../../partials/footer.ejs") %>
