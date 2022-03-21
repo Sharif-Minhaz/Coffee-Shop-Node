@@ -174,6 +174,21 @@ exports.cancelOrderGetController = async (req, res, next) => {
 	}
 };
 
+exports.deleteDeliveryGetController = async (req, res, next) => {
+	let orderId = req.params.id;
+	try {
+		let checkout = await Checkout.findByIdAndDelete(orderId);
+		await sendNotification(
+			`Oops! your order for ${checkout.checkoutProductName} ${checkout.quantity}x total price: ${checkout.checkoutPrice} is cancelled. --CAFE`,
+			checkout.phone
+		);
+		req.flash("success", "Checkout deleted successfully");
+		res.redirect("/dashboard/checkouts/all#show-checkout");
+	} catch (err) {
+		next(err);
+	}
+};
+
 // show all checkout...
 const showAllCheckout = async (req, res, next) => {
 	try {

@@ -14,6 +14,7 @@ const {
 	showAllCheckoutGetController,
 	deliverOrderGetController,
 	cancelOrderGetController,
+	deleteDeliveryGetController,
 } = require("../controllers/dashboard.controller");
 
 router.get("/", isAuthenticated, isAdmin, dashboardGetController);
@@ -31,6 +32,7 @@ router.get("/checkouts/all", isAuthenticated, isAdmin, showAllCheckoutGetControl
 
 router.get("/deliver/:id", isAuthenticated, isAdmin, deliverOrderGetController);
 router.get("/cancel/:id", isAuthenticated, isAdmin, cancelOrderGetController);
+router.get("/deleteDelivery/:id", isAuthenticated, isAdmin, deleteDeliveryGetController);
 
 router.post(
 	"/edit-item",

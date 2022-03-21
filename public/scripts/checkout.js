@@ -21,8 +21,9 @@ function activeDeactiveCard(active, deactive1, deactive2) {
 
 const menuForm = document.getElementsByClassName("checkout-box")[0];
 
+// resetting form
 function enableDisableInputBox(bool) {
-	for (let i = 8; i < 12; i++) {
+	for (let i = 9; i < 13; i++) {
 		menuForm[i].value = "";
 	}
 	document.querySelector("input[name='cardName']").disabled = bool;

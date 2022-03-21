@@ -37,6 +37,8 @@
                                     <% } else { %> 
                                         <a href="/dashboard/cancel/<%= order._id %>"><button id="o-cancel">Cancel</button></a>
                                     <% } %> 
+                                    <input type="hidden" value="<%= order._id %>">
+                                    <a onclick="revealConfirmation(this);" href="javascript:void(0);"><button style="background-color: #ff0000c7;">Delete</button></a>
                                 </div>
                             </li>
                         <% }) %>
@@ -45,9 +47,28 @@
             </div>
         </div>
     </section>
+
+    <!-- confirmation modal -->
+    <div class="confirmation-modal">
+        <div class="modal-section">
+            <span class="closeModal"><i class="bi bi-x-lg"></i></span>
+            <div class="heading">
+                <span><i class="bi bi-x-circle"></i></span>
+            </div>
+            <div class="modal-body">
+                <h4>Are you sure?</h4>
+                <p>Do you really want to delete this checkout? This process cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button id="closeConfirmModal">Cancel</button>
+                <a id="delCmdItem" style="all: unset;" href=""><button>Delete</button></a>
+            </div>
+        </div>
+    </div>
+
     <%- include("./side-panel.ejs") %> 
     <%- include("../../partials/footer.ejs") %>
-    <script src="/scripts/side-panel.js"></script>
+    <script src="/scripts/show-checkout.js"></script>
 
 </body>
 </html>

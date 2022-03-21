@@ -64,7 +64,6 @@
     <%- include("./side-panel.ejs") %> 
     <%- include("../../partials/footer.ejs") %>
 
-    <script src="/scripts/side-panel.js"></script>
     <script>
         const bookingStatus = document.querySelector("#mail-status a:first-child span");
         (bookingStatus.innerHTML == "Reject") ? bookingStatus.classList.add("rejected") : bookingStatus.classList.remove("rejected");

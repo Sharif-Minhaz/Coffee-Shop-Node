@@ -34,7 +34,15 @@
                                 </div>
                                 <div>
                                     <small>Phone Number</small>
-                                    <input type="tel" name="phone" pattern="[0-9]{11}" required>
+                                    <div class="phone-and-country">
+                                        <select name="bd" id="bd">
+                                            <option value="+88">+88</option>
+                                            <option value="+1">+1</option>
+                                            <option value="+92">+92</option>
+                                            <option value="+91">+91</option>
+                                        </select>
+                                        <input type="tel" name="phone" pattern="[0-9]{11}" required>
+                                    </div>
                                 </div>
                             </div>
                             <small>Address</small>
