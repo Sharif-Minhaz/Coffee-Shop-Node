@@ -4,6 +4,7 @@ const Checkout = require("../models/Checkout.model");
 const Menu = require("../models/Menu.model");
 const Flash = require("../utils/Flash");
 const { gettingAllOrder } = require("../utils/ordersManage");
+const { sendNotification } = require("../utils/twilio");
 const fs = require("fs");
 
 exports.dashboardGetController = async (req, res, next) => {
@@ -142,11 +143,15 @@ exports.showAllCheckoutGetController = async (req, res, next) => {
 exports.deliverOrderGetController = async (req, res, next) => {
 	let orderId = req.params.id;
 	try {
-		await Checkout.findByIdAndUpdate(orderId, {
+		let checkout = await Checkout.findByIdAndUpdate(orderId, {
 			status: "delivering",
 		});
+		await sendNotification(
+			`Hurrah! your order for ${checkout.checkoutProductName} ${checkout.quantity}x total price: ${checkout.checkoutPrice} is successfully placed. Delivery boy on the way. --CAFE`,
+			checkout.phone
+		);
 		req.flash("success", "Delivery sent to the Delivery boy");
-		showAllCheckout(req, res, next);
+		res.redirect("/dashboard/checkouts/all#show-checkout");
 	} catch (err) {
 		next(err);
 	}
@@ -155,11 +160,15 @@ exports.deliverOrderGetController = async (req, res, next) => {
 exports.cancelOrderGetController = async (req, res, next) => {
 	let orderId = req.params.id;
 	try {
-		await Checkout.findByIdAndUpdate(orderId, {
+		let checkout = await Checkout.findByIdAndUpdate(orderId, {
 			status: "pending",
 		});
+		await sendNotification(
+			`Sorry! your order for ${checkout.checkoutProductName} ${checkout.quantity}x is delayed for some problem. Soon we will let you know if the order is cancelled or proceed. --CAFE`,
+			checkout.phone
+		);
 		req.flash("success", "Order cancelled successfully");
-		showAllCheckout(req, res, next);
+		res.redirect("/dashboard/checkouts/all#show-checkout");
 	} catch (err) {
 		next(err);
 	}
@@ -179,4 +188,3 @@ const showAllCheckout = async (req, res, next) => {
 		next(err);
 	}
 };
-

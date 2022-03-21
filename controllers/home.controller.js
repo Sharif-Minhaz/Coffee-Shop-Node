@@ -46,7 +46,7 @@ exports.homePostController = async (req, res, next) => {
 		quantity,
 		name,
 		address,
-		phone,
+		phone: "+88" + phone,
 	});
 	try {
 		await order.save();
