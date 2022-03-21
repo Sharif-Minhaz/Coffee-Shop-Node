@@ -3,30 +3,25 @@ const Reservation = require("../models/Reservation.model");
 const Checkout = require("../models/Checkout.model");
 const Menu = require("../models/Menu.model");
 const Flash = require("../utils/Flash");
+const { gettingAllOrder } = require("../utils/ordersManage");
 const fs = require("fs");
 
-let orders;
-
 exports.dashboardGetController = async (req, res, next) => {
-	// calling gettingAllOrder
-	await gettingAllOrder(req, next);
 	res.render("pages/dashboard/dashboard", {
 		title: "Admin Dashboard",
 		flashMessage: {},
-		orders,
+		orders: await gettingAllOrder(req, next),
 	});
 };
 
 exports.subscribeGetController = async (req, res, next) => {
 	try {
 		const subscribedMail = await Subscribe.find();
-		// calling gettingAllOrder
-		await gettingAllOrder(req, next);
 		return res.render("pages/dashboard/subscription", {
 			title: "Show Subscription",
 			flashMessage: Flash.getMessage(req),
 			subscribedMail,
-			orders,
+			orders: await gettingAllOrder(req, next),
 		});
 	} catch (err) {
 		next(err);
@@ -47,13 +42,11 @@ exports.deleteMailGetController = async (req, res, next) => {
 exports.editItemGetController = async (req, res, next) => {
 	try {
 		const menus = await Menu.find();
-		// calling gettingAllOrder
-		await gettingAllOrder(req, next);
 		res.render("pages/dashboard/edit-items", {
 			title: "Edit Items",
 			flashMessage: {},
 			menus,
-			orders,
+			orders: await gettingAllOrder(req, next),
 		});
 	} catch (err) {
 		next(err);
@@ -102,13 +95,11 @@ exports.editItemPostController = async (req, res, next) => {
 exports.reservationGetController = async (req, res, next) => {
 	try {
 		const reservation = await Reservation.find().populate("user", "username");
-		// calling gettingAllOrder
-		await gettingAllOrder(req, next);
 		res.render("pages/dashboard/reservation", {
 			title: "Reservation",
 			flashMessage: Flash.getMessage(req),
 			reservation,
-			orders,
+			orders: await gettingAllOrder(req, next),
 		});
 	} catch (err) {
 		next(err);
@@ -178,24 +169,14 @@ exports.cancelOrderGetController = async (req, res, next) => {
 const showAllCheckout = async (req, res, next) => {
 	try {
 		const allOrders = await Checkout.find().populate("user", "username");
-		// calling gettingAllOrder
-		await gettingAllOrder(req, next);
 		res.render("pages/dashboard/show-checkout", {
 			title: "All Checkout Details",
 			flashMessage: Flash.getMessage(req),
 			allOrders,
-			orders,
+			orders: await gettingAllOrder(req, next),
 		});
 	} catch (err) {
 		next(err);
 	}
 };
 
-// getting orders
-const gettingAllOrder = async (req, next) => {
-	try {
-		orders = await Checkout.find({ user: req.user._id });
-	} catch (err) {
-		next(err);
-	}
-};

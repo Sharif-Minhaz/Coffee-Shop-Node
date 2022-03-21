@@ -13,7 +13,7 @@
 				</li>
 			</div>
 			<div class="right-menu">
-				<li><a href="<%= title.includes('| Menu') ? '#menu' : '/menu/all' %>">Shop</a></li>
+				<li><a href="<%= title.includes('| Menu') ? '#menu' : '/menu/all#menu' %>">Shop</a></li>
 				<% if((user && user.role == "user") || !user) { %>
 					<li><a href="<%= title.includes('| Home') ? '#footer' : '/#footer' %>">Contact</a></li>
 				<% } %>

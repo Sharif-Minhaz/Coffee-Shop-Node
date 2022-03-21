@@ -3,9 +3,8 @@ const Reservation = require("../models/Reservation.model");
 const Checkout = require("../models/Checkout.model");
 const Flash = require("../utils/Flash");
 const { validationResult } = require("express-validator");
+const {gettingAllOrder} = require("../utils/ordersManage");
 const errorFormatter = require("../utils/validatorErrorFormatter");
-
-let orders;
 
 exports.createProfileGetController = async (req, res, next) => {
 	try {
@@ -13,14 +12,12 @@ exports.createProfileGetController = async (req, res, next) => {
 		if (profile) {
 			return res.redirect("/profile/show-profile");
 		}
-		// calling gettingAllOrder
-		await gettingAllOrder(req, next);
 		res.render("pages/profile/create-profile", {
 			title: "Coffee Shop | Create Profile",
 			flashMessage: {},
 			errors: {},
 			values: {},
-			orders,
+			orders: await gettingAllOrder(req, next),
 		});
 	} catch (err) {
 		next(err);
@@ -31,8 +28,6 @@ exports.createProfilePostController = async (req, res, next) => {
 	const { name, email, title, bio, website } = req.body;
 
 	let errors = validationResult(req).formatWith(errorFormatter);
-	// calling gettingAllOrder
-	await gettingAllOrder(req, next);
 	if (!errors.isEmpty()) {
 		req.flash("fail", "Please check your fields");
 		return res.render("pages/profile/create-profile", {
@@ -40,7 +35,7 @@ exports.createProfilePostController = async (req, res, next) => {
 			flashMessage: Flash.getMessage(req),
 			errors: errors.mapped(),
 			values: req.body,
-			orders,
+			orders: await gettingAllOrder(req, next),
 		});
 	}
 
@@ -69,15 +64,13 @@ exports.profileGetController = async (req, res, next) => {
 		if (!profile) {
 			return res.redirect("/profile/create-profile");
 		}
-		// calling gettingAllOrder
-		await gettingAllOrder(req, next);
 		res.render("pages/profile/show-profile", {
 			title: "Coffee Shop | Profile",
 			errors: {},
 			flashMessage: Flash.getMessage(req),
 			values: {},
 			profile,
-			orders,
+			orders: await gettingAllOrder(req, next),
 			reservation,
 		});
 	} catch (err) {
@@ -91,15 +84,13 @@ exports.updateProfileGetController = async (req, res, next) => {
 		if (!profile) {
 			return res.redirect("/profile/create-profile");
 		}
-		// calling gettingAllOrder
-		await gettingAllOrder(req, next);
 		res.render("pages/profile/edit-profile", {
 			title: "Coffee Shop | Edit Profile",
 			errors: {},
 			flashMessage: {},
 			values: {},
 			profile,
-			orders,
+			orders: await gettingAllOrder(req, next),
 		});
 	} catch (err) {
 		next(err);
@@ -109,8 +100,6 @@ exports.updateProfileGetController = async (req, res, next) => {
 exports.updateProfilePostController = async (req, res, next) => {
 	const { name, title, bio, website } = req.body;
 	let errors = validationResult(req).formatWith(errorFormatter);
-	// calling gettingAllOrder
-	await gettingAllOrder(req, next);
 	if (!errors.isEmpty()) {
 		req.flash("fail", "Please check your fields");
 		return res.render("pages/profile/create-profile", {
@@ -118,7 +107,7 @@ exports.updateProfilePostController = async (req, res, next) => {
 			flashMessage: Flash.getMessage(req),
 			errors: errors.mapped(),
 			values: req.body,
-			orders,
+			orders: await gettingAllOrder(req, next),
 		});
 	}
 
@@ -134,15 +123,6 @@ exports.updateProfilePostController = async (req, res, next) => {
 
 		req.flash("success", "Profile updated successfully");
 		return res.redirect("/profile/show-profile");
-	} catch (err) {
-		next(err);
-	}
-};
-
-// getting orders
-const gettingAllOrder = async (req, next) => {
-	try {
-		orders = await Checkout.find({ user: req.user._id });
 	} catch (err) {
 		next(err);
 	}

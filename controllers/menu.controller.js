@@ -1,23 +1,22 @@
 const Menu = require("../models/Menu.model");
 const Flash = require("../utils/Flash");
 const Checkout = require("../models/Checkout.model");
+const { gettingAllOrder } = require("../utils/ordersManage");
 const fs = require("fs");
 
-let orders;
+// let orders;
 
 exports.menuGetController = async (req, res, next) => {
 	let menus;
 	try {
 		menus = await Menu.find();
-		// calling gettingAllOrder
-		await gettingAllOrder(req, next);
 	} catch (err) {
 		next(err);
 	}
 	res.render("pages/menu/menu", {
 		title: "Coffee Shop | Menu",
 		flashMessage: Flash.getMessage(req),
-		orders,
+		orders: await gettingAllOrder(req, next),
 		menus,
 	});
 };
@@ -47,15 +46,6 @@ exports.menuAddPostController = async (req, res, next) => {
 		await newMenu.save();
 		req.flash("success", "Product added successfully");
 		res.redirect("/menu/all");
-	} catch (err) {
-		next(err);
-	}
-};
-
-// getting orders
-const gettingAllOrder = async (req, next) => {
-	try {
-		orders = await Checkout.find({ user: req.user._id });
 	} catch (err) {
 		next(err);
 	}

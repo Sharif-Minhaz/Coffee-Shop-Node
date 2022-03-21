@@ -1,24 +1,20 @@
 const Checkout = require("../models/Checkout.model");
 const Menu = require("../models/Menu.model");
 const Flash = require("../utils/Flash");
-
-// reading users all checkout orders
-let orders;
+const { gettingAllOrder } = require("../utils/ordersManage");
 
 exports.homeGetController = async (req, res, next) => {
 	try {
 		let menus = await Menu.find({ category: "menu" }).limit(6);
 		let products = await Menu.find({ category: "product" }).limit(3);
 		let coffeeMachine = await Menu.findOne({ name: "Coffee Machine" });
-		// calling gettingAllOrder
-		await gettingAllOrder(req, next);
 		if (req.user) {
 			return res.render("pages/home", {
 				title: "Coffee Shop | Home",
 				values: {},
 				flashMessage: Flash.getMessage(req),
 				errors: {},
-				orders,
+				orders: await gettingAllOrder(req, next),
 				menus,
 				products,
 				coffeeMachine,
@@ -58,31 +54,16 @@ exports.homePostController = async (req, res, next) => {
 		let menus = await Menu.find({ category: "menu" }).limit(6);
 		let products = await Menu.find({ category: "products" }).limit(3);
 		let coffeeMachine = await Menu.findOne({ name: "Coffee Machine" });
-		// calling gettingAllOrder
-		await gettingAllOrder(req, next);
 		res.render("pages/home", {
 			title: "Coffee Shop | Home",
 			values: {},
 			flashMessage: Flash.getMessage(req),
 			errors: {},
-			orders,
+			orders: await gettingAllOrder(req, next),
 			menus,
 			products,
 			coffeeMachine,
 		});
-	} catch (err) {
-		next(err);
-	}
-};
-
-// getting orders
-const gettingAllOrder = async (req, next) => {
-	try {
-		if (req.user) {
-			orders = await Checkout.find({ user: req.user._id });
-		} else {
-			orders = false;
-		}
 	} catch (err) {
 		next(err);
 	}
