@@ -1,5 +1,6 @@
 const nodemailer = require("nodemailer");
 const { google } = require("googleapis");
+
 // creating a google oAuth2 for secured mail sending
 const OAuth2 = google.auth.OAuth2;
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
@@ -7,6 +8,7 @@ const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = require("twilio")(accountSid, authToken, {
 	lazyLoading: true,
 });
+
 // gmail notification system with nodemailer
 const clientId = process.env.CLIENT_ID;
 const clientSecret = process.env.CLIENT_SECRET;
@@ -39,7 +41,7 @@ exports.sendNotification = async (msgBody, toNum, toMail) => {
 		});
 
 		const mailOptions = {
-			from: `CAFE <${process.env.USER}>`,
+			from: `CAFE Coffee Shop <${process.env.USER}>`,
 			to: toMail,
 			subject: "About checkout",
 			text: msgBody,
