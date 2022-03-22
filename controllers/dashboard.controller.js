@@ -4,7 +4,7 @@ const Checkout = require("../models/Checkout.model");
 const Menu = require("../models/Menu.model");
 const Flash = require("../utils/Flash");
 const { gettingAllOrder } = require("../utils/ordersManage");
-const { sendNotification } = require("../utils/twilio");
+const { sendNotification } = require("../utils/notification");
 const fs = require("fs");
 
 exports.dashboardGetController = async (req, res, next) => {
@@ -132,9 +132,16 @@ exports.reservationRejectGetController = async (req, res, next) => {
 	}
 };
 
+// show all checkout list
 exports.showAllCheckoutGetController = async (req, res, next) => {
 	try {
-		showAllCheckout(req, res);
+		const allOrders = await Checkout.find().populate("user", "username");
+		res.render("pages/dashboard/show-checkout", {
+			title: "All Checkout Details",
+			flashMessage: Flash.getMessage(req),
+			allOrders,
+			orders: await gettingAllOrder(req, next),
+		});
 	} catch (err) {
 		next(err);
 	}
@@ -145,10 +152,12 @@ exports.deliverOrderGetController = async (req, res, next) => {
 	try {
 		let checkout = await Checkout.findByIdAndUpdate(orderId, {
 			status: "delivering",
-		});
+		}).populate("user", "email");
+		// send notification to the client
 		await sendNotification(
 			`Hurrah! your order for ${checkout.checkoutProductName} ${checkout.quantity}x total price: ${checkout.checkoutPrice} is successfully placed. Delivery boy on the way. --CAFE`,
-			checkout.phone
+			checkout.phone,
+			checkout.user.email
 		);
 		req.flash("success", "Delivery sent to the Delivery boy");
 		res.redirect("/dashboard/checkouts/all#show-checkout");
@@ -162,10 +171,12 @@ exports.cancelOrderGetController = async (req, res, next) => {
 	try {
 		let checkout = await Checkout.findByIdAndUpdate(orderId, {
 			status: "pending",
-		});
+		}).populate("user", "email");
+		// send notification to the client
 		await sendNotification(
 			`Sorry! your order for ${checkout.checkoutProductName} ${checkout.quantity}x is delayed for some problem. Soon we will let you know if the order is cancelled or proceed. --CAFE`,
-			checkout.phone
+			checkout.phone,
+			checkout.user.email
 		);
 		req.flash("success", "Order cancelled successfully");
 		res.redirect("/dashboard/checkouts/all#show-checkout");
@@ -177,28 +188,15 @@ exports.cancelOrderGetController = async (req, res, next) => {
 exports.deleteDeliveryGetController = async (req, res, next) => {
 	let orderId = req.params.id;
 	try {
-		let checkout = await Checkout.findByIdAndDelete(orderId);
+		let checkout = await Checkout.findByIdAndDelete(orderId).populate("user", "email");
+		// send notification to the client
 		await sendNotification(
 			`Oops! your order for ${checkout.checkoutProductName} ${checkout.quantity}x total price: ${checkout.checkoutPrice} is cancelled. --CAFE`,
-			checkout.phone
+			checkout.phone,
+			checkout.user.email
 		);
 		req.flash("success", "Checkout deleted successfully");
 		res.redirect("/dashboard/checkouts/all#show-checkout");
-	} catch (err) {
-		next(err);
-	}
-};
-
-// show all checkout...
-const showAllCheckout = async (req, res, next) => {
-	try {
-		const allOrders = await Checkout.find().populate("user", "username");
-		res.render("pages/dashboard/show-checkout", {
-			title: "All Checkout Details",
-			flashMessage: Flash.getMessage(req),
-			allOrders,
-			orders: await gettingAllOrder(req, next),
-		});
 	} catch (err) {
 		next(err);
 	}
