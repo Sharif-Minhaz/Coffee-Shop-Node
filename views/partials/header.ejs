@@ -3,9 +3,9 @@
 		<ul>
 			<div class="left-menu">
 				<li><a href="<%= title.includes('| Home') ? '#' : '/' %>">Home</a></li>
-				<li><a href="<%= title.includes('| Home') ? '#about' : '/#about' %>">About</a></li>
 				<li><a href="<%= title.includes('| Home') ? '#menu' : '/#menu' %>">Menu</a></li>
 				<li><a href="<%= title.includes('| Home') ? '#reservation' : '/#reservation' %>">Reservation</a></li>
+				<li><a href="<%= title.includes('| Home') ? '#our-blog' : '/#our-blog' %>">Blog</a></li>
 			</div>
 			<div class="brand-image">
 				<li>
@@ -57,9 +57,9 @@
 				</div>
 				<ul>
 					<li><a href="<%= title.includes('| Home') ? '#' : '/' %>">Home</a></li>
-					<li><a href="<%= title.includes('| Home') ? '#about' : '/#about' %>">About</a></li>
 					<li><a href="<%= title.includes('| Home') ? '#menu' : '/#menu' %>">Menu</a></li>
 					<li><a href="<%= title.includes('| Home') ? '#reservation' : '/#reservation' %>">Reservation</a></li>
+					<li><a href="<%= title.includes('| Home') ? '#our-blog' : '/#our-blog' %>">Blog</a></li>
 					<li><a href="<%= title.includes('| Menu') ? '#menu' : '/menu/all#menu' %>">Shop</a></li>
 					<li><a href="<%= title.includes('| Home') ? '#footer' : '/#footer' %>">Contact</a></li>
 					<% if(user && user.role == "admin") { %>

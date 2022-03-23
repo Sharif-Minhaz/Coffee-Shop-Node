@@ -1,6 +1,8 @@
+// importing all other scss file
 @import "reset";
 @import "variable";
 @import "scrollbar";
+@import "tinymce";
 
 @mixin flex($just: center, $align: center) {
 	display: flex;
@@ -72,6 +74,7 @@
 		background-color: $light-dark;
 	}
 }
+// mixin for common modals
 @mixin modal {
 	top: 0;
 	width: 100%;
@@ -81,6 +84,7 @@
 	z-index: 9999;
 	display: none;
 }
+// all breadcrumbs mixin
 @mixin breadcrumbs {
 	background: {
 		image: url(/images/breadcrumb-light.jpg);
@@ -110,12 +114,18 @@
 		}
 	}
 }
+// main style start from here...
 html {
 	scroll-behavior: smooth;
 	overflow-x: hidden;
+	.mceEditorArea {
+		font-family: "MS Sans Serif";
+		background: #000;
+	}
 	body {
 		height: 100vh;
 		background-color: $main-bg;
+		// alert message for all activity
 		#alert-div {
 			position: fixed;
 			right: 27px;
@@ -139,6 +149,7 @@ html {
 				color: $invalid-color;
 			}
 		}
+		// main header for all
 		header {
 			position: relative;
 			background: {
@@ -1095,7 +1106,7 @@ html {
 				}
 			}
 		}
-		// Aside section
+		// Aside section for admin dashboard
 		aside {
 			position: fixed;
 			top: 23%;
@@ -1159,6 +1170,7 @@ html {
 		.back-opt {
 			left: 0;
 		}
+		// opening card and section
 		#opening {
 			margin-top: 120px;
 			.container {
@@ -1218,6 +1230,7 @@ html {
 				}
 			}
 		}
+		// about the company and their history
 		#about {
 			margin-top: 74px;
 			.container {
@@ -1257,6 +1270,7 @@ html {
 				}
 			}
 		}
+		// most popular products
 		#menu {
 			margin-top: 76px;
 			.sm-heading {
@@ -1404,6 +1418,7 @@ html {
 				}
 			}
 		}
+		// buy a coffee machine section....
 		#coffee-machine {
 			margin-top: 96px;
 			.container-sm {
@@ -1436,6 +1451,7 @@ html {
 				}
 			}
 		}
+		// showing other items
 		#other-product {
 			margin-top: 96px;
 			background-image: url(/images/footer.jpeg);
@@ -1509,6 +1525,7 @@ html {
 				}
 			}
 		}
+		// product review section for the available menus
 		#review-product {
 			margin-top: 90px;
 			.container-sm {
@@ -1598,6 +1615,7 @@ html {
 				}
 			}
 		}
+		// reservation section from home section
 		#reservation {
 			margin-top: 50px;
 			.container {
@@ -1681,6 +1699,7 @@ html {
 				}
 			}
 		}
+		// reservation details from home page
 		#reservation-details {
 			margin: 50px 0 50px 0;
 			.sm-heading {
@@ -1745,6 +1764,7 @@ html {
 				}
 			}
 		}
+		// out blog form form home section
 		#our-blog {
 			margin: 70px 0px 70px 0px;
 			.container-sm {
@@ -1825,6 +1845,7 @@ html {
 				}
 			}
 		}
+		// creating subscribed mailing
 		#all-subscribed-mail {
 			margin: 50px 0 50px 0;
 			.sm-heading {
@@ -1896,6 +1917,64 @@ html {
 									background-color: $sec-bg;
 								}
 							}
+						}
+					}
+				}
+			}
+		}
+		// creating blog section
+		#create-blog {
+			margin-top: 76px;
+			.container-sm {
+				@include flex();
+				flex-direction: column;
+				@include container-sm();
+				.sm-heading {
+					span {
+						@include sm-heading();
+						margin-bottom: 20px;
+					}
+				}
+				h1 {
+					font: 500 60px $bebas;
+					color: $font-color;
+					text-align: center;
+				}
+				.full-row {
+					margin: 40px 0px 40px 0px;
+					width: 100%;
+					padding: 30px;
+					background-color: $sec-bg;
+					border-radius: 5px;
+					h2 {
+						color: $font-color;
+						font: 400 30px $bebas;
+					}
+					input {
+						background-color: $dark-as-hell;
+						width: 100%;
+						margin: 16px 0px 16px 0px;
+						padding: 12px 10px;
+						font-size: 17px;
+						border-color: transparent;
+						color: $font-color;
+					}
+					textarea {
+						background-color: $dark-as-hell;
+					}
+					button[type="submit"] {
+						all: unset;
+						margin-top: 6px;
+						background-color: $valid-color;
+						color: $font-color;
+						width: 110px;
+						padding: 10px 14px;
+						text-align: center;
+						border-radius: 3px;
+						transition: 0.3s;
+						&:hover {
+							cursor: pointer;
+							color: $input-field;
 						}
 					}
 				}
@@ -2016,7 +2095,7 @@ html {
 				}
 			}
 		}
-		// confirmation modal
+		// confirmation modal for deletion operations
 		.confirmation-modal {
 			@include modal();
 			align-items: center;
@@ -2087,6 +2166,7 @@ html {
 				}
 			}
 		}
+		// modal for product order
 		.product-plus {
 			@include modal();
 			.modal-wrapper {
@@ -2180,6 +2260,7 @@ html {
 				}
 			}
 		}
+		// cropping modal for cropping the profile image
 		#crop-modal {
 			@include modal();
 			.modal-dialog {
@@ -2238,6 +2319,7 @@ html {
 				}
 			}
 		}
+		// modal for buying a coffee machine
 		.coffee-modal {
 			@include modal();
 			.modal-wrapper {
@@ -2323,6 +2405,7 @@ html {
 				}
 			}
 		}
+		// admin feature for adding menu or a new item into the existing product list
 		.add-menu-modal {
 			@include modal();
 			.modal-wrapper {
@@ -2391,6 +2474,7 @@ html {
 				}
 			}
 		}
+		// main footer
 		footer {
 			position: relative;
 			background: {
@@ -2537,7 +2621,7 @@ html {
 		}
 	}
 }
-
+// sticky animation for topbar or nav
 @keyframes animationFade {
 	from {
 		opacity: 0;

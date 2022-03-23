@@ -1,0 +1,37 @@
+<%- include("../../partials/head.ejs") %>
+</head>
+<body>
+    <%- include("../../partials/alert.ejs") %>
+    <%- include("../../partials/header.ejs") %>
+        <section id="admin-intro">
+            <div class="breadcrumb">
+                <h1>OUR BLOG</h1>
+                <p><span>HOME</span> / BLOG / CREATE</p>
+            </div>
+        </section>
+    </header>
+    <!-- create a new blog -->
+    <section id="create-blog">
+        <div class="container-sm">
+            <div class="sm-heading">
+                <span>BLOG</span>
+            </div>
+            <h1>
+                CREATE A NEW BLOG
+            </h1>
+            <form class="full-row" action="/blog/create" method="post" enctype="multipart/form-data">
+                <h2>Create A New Blog</h2>
+                <input type="text" placeholder="Blog Title">
+                <textarea name="blogBody" id="rich-text-editor" placeholder="Enter your blog body">
+                </textarea>
+                <input type="file" title="Upload Thumbnail">
+                <button type="submit">Create Post</button>
+            </form>
+        </div>
+    </section>
+
+    <%- include("../../partials/footer.ejs") %>
+    <script src="https://cdn.tiny.cloud/1/xq007oqlf2vjqc9q3rw3iovsa5qcbj4g1o8x4fz6z7dkla7a/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="/scripts/create-new-blog.js"></script>
+</body>
+</html>

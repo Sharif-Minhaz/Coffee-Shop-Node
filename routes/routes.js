@@ -7,6 +7,7 @@ const reservationRoute = require("./reservation.route");
 const subscribeRoute = require("./subscribe.route");
 const checkoutRoute = require("./checkout.route");
 const dashboardRoute = require("./dashboard.route");
+const blogRoute = require("./blog.route");
 
 const routes = [
 	{
@@ -45,6 +46,10 @@ const routes = [
 		path: "/dashboard",
 		handler: dashboardRoute,
 	},
+	{
+		path: "/blog",
+		handler: blogRoute,
+	}
 ];
 
 /**
