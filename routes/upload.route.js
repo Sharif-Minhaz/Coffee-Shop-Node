@@ -13,6 +13,6 @@ router.post("/profilePics", isAuthenticated, upload.single("profilePics"), uploa
 
 router.delete("/profilePics", isAuthenticated, removeProfilePics);
 
-// router.post("/postimage", isAuthenticated, upload.single("post-image"), postImageUploadController);
+router.post("/postimage", isAuthenticated, upload.single("post-image"), postImageUploadController);
 
 module.exports = router;

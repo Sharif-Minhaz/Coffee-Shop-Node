@@ -19,12 +19,12 @@
             <h1>
                 CREATE A NEW BLOG
             </h1>
-            <form class="full-row" action="/blog/create" method="post" enctype="multipart/form-data">
+            <form class="full-row" action="/blog/create/" enctype="multipart/form-data" method="post">
                 <h2>Create A New Blog</h2>
-                <input type="text" placeholder="Blog Title">
-                <textarea name="blogBody" id="rich-text-editor" placeholder="Enter your blog body">
+                <input type="text" name="title" placeholder="Blog Title">
+                <textarea name="body" id="rich-text-editor" placeholder="Enter your blog body">
                 </textarea>
-                <input type="file" title="Upload Thumbnail">
+                <input type="file" name="upload-thumbnail"title="Upload Thumbnail">
                 <button type="submit">Create Post</button>
             </form>
         </div>

@@ -74,6 +74,7 @@ exports.removeProfilePics = (req, res, next) => {
 	}
 };
 
+// uploading image for tinymce body
 exports.postImageUploadController = (req, res, next) => {
 	if (req.file) {
 		return res.status(200).json({
