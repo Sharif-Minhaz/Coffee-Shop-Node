@@ -245,6 +245,22 @@
 						}
 					}
 				}
+				// single menu view effects
+				.single-menu-op {
+					height: unset;
+					.modal-body {
+						display: flex;
+						flex-direction: column;
+						.prod-img-div {
+							width: 100% !important;
+							height: 340px !important;
+							margin-bottom: 25px;
+							img {
+								text-align: center;
+							}
+						}
+					}
+				}
 			}
 			#other-product {
 				.container-sm {
@@ -347,6 +363,7 @@
 			}
 		}
 	}
+
 	#other-product {
 		.container-sm {
 			.sm-heading {
@@ -385,6 +402,12 @@
 					flex-basis: 100% !important;
 				}
 			}
+		}
+	}
+	.single-menu-op {
+		.order-product-info {
+			margin: 60px 0px 30px 0px !important;
+			width: 100% !important;
 		}
 	}
 }

@@ -3,6 +3,8 @@ const orderCount = document.querySelector(".inc-dec input");
 const dec = document.querySelector(".inc-dec span:first-child");
 const inc = document.querySelector(".inc-dec span:nth-child(3)");
 
+let singleMenuPrice = document.getElementById("price").value;
+
 dec.addEventListener("click", function () {
 	let count = Number(orderCount.value);
 	if (count > 1) {

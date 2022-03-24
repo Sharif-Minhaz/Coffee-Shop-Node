@@ -38,7 +38,7 @@ exports.menuAddPostController = async (req, res, next) => {
 			image: req.file.filename,
 			price: addProductPrice,
 			category,
-			description
+			description,
 		});
 
 		await newMenu.save();
@@ -53,11 +53,13 @@ exports.singleMenuGetController = async (req, res, next) => {
 	let itemId = req.params.id;
 	try {
 		let selectedItems = await Menu.findById(itemId);
+		let relatedProduct = await Menu.find().limit(3);
 		res.render("pages/menu/view-single-menu", {
 			title: "View Menu",
 			flashMessage: Flash.getMessage(req),
 			orders: await gettingAllOrder(req, next),
 			selectedItems,
+			relatedProduct,
 		});
 	} catch (err) {
 		next(err);

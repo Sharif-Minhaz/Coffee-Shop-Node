@@ -31,7 +31,15 @@ const menuSchema = new Schema({
 	},
 	reviews: [
 		{
-			type: String,
+			body: {
+				type: String,
+				required: true,
+			},
+			user: {
+				type: Schema.Types.ObjectId,
+				ref: "User",
+				required: true,
+			},
 		},
 	],
 });

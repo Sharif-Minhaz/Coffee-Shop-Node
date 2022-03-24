@@ -5,7 +5,7 @@
     <%- include("../../partials/header.ejs") %>
         <section id="menu" class="single-menu-op">
             <div class="container-sm">
-                <div class="full-row">
+                <div class="full-row" style="align-items: flex-start;">
                     <!-- single product information for checkout -->
                     <div class="order-product-info">
                         <div class="modal-wrapper">
@@ -19,28 +19,108 @@
                                     </div>
                                     <!-- hidden input for passing image source -->
                                     <input type="hidden" value="/uploads/<%= selectedItems.image %>" id="img-src" name="imageMenu" >
-                                    <div class="prod-des">
-                                        <input name="productName" value="<%= selectedItems.name %>" type="text" id="placeName" readonly >
-                                        <input name="productPrice" value="<%= selectedItems.price %>" type="text" id="price" readonly >
-                                        <div class="inc-dec">
-                                            <span> - </span>
-                                            <input name="productCount" type="number" value="1" readonly >
-                                            <span> + </span>
+                                    <!-- total info -->
+                                    <div class="total-info">
+                                        <div class="short-des">
+                                            <div class="first-heading">
+                                                <input name="productName" value="<%= selectedItems.name %>" type="text" id="placeName" readonly >
+                                                <span style="cursor: pointer;" onclick="window.location='#review'">Review</span>
+                                                <!-- stars review system -->
+                                                <div class="reviews">
+                                                    <a href="#review"><span><i class="bi bi-star"></i></span></a>                              
+                                                </div>
+                                            </div>
+                                            <div class="prod-main-des">
+                                                <p><%= selectedItems.description %> </p>                                              
+                                            </div>
+                                            <% if(selectedItems.availability == "In Stock") { %> 
+                                                <div class="stock" style="color: #00ff95c7"><i class="bi bi-check"></i> <%= selectedItems.availability %></div>
+                                            <% } else { %>
+                                                <div class="stock" style="color: #ff0000c7"><i class="bi bi-close"></i> <%= selectedItems.availability %></div>
+                                            <% } %>  
+                                        </div>
+                                        <div class="prod-des">
+                                            <input name="productPrice" value="<%= selectedItems.price %>" type="text" id="price" readonly >
+                                            <div class="inc-dec">
+                                                <span> - </span>
+                                                <input name="productCount" type="number" value="1" readonly >
+                                                <span> + </span>
+                                            </div>
+                                            <input type="submit" value="PROCEED TO CHECKOUT">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <input type="submit" value="BUY NOW">
+                                    <!-- total info ends -->
                                 </div>
                             </form>
                         </div>
                     </div>
+                    <!-- single product information for checkout ends -->
                 </div>
             </div>
         </section>
-
     </header>
     <!-- menu section -->    
+
+    <!-- review section for single menu -->
+    <section id="review">
+        <div class="container-sm">
+            <div class="sm-heading">
+                <span>PUBLIC REVIEWS</span>
+            </div>
+            <div class="lg-heading">
+                <h1>PRODUCT REVIEWS</h1>
+            </div>
+            <div class="full-row">
+                <% if(selectedItems && selectedItems.reviews.length > 0) { %> 
+                    <% (selectedItems.reviews).forEach((item) => { %>
+                        <div class="whole-review">
+                            <div class="person-img">
+                                <img src="<%= item.user.profilePics %>" alt="profile-pic">
+                            </div>
+                            <div class="review-body">
+                                <%= item.body %>
+                            </div>
+                        </div>
+                    <% }) %> 
+                <% } else { %>
+                    <p style="color: whitesmoke;">No review yet. Be the first person to review it.</p>
+                <% } %>  
+            </div>
+            <!-- new review -->
+            <form id="new-review" action="/blog/create/review" method="post">
+                <label for="review-body">Enter your review</label>
+                <textarea required="true" name="reviewBody" placeholder="Your review here"></textarea>
+                <input type="submit" value="Submit Review">
+            </form>
+    </section>
+
+    <!-- review section for single menu -->
+    <section id="other-product" class="all-related-product">
+        <div class="container-sm">
+            <div class="sm-heading">
+                <span>RELATED PRODUCT</span>
+            </div>
+            <div class="lg-heading">
+                <h1>CAFE RELATED PRODUCT</h1>
+            </div>
+            <div class="full-row">
+                <% if(relatedProduct) { %>
+                    <% relatedProduct.forEach((product) => { %> 
+                        <div class="single-item" onclick="window.location='/menu/view/<%= product._id %>'">
+                            <div class="img">
+                                <img id="product-main-image" src="/uploads/<%= product.image %>" alt="item">
+                            </div>
+                            <div class="item-des">
+                                <span><%= product.name %></span>
+                                <span>PRICE - <%= product.price %></span>
+                            </div>
+                        </div>
+                    <% }) %> 
+                <% } %>  
+            </div>
+        </div>
+    </section>
+
 
     <%- include("../../partials/footer.ejs") %>
     <script src="/scripts/single-menu.js"></script>
