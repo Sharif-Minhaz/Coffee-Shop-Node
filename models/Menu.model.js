@@ -14,10 +14,26 @@ const menuSchema = new Schema({
 		type: String,
 		required: true,
 	},
+	description: {
+		type: String,
+	},
+	availability: {
+		type: String,
+		default: "In Stock",
+	},
 	category: {
 		type: String,
 		default: "menu",
 	},
+	stars: {
+		type: Number,
+		default: 0,
+	},
+	reviews: [
+		{
+			type: String,
+		},
+	],
 });
 
 menuSchema.index(

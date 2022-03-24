@@ -1,0 +1,49 @@
+<%- include("../../partials/head.ejs")  %>
+</head>
+<body>
+    <%- include("../../partials/alert.ejs") %>
+    <%- include("../../partials/header.ejs") %>
+        <section id="menu" class="single-menu-op">
+            <div class="container-sm">
+                <div class="full-row">
+                    <!-- single product information for checkout -->
+                    <div class="order-product-info">
+                        <div class="modal-wrapper">
+                            <form class="modal-section" action="/checkout" method="post">
+                                <div class="heading">
+                                    <h3>ORDER NOW!</h3>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="prod-img-div">
+                                        <img id="prod-img" src="/uploads/<%= selectedItems.image %>" alt="prod-img">
+                                    </div>
+                                    <!-- hidden input for passing image source -->
+                                    <input type="hidden" value="/uploads/<%= selectedItems.image %>" id="img-src" name="imageMenu" >
+                                    <div class="prod-des">
+                                        <input name="productName" value="<%= selectedItems.name %>" type="text" id="placeName" readonly >
+                                        <input name="productPrice" value="<%= selectedItems.price %>" type="text" id="price" readonly >
+                                        <div class="inc-dec">
+                                            <span> - </span>
+                                            <input name="productCount" type="number" value="1" readonly >
+                                            <span> + </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <input type="submit" value="BUY NOW">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </header>
+    <!-- menu section -->    
+
+    <%- include("../../partials/footer.ejs") %>
+    <script src="/scripts/single-menu.js"></script>
+    
+</body>
+</html>

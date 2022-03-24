@@ -29,13 +29,13 @@
                 <% } else { %>
                     <% menus.length > 0 && menus.forEach(menu => { %> 
                         <!-- single menu showing -->
-                        <div class="single-menu" data-category="<%= menu.category %>">
+                        <a href="/menu/view/<%= menu._id %>" class="single-menu" data-category="<%= menu.category %>" style="text-decoration: none;">
                             <img src="/uploads/<%= menu.image %>" alt="menu">
                             <div class="inner-section">
                                 <span><%= menu.name %> </span>
                                 <span><%= menu.price %> </span>
                             </div>
-                        </div>
+                        </a>
                     <% }) %> 
                 <% } %>   
             </div>
@@ -50,12 +50,12 @@
     <!-- add menu or product modal -->
     <div class="add-menu-modal">
         <div class="modal-wrapper">
-            <form style="height: 384px;" action="/menu/add-menu" class="modal-section" enctype="multipart/form-data" method="post">
+            <form style="height: 500px;" action="/menu/add-menu" class="modal-section" enctype="multipart/form-data" method="post">
                 <div class="heading">
                     <h3>ADD PRODUCT</h3>
                     <span id="order-modal-close" onclick="closeModal();"><i class="bi bi-x-lg"></i></span>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" style="height: 74.5%;">
                     <div class="prod-des">
                         <input type="file" name="item" title="upload product image" required>
                         <div>
@@ -67,6 +67,7 @@
                         </div>
                         <input name="addProductName" type="text" id="addProductName" placeholder="Enter product name" required >
                         <input name="addProductPrice" type="number" min="0.1" id="addProductPrice" placeholder="Enter product price ($)" step="any" required >
+                        <textarea name="description" id="description" rows="10" placeholder="Description"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -76,7 +77,7 @@
         </div>
     </div>
     <!-- modal for menu order -->
-    <div class="order-modal">
+    <!-- <div class="order-modal">
         <div class="modal-wrapper">
             <form class="modal-section" action="/checkout" method="post">
                 <div class="heading">
@@ -86,9 +87,9 @@
                 <div class="modal-body">
                     <div class="prod-img-div">
                         <img id="prod-img" src="" alt="prod-img">
-                    </div>
+                    </div> -->
                     <!-- hidden input for passing image source -->
-                    <input type="hidden" value="" id="img-src" name="imageMenu" >
+                    <!-- <input type="hidden" value="" id="img-src" name="imageMenu" >
                     <div class="prod-des">
                         <input name="productName" type="text" id="placeName" readonly >
                         <input name="productPrice" type="text" id="price" readonly >
@@ -104,7 +105,7 @@
                 </div>
             </form>
         </div>
-    </div>
+    </div> -->
 
     <%- include("../../partials/footer.ejs") %>
     

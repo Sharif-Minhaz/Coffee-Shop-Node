@@ -10,7 +10,7 @@ const fs = require("fs");
 exports.dashboardGetController = async (req, res, next) => {
 	res.render("pages/dashboard/dashboard", {
 		title: "Admin Dashboard",
-		flashMessage: {},
+		flashMessage: Flash.getMessage(req),
 		orders: await gettingAllOrder(req, next),
 	});
 };
@@ -62,6 +62,7 @@ exports.deleteItemGetController = async (req, res, next) => {
 			err && console.error(err);
 		});
 		await Menu.findByIdAndDelete(menuId);
+		req.flash("success", "Item deleted successfully");
 		res.redirect("/dashboard/edit-item#menu");
 	} catch (err) {
 		next(err);
@@ -125,7 +126,6 @@ exports.reservationRejectGetController = async (req, res, next) => {
 	try {
 		await Reservation.findByIdAndDelete(reserveId);
 		req.flash("success", "Reservation request rejected!");
-
 		res.redirect("/dashboard/reservation#all-subscribed-mail");
 	} catch (err) {
 		next(err);

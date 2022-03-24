@@ -11,9 +11,9 @@ function revealModal() {
 	addMenuModal.style.display = "block";
 }
 // <---------- filter --------->
-let all = document.querySelectorAll("div[data-category]");
-let menu = document.querySelectorAll("div[data-category='menu']");
-let product = document.querySelectorAll("div[data-category='product']");
+let all = document.querySelectorAll("[data-category]");
+let menu = document.querySelectorAll("[data-category='menu']");
+let product = document.querySelectorAll("[data-category='product']");
 let filter = document.getElementsByClassName("filter");
 // all items
 filter[0].addEventListener("click", function () {

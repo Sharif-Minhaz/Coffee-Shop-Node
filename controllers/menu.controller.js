@@ -1,10 +1,7 @@
 const Menu = require("../models/Menu.model");
 const Flash = require("../utils/Flash");
-const Checkout = require("../models/Checkout.model");
 const { gettingAllOrder } = require("../utils/ordersManage");
 const fs = require("fs");
-
-// let orders;
 
 exports.menuGetController = async (req, res, next) => {
 	let menus;
@@ -22,7 +19,7 @@ exports.menuGetController = async (req, res, next) => {
 };
 
 exports.menuAddPostController = async (req, res, next) => {
-	let { addProductName, addProductPrice, category } = req.body;
+	let { addProductName, addProductPrice, category, description } = req.body;
 	let onlyPrice = Number(addProductPrice).toFixed(2);
 	addProductPrice = "$" + onlyPrice;
 
@@ -41,11 +38,27 @@ exports.menuAddPostController = async (req, res, next) => {
 			image: req.file.filename,
 			price: addProductPrice,
 			category,
+			description
 		});
 
 		await newMenu.save();
 		req.flash("success", "Product added successfully");
 		res.redirect("/menu/all");
+	} catch (err) {
+		next(err);
+	}
+};
+
+exports.singleMenuGetController = async (req, res, next) => {
+	let itemId = req.params.id;
+	try {
+		let selectedItems = await Menu.findById(itemId);
+		res.render("pages/menu/view-single-menu", {
+			title: "View Menu",
+			flashMessage: Flash.getMessage(req),
+			orders: await gettingAllOrder(req, next),
+			selectedItems,
+		});
 	} catch (err) {
 		next(err);
 	}
