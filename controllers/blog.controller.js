@@ -27,3 +27,8 @@ exports.createBlogPostPostController = async (req, res, next) => {
 		next(err);
 	}
 };
+
+exports.reviewPostController = async (req, res, next) => {
+	req.flash("fail", "Login is required for review");
+	res.redirect("/");
+};

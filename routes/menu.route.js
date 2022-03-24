@@ -3,8 +3,9 @@ const {
 	menuGetController,
 	menuAddPostController,
 	singleMenuGetController,
+	reviewPostController,
 } = require("../controllers/menu.controller");
-const { isAdmin } = require("../middlewares/auth.middleware");
+const { isAuthenticated, isAdmin } = require("../middlewares/auth.middleware");
 const upload = require("../middlewares/upload.middleware");
 
 router.get("/all", menuGetController);

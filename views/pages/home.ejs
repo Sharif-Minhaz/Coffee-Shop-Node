@@ -95,7 +95,7 @@
         <div class="container-sm">
             <div class="full-row">
                 <% if(menus.length > 0 && menus.forEach((menu) => { %> 
-                    <div class="single-menu">
+                    <div class="single-menu" onclick="window.location='/menu/view/<%= menu._id %>'">
                         <img src="/uploads/<%= menu.image %>" alt="menu">
                         <div class="inner-section">
                             <span><%= menu.name %></span>
@@ -287,101 +287,6 @@
             </div>
         </div>
     </section>
-
-    <!-- modal for menu order -->
-    <div class="order-modal">
-        <div class="modal-wrapper">
-            <form class="modal-section" action="/checkout" method="post">
-                <div class="heading">
-                    <h3>ORDER NOW!</h3>
-                    <span id="order-modal-close"><i class="bi bi-x-lg"></i></span>
-                </div>
-                <div class="modal-body">
-                    <div class="prod-img-div">
-                        <img id="prod-img" src="" alt="prod-img">
-                    </div>
-                    <!-- hidden input for passing image source -->
-                    <input type="hidden" value="" id="img-src" name="imageMenu" >
-                    <div class="prod-des">
-                        <input name="productName" type="text" id="placeName" readonly >
-                        <input name="productPrice" type="text" id="price" readonly >
-                        <div class="inc-dec">
-                            <span> - </span>
-                            <input name="productCount" type="number" value="1" readonly >
-                            <span> + </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="submit" value="BUY NOW">
-                </div>
-            </form>
-        </div>
-    </div>
-    <!-- buy coffee machine -->
-    <div class="coffee-modal">
-        <div class="modal-wrapper coffee-modal-wrapper">
-            <form class="modal-section coffee-modal-section" action="/checkout" method="post">
-                <div class="heading">
-                    <h3>ORDER NOW!</h3>
-                    <span id="order-modal-close-machine"><i class="bi bi-x-lg"></i></span>
-                </div>
-                <div class="modal-body-machine">
-                    <div class="prod-img-machine">
-                        <img id="prod-img" src="/images/product-big.png" alt="prod-img">
-                    </div>
-                    <!-- hidden input for passing image source -->
-                    <input type="hidden" value="/images/product-big.png" id="img-src-machine" name="imageMenu" >
-                    <div class="prod-des">
-                        <input type="text" name="productName" style="all:unset; text-align: center;" value="COFFEE MACHINE" readonly>
-                        <% if(coffeeMachine) { %>
-                            <input type="text" id="price-machine" name="productPrice" value="<%= coffeeMachine.price %>" readonly>
-                        <% } else { %>
-                            <input type="text" id="price-machine" name="productPrice" value="$150.00" readonly>
-                        <% } %>   
-                        <div class="inc-dec-machine">
-                            <span id="min"> - </span>
-                            <input name="productCount" type="number" value="1" id="count-res" readonly>
-                            <span id="inc"> + </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="submit" value="BUY NOW">
-                </div>
-            </form>
-        </div>
-    </div>   
-    <!-- modal for product order -->
-    <div class="order-modal product-plus">
-        <div class="modal-wrapper">
-            <form class="modal-section" action="/checkout" method="post">
-                <div class="heading">
-                    <h3>ORDER NOW!</h3>
-                    <span id="product-modal-close"><i class="bi bi-x-lg"></i></span>
-                </div>
-                <div class="modal-body">
-                    <div class="prod-img-div">
-                        <img id="product-img-plus" src="" alt="prod-img">
-                    </div>
-                    <!-- hidden input for passing image source -->
-                    <input type="hidden" value="" id="img-src-product" name="imageMenu" >
-                    <div class="prod-des">
-                        <input name="productName" type="text" id="placeProductName" readonly >
-                        <input name="productPrice" type="text" id="productPrice" readonly >
-                        <div class="inc-dec-product">
-                            <span> - </span>
-                            <input name="productCount" type="number" value="1" readonly >
-                            <span> + </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="submit" value="BUY NOW">
-                </div>
-            </form>
-        </div>
-    </div> 
     
     <%- include("../partials/footer.ejs") %>
     <script src="/dist/js/owl.carousel.min.js"></script>

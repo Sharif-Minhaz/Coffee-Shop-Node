@@ -18,7 +18,7 @@ exports.bindUserWithRequest = () => {
 
 exports.isAuthenticated = (req, res, next) => {
 	if (!req.session.isLoggedIn) {
-		req.flash("fail", "login required for creating a blog");
+		req.flash("fail", "login is required for this action");
 		return res.redirect("/auth/login");
 	}
 	next();

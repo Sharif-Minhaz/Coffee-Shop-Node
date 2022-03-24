@@ -476,6 +476,7 @@ html {
 										.prod-main-des {
 											p {
 												color: $muted;
+												line-height: 19px;
 											}
 										}
 										.stock {
@@ -682,7 +683,7 @@ html {
 				background-color: $dark-as-hell;
 				color: $font-color;
 				border-color: $highlight;
-
+				resize: vertical;
 			}
 			input {
 				all: unset;

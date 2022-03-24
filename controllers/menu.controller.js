@@ -4,18 +4,17 @@ const { gettingAllOrder } = require("../utils/ordersManage");
 const fs = require("fs");
 
 exports.menuGetController = async (req, res, next) => {
-	let menus;
 	try {
-		menus = await Menu.find();
+		let menus = await Menu.find();
+		res.render("pages/menu/menu", {
+			title: "Coffee Shop | Menu",
+			flashMessage: Flash.getMessage(req),
+			orders: await gettingAllOrder(req, next),
+			menus,
+		});
 	} catch (err) {
 		next(err);
 	}
-	res.render("pages/menu/menu", {
-		title: "Coffee Shop | Menu",
-		flashMessage: Flash.getMessage(req),
-		orders: await gettingAllOrder(req, next),
-		menus,
-	});
 };
 
 exports.menuAddPostController = async (req, res, next) => {
@@ -65,3 +64,4 @@ exports.singleMenuGetController = async (req, res, next) => {
 		next(err);
 	}
 };
+
