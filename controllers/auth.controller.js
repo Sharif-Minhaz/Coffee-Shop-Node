@@ -1,5 +1,4 @@
 const User = require("../models/User.model");
-const Checkout = require("../models/Checkout.model");
 const bcrypt = require("bcrypt");
 const { validationResult } = require("express-validator");
 const errorFormatter = require("../utils/validatorErrorFormatter");
@@ -58,7 +57,7 @@ exports.loginGetController = (req, res, next) => {
 };
 
 exports.loginPostController = async (req, res, next) => {
-	const { email, password } = req.body;
+	const { email } = req.body;
 
 	let errors = validationResult(req).formatWith(errorFormatter);
 

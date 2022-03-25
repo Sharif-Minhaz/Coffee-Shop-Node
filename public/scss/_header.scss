@@ -1,8 +1,19 @@
+// form validation styles
+.is-invalid {
+	border: 1px solid $invalid-color !important;
+}
+.invalid-feedback {
+	p {
+		color: $invalid-color !important;
+		padding: 9px 0px 0px 0px;
+		font: 400 14px system-ui !important;
+	}
+}
 // main header for all
 header {
 	position: relative;
 	background: {
-		image: url(/images/hero-img.jpeg);
+		image: url("/images/hero-img.jpeg");
 		size: cover;
 		repeat: no-repeat;
 	}
@@ -424,7 +435,7 @@ header {
 		position: relative;
 		height: 100vh;
 		background: {
-			image: url(/images/breadcrumb.jpeg);
+			image: url("/images/breadcrumb.jpeg");
 			size: cover;
 			position: center;
 			repeat: no-repeat;
@@ -498,20 +509,6 @@ header {
 						resize: none;
 						height: 130px;
 						padding-top: 14px;
-					}
-					.is-invalid {
-						border: 1px solid $invalid-color;
-					}
-					.invalid-feedback {
-						p {
-							color: $invalid-color;
-							padding: 9px 0px 0px 0px;
-							font: {
-								size: 14px;
-								family: system-ui;
-								weight: 400;
-							}
-						}
 					}
 				}
 			}
@@ -634,7 +631,7 @@ header {
 		height: 100vh;
 		min-height: 100vh;
 		background: {
-			image: url(/images/breadcrumb.jpeg);
+			image: url("/images/breadcrumb.jpeg");
 			size: cover;
 			repeat: no-repeat;
 		}

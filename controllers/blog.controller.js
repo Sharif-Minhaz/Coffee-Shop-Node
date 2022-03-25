@@ -1,6 +1,8 @@
 const Flash = require("../utils/Flash");
 const { gettingAllOrder } = require("../utils/ordersManage");
 const Post = require("../models/Post.model");
+const { validationResult } = require("express-validator");
+const errorFormatter = require("../utils/validatorErrorFormatter");
 
 exports.createBlogGetController = async (req, res, next) => {
 	res.render("pages/blogs/create-new-blog", {
@@ -28,7 +30,3 @@ exports.createBlogPostPostController = async (req, res, next) => {
 	}
 };
 
-exports.reviewPostController = async (req, res, next) => {
-	req.flash("fail", "Login is required for review");
-	res.redirect("/");
-};

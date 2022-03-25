@@ -72,13 +72,17 @@
             </div>
             <div class="full-row">
                 <% if(selectedItems && selectedItems.reviews.length > 0) { %> 
-                    <% (selectedItems.reviews).forEach((item) => { %>
+                    <% [...selectedItems.reviews].forEach((item) => { %>
                         <div class="whole-review">
                             <div class="person-img">
                                 <img src="<%= item.user.profilePics %>" alt="profile-pic">
+                                <span class="main-det">
+                                    <span><%= (item.creation).toLocaleDateString() %></span>
+                                    <span><%= item.user.username %></span>
+                                </span>
                             </div>
                             <div class="review-body">
-                                <%= item.body %>
+                                "<%= item.body %>"
                             </div>
                         </div>
                     <% }) %> 
@@ -87,10 +91,18 @@
                 <% } %>  
             </div>
             <!-- new review -->
-            <form id="new-review" action="/blog/create/review" method="post">
+            <form id="new-review" action="/menu/view/review" method="post">
+                <% if(selectedItems){ %> 
+                    <input type="hidden" name="selectedItemsId" value="<%= selectedItems._id %>">
+                <% } %> 
                 <label for="review-body">Enter your review</label>
-                <textarea required="true" name="reviewBody" placeholder="Your review here"></textarea>
-                <input type="submit" value="Submit Review">
+                <textarea name="reviewBody" class="<%= errors.reviewBody && "is-invalid" %>" placeholder="Your review here"></textarea>
+                <% if (errors.reviewBody) { %>
+                    <div class="invalid-feedback">
+                        <p><%= errors.reviewBody %></p>
+                    </div>
+                <% } %> 
+                <input type="submit" value="Submit Review"> 
             </form>
     </section>
 

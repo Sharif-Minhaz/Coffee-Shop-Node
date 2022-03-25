@@ -661,6 +661,32 @@ html {
 						color: $font-color;
 					}
 				}
+				.full-row {
+					max-width: 570px;
+					.whole-review {
+						padding: 20px;
+						border: 1px solid $border-color;
+						margin-bottom: 20px;
+						.person-img {
+							display: flex;
+							color: $font-color;
+							gap: 18px;
+							img {
+								height: 50px;
+								border-radius: 50%;
+							}
+							.main-det {
+								display: inline-flex;
+								flex-direction: column;
+								justify-content: center;
+							}
+						}
+						.review-body {
+							margin: 10px 0px 0px 68px;
+							color: $muted;
+						}
+					}
+				}
 			}
 		}
 		// new review
@@ -1534,92 +1560,6 @@ html {
 						}
 						&:hover &:last-child {
 							background-color: $sec-bg;
-						}
-					}
-				}
-			}
-		}
-		// modal for buying a coffee machine
-		.coffee-modal {
-			@include modal();
-			.modal-wrapper {
-				@include flex();
-				height: 100vh;
-				.modal-section {
-					background-color: $font-color;
-					padding: 30px;
-					border-radius: 4px;
-					width: 500px;
-					height: 406px;
-					.heading {
-						@include flex(space-between, center);
-						h3 {
-							margin-bottom: 10px;
-							font: 500 23px $bebas;
-						}
-						span {
-							cursor: pointer;
-							margin-bottom: 10px;
-						}
-					}
-					.modal-body-machine {
-						display: flex;
-						border: 1px solid $border-color-lite;
-						padding: 20px;
-						.prod-img-machine {
-							width: 50%;
-							img {
-								width: 150px;
-							}
-						}
-						.prod-des {
-							width: 50%;
-							height: 100%;
-							@include flex();
-							flex-direction: column;
-							row-gap: 20px;
-							h3 {
-								font: 500 23px $bebas;
-								text-align: center;
-							}
-							#price-machine {
-								text-align: center;
-								width: 124px;
-								font-size: 20px;
-								padding: 7px 5px;
-								color: $main-bg;
-							}
-							.inc-dec-machine {
-								display: flex;
-								span {
-									@include counter();
-								}
-								input[type="number"] {
-									@include counter();
-									width: 43px;
-									padding-right: 5px;
-									-moz-appearance: textfield;
-									color: $main-bg;
-									&:focus {
-										outline: none;
-									}
-								}
-								input::-webkit-outer-spin-button,
-								input::-webkit-inner-spin-button {
-									-webkit-appearance: none;
-								}
-							}
-						}
-					}
-					.modal-footer {
-						@include flex(flex-end, center);
-						input {
-							@include big-heading();
-							border: none;
-							margin-top: 20px;
-							&:hover {
-								cursor: pointer;
-							}
 						}
 					}
 				}

@@ -1,6 +1,8 @@
 const Menu = require("../models/Menu.model");
 const Flash = require("../utils/Flash");
 const { gettingAllOrder } = require("../utils/ordersManage");
+const { validationResult } = require("express-validator");
+const errorFormatter = require("../utils/validatorErrorFormatter");
 const fs = require("fs");
 
 exports.menuGetController = async (req, res, next) => {
@@ -51,7 +53,10 @@ exports.menuAddPostController = async (req, res, next) => {
 exports.singleMenuGetController = async (req, res, next) => {
 	let itemId = req.params.id;
 	try {
-		let selectedItems = await Menu.findById(itemId);
+		let selectedItems = await Menu.findById(itemId).populate({
+			path: "reviews.user",
+			model: "User",
+		});
 		let relatedProduct = await Menu.find().limit(3);
 		res.render("pages/menu/view-single-menu", {
 			title: "View Menu",
@@ -59,9 +64,48 @@ exports.singleMenuGetController = async (req, res, next) => {
 			orders: await gettingAllOrder(req, next),
 			selectedItems,
 			relatedProduct,
+			errors: {},
 		});
 	} catch (err) {
 		next(err);
 	}
 };
 
+exports.reviewPostController = async (req, res, next) => {
+	const { selectedItemsId, reviewBody } = req.body;
+	let errors = validationResult(req).formatWith(errorFormatter);
+
+	try {
+		if (!errors.isEmpty()) {
+			let selectedItems = await Menu.findById(selectedItemsId).populate({
+				path: "reviews.user",
+				model: "User",
+			});
+			
+			let relatedProduct = await Menu.find().limit(3);
+			req.flash("fail", "Review body can not be empty");
+			return res.render("pages/menu/view-single-menu", {
+				title: "View Menu",
+				flashMessage: Flash.getMessage(req),
+				orders: await gettingAllOrder(req, next),
+				selectedItems,
+				relatedProduct,
+				errors: errors.mapped(),
+			});
+		}
+		await Menu.updateOne(
+			{ _id: selectedItemsId },
+			{
+				$push: {
+					reviews: {
+						body: reviewBody,
+						user: req.user._id,
+					},
+				},
+			}
+		);
+		res.redirect(`/menu/view/${selectedItemsId}`);
+	} catch (err) {
+		next(err);
+	}
+};

@@ -166,33 +166,26 @@
             </h1>
             <div class="full-row">
                 <div class="owl-carousel">
-                    <div class="owl-item-custom">
-                        <div class="quote">
-                            <img id="quote-img" src="/images/quote.png" alt="quote">
-                        </div>
-                        <div class="reviewed-user">
-                            <p class="review-body">Increase the relevance of your review by addressing your overall experience, including the level of customer service you received.</p>
-                            <div class="user-img">
-                                <img src="/images/default.jpg" alt="profilePic">
-                            </div>
-                            <p class="name">name</p>
-                            <p class="designation">designation</p>
-                        </div>
-                    </div>
-                    <!-- item two -->
-                    <div class="owl-item-custom">
-                        <div class="quote">
-                            <img id="quote-img" src="/images/quote.png" alt="quote">
-                        </div>
-                        <div class="reviewed-user">
-                            <p class="review-body">Decrease the relevance of your review by addressing your overall experience, including the level of customer service you received.</p>
-                            <div class="user-img">
-                                <img src="/images/default.jpg" alt="profilePic">
-                            </div>
-                            <p class="name">name</p>
-                            <p class="designation">designation</p>
-                        </div>
-                    </div>
+                    <!-- item all in all -->
+                    <% if(allItems) { %> 
+                        <% [...allItems].forEach((item) => { %>
+                            <% [...item.reviews].forEach((review) => { %> 
+                                <div class="owl-item-custom">
+                                    <div class="quote">
+                                        <img id="quote-img" src="/images/quote.png" alt="quote">
+                                    </div>
+                                    <div class="reviewed-user">
+                                        <p class="review-body"><%= review.body %></p>
+                                        <div class="user-img">
+                                            <img src="<%= review.user.profilePics %>" alt="profile-pic">
+                                        </div>
+                                        <p class="name"><%= review.user.username %></p>
+                                        <p class="designation"><%= review.user.role %></p>
+                                    </div>
+                                </div>
+                            <% }) %> 
+                        <% }) %> 
+                    <% } %>
                 </div>
             </div>
         </div>

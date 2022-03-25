@@ -8,6 +8,10 @@ exports.homeGetController = async (req, res, next) => {
 		let menus = await Menu.find({ category: "menu" }).limit(6);
 		let products = await Menu.find({ category: "product" }).limit(3);
 		let coffeeMachine = await Menu.findOne({ name: "Coffee Machine" });
+		let allItems = await Menu.find().populate({
+			path: "reviews.user",
+			model: "User",
+		});
 		if (req.user) {
 			return res.render("pages/home", {
 				title: "Coffee Shop | Home",
@@ -18,6 +22,7 @@ exports.homeGetController = async (req, res, next) => {
 				menus,
 				products,
 				coffeeMachine,
+				allItems,
 			});
 		}
 		res.render("pages/home", {
@@ -29,6 +34,7 @@ exports.homeGetController = async (req, res, next) => {
 			menus,
 			products,
 			coffeeMachine,
+			allItems,
 		});
 	} catch (err) {
 		next(err);

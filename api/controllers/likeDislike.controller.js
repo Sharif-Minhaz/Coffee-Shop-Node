@@ -1,5 +1,7 @@
-let a = 3;
-let b = 8;
+let arr = [3, 5, 3, 5, 9];
 
-[a, b] = [b, a];
-console.log("value of a " + a, "value of b " + b);
+function editArr (index, del, value){
+    return arr.splice(index, del, value);
+}
+
+console.log(editArr(1, 1));

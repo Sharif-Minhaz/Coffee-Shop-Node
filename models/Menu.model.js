@@ -40,6 +40,10 @@ const menuSchema = new Schema({
 				ref: "User",
 				required: true,
 			},
+			creation: {
+				type: Date,
+				default: new Date(),
+			},
 		},
 	],
 });
