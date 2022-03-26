@@ -95,13 +95,15 @@
         <div class="container-sm">
             <div class="full-row">
                 <% if(menus.length > 0 && menus.forEach((menu) => { %> 
-                    <div class="single-menu" onclick="window.location='/menu/view/<%= menu._id %>'">
-                        <img src="/uploads/<%= menu.image %>" alt="menu">
-                        <div class="inner-section">
-                            <span><%= menu.name %></span>
-                            <span><%= menu.price %></span>
+                    <a href="/menu/view/<%= menu._id %>" style="text-decoration: none;">
+                        <div class="single-menu">
+                            <img src="/uploads/<%= menu.image %>" alt="menu">
+                            <div class="inner-section">
+                                <span><%= menu.name %></span>
+                                <span><%= menu.price %></span>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 <% })) %> 
             </div>
         </div>

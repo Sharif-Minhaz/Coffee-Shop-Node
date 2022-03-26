@@ -9,10 +9,6 @@
 html {
 	scroll-behavior: smooth;
 	overflow-x: hidden;
-	.mceEditorArea {
-		font-family: "MS Sans Serif";
-		background: #000;
-	}
 	body {
 		height: 100vh;
 		background-color: $main-bg;
@@ -669,8 +665,8 @@ html {
 						margin-bottom: 20px;
 						.person-img {
 							display: flex;
-							color: $font-color;
 							gap: 18px;
+							color: $font-color;
 							img {
 								height: 50px;
 								border-radius: 50%;
@@ -718,6 +714,32 @@ html {
 				text-align: center;
 				cursor: pointer;
 				margin: 20px 0px 20px 0px;
+			}
+			// importing reviews
+			@import "review";
+		}
+		// own review
+		#own-review {
+			.heading {
+				@include sm-heading();
+				font-size: 13px;
+    			letter-spacing: 1px;
+				font-weight: 400;
+				margin-top: 50px;
+			}
+			.my-review {
+				margin-top: 20px;
+				padding: 20px;
+				color: $font-color;
+				border: 1px solid $border-color;
+				p {
+					margin-bottom: 13px;
+					&:nth-child(2) {
+						text-transform: uppercase;
+						margin-bottom: 8px;
+						color: $highlight;
+					}
+				}
 			}
 		}
 		// all related product

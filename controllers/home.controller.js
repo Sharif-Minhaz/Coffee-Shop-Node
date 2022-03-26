@@ -8,7 +8,7 @@ exports.homeGetController = async (req, res, next) => {
 		let menus = await Menu.find({ category: "menu" }).limit(6);
 		let products = await Menu.find({ category: "product" }).limit(3);
 		let coffeeMachine = await Menu.findOne({ name: "Coffee Machine" });
-		let allItems = await Menu.find().populate({
+		let allItems = await Menu.find().limit(8).populate({
 			path: "reviews.user",
 			model: "User",
 		});
