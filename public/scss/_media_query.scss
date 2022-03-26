@@ -4,8 +4,11 @@
 			.full-row {
 				width: 100%;
 				row-gap: 30px !important;
-				.single-menu {
+				a {
 					margin: auto;
+					.single-menu {
+						margin: auto;
+					}
 				}
 			}
 		}
@@ -266,13 +269,14 @@
 				.container-sm {
 					.full-row {
 						gap: 20px;
-						flex-direction: column;
+						flex-direction: row;
 						.single-item {
 							width: 100%;
 							border: 1px solid $border-color;
 							position: relative;
-							padding: 110px 20px 40px 20px;
+							padding: 48px 20px 40px 20px;
 							transition: 0.3s background-color;
+							height: 322px;
 							.img {
 								text-align: center;
 								margin-bottom: 30px;
@@ -296,6 +300,16 @@
 						}
 					}
 				}
+			}
+			#review {
+				.container-sm {
+					.full-row {
+						width: 100%;
+					}
+				}
+			}
+			#own-review {
+				width: 100%;
 			}
 			footer {
 				.footer-wrapper {
@@ -366,6 +380,17 @@
 
 	#other-product {
 		.container-sm {
+			.full-row {
+				flex-direction: column !important;
+				.single-item {
+					height: 387px !important;
+					.img {
+						img {
+							width: 206px !important;
+						}
+					}
+				}
+			}
 			.sm-heading {
 				text-align: center;
 			}

@@ -81,7 +81,7 @@ exports.reviewPostController = async (req, res, next) => {
 				path: "reviews.user",
 				model: "User",
 			});
-			
+
 			let relatedProduct = await Menu.find().limit(3);
 			req.flash("fail", "Review body can not be empty");
 			return res.render("pages/menu/view-single-menu", {
@@ -105,7 +105,27 @@ exports.reviewPostController = async (req, res, next) => {
 				},
 			}
 		);
-		res.redirect(`/menu/view/${selectedItemsId}`);
+		req.flash("success", "Review added successfully");
+		res.redirect(`/menu/view/${selectedItemsId}#review`);
+	} catch (err) {
+		next(err);
+	}
+};
+
+exports.reviewDeleteGetController = async (req, res, next) => {
+	const { rev, item } = req.query;
+	try {
+		await Menu.findOneAndUpdate(
+			{ _id: item },
+			{
+				$pull: {
+					reviews: { _id: rev },
+				},
+			},
+			{ safe: true, multi: false }
+		);
+		req.flash("success", "Review deleted successfully");
+		res.redirect(`/menu/view/${item}#review`);
 	} catch (err) {
 		next(err);
 	}

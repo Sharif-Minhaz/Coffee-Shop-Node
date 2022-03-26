@@ -8,6 +8,7 @@ const subscribeRoute = require("./subscribe.route");
 const checkoutRoute = require("./checkout.route");
 const dashboardRoute = require("./dashboard.route");
 const blogRoute = require("./blog.route");
+const searchRoute = require("./search.route");
 
 const routes = [
 	{
@@ -49,6 +50,10 @@ const routes = [
 	{
 		path: "/blog",
 		handler: blogRoute,
+	},
+	{
+		path: "/search",
+		handler: searchRoute,
 	}
 ];
 
