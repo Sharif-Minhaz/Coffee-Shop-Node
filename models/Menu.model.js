@@ -25,10 +25,6 @@ const menuSchema = new Schema({
 		type: String,
 		default: "menu",
 	},
-	stars: {
-		type: Number,
-		default: 0,
-	},
 	reviews: [
 		{
 			body: {
@@ -38,6 +34,10 @@ const menuSchema = new Schema({
 			user: {
 				type: Schema.Types.ObjectId,
 				ref: "User",
+				required: true,
+			},
+			stars: {
+				type: Number,
 				required: true,
 			},
 			creation: {

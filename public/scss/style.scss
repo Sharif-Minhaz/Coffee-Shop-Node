@@ -495,7 +495,7 @@ html {
 											user-select: none;
 											cursor: pointer;
 											span {
-												border: 1px solid $grey;		
+												border: 1px solid $grey;
 												width: 38px;
 												display: inline-block;
 												text-align: center;
@@ -503,10 +503,10 @@ html {
 												padding: 5px 6px;
 												&:first-child {
 													margin-right: -6px;
-												}										
+												}
 												&:last-child {
 													margin-left: -6px;
-												}										
+												}
 											}
 											input {
 												background-color: $form-box-shadow;
@@ -528,7 +528,7 @@ html {
 							}
 						}
 					}
-				}				
+				}
 			}
 			.menu-footer {
 				margin-top: 30px;
@@ -559,7 +559,7 @@ html {
 			margin-top: 0 !important;
 			.container-sm {
 				background-color: $wrapper-bg;
-    			height: inherit;
+				height: inherit;
 			}
 		}
 		// showing other items
@@ -607,7 +607,7 @@ html {
 							transition: 0.6s;
 							img {
 								width: 70%;
-								border-radius: 30% 70% 67% 33% / 30% 30% 70% 70% ;
+								border-radius: 30% 70% 67% 33% / 30% 30% 70% 70%;
 							}
 						}
 						.item-des {
@@ -659,6 +659,7 @@ html {
 				}
 				.full-row {
 					max-width: 570px;
+					width: 570px;
 					.whole-review {
 						padding: 20px;
 						border: 1px solid $border-color;
@@ -671,10 +672,17 @@ html {
 								height: 50px;
 								border-radius: 50%;
 							}
-							.main-det {
-								display: inline-flex;
-								flex-direction: column;
-								justify-content: center;
+							.main-info-heading {
+								display: flex;
+								// align-items: center;
+								justify-content: space-between;
+								width: 100%;
+								padding-right: 10px;
+								.main-det {
+									display: inline-flex;
+									flex-direction: column;
+									justify-content: center;
+								}
 							}
 						}
 						.review-body {
@@ -704,7 +712,7 @@ html {
 				font-size: 16px;
 				background-color: $dark-as-hell;
 				color: $font-color;
-				border-color: $highlight;
+				border-color: $grey;
 				resize: vertical;
 			}
 			input {
@@ -723,7 +731,7 @@ html {
 			.heading {
 				@include sm-heading();
 				font-size: 13px;
-    			letter-spacing: 1px;
+				letter-spacing: 1px;
 				font-weight: 400;
 				margin-top: 50px;
 			}
@@ -745,7 +753,7 @@ html {
 		// all related product
 		.all-related-product {
 			.container-sm {
-				background-color: rgba(0, 0, 0, 0.555); 
+				background-color: rgba(0, 0, 0, 0.555);
 				height: inherit;
 				.full-row {
 					.single-item {

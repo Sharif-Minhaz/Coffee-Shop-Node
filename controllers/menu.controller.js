@@ -72,7 +72,7 @@ exports.singleMenuGetController = async (req, res, next) => {
 };
 
 exports.reviewPostController = async (req, res, next) => {
-	const { selectedItemsId, reviewBody } = req.body;
+	const { selectedItemsId, reviewBody, rating } = req.body;
 	let errors = validationResult(req).formatWith(errorFormatter);
 
 	try {
@@ -100,6 +100,7 @@ exports.reviewPostController = async (req, res, next) => {
 					reviews: {
 						body: reviewBody,
 						user: req.user._id,
+						stars: Number(rating),
 					},
 				},
 			}
