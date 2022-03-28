@@ -52,11 +52,13 @@ menuSchema.index(
 	{
 		name: "text",
 		price: "text",
+		description: "text",
 	},
 	{
 		weights: {
 			name: 5,
-			price: 5,
+			price: 3,
+			description: 2,
 		},
 	}
 );

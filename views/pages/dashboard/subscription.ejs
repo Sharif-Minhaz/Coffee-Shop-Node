@@ -26,11 +26,9 @@
                             <th>Options</th>
                         </tr>
                         <% if(subscribedMail) { %> 
-                            <% let i = 0 %> 
-                            <% subscribedMail.forEach((mail) => { %> 
-                                <% i++ %>
+                            <% subscribedMail.forEach((mail, index) => { %> 
                                 <tr>
-                                    <td><%= i %></td>
+                                    <td><%= index + 1 %></td>
                                     <td><%= mail.subEmail %></td>  
                                     <td><%= (mail.createdAt) %></td>
                                     <td id="mail-status">

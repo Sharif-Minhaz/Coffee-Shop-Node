@@ -31,11 +31,9 @@
                             <th>Options</th>
                         </tr>
                         <% if(reservation) { %> 
-                            <% let i = 0 %> 
-                            <% reservation.forEach((reserve) => { %> 
-                                <% i++ %>
+                            <% reservation.forEach((reserve, index) => { %> 
                                 <tr>
-                                    <td><%= i %></td>
+                                    <td><%= index + 1 %></td>
                                     <td><%= reserve.user.username %></td>
                                     <td><%= reserve.person %></td>  
                                     <td><%= reserve.floor %></td>  
