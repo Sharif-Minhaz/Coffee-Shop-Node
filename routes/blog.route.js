@@ -13,8 +13,8 @@ router.get("/create", isAuthenticated, createBlogGetController);
 router.post(
 	"/create",
 	isAuthenticated,
-	blogValidator,
 	upload.single("upload-thumbnail"),
+	blogValidator,
 	createBlogPostPostController
 );
 

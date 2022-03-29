@@ -1211,6 +1211,33 @@ html {
 				}
 			}
 		}
+		// showing all blogs
+		#blogs {
+			margin: 76px 0px 50px 0px;
+			.container-sm {
+				@include container-sm();
+				flex-direction: column;
+				.sm-heading {
+					span {
+						@include sm-heading();
+					}
+				}
+				.blog-heading {
+					padding: 20px 0px 50px 0px;
+					@include flex(space-between, center);
+					h2 {
+						color: $font-color;
+						font: 400 50px $bebas;
+					}
+					a {
+						button {
+							all: unset;
+							@include big-heading();
+						}
+					}
+				}
+			}
+		}
 		// creating blog section
 		#create-blog {
 			margin-top: 76px;
@@ -1264,6 +1291,7 @@ html {
 						&:hover {
 							cursor: pointer;
 							color: $input-field;
+							background-color: $dark-as-hell;
 						}
 					}
 				}

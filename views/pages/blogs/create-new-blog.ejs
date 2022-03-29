@@ -21,9 +21,20 @@
             </h1>
             <form class="full-row" action="/blog/create/" enctype="multipart/form-data" method="post">
                 <h2>Create A New Blog</h2>
-                <input type="text" name="title" placeholder="Blog Title">
+                <input type="text" class="<%= errors.title && "is-invalid"%>" name="title" placeholder="Blog Title" value="<%= errors.title && values.title %>">
+                <% if (errors.title) { %>
+                    <div class="invalid-feedback">
+                        <p><%= errors.title %></p>
+                    </div>
+                <% } %> 
                 <textarea name="body" id="rich-text-editor" placeholder="Enter your blog body">
+                    <%= values.body %>
                 </textarea>
+                <% if (errors.body) { %>
+                    <div class="invalid-feedback">
+                        <p><%= errors.body %></p>
+                    </div>
+                <% } %> 
                 <input type="file" name="upload-thumbnail"title="Upload Thumbnail">
                 <button type="submit">Create Post</button>
             </form>
