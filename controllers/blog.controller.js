@@ -8,15 +8,14 @@ exports.allBlogsGetController = async (req, res, next) => {
 	try {
 		let blogs = await Post.find().populate("author", "username");
 		res.render("pages/blogs/show-blogs", {
-		title: "All Blogs",
-		flashMessage: Flash.getMessage(req),
-		orders: await gettingAllOrder(req, next),
-		blogs
-	});
+			title: "Coffee Shop | All Blogs",
+			flashMessage: Flash.getMessage(req),
+			orders: await gettingAllOrder(req, next),
+			blogs,
+		});
 	} catch (err) {
 		next(err);
 	}
-	
 };
 
 exports.createBlogGetController = async (req, res, next) => {
@@ -52,6 +51,21 @@ exports.createBlogPostPostController = async (req, res, next) => {
 		await blogPost.save();
 		req.flash("success", "Post created successfully");
 		res.redirect("/blog");
+	} catch (err) {
+		next(err);
+	}
+};
+
+exports.showSingleBlogGetController = async (req, res, next) => {
+	const { id } = req.params;
+	try {
+		const singleBlog = await Post.findById(id);
+		res.render("pages/blogs/single-blog", {
+			title: `Coffee Shop | ${singleBlog.title}`,
+			flashMessage: {},
+			orders: await gettingAllOrder(req, next),
+			singleBlog,
+		});
 	} catch (err) {
 		next(err);
 	}

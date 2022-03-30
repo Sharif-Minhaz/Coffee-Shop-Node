@@ -19,7 +19,6 @@ const postSchema = new Schema(
 		},
 		thumbnail: {
 			type: String,
-			default: "default-blog.jpg",
 		},
 		likes: [
 			{

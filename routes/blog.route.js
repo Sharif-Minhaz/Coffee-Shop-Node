@@ -3,6 +3,7 @@ const {
 	createBlogGetController,
 	createBlogPostPostController,
 	allBlogsGetController,
+	showSingleBlogGetController
 } = require("../controllers/blog.controller");
 const { isAuthenticated } = require("../middlewares/auth.middleware");
 const blogValidator = require("../validator/blog.validator");
@@ -17,5 +18,7 @@ router.post(
 	blogValidator,
 	createBlogPostPostController
 );
+
+router.get("/show/:id", showSingleBlogGetController);
 
 module.exports = router;

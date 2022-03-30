@@ -1,0 +1,28 @@
+<%- include("../../partials/head.ejs") %>
+</head>
+<body>
+    <%- include("../../partials/alert.ejs") %>
+    <%- include("../../partials/header.ejs") %>
+        <section id="single-blog">
+            <div class="wrapper-sec">
+                <div class="main-blog-sec">
+                    <% if(singleBlog) { %>
+                        <div class="heading">
+                            <h2><%= singleBlog.title %></h2>
+                            <i class="bi bi-bookmark"></i>
+                        </div>
+                        <div class="image-section">
+                            <img src="/uploads/<%= singleBlog.thumbnail %>" alt="blog-img">
+                        </div>
+                        <div class="body">
+                            <p><%- singleBlog.body %></p>
+                        </div>
+                    <% } %> 
+                </div>
+            </div> 
+        </section>
+    </header>
+
+    <%- include("../../partials/footer.ejs") %>
+</body>
+</html>

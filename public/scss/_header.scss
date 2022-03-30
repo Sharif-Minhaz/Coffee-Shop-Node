@@ -863,4 +863,49 @@ header {
 	#admin-intro {
 		@include breadcrumbs();
 	}
+	#single-blog {
+		position: relative;
+		background: {
+			image: url("/images/breadcrumb-light.jpg");
+			size: cover;
+			repeat: no-repeat;
+		}
+		min-height: 100vh;
+		height: auto;
+		.wrapper-sec {
+			background-color: $wrapper-bg;
+			width: 100%;
+			height: inherit;
+			padding: 30px 20px;
+			.main-blog-sec {
+				background-color: $dark-as-hell;
+				margin: auto;
+				max-width: 600px;
+				padding: 25px;
+				border-radius: 5px;
+				color: $font-color;
+				.heading {
+					color: $font-color;
+					display: flex;
+					justify-content: space-between;
+					padding: 0px 0px 20px 0px;
+					h2 {
+						font-family: Arial, Helvetica, sans-serif;
+						font-weight: 400;
+					}
+				}
+				.image-section {
+					width: 100%;
+					img {
+						width: 100%;
+						border-radius: 5px;
+					}
+				}
+				.body {
+					padding: 10px;
+					background-color: $font-color;
+				}
+			}
+		}
+	}
 }
