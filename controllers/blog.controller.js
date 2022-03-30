@@ -6,7 +6,7 @@ const errorFormatter = require("../utils/validatorErrorFormatter");
 
 exports.allBlogsGetController = async (req, res, next) => {
 	try {
-		let blogs = await Post.find();
+		let blogs = await Post.find().populate("author", "username");
 		res.render("pages/blogs/show-blogs", {
 		title: "All Blogs",
 		flashMessage: Flash.getMessage(req),

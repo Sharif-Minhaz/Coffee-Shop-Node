@@ -77,6 +77,9 @@
 				flex-wrap: wrap;
 				.single-blog {
 					flex-basis: 48% !important;
+					.blog-img {
+						height: 230px;
+					}
 				}
 			}
 		}
@@ -311,6 +314,16 @@
 			#own-review {
 				width: 100%;
 			}
+			#our-blog {
+				.container-sm {
+					padding: 20px 1% 20px 1%;
+					.full-row {
+						.single-blog {
+							flex-basis: unset;
+						}
+					}
+				}
+			}
 			footer {
 				.footer-wrapper {
 					.news-latter-section {
@@ -490,6 +503,16 @@
 					.full-row {
 						.des {
 							padding: 40px !important;
+						}
+					}
+				}
+			}
+			#our-blog {
+				.container-sm {
+					padding: 10px !important;
+					.full-row {  
+						.single-blog {
+							flex-basis: 100% !important;
 						}
 					}
 				}
