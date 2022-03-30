@@ -31,7 +31,7 @@ exports.createBlogGetController = async (req, res, next) => {
 
 exports.createBlogPostPostController = async (req, res, next) => {
 	const { title, body } = req.body;
-	let thumbnail = req.file ? req.file.filename : "";
+	let thumbnail = req.file ? req.file.filename : "default-blog.jpg";
 	let errors = validationResult(req).formatWith(errorFormatter);
 	if (!errors.isEmpty()) {
 		return res.render("pages/blogs/create-new-blog", {

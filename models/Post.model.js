@@ -17,7 +17,10 @@ const postSchema = new Schema(
 			ref: "User",
 			required: true,
 		},
-		thumbnail: String,
+		thumbnail: {
+			type: String,
+			default: "default-blog.jpg",
+		},
 		likes: [
 			{
 				type: Schema.Types.ObjectId,

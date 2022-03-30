@@ -11,24 +11,72 @@
         </section>
     </header>
     <!-- create a new blog -->
-    <section id="blogs">
+    <section id="our-blog" class="blogs">
         <div class="container-sm">
             <div class="sm-heading">
                 <span>BLOG</span>
             </div>
             <div class="blog-heading">
                 <h2>SHOW ALL BLOGS</h2>
-                <a href="/blog/create#create-blog"><button>Create Now</button></a>
+                <a href="/blog/create#create-blog"><button><i class="bi bi-plus-lg"></i> Create New</button></a>
             </div>
-            
-            <div class="show-blog" style="color: whitesmoke;">
-                <%= blogs %> 
+            <div class="show-blog">
+                <div class="container-sm">
+                    <div class="full-row">
+                        <div class="single-blog">
+                            <div class="blog-img">
+                                <img src="/images/blog-1.jpeg" alt="blog-1">
+                            </div>
+                            <div class="blog-des">
+                                <small>
+                                    <span>By:</span>
+                                    <span class="name">Minhaz,</span>
+                                    <span class="date">
+                                        <%= new Date().getDate() + "/" + new Date().getMonth() + "/" + new Date().getFullYear() %> 
+                                    </span>
+                                </small>
+                                <h3><a href="/">Ideal Cocktails From Our Barmen For Perfect Mood</a></h3>
+                                <a href="/">READ MORE <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="single-blog">
+                            <div class="blog-img">
+                                <img src="/images/blog-2.jpeg" alt="blog-1">
+                            </div>
+                            <div class="blog-des">
+                                <small>
+                                    <span>By:</span>
+                                    <span class="name">Minhaz,</span>
+                                    <span class="date">
+                                        <%= new Date().getDate() + "/" + new Date().getMonth() + "/" + new Date().getFullYear() %> 
+                                    </span>
+                                </small>
+                                <h3><a href="/">Ideal Cocktails From Our Barmen For Perfect Mood</a></h3>
+                                <a href="/">READ MORE <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="single-blog">
+                            <div class="blog-img">
+                                <img src="/images/blog-3.jpeg" alt="blog-1">
+                            </div>
+                            <div class="blog-des">
+                                <small>
+                                    <span>By:</span>
+                                    <span class="name">Minhaz,</span>
+                                    <span class="date">
+                                        <%= new Date().getDate() + "/" + new Date().getMonth() + "/" + new Date().getFullYear() %> 
+                                    </span>
+                                </small>
+                                <h3><a href="/">Ideal Cocktails From Our Barmen For Perfect Mood</a></h3>
+                                <a href="/">READ MORE <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <%- include("../../partials/footer.ejs") %>
-    <script src="https://cdn.tiny.cloud/1/xq007oqlf2vjqc9q3rw3iovsa5qcbj4g1o8x4fz6z7dkla7a/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-    <script src="/scripts/create-new-blog.js"></script>
 </body>
 </html>
