@@ -53,12 +53,11 @@ exports.createProfilePostController = async (req, res, next) => {
 	} catch (err) {
 		next(err);
 	}
-	res.send("Profile");
 };
 
 exports.profileGetController = async (req, res, next) => {
 	try {
-		const profile = await Profile.findOne({ user: req.user._id }).populate("bookmarks");
+		const profile = await Profile.findOne({ user: req.user._id }).populate("bookmarks posts");
 		const reservation = await Reservation.find({ user: req.user._id });
 		if (!profile) {
 			return res.redirect("/profile/create-profile");

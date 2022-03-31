@@ -230,54 +230,26 @@
                 OUR NEWS & ARTICLES
             </h1>
             <div class="full-row">
-                <div class="single-blog">
-                    <div class="blog-img">
-                        <img src="/images/blog-1.jpeg" alt="blog-1">
-                    </div>
-                    <div class="blog-des">
-                        <small>
-                            <span>By:</span>
-                            <span class="name">Minhaz,</span>
-                            <span class="date">
-                                <%= new Date().getDate() + "/" + new Date().getMonth() + "/" + new Date().getFullYear() %> 
-                            </span>
-                        </small>
-                        <h3><a href="/">Ideal Cocktails From Our Barmen For Perfect Mood</a></h3>
-                        <a href="/">READ MORE <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="single-blog">
-                    <div class="blog-img">
-                        <img src="/images/blog-2.jpeg" alt="blog-1">
-                    </div>
-                    <div class="blog-des">
-                        <small>
-                            <span>By:</span>
-                            <span class="name">Minhaz,</span>
-                            <span class="date">
-                                <%= new Date().getDate() + "/" + new Date().getMonth() + "/" + new Date().getFullYear() %> 
-                            </span>
-                        </small>
-                        <h3><a href="/">Ideal Cocktails From Our Barmen For Perfect Mood</a></h3>
-                        <a href="/">READ MORE <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="single-blog">
-                    <div class="blog-img">
-                        <img src="/images/blog-3.jpeg" alt="blog-1">
-                    </div>
-                    <div class="blog-des">
-                        <small>
-                            <span>By:</span>
-                            <span class="name">Minhaz,</span>
-                            <span class="date">
-                                <%= new Date().getDate() + "/" + new Date().getMonth() + "/" + new Date().getFullYear() %> 
-                            </span>
-                        </small>
-                        <h3><a href="/">Ideal Cocktails From Our Barmen For Perfect Mood</a></h3>
-                        <a href="/">READ MORE <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
+                <% if(blogs) { %> 
+                    <% blogs.forEach((blog) => { %> 
+                        <div class="single-blog">
+                            <div class="blog-img">
+                                <img src="/uploads/<%= blog.thumbnail %>" alt="blog-1">
+                            </div>
+                            <div class="blog-des">
+                                <small>
+                                    <span>By:</span>
+                                    <span class="name"><%= blog.author.username %>,</span>
+                                    <span class="date">
+                                        <%= blog.createdAt.toLocaleDateString() %> 
+                                    </span>
+                                </small>
+                                <h3><a href="/blog/show/<%= blog._id %>">Ideal Cocktails From Our Barmen For Perfect Mood</a></h3>
+                                <a href="/blog/show/<%= blog._id %>">READ MORE <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    <% }) %> 
+                <% } %> 
             </div>
         </div>
     </section>

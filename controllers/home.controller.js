@@ -1,5 +1,6 @@
 const Checkout = require("../models/Checkout.model");
 const Menu = require("../models/Menu.model");
+const Post = require("../models/Post.model");
 const Flash = require("../utils/Flash");
 const { gettingAllOrder } = require("../utils/ordersManage");
 
@@ -12,6 +13,7 @@ exports.homeGetController = async (req, res, next) => {
 			path: "reviews.user",
 			model: "User",
 		});
+		let blogs = await Post.find().populate("author", "username").limit(3);
 		if (req.user) {
 			return res.render("pages/home", {
 				title: "Coffee Shop | Home",
@@ -23,6 +25,7 @@ exports.homeGetController = async (req, res, next) => {
 				products,
 				coffeeMachine,
 				allItems,
+				blogs,
 			});
 		}
 		res.render("pages/home", {
@@ -35,6 +38,7 @@ exports.homeGetController = async (req, res, next) => {
 			products,
 			coffeeMachine,
 			allItems,
+			blogs
 		});
 	} catch (err) {
 		next(err);
@@ -64,6 +68,7 @@ exports.homePostController = async (req, res, next) => {
 			path: "reviews.user",
 			model: "User",
 		});
+		let blogs = await Post.find().populate("author", "username").limit(3);
 		res.render("pages/home", {
 			title: "Coffee Shop | Home",
 			values: {},
@@ -74,6 +79,7 @@ exports.homePostController = async (req, res, next) => {
 			products,
 			coffeeMachine,
 			allItems,
+			blogs,
 		});
 	} catch (err) {
 		next(err);

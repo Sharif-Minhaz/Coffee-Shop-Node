@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css" integrity="sha512-zxBiDORGDEAYDdKLuYU9X/JaJo/DPzE42UubfBw9yg8Qvb2YRRIQ8v4KsGHOx2H1/+sdSXyXxLXv5r7tHc9ygg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <%- include("../../partials/alert.ejs")  %>
+    <%- include("../../partials/alert.ejs") %>
     <%- include("../../partials/header.ejs") %>
         <section id="auth" style="min-height: 110vh;">
             <div class="form" style="width: 600px">
@@ -75,7 +75,47 @@
             </div>
         </div>
     </section>
-    <!-- show bookmarked Product -->
+    <!-- My all Blogs -->
+    <section id="our-blog" class="blogs">
+        <div class="container-sm">
+            <div class="sm-heading">
+                <span>My BLOGS</span>
+            </div>
+            <div class="blog-heading">
+                <h2>MY ALL BLOGS</h2>
+                <a href="/blog#our-blog"><button>VIEW ALL</button></a>
+            </div>
+            <div class="show-blog">
+                <div class="container-sm">
+                    <div class="full-row">
+                        <% if(profile && profile.posts.length > 0) { %>
+                            <% profile.posts.forEach((post) => { %>
+                                <div class="single-blog">
+                                    <div class="blog-img">
+                                        <img src="/uploads/<%= post.thumbnail %>" alt="blog-1">
+                                    </div>
+                                    <div class="blog-des">
+                                        <small>
+                                            <span>By:</span>
+                                            <span class="name"><%= post.author.username %> ,</span>
+                                            <span class="date">
+                                                <%= post.createdAt.toLocaleDateString() %> 
+                                            </span>
+                                        </small>
+                                        <h3><a href="/blog/show/<%= post._id %>"><%= post.title %></a></h3>
+                                        <a href="/blog/show/<%= post._id %>">READ MORE <i class="bi bi-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            <% }) %> 
+                        <% } else { %>  
+                            <p style="color: whitesmoke;">No post found. <a href="/blog/create#create-blog">Create Now</a></p>
+                        <% } %> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- show bookmarked Blogs -->
     <section id="our-blog" class="blogs">
         <div class="container-sm">
             <div class="sm-heading">
@@ -107,12 +147,15 @@
                                     </div>
                                 </div>
                             <% }) %> 
+                        <% } else { %> 
+                            <p style="color: whitesmoke;">No bookmarked post found</p>
                         <% } %>  
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
 
     <%- include("../../partials/footer.ejs") %>
     <script>

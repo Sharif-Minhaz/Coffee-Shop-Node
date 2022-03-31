@@ -49,7 +49,15 @@ exports.createBlogPostPostController = async (req, res, next) => {
 		thumbnail,
 	});
 	try {
-		await blogPost.save();
+		let finalPost = await blogPost.save();
+		await Profile.findOneAndUpdate(
+			{ user: req.user._id },
+			{
+				$push: {
+					posts: finalPost,
+				},
+			}
+		);
 		req.flash("success", "Post created successfully");
 		res.redirect("/blog");
 	} catch (err) {
@@ -60,9 +68,11 @@ exports.createBlogPostPostController = async (req, res, next) => {
 exports.showSingleBlogGetController = async (req, res, next) => {
 	const { id } = req.params;
 	try {
-		const singleBlog = await Post.findById(id);
-		const bookmarks = await Profile.find({user: req.user._id}).select("bookmarks");
-		console.log(bookmarks);
+		const singleBlog = await Post.findById(id).populate("author");
+		let bookmarks = false;
+		if(req.user) {
+			bookmarks = await Profile.find({ user: req.user._id }).select("bookmarks");
+		}
 		res.render("pages/blogs/single-blog", {
 			title: `Coffee Shop | ${singleBlog.title}`,
 			flashMessage: {},

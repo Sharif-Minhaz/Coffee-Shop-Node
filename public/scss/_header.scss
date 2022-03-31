@@ -890,9 +890,16 @@ header {
 					justify-content: space-between;
 					gap: 10px;
 					padding: 0px 0px 20px 0px;
-					h2 {
-						font-family: Arial, Helvetica, sans-serif;
-						font-weight: 400;
+					div {
+						h2 {
+							font-family: Arial, Helvetica, sans-serif;
+							font-weight: 400;
+						}
+						p {
+							color: $muted;
+							font-size: 14px;
+							padding-top: 10px;
+						}
 					}
 				}
 				.image-section {

@@ -8,7 +8,10 @@
                 <div class="main-blog-sec">
                     <% if(singleBlog) { %>
                         <div class="heading">
-                            <h2><%= singleBlog.title %></h2>
+                            <div>
+                                <h2><%= singleBlog.title %></h2>
+                                <p>By - <%= singleBlog.author.username %>, At: <%= singleBlog.createdAt.toLocaleDateString() %></p>
+                            </div>
                             <% if(user && bookmarks) { %>
                                 <% bookmarks.forEach((bookmark) => { %>
                                     <% if(String(bookmark.bookmarks) == String(singleBlog._id)) { %>
