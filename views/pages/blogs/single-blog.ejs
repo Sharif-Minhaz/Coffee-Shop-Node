@@ -9,13 +9,58 @@
                     <% if(singleBlog) { %>
                         <div class="heading">
                             <h2><%= singleBlog.title %></h2>
-                            <i class="bi bi-bookmark"></i>
+                            <div class="bookmark"><i class="bi bi-bookmark"></i></div>
                         </div>
                         <div class="image-section">
                             <img src="/uploads/<%= singleBlog.thumbnail %>" alt="blog-img">
                         </div>
                         <div class="body">
                             <p><%- singleBlog.body %></p>
+                        </div>
+                        <div class="like-dislike-sec">
+                            <button id="likeBtn" title="Like" data-react="<%= singleBlog._id %>"><i class="bi bi-hand-thumbs-up"></i> (0)</button>
+                            <button id="dislikeBtn" title="Dislike" data-react="<%= singleBlog._id %>"><i class="bi bi-hand-thumbs-down"></i> (0)</button>
+                        </div>
+                        <div class="comment-section">
+                            <h2>Leave a comment</h2>
+                            <div class="send-comment-box">
+                                <div class="img-data">
+                                    <img src="<%= user.profilePics %>" alt="profile-pic">
+                                    <form action="/blog">
+                                        <input title="Press enter to submit" type="text" name="comment" placeholder="Enter your comment">
+                                    </form>
+                                </div>
+                                <div class="comments" id="comment">
+                                    <div id="comment-holder">
+                                        <div class="user">
+                                            <img src="<%= user.profilePics %>" alt="profile">
+                                            <div class="name-date">
+                                                <span><%= user.username %></span>
+                                                <span><%= (user.createdAt).toLocaleDateString() %></span>
+                                            </div>
+                                        </div>
+                                        <p class="comment-body">Most stupid blog I read in my entire life.</p>
+                                    </div>                                   
+                                    <div class="replies">
+                                        <div class="reply" id="reply">
+                                            <div class="replied">
+                                                <img src="<%= user.profilePics %>" alt="profile">
+                                                <div class="name-date">
+                                                    <span><%= user.username %></span>
+                                                    <span><%= (user.createdAt).toLocaleDateString() %></span>
+                                                </div>
+                                            </div>
+                                            <p>Then go just die. You stupid moron.</p>
+                                        </div>
+                                        <div class="reply-box">
+                                            <img src="<%= user.profilePics %>" alt="profile-picture">
+                                            <form action="/">
+                                                <input type="text" placeholder="Enter reply">
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     <% } %> 
                 </div>
@@ -24,5 +69,6 @@
     </header>
 
     <%- include("../../partials/footer.ejs") %>
+    <script src="/scripts/singlePage.js"></script>
 </body>
 </html>

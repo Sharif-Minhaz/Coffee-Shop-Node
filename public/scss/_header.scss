@@ -888,6 +888,7 @@ header {
 					color: $font-color;
 					display: flex;
 					justify-content: space-between;
+					gap: 10px;
 					padding: 0px 0px 20px 0px;
 					h2 {
 						font-family: Arial, Helvetica, sans-serif;
@@ -896,14 +897,135 @@ header {
 				}
 				.image-section {
 					width: 100%;
+					line-height: 0;
 					img {
 						width: 100%;
 						border-radius: 5px;
+						border-bottom-left-radius: 0px;
+						border-bottom-right-radius: 0px;
 					}
 				}
 				.body {
+					color: $dark-as-hell;
 					padding: 10px;
 					background-color: $font-color;
+					border-bottom-left-radius: 5px;
+					border-bottom-right-radius: 5px;
+				}
+				.like-dislike-sec {
+					padding: 10px 0px;
+					button {
+						all: unset;
+						@include big-heading();
+						width: 70px;
+						text-align: center;
+						padding: 6px;
+						cursor: pointer;
+						margin-right: 6px;
+						i {
+							font-size: 17px;
+						}
+					}
+				}
+				.comment-section {
+					width: 100%;
+					h2 {
+						font-family: Arial, Helvetica, sans-serif;
+						font-weight: 400;
+						margin: 30px 0px 15px 0px;
+						font-size: 15px;
+					}
+					.send-comment-box {
+						@include flex();
+						flex-direction: column;
+						.img-data {
+							@include flex(flex-start);
+							gap: 10px;
+							width: 100%;
+							img {
+								width: 50px;
+								border-radius: 50%;
+							}
+							form {
+								width: 100%;
+								padding-right: 20px;
+								input {
+									all: unset;
+									width: 100%;
+									background-color: $sec-bg;
+									padding: 8px 10px;
+									border-radius: 4px;
+									&:focus {
+										border: 1px solid $border-color;
+									}
+								}
+							}
+						}
+						.comments {
+							border: 1px solid $form-box-shadow;
+							border-radius: 4px;
+							flex-direction: column;
+							width: 100%;
+							padding: 20px;
+							margin: 20px 0px 20px 0px;
+							.user {
+								@include flex(flex-start);
+								gap: 10px;
+								width: 100%;
+								img {
+									width: 45px;
+									border-radius: 50%;
+								}
+							}
+							.name-date {
+								display: flex;
+								flex-direction: column;
+								color: $muted;
+								font-size: 15px;
+							}
+							p {
+								color: $font-color;
+								margin: 10px 0px 20px 56px;
+							}
+							.replies {
+								margin-left: 54px;
+								.reply-box {
+									display: flex;
+									align-items: center;
+									gap: 10px;
+									img {
+										width: 45px;
+										border-radius: 50%;
+									}
+									form {
+										input {
+											all: unset;
+											width: 100%;
+											background-color: $sec-bg;
+											padding: 8px 10px;
+											border-radius: 4px;
+											font-size: 15px;
+											&:focus {
+												border: 1px solid $border-color;
+											}
+										}
+										width: 84%;
+									}
+								}
+								.reply {
+									margin-top: 25px;
+									.replied {
+										display: flex;
+										gap: 10px;
+										img {
+											width: 45px;
+											border-radius: 50%;
+										}
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 		}
