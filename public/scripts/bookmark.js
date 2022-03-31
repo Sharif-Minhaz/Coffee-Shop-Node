@@ -5,8 +5,6 @@ window.onload = function () {
 		bookmark.addEventListener("click", function (e) {
 			let target = e.target.parentElement;
 
-			console.log(target);
-
 			let headers = new Headers();
 			headers.append("Accept", "Application/JSON");
 
@@ -19,18 +17,15 @@ window.onload = function () {
 			fetch(req)
 				.then((res) => res.json())
 				.then((data) => {
-					console.log("Stamp: " + data.bookmark);
 					if (data.bookmark) {
-						target.innerHTML =
-							'<i class="fas fa-bookmark" style="font-size: 20px"></i>';
+						target.innerHTML = '<i class="bi bi-bookmark-fill"></i>';
 					} else {
-						target.innerHTML =
-							'<i class="far fa-bookmark" style="font-size: 20px"></i>';
+						target.innerHTML = '<i class="bi bi-bookmark"></i>';
 					}
 				})
 				.catch((e) => {
-					console.error(e.response.data);
-					alert(e.response.data.error);
+					console.error(e);
+					alert(e);
 				});
 		});
 	});

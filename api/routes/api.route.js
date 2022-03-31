@@ -8,7 +8,7 @@ const {
 	likeGetController,
 	dislikeGetController,
 } = require("../controllers/likeDislike.controller");
-const { bookmarksGetController } = require("../controllers/bookmarks.controller");
+const { bookmarksGetController } = require("../controllers/bookmark.controller");
 
 router.post("/comments/:postId", isAuthenticated, createCommentController);
 router.post("/comments/replies/:commentId", isAuthenticated, replyCommentPostController);

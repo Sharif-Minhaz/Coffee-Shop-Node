@@ -1,130 +1,130 @@
-window.onload = function () {
-	const bookmarks = document.getElementsByClassName("bookmark");
-	const likeBtn = document.getElementById("likeBtn");
-	const dislikeBtn = document.getElementById("dislikeBtn");
-	const comment = document.getElementById("comment");
-	const commentHolder = document.getElementById("comment-holder");
-	const reply = document.getElementById("reply");
+const bookmarks = document.getElementsByClassName("bookmark");
+const likeBtn = document.getElementById("likeBtn");
+const dislikeBtn = document.getElementById("dislikeBtn");
+const comment = document.getElementById("comment");
+const commentHolder = document.getElementById("comment-holder");
+const reply = document.getElementById("reply");
 
-	[...bookmarks].forEach((bookmark) => {
-		bookmark.style.cursor = "pointer";
-		bookmark.addEventListener("click", function (e) {
-			let target = e.target.parentElement;
-			let headers = new Headers();
-			headers.append("Accept", "Application/JSON");
+[...bookmarks].forEach((bookmark) => {
+	bookmark.style.cursor = "pointer";
+	bookmark.addEventListener("click", function (e) {
+		let target = e.target.parentElement;
 
-			let req = new Request(`/api/bookmarks/${target.dataset.post}`, {
-				method: "GET",
-				headers,
-				mode: "cors",
+		let headers = new Headers();
+		headers.append("Accept", "Application/JSON");
+
+		let req = new Request(`/api/bookmarks/${target.dataset.post}`, {
+			method: "GET",
+			headers,
+			mode: "cors",
+		});
+
+		fetch(req)
+			.then((res) => res.json())
+			.then((data) => {
+				if (data.bookmark) {
+					target.innerHTML = '<i class="bi bi-bookmark-fill"></i>';
+				} else {
+					target.innerHTML = '<i class="bi bi-bookmark"></i>';
+				}
+			})
+			.catch((e) => {
+				console.error(e);
+				alert(e);
 			});
+	});
+});
 
+comment.addEventListener("keypress", function (e) {
+	if (e.key === "Enter") {
+		if (e.target.value) {
+			let postId = comment.dataset.post;
+			let data = {
+				body: e.target.value,
+				main: e.target.value,
+			};
+			let req = generateRequest(`/api/comments/${postId}/`, "POST", data);
 			fetch(req)
 				.then((res) => res.json())
 				.then((data) => {
-					if (data.bookmark) {
-						target.innerHTML = '<i class="fas fa-bookmark"></i>';
-					} else {
-						target.innerHTML = '<i class="far fa-bookmark"></i>';
-					}
+					let commentElement = createComment(data);
+					commentHolder.insertBefore(commentElement, commentHolder.children[0]);
+					e.target.value = "";
 				})
 				.catch((e) => {
-					alert(e.response.data.error);
+					alert(e.message);
 				});
-		});
-	});
+		} else {
+			alert("Please Enter A Valid Comment");
+		}
+	}
+});
 
-	comment.addEventListener("keypress", function (e) {
+commentHolder.addEventListener("keypress", function (e) {
+	if (commentHolder.hasChildNodes(e.target)) {
 		if (e.key === "Enter") {
-			if (e.target.value) {
-				let postId = comment.dataset.post;
+			let commentId = e.target.dataset.comment;
+			let user = reply.dataset.user;
+			console.log(user);
+			let value = e.target.value;
+
+			if (value) {
 				let data = {
-					body: e.target.value,
-					main: e.target.value,
+					body: value,
 				};
-				let req = generateRequest(`/api/comments/${postId}/`, "POST", data);
+				let req = generateRequest(`/api/comments/replies/${commentId}`, "POST", data);
 				fetch(req)
 					.then((res) => res.json())
 					.then((data) => {
-						let commentElement = createComment(data);
-						commentHolder.insertBefore(commentElement, commentHolder.children[0]);
+						let replyElement = createReplyElement(data, user);
+						let parent = e.target.parentElement;
+						parent.previousElementSibling.appendChild(replyElement);
 						e.target.value = "";
 					})
 					.catch((e) => {
 						alert(e.message);
 					});
 			} else {
-				alert("Please Enter A Valid Comment");
+				alert("Please Enter A Valid Reply");
 			}
 		}
-	});
+	}
+});
 
-	commentHolder.addEventListener("keypress", function (e) {
-		if (commentHolder.hasChildNodes(e.target)) {
-			if (e.key === "Enter") {
-				let commentId = e.target.dataset.comment;
-				let user = reply.dataset.user;
-				console.log(user);
-				let value = e.target.value;
+likeBtn.addEventListener("click", function (e) {
+	let postId = likeBtn.dataset.react;
+	reqLikeDislike("like", postId)
+		.then((res) => res.json())
+		.then((data) => {
+			console.log(data);
+			let likeText = data.liked ? "🧡 Liked" : "🧡 Like";
+			likeText = likeText + ` ( ${data.totalLikes} )`;
+			let dislikeText = `💔 Dislike ( ${data.totalDislikes} )`;
 
-				if (value) {
-					let data = {
-						body: value,
-					};
-					let req = generateRequest(`/api/comments/replies/${commentId}`, "POST", data);
-					fetch(req)
-						.then((res) => res.json())
-						.then((data) => {
-							let replyElement = createReplyElement(data, user);
-							let parent = e.target.parentElement;
-							parent.previousElementSibling.appendChild(replyElement);
-							e.target.value = "";
-						})
-						.catch((e) => {
-							alert(e.message);
-						});
-				} else {
-					alert("Please Enter A Valid Reply");
-				}
-			}
-		}
-	});
+			likeBtn.innerHTML = likeText;
+			dislikeBtn.innerHTML = dislikeText;
+		})
+		.catch((e) => {
+			console.error(e);
+		});
+});
 
-	likeBtn.addEventListener("click", function (e) {
-		let postId = likeBtn.dataset.react;
-		reqLikeDislike("like", postId)
-			.then((res) => res.json())
-			.then((data) => {
-				console.log(data);
-				let likeText = data.liked ? "🧡 Liked" : "🧡 Like";
-				likeText = likeText + ` ( ${data.totalLikes} )`;
-				let dislikeText = `💔 Dislike ( ${data.totalDislikes} )`;
+dislikeBtn.addEventListener("click", function (e) {
+	let postId = likeBtn.dataset.react;
+	reqLikeDislike("dislike", postId)
+		.then((res) => res.json())
+		.then((data) => {
+			let dislikeText = data.disliked ? "💔 Disliked" : "💔 Dislike";
+			dislikeText = dislikeText + ` ( ${data.totalDislikes} )`;
+			let likeText = `🧡 Like ( ${data.totalLikes} )`;
 
-				likeBtn.innerHTML = likeText;
-				dislikeBtn.innerHTML = dislikeText;
-			})
-			.catch((e) => {
-				console.error(e);
-			});
-	});
-
-	dislikeBtn.addEventListener("click", function (e) {
-		let postId = likeBtn.dataset.react;
-		reqLikeDislike("dislike", postId)
-			.then((res) => res.json())
-			.then((data) => {
-				let dislikeText = data.disliked ? "💔 Disliked" : "💔 Dislike";
-				dislikeText = dislikeText + ` ( ${data.totalDislikes} )`;
-				let likeText = `🧡 Like ( ${data.totalLikes} )`;
-
-				likeBtn.innerHTML = likeText;
-				dislikeBtn.innerHTML = dislikeText;
-			})
-			.catch((e) => {
-				console.error(e);
-			});
-	});
-};
+			likeBtn.innerHTML = likeText;
+			dislikeBtn.innerHTML = dislikeText;
+		})
+		.catch((e) => {
+			console.error(e);
+		});
+});
 
 function generateRequest(url, method, body) {
 	let headers = new Headers();

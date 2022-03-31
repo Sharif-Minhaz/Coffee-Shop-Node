@@ -1,6 +1,5 @@
 const Profile = require("../models/Profile.model");
 const Reservation = require("../models/Reservation.model");
-const Checkout = require("../models/Checkout.model");
 const Flash = require("../utils/Flash");
 const { validationResult } = require("express-validator");
 const {gettingAllOrder} = require("../utils/ordersManage");
@@ -59,7 +58,7 @@ exports.createProfilePostController = async (req, res, next) => {
 
 exports.profileGetController = async (req, res, next) => {
 	try {
-		const profile = await Profile.findOne({ user: req.user._id });
+		const profile = await Profile.findOne({ user: req.user._id }).populate("bookmarks");
 		const reservation = await Reservation.find({ user: req.user._id });
 		if (!profile) {
 			return res.redirect("/profile/create-profile");

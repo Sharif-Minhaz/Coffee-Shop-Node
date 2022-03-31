@@ -9,7 +9,16 @@
                     <% if(singleBlog) { %>
                         <div class="heading">
                             <h2><%= singleBlog.title %></h2>
-                            <div class="bookmark"><i class="bi bi-bookmark"></i></div>
+                            <% if(user && bookmarks) { %>
+                                <% bookmarks.forEach((bookmark) => { %>
+                                    <% if(String(bookmark.bookmarks) == String(singleBlog._id)) { %>
+                                        <div title="Bookmark" class="bookmark" data-post="<%= singleBlog._id %>"><i class="bi bi-bookmark-fill"></i></div>
+                                        <% return 0 %>
+                                    <% } else { %> 
+                                        <div title="Bookmark" class="bookmark" data-post="<%= singleBlog._id %>"><i class="bi bi-bookmark"></i></div>
+                                    <% } %>            
+                                <% }) %>            
+                            <% } %> 
                         </div>
                         <div class="image-section">
                             <img src="/uploads/<%= singleBlog.thumbnail %>" alt="blog-img">
@@ -24,19 +33,21 @@
                         <div class="comment-section">
                             <h2>Leave a comment</h2>
                             <div class="send-comment-box">
-                                <div class="img-data">
-                                    <img src="<%= user.profilePics %>" alt="profile-pic">
-                                    <form action="/blog">
-                                        <input title="Press enter to submit" type="text" name="comment" placeholder="Enter your comment">
-                                    </form>
-                                </div>
+                                <% if(user) { %> 
+                                    <div class="img-data">
+                                        <img src="<%= user.profilePics %>" alt="profile-pic">
+                                        <form action="/blog">
+                                            <input title="Press enter to submit" type="text" name="comment" placeholder="Enter your comment">
+                                        </form>
+                                    </div>
+                                <% } %> 
                                 <div class="comments" id="comment">
                                     <div id="comment-holder">
                                         <div class="user">
-                                            <img src="<%= user.profilePics %>" alt="profile">
+                                            <img src="<%= (user) ? user.profilePics: "" %>" alt="profile">
                                             <div class="name-date">
-                                                <span><%= user.username %></span>
-                                                <span><%= (user.createdAt).toLocaleDateString() %></span>
+                                                <span><%= (user) ? user.username : "" %></span>
+                                                <span><%= (user) ? user.createdAt.toLocaleDateString() : "" %></span>
                                             </div>
                                         </div>
                                         <p class="comment-body">Most stupid blog I read in my entire life.</p>
@@ -44,16 +55,16 @@
                                     <div class="replies">
                                         <div class="reply" id="reply">
                                             <div class="replied">
-                                                <img src="<%= user.profilePics %>" alt="profile">
+                                                <img src="<%= user ? user.profilePics : "" %>" alt="profile">
                                                 <div class="name-date">
-                                                    <span><%= user.username %></span>
-                                                    <span><%= (user.createdAt).toLocaleDateString() %></span>
+                                                    <span><%= user ? user.username : "" %></span>
+                                                    <span><%= user ? (user.createdAt).toLocaleDateString() : "" %></span>
                                                 </div>
                                             </div>
                                             <p>Then go just die. You stupid moron.</p>
                                         </div>
                                         <div class="reply-box">
-                                            <img src="<%= user.profilePics %>" alt="profile-picture">
+                                            <img src="<%= user ? user.profilePics : "" %>" alt="profile-picture">
                                             <form action="/">
                                                 <input type="text" placeholder="Enter reply">
                                             </form>
@@ -69,6 +80,8 @@
     </header>
 
     <%- include("../../partials/footer.ejs") %>
+    <!-- <script src="/scripts/likeDislike.js"></script> -->
+    <!-- <script src="/scripts/bookmark.js"></script> -->
     <script src="/scripts/singlePage.js"></script>
 </body>
 </html>

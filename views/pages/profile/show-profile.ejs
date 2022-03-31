@@ -75,6 +75,44 @@
             </div>
         </div>
     </section>
+    <!-- show bookmarked Product -->
+    <section id="our-blog" class="blogs">
+        <div class="container-sm">
+            <div class="sm-heading">
+                <span>BOOKMARKED BLOGS</span>
+            </div>
+            <div class="blog-heading">
+                <h2>SHOW ALL BOOKMARKED BLOGS</h2>
+                <a href="/blog#our-blog"><button>VIEW ALL</button></a>
+            </div>
+            <div class="show-blog">
+                <div class="container-sm">
+                    <div class="full-row">
+                        <% if(profile && profile.bookmarks.length > 0) { %>
+                            <% profile.bookmarks.forEach((bookmark) => { %>
+                                <div class="single-blog">
+                                    <div class="blog-img">
+                                        <img src="/uploads/<%= bookmark.thumbnail %>" alt="blog-1">
+                                    </div>
+                                    <div class="blog-des">
+                                        <small>
+                                            <span>By:</span>
+                                            <span class="name"><%= bookmark.author.username %> ,</span>
+                                            <span class="date">
+                                                <%= bookmark.createdAt.toLocaleDateString() %> 
+                                            </span>
+                                        </small>
+                                        <h3><a href="/blog/show/<%= bookmark._id %>"><%= bookmark.title %></a></h3>
+                                        <a href="/blog/show/<%= bookmark._id %>">READ MORE <i class="bi bi-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            <% }) %> 
+                        <% } %>  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <%- include("../../partials/footer.ejs") %>
     <script>

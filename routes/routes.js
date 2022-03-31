@@ -9,11 +9,16 @@ const checkoutRoute = require("./checkout.route");
 const dashboardRoute = require("./dashboard.route");
 const blogRoute = require("./blog.route");
 const searchRoute = require("./search.route");
+const apiRoute = require("../api/routes/api.route")
 
 const routes = [
 	{
 		path: "/",
 		handler: homeRoute,
+	},
+	{
+		path: "/api",
+		handler: apiRoute,
 	},
 	{
 		path: "/auth",

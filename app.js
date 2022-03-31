@@ -54,6 +54,7 @@ app.use((req, res, next) => {
 app.use((error, req, res, next) => {
 	console.error(error);
 	if (error.status === 404) {
+		console.info(req.url);
 		return res.render("pages/error/404", {
 			title: "404 page not found",
 		});
@@ -63,7 +64,7 @@ app.use((error, req, res, next) => {
 	});
 });
 
-// <=======< connect to the database >=======> //
+// <=======< connects with the database >=======> //
 /**
  * Connect to the MongoDB database.
  * @returns None

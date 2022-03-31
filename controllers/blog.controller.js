@@ -1,6 +1,7 @@
 const Flash = require("../utils/Flash");
 const { gettingAllOrder } = require("../utils/ordersManage");
 const Post = require("../models/Post.model");
+const Profile = require("../models/Profile.model");
 const { validationResult } = require("express-validator");
 const errorFormatter = require("../utils/validatorErrorFormatter");
 
@@ -60,11 +61,14 @@ exports.showSingleBlogGetController = async (req, res, next) => {
 	const { id } = req.params;
 	try {
 		const singleBlog = await Post.findById(id);
+		const bookmarks = await Profile.find({user: req.user._id}).select("bookmarks");
+		console.log(bookmarks);
 		res.render("pages/blogs/single-blog", {
 			title: `Coffee Shop | ${singleBlog.title}`,
 			flashMessage: {},
 			orders: await gettingAllOrder(req, next),
 			singleBlog,
+			bookmarks,
 		});
 	} catch (err) {
 		next(err);
