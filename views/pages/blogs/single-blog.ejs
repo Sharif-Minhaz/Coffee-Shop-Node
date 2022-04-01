@@ -12,15 +12,16 @@
                                 <h2><%= singleBlog.title %></h2>
                                 <p>By - <%= singleBlog.author.username %>, At: <%= singleBlog.createdAt.toLocaleDateString() %></p>
                             </div>
-                            <% if(user && bookmarks) { %>
-                                <% bookmarks.forEach((bookmark) => { %>
-                                    <% if(String(bookmark.bookmarks) == String(singleBlog._id)) { %>
-                                        <div title="Bookmark" class="bookmark" data-post="<%= singleBlog._id %>"><i class="bi bi-bookmark-fill"></i></div>
-                                        <% return 0 %>
-                                    <% } else { %> 
-                                        <div title="Bookmark" class="bookmark" data-post="<%= singleBlog._id %>"><i class="bi bi-bookmark"></i></div>
-                                    <% } %>            
-                                <% }) %>            
+                            <% if(allBookmarks) { %>
+                                <% let found = allBookmarks.bookmarks.some((bookmark) => { %>
+                                    <% return String(bookmark) == String(singleBlog._id) %> 
+                                <% }) %>     
+
+                                <% if (!found) { %>
+                                    <div title="Add to bookmarks" class="bookmark" data-post="<%= singleBlog._id %>"><i class="bi bi-bookmark"></i></div>
+                                <% } else { %> 
+                                    <div title="Remove from bookmarks" class="bookmark" data-post="<%= singleBlog._id %>"><i class="bi bi-bookmark-fill"></i></div>
+                                <% } %>  
                             <% } %> 
                         </div>
                         <div class="image-section">

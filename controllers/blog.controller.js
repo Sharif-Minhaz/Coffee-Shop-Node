@@ -69,16 +69,16 @@ exports.showSingleBlogGetController = async (req, res, next) => {
 	const { id } = req.params;
 	try {
 		const singleBlog = await Post.findById(id).populate("author");
-		let bookmarks = false;
-		if(req.user) {
-			bookmarks = await Profile.find({ user: req.user._id }).select("bookmarks");
+		let allBookmarks = false;
+		if (req.user) {
+			allBookmarks = await Profile.find({ user: req.user._id });
 		}
 		res.render("pages/blogs/single-blog", {
 			title: `Coffee Shop | ${singleBlog.title}`,
 			flashMessage: {},
 			orders: await gettingAllOrder(req, next),
 			singleBlog,
-			bookmarks,
+			allBookmarks: allBookmarks[0],
 		});
 	} catch (err) {
 		next(err);

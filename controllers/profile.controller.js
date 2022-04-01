@@ -63,7 +63,6 @@ exports.profileGetController = async (req, res, next) => {
 				path: "author",
 			},
 		});
-		console.log(profile);
 		const reservation = await Reservation.find({ user: req.user._id });
 		if (!profile) {
 			return res.redirect("/profile/create-profile");
