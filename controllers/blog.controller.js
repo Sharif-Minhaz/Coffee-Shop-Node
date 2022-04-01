@@ -4,6 +4,7 @@ const Post = require("../models/Post.model");
 const Profile = require("../models/Profile.model");
 const { validationResult } = require("express-validator");
 const errorFormatter = require("../utils/validatorErrorFormatter");
+const fs = require("fs");
 
 exports.allBlogsGetController = async (req, res, next) => {
 	try {
@@ -59,7 +60,7 @@ exports.createBlogPostPostController = async (req, res, next) => {
 			}
 		);
 		req.flash("success", "Post created successfully");
-		res.redirect("/blog");
+		res.redirect("/blog#our-blog");
 	} catch (err) {
 		next(err);
 	}
@@ -82,5 +83,28 @@ exports.showSingleBlogGetController = async (req, res, next) => {
 		});
 	} catch (err) {
 		next(err);
+	}
+};
+
+exports.deleteSinglePostGetController = async (req, res, next) => {
+	const { id } = req.params;
+	const singleBlog = await Post.findById(id);
+	console.log(singleBlog, singleBlog.author, req.user._id);
+	if (String(singleBlog.author) == String(req.user._id)) {
+		try {
+			await Post.findByIdAndDelete(id);
+			if (singleBlog.thumbnail != "default-blog.jpg") {
+				fs.unlink(`public/uploads/${singleBlog.thumbnail}`, (err) => {
+					err && console.error(err);
+				});
+			}
+			req.flash("success", "Blog post deleted successfully");
+			res.redirect("/blog#our-blog");
+		} catch (err) {
+			next(err);
+		}
+	} else {
+		req.flash("fail", "You don't have permission to delete this post");
+		res.redirect("/blog#our-blog");
 	}
 };

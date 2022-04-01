@@ -12,17 +12,27 @@
                                 <h2><%= singleBlog.title %></h2>
                                 <p>By - <%= singleBlog.author.username %>, At: <%= singleBlog.createdAt.toLocaleDateString() %></p>
                             </div>
-                            <% if(allBookmarks) { %>
-                                <% let found = allBookmarks.bookmarks.some((bookmark) => { %>
-                                    <% return String(bookmark) == String(singleBlog._id) %> 
-                                <% }) %>     
-
-                                <% if (!found) { %>
-                                    <div title="Add to bookmarks" class="bookmark" data-post="<%= singleBlog._id %>"><i class="bi bi-bookmark"></i></div>
-                                <% } else { %> 
-                                    <div title="Remove from bookmarks" class="bookmark" data-post="<%= singleBlog._id %>"><i class="bi bi-bookmark-fill"></i></div>
-                                <% } %>  
-                            <% } %> 
+                            <div class="bookmark-delete" style="display: flex; gap: 10px;">
+                                <!-- blog post delete -->
+                                <% if(user && singleBlog) { %>    
+                                    <!-- displaying bookmark icon -->
+                                    <% if(String(singleBlog.author._id) == String(user._id)) { %> 
+                                        <a title="Delete Post" style="color: whitesmoke;" href="/blog/delete/<%= singleBlog._id %>"><i class="bi bi-trash"></i></a>                                  
+                                    <% } %>   
+                                <% } %> 
+                                <!-- bookmark options -->
+                                <% if(allBookmarks) { %>
+                                    <% let found = allBookmarks.bookmarks.some((bookmark) => { %>
+                                        <% return String(bookmark) == String(singleBlog._id) %> 
+                                    <% }) %>     
+                                    <!-- displaying bookmark icon -->
+                                    <% if (!found) { %>
+                                        <div title="Add to bookmarks" class="bookmark" data-post="<%= singleBlog._id %>"><i class="bi bi-bookmark"></i></div>
+                                    <% } else { %> 
+                                        <div title="Remove from bookmarks" class="bookmark" data-post="<%= singleBlog._id %>"><i class="bi bi-bookmark-fill"></i></div>
+                                    <% } %>  
+                                <% } %> 
+                            </div>
                         </div>
                         <div class="image-section">
                             <img src="/uploads/<%= singleBlog.thumbnail %>" alt="blog-img">
