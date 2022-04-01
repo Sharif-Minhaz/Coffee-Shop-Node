@@ -58,24 +58,30 @@
                                     <div class="replies">
                                         <div class="reply" id="reply">
                                             <div class="replied">
-                                                <img src="<%= user ? user.profilePics : "" %>" alt="profile">
+                                                <img src="<%= (user) ? user.profilePics : "" %>" alt="profile">
                                                 <div class="name-date">
-                                                    <span><%= user ? user.username : "" %></span>
-                                                    <span><%= user ? (user.createdAt).toLocaleDateString() : "" %></span>
+                                                    <span><%= (user) ? user.username : "" %></span>
+                                                    <span><%= (user) ? (user.createdAt).toLocaleDateString() : "" %></span>
                                                 </div>
                                             </div>
                                             <p>Then go just die. You stupid moron.</p>
                                         </div>
-                                        <div class="reply-box">
-                                            <img src="<%= user ? user.profilePics : "" %>" alt="profile-picture">
-                                            <form action="/">
-                                                <input type="text" placeholder="Enter reply">
-                                            </form>
-                                        </div>
+                                        <% if(user) { %>
+                                            <div class="reply-box">
+                                                <img src="<%= (user) ? user.profilePics : "" %>" alt="profile-picture">
+                                                <form action="/">
+                                                    <input type="text" placeholder="Enter reply">
+                                                </form>
+                                            </div>
+                                        <% } else { %>
+                                            <p style="color: whitesmoke;"><a href="/auth/login">Login</a> first for comment & reply</p>
+                                        <% } %> 
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    <% } else { %> 
+                        <p style="color: whitesmoke;">Something went wrong...</p>
                     <% } %> 
                 </div>
             </div> 

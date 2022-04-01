@@ -1057,7 +1057,7 @@ html {
 			margin: 70px 0px 70px 0px;
 			.container-sm {
 				@include container-sm();
-				@include flex(center, center);
+				@include flex(flex-start, flex-start);
 				flex-direction: column;
 				gap: 20px;
 				.sm-heading {
@@ -1065,10 +1065,18 @@ html {
 						@include sm-heading();
 					}
 				}
-				h1 {
-					font: 500 60px $bebas;
-					color: $font-color;
-					text-align: center;
+				.lg-heading {
+					width: 100%;
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					h1 {
+						font: 500 60px $bebas;
+						color: $font-color;
+					}
+					a {
+						@include big-heading();
+					}
 				}
 				.full-row {
 					@include flex();
