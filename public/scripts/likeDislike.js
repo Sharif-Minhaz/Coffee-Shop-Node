@@ -7,7 +7,6 @@ window.onload = () => {
 		reqLikeDislike("like", postId)
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data);
 				let likeText = data.liked ? "🧡 Liked" : "🧡 Like";
 				likeText = likeText + ` ( ${data.totalLikes} )`;
 				let dislikeText = `💔 Dislike ( ${data.totalDislikes} )`;
@@ -39,7 +38,6 @@ window.onload = () => {
 };
 
 function reqLikeDislike(type, postId) {
-	console.log(postId);
 	let headers = new Headers();
 	headers.append("Accept", "Application/JSON");
 	headers.append("Content-Type", "Application/JSON");

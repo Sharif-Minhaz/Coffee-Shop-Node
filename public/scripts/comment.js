@@ -22,7 +22,7 @@ window.onload = function () {
 							e.target.value = "";
 						})
 						.catch((e) => {
-							console.log(e);
+							console.error(e);
 							alert(e.message);
 						});
 				} else {

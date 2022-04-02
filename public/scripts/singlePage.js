@@ -65,7 +65,6 @@ commentHolder.addEventListener("keypress", function (e) {
 		if (e.key === "Enter") {
 			let commentId = e.target.dataset.comment;
 			let user = reply.dataset.user;
-			console.log(user);
 			let value = e.target.value;
 
 			if (value) {
@@ -96,10 +95,11 @@ likeBtn.addEventListener("click", function (e) {
 	reqLikeDislike("like", postId)
 		.then((res) => res.json())
 		.then((data) => {
-			console.log(data);
-			let likeText = data.liked ? "🧡 Liked" : "🧡 Like";
+			let likeText = data.liked
+				? '<i class="bi bi-hand-thumbs-up-fill"></i>'
+				: '<i class="bi bi-hand-thumbs-up"></i>';
 			likeText = likeText + ` ( ${data.totalLikes} )`;
-			let dislikeText = `💔 Dislike ( ${data.totalDislikes} )`;
+			let dislikeText = `<i class="bi bi-hand-thumbs-down"></i> ( ${data.totalDislikes} )`;
 
 			likeBtn.innerHTML = likeText;
 			dislikeBtn.innerHTML = dislikeText;
@@ -114,9 +114,11 @@ dislikeBtn.addEventListener("click", function (e) {
 	reqLikeDislike("dislike", postId)
 		.then((res) => res.json())
 		.then((data) => {
-			let dislikeText = data.disliked ? "💔 Disliked" : "💔 Dislike";
+			let dislikeText = data.disliked
+				? '<i class="bi bi-hand-thumbs-down-fill"></i>'
+				: '<i class="bi bi-hand-thumbs-down"></i>';
 			dislikeText = dislikeText + ` ( ${data.totalDislikes} )`;
-			let likeText = `🧡 Like ( ${data.totalLikes} )`;
+			let likeText = `<i class="bi bi-hand-thumbs-up"></i> ( ${data.totalLikes} )`;
 
 			likeBtn.innerHTML = likeText;
 			dislikeBtn.innerHTML = dislikeText;
@@ -188,7 +190,6 @@ function createReplyElement(reply, user) {
 }
 
 function reqLikeDislike(type, postId) {
-	console.log(postId);
 	let headers = new Headers();
 	headers.append("Accept", "Application/JSON");
 	headers.append("Content-Type", "Application/JSON");

@@ -14,24 +14,19 @@ exports.likeGetController = async (req, res, next) => {
 
 	try {
 		let post = await Post.findById(postId);
-		console.log(post);
 		if (post.dislikes.includes(userId)) {
 			await Post.findOneAndUpdate({ _id: postId }, { $pull: { dislikes: userId } });
-			console.log("find and pull the delete");
 		}
 
 		if (post.likes.includes(userId)) {
 			await Post.findOneAndUpdate({ _id: postId }, { $pull: { likes: userId } });
 			liked = false;
-			console.log("unlike");
 		} else {
 			await Post.findOneAndUpdate({ _id: postId }, { $push: { likes: userId } });
 			liked = true;
-			console.log("like");
 		}
 
 		let updatedPost = await Post.findById(postId);
-		console.log(updatedPost);
 		res.status(200).json({
 			liked,
 			totalLikes: updatedPost.likes.length,
