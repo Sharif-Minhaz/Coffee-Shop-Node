@@ -914,7 +914,7 @@ header {
 				}
 				.body {
 					color: $dark-as-hell;
-					padding: 10px;
+					padding: 20px;
 					background-color: $font-color;
 					border-bottom-left-radius: 5px;
 					border-bottom-right-radius: 5px;
@@ -1032,6 +1032,57 @@ header {
 								}
 							}
 						}
+					}
+				}
+			}
+			form {
+				background-color: $sec-bg;
+				margin: auto;
+				margin-top: -6px;
+				max-width: 600px;
+				padding: 25px;
+				border-radius: 5px;
+				color: $font-color;
+				h2 {
+					color: $font-color;
+					font: 400 30px $bebas;
+				}
+				input {
+					background-color: $dark-as-hell;
+					width: 100%;
+					margin: 16px 0px 16px 0px;
+					padding: 12px 10px;
+					font-size: 17px;
+					border-color: transparent;
+					color: $font-color;
+					border-radius: 4px;
+				}
+				textarea {
+					background-color: $dark-as-hell;
+					width: 100%;
+					border-color: transparent;
+					border-radius: 4px;
+					resize: vertical;
+					height: auto;
+					margin-top: 5px;
+					padding: 10px;
+					color: $muted !important;
+					font-size: 14px;
+				}
+				button[type="submit"] {
+					all: unset;
+					margin-top: 6px;
+					background-color: $highlight;
+					color: $font-color;
+					width: 110px;
+					padding: 10px 14px;
+					text-align: center;
+					border-radius: 3px;
+					transition: 0.3s;
+					&:hover {
+						cursor: pointer;
+						color: $input-field;
+						background-color: $dark-as-hell;
 					}
 				}
 			}
