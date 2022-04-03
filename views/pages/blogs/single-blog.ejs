@@ -43,8 +43,12 @@
                         </div>
                         <div class="like-dislike-sec">
                             <% if(user) { %> 
-                                    <button id="likeBtn" title="Like" data-react="<%= singleBlog._id %>"><i class="bi bi-hand-thumbs-up"></i> (0)</button>
-                                    <button id="dislikeBtn" title="Dislike" data-react="<%= singleBlog._id %>"><i class="bi bi-hand-thumbs-down"></i> (0)</button>
+                                    <button id="likeBtn" title="Like" data-react="<%= singleBlog._id %>">
+                                        <%- singleBlog.likes.includes(user._id) ? '<i class="bi bi-hand-thumbs-up-fill"></i>' : '<i class="bi bi-hand-thumbs-up"></i>' %> (<%= singleBlog.likes.length %>)
+                                    </button>
+                                    <button id="dislikeBtn" title="Dislike" data-react="<%= singleBlog._id %>">
+                                        <%- singleBlog.dislikes.includes(user._id) ? '<i class="bi bi-hand-thumbs-down-fill"></i>' : '<i class="bi bi-hand-thumbs-down"></i>' %> (<%= singleBlog.dislikes.length %>)
+                                    </button>
                             <% } else { %> 
                                 <button type="button" disabled title="Login to Like" style="background-color: unset; border: 1px solid white"><i class="bi bi-hand-thumbs-up"></i> (0)</button>
                                 <button type="button" disabled title="Login to Dislike" style="background-color: unset; border: 1px solid white"><i class="bi bi-hand-thumbs-down"></i> (0)</button>
