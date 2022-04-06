@@ -52,6 +52,7 @@ comment.addEventListener("keypress", function (e) {
 					e.target.value = "";
 				})
 				.catch((e) => {
+					console.error(e);
 					alert(e.message);
 				});
 		} else {
@@ -144,24 +145,34 @@ function generateRequest(url, method, body) {
 }
 
 function createComment(comment) {
-	let innerHTML = `
-	<a href="/author/${comment.user._id}" class="sm-details">
-    	<img style="width:49px; height:49px" src="${comment.user.profilePics}" class="rounded-circle mx-3 my-3">
-    </a>
-	<div class="media-body w-100 pe-3 my-3">
-		<a class="d-flex justify-content-between w-100" href="/author/${comment.user._id}">
-			<span>${comment.user.username}</span>
-			<span class="text-muted">a few seconds ago</span>
-		</a>
-        <p style="width: 100%">${comment.body}</p>
-        <div class="my-3 reply-base">
-            <input class="form-control" type="text" placeholder="Press Enter to Reply" name="reply" data-comment=${comment._id} />
-        </div>
-    </div>
-    `;
-	let div = document.createElement("div");
-	div.className = "media border w-100";
-	div.innerHTML = innerHTML;
+	// let innerHTML = `
+	// <a href="/author/${comment.user._id}" class="sm-details">
+	// 	<img style="width:49px; height:49px" src="${comment.user.profilePics}" class="rounded-circle mx-3 my-3">
+	// </a>
+	// <div class="media-body w-100 pe-3 my-3">
+	// 	<a class="d-flex justify-content-between w-100" href="/author/${comment.user._id}">
+	// 		<span>${comment.user.username}</span>
+	// 		<span class="text-muted">a few seconds ago</span>
+	// 	</a>
+	//     <p style="width: 100%">${comment.body}</p>
+	//     <div class="my-3 reply-base">
+	//         <input class="form-control" type="text" placeholder="Press Enter to Reply" name="reply" data-comment=${comment._id} />
+	//     </div>
+	// </div>
+	// `;
+	let div = `<div id="comment-holder">
+					<div class="user">
+						<img src="${comment.user.profilePics}" alt="profile">
+						<div class="name-date">
+							<span>${comment.user.username}</span>
+							<span>${comment.user.createdAt.toLocaleString()}</span>
+						</div>
+					</div>
+					<p class="comment-body">${comment.body}</p>
+				</div>`;
+	// let div = document.createElement("div");
+	// div.className = "media border w-100";
+	// div.innerHTML = innerHTML;
 
 	return div;
 }

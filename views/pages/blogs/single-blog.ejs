@@ -60,9 +60,9 @@
                                 <% if(user) { %> 
                                     <div class="img-data">
                                         <img src="<%= user.profilePics %>" alt="profile-pic">
-                                        <form action="/blog" style="background-color: unset; padding-left: 5px;">
+                                        <div style="background-color: unset; padding-left: 5px;">
                                             <input title="Press enter to submit" type="text" name="comment" placeholder="Enter your comment">
-                                        </form>
+                                        </div>
                                     </div>
                                 <% } %> 
                                 <div class="comments" id="comment">
@@ -74,7 +74,7 @@
                                                 <span><%= (user) ? user.createdAt.toLocaleDateString() : "" %></span>
                                             </div>
                                         </div>
-                                        <p class="comment-body">Most stupid blog I read in my entire life.</p>
+                                        <p class="comment-body">Lorem ipsum dolor sit amount consectetur.</p>
                                     </div>                                   
                                     <div class="replies">
                                         <div class="reply" id="reply">
@@ -85,14 +85,14 @@
                                                     <span><%= (user) ? (user.createdAt).toLocaleDateString() : "" %></span>
                                                 </div>
                                             </div>
-                                            <p>Then go just die. You stupid moron.</p>
+                                            <p>Lorem ipsum dolor sit amount consectetur.</p>
                                         </div>
                                         <% if(user) { %>
                                             <div class="reply-box">
                                                 <img src="<%= (user) ? user.profilePics : "" %>" alt="profile-picture">
-                                                <form action="/" style="background-color: unset; padding-left: 5px;">
+                                                <div style="background-color: unset; padding-left: 5px;">
                                                     <input type="text" placeholder="Enter reply">
-                                                </form>
+                                                </div>
                                             </div>
                                         <% } else { %>
                                             <p style="color: whitesmoke;"><a href="/auth/login">Login</a> first for comment & reply</p>
