@@ -30,7 +30,7 @@
                     <% menus.length > 0 && menus.forEach(menu => { %> 
                         <!-- single menu showing -->
                         <a href="/menu/view/<%= menu._id %>" class="single-menu" data-category="<%= menu.category %>" style="text-decoration: none;">
-                            <img src="/uploads/<%= menu.image %>" alt="menu">
+                            <img src="<%= menu.image %>" alt="menu">
                             <div class="inner-section">
                                 <span><%= menu.name %> </span>
                                 <span><%= menu.price %> </span>

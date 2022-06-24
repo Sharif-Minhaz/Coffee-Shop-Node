@@ -3,6 +3,7 @@ const Menu = require("../models/Menu.model");
 const Post = require("../models/Post.model");
 const Flash = require("../utils/Flash");
 const { gettingAllOrder } = require("../utils/ordersManage");
+const cloudinary = require("../utils/cloudinary");
 
 exports.homeGetController = async (req, res, next) => {
 	try {
@@ -38,7 +39,7 @@ exports.homeGetController = async (req, res, next) => {
 			products,
 			coffeeMachine,
 			allItems,
-			blogs
+			blogs,
 		});
 	} catch (err) {
 		next(err);
@@ -48,27 +49,36 @@ exports.homeGetController = async (req, res, next) => {
 exports.homePostController = async (req, res, next) => {
 	const { checkoutProductName, productImg, checkoutPrice, quantity, name, address, phone } =
 		req.body;
-	let order = new Checkout({
-		user: req.user._id,
-		checkoutProductName,
-		productImg,
-		checkoutPrice,
-		quantity,
-		name,
-		address,
-		phone: "+88" + phone,
-	});
 	try {
+		// const result = await cloudinary.uploader.upload(req.file.path, { folder: "coffeeShop" });
+
+		let order = new Checkout({
+			user: req.user._id,
+			checkoutProductName,
+			productImg,
+			// cloudinaryId: result.public_id,
+			checkoutPrice,
+			quantity,
+			name,
+			address,
+			phone: "+88" + phone,
+		});
+
 		await order.save();
+
 		req.flash("success", "Order placed successfully");
+
 		let menus = await Menu.find({ category: "menu" }).limit(6);
 		let products = await Menu.find({ category: "products" }).limit(3);
 		let coffeeMachine = await Menu.findOne({ name: "Coffee Machine" });
+
 		let allItems = await Menu.find().limit(8).populate({
 			path: "reviews.user",
 			model: "User",
 		});
+
 		let blogs = await Post.find().populate("author", "username").limit(3);
+
 		res.render("pages/home", {
 			title: "Coffee Shop | Home",
 			values: {},

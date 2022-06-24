@@ -14,6 +14,10 @@ const checkoutSchema = new Schema({
 		type: String,
 		required: true,
 	},
+	// cloudinaryId: {
+	// 	type: String,
+	// 	required: true,
+	// },
 	checkoutPrice: {
 		type: String,
 		required: true,

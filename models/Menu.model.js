@@ -10,6 +10,10 @@ const menuSchema = new Schema({
 		type: String,
 		required: true,
 	},
+	cloudinaryId: {
+		type: String,
+		required: true,
+	},
 	price: {
 		type: String,
 		required: true,

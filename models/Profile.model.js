@@ -25,6 +25,9 @@ const profileSchema = new Schema(
 			trim: true,
 		},
 		profilePics: String,
+		cloudinaryId: {
+			type: String,
+		},
 		website: String,
 		posts: [
 			{

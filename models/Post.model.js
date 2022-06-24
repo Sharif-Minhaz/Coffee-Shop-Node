@@ -20,6 +20,9 @@ const postSchema = new Schema(
 		thumbnail: {
 			type: String,
 		},
+		cloudinaryId: {
+			type: String,
+		},
 		likes: [
 			{
 				type: Schema.Types.ObjectId,

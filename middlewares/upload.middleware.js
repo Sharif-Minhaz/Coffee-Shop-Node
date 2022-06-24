@@ -2,9 +2,9 @@ const multer = require("multer");
 const path = require("path");
 
 const storage = multer.diskStorage({
-	destination: (req, file, cb) => {
-		cb(null, "public/uploads");
-	},
+	// destination: (req, file, cb) => {
+	// 	cb(null, "public/uploads");
+	// },
 	filename: (req, file, cb) => {
 		cb(null, file.fieldname + "-" + Date.now() + "-" + file.originalname);
 	},
@@ -21,7 +21,7 @@ const upload = multer({
 		if (extName && mimeType) {
 			cb(null, true);
 		} else {
-			cb(new Error("Only image file supported"));
+			cb(new Error("Only image file supported"), false);
 		}
 	},
 });

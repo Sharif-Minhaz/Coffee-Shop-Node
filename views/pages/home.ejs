@@ -97,7 +97,7 @@
                 <% if(menus.length > 0 && menus.forEach((menu) => { %> 
                     <a href="/menu/view/<%= menu._id %>" style="text-decoration: none;">
                         <div class="single-menu">
-                            <img src="/uploads/<%= menu.image %>" alt="menu">
+                            <img src="<%= menu.image %>" alt="menu">
                             <div class="inner-section">
                                 <span><%= menu.name %></span>
                                 <span><%= menu.price %></span>
@@ -145,7 +145,7 @@
                     <% products.forEach((product) => { %> 
                         <div class="single-item" onclick="window.location='/menu/view/<%= product._id %>'">
                             <div class="img">
-                                <img id="product-main-image" src="uploads/<%= product.image %>" alt="item">
+                                <img id="product-main-image" src="<%= product.image %>" alt="item">
                             </div>
                             <div class="item-des">
                                 <span><%= product.name %></span>
@@ -235,7 +235,7 @@
                     <% blogs.forEach((blog) => { %> 
                         <div class="single-blog">
                             <div class="blog-img">
-                                <img src="/uploads/<%= blog.thumbnail %>" alt="blog-1">
+                                <img src="<%= blog.thumbnail %>" alt="blog-1">
                             </div>
                             <div class="blog-des">
                                 <small>

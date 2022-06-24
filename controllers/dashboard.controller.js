@@ -5,6 +5,7 @@ const Menu = require("../models/Menu.model");
 const Flash = require("../utils/Flash");
 const { gettingAllOrder } = require("../utils/ordersManage");
 const { sendNotification } = require("../utils/notification");
+const cloudinary = require("../utils/cloudinary");
 const fs = require("fs");
 
 exports.dashboardGetController = async (req, res, next) => {
@@ -57,10 +58,11 @@ exports.editItemGetController = async (req, res, next) => {
 exports.deleteItemGetController = async (req, res, next) => {
 	const menuId = req.params.id;
 	try {
-		let itemImg = await Menu.findById(menuId).select({ image: 1, _id: 0 });
-		fs.unlink(`public/uploads/${itemImg.image}`, (err) => {
-			err && console.error(err);
-		});
+		let itemImg = await Menu.findById(menuId);
+		// fs.unlink(`public/uploads/${itemImg.image}`, (err) => {
+		// 	err && console.error(err);
+		// });
+		await cloudinary.uploader.destroy(itemImg.cloudinaryId);
 		await Menu.findByIdAndDelete(menuId);
 		req.flash("success", "Item deleted successfully");
 		res.redirect("/dashboard/edit-item#menu");
@@ -71,22 +73,29 @@ exports.deleteItemGetController = async (req, res, next) => {
 
 exports.editItemPostController = async (req, res, next) => {
 	const { itemId, productName, productPrice, prevImg } = req.body;
-	let modImg;
-	if (req.file) {
-		modImg = req.file.filename;
-		// removing the previous image from local storage
-		fs.unlink(`public/uploads/${prevImg}`, (err) => {
-			err && console.error(err);
-		});
-	} else {
-		modImg = prevImg;
-	}
-	let price = "$" + Number(productPrice).toFixed(2);
+	let modImg, newCloudinaryId;
+
 	try {
+		const menu = await Menu.findById(itemId);
+		const result = await cloudinary.uploader.upload(req.file.path, { folder: "coffeeShop" });
+		if (result) {
+			modImg = result.secure_url;
+			newCloudinaryId = result.public_id;
+			// removing the previous image from local storage
+			// fs.unlink(`public/uploads/${prevImg}`, (err) => {
+			// 	err && console.error(err);
+			// });
+		} else {
+			modImg = prevImg;
+			newCloudinaryId = menu.public_id;
+		}
+		let price = "$" + Number(productPrice).toFixed(2);
+
 		await Menu.findByIdAndUpdate(itemId, {
 			name: productName,
 			image: modImg,
 			price,
+			cloudinaryId: newCloudinaryId,
 		});
 	} catch (err) {
 		next(err);

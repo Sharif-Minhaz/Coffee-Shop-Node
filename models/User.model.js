@@ -24,6 +24,9 @@ const userSchema = new Schema(
 			type: String,
 			default: "/images/default.jpg",
 		},
+		cloudinaryId: {
+			type: String,
+		},
 		role: {
 			type: String,
 			default: "user",

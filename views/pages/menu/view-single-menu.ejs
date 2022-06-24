@@ -15,10 +15,10 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="prod-img-div">
-                                        <img id="prod-img" src="/uploads/<%= selectedItems.image %>" alt="prod-img">
+                                        <img id="prod-img" src="<%= selectedItems.image %>" alt="prod-img">
                                     </div>
                                     <!-- hidden input for passing image source -->
-                                    <input type="hidden" value="/uploads/<%= selectedItems.image %>" id="img-src" name="imageMenu" >
+                                    <input type="hidden" value="<%= selectedItems.image %>" id="img-src" name="imageMenu" >
                                     <!-- total info -->
                                     <div class="total-info">
                                         <div class="short-des">
@@ -270,7 +270,7 @@
                     <% relatedProduct.forEach((product) => { %> 
                         <div class="single-item" onclick="window.location='/menu/view/<%= product._id %>'">
                             <div class="img">
-                                <img id="product-main-image" src="/uploads/<%= product.image %>" alt="item">
+                                <img id="product-main-image" src="<%= product.image %>" alt="item">
                             </div>
                             <div class="item-des">
                                 <span><%= product.name %></span>

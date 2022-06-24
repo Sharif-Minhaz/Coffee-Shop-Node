@@ -3,6 +3,7 @@ const Flash = require("../utils/Flash");
 const { gettingAllOrder } = require("../utils/ordersManage");
 const { validationResult } = require("express-validator");
 const errorFormatter = require("../utils/validatorErrorFormatter");
+const cloudinary = require("../utils/cloudinary");
 const fs = require("fs");
 
 exports.menuGetController = async (req, res, next) => {
@@ -25,18 +26,21 @@ exports.menuAddPostController = async (req, res, next) => {
 	addProductPrice = "$" + onlyPrice;
 
 	try {
+		const result = await cloudinary.uploader.upload(req.file.path, { folder: "coffeeShop" });
 		let check = await Menu.find({ name: addProductName });
 		if (check.length > 0) {
 			req.flash("fail", "Product already exists");
 			// removing the unused uploaded menu image
-			fs.unlink(`public/uploads/${req.file.filename}`, (err) => {
-				err && console.error(err);
-			});
+			// fs.unlink(`public/uploads/${req.file.filename}`, (err) => {
+			// 	err && console.error(err);
+			// });
+			await cloudinary.uploader.destroy(result.public_id);
 			return res.redirect("/menu/all");
 		}
 		let newMenu = new Menu({
 			name: addProductName,
-			image: req.file.filename,
+			image: result.secure_url,
+			cloudinaryId: result.public_id,
 			price: addProductPrice,
 			category,
 			description,

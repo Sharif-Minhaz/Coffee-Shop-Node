@@ -28,7 +28,7 @@
                     <% menus.length > 0 && menus.forEach(menu => { %> 
                         <!-- single menu showing -->
                         <div class="single-menu" data-category="<%= menu.category %>">
-                            <img src="/uploads/<%= menu.image %>" alt="menu">                          
+                            <img src="<%= menu.image %>" alt="menu">                          
                             <div class="inner-section">
                                 <span><%= menu.name %></span>
                                 <input id="product-main-id" type="hidden" value="<%= menu._id %>">

@@ -70,14 +70,14 @@ app.use((error, req, res, next) => {
  * @returns None
  */
 mongoose
-	.connect(MONGODB_CONNECTION_URI, {
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
-	})
+	.connect(MONGODB_CONNECTION_URI)
 	.then(() => {
 		console.info("Connected to the Database");
 		app.listen(PORT, () => {
-			console.log(`Server running at http://localhost:${PORT}`);
+			console.log(`App running on http://localhost:${PORT}`);
 		});
 	})
-	.catch((err) => console.error(err));
+	.catch((err) => {
+		console.error(err);
+		process.exit(1);
+	});
