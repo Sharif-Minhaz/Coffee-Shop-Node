@@ -5,7 +5,6 @@ const Profile = require("../models/Profile.model");
 const cloudinary = require("../utils/cloudinary");
 const { validationResult } = require("express-validator");
 const errorFormatter = require("../utils/validatorErrorFormatter");
-const fs = require("fs");
 
 exports.allBlogsGetController = async (req, res, next) => {
 	try {
@@ -107,14 +106,11 @@ exports.deleteSinglePostGetController = async (req, res, next) => {
 	const singleBlog = await Post.findById(id);
 	if (String(singleBlog.author) == String(req.user._id)) {
 		try {
-			await Post.findByIdAndDelete(id);
+			const deletedPost = await Post.findByIdAndDelete(id);
 			if (
 				singleBlog.thumbnail !=
 				"https://res.cloudinary.com/hostingimagesservice/image/upload/v1656086428/coffeeShop/default-blog_cz7q6j.jpg"
 			) {
-				// fs.unlink(`public/uploads/${singleBlog.thumbnail}`, (err) => {
-				// 	err && console.error(err);
-				// });
 				await cloudinary.uploader.destroy(singleBlog.cloudinaryId);
 			}
 			req.flash("success", "Blog post deleted successfully");
@@ -179,15 +175,14 @@ exports.editBlogPostPostController = async (req, res, next) => {
 			thumbnail,
 			cloudinaryId: result ? result.public_id : "",
 		});
+
+		if (singleBlog.thumbnail != thumbnail) {
+			await cloudinary.uploader.destroy(singleBlog.cloudinaryId);
+		}
+
+		req.flash("success", "Post updated successfully");
+		res.redirect(`/blog/show/${singleBlog._id}`);
 	} catch (err) {
 		next(err);
 	}
-	if (singleBlog.thumbnail != thumbnail) {
-		// fs.unlink(`public/uploads/${singleBlog.thumbnail}`, (err) => {
-		// 	err && console.error(err);
-		// });
-		await cloudinary.uploader.destroy(singleBlog.cloudinaryId);
-	}
-	req.flash("success", "Post updated successfully");
-	res.redirect(`/blog/show/${singleBlog._id}`);
 };

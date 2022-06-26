@@ -6,7 +6,6 @@ const Flash = require("../utils/Flash");
 const { gettingAllOrder } = require("../utils/ordersManage");
 const { sendNotification } = require("../utils/notification");
 const cloudinary = require("../utils/cloudinary");
-const fs = require("fs");
 
 exports.dashboardGetController = async (req, res, next) => {
 	res.render("pages/dashboard/dashboard", {
@@ -59,9 +58,6 @@ exports.deleteItemGetController = async (req, res, next) => {
 	const menuId = req.params.id;
 	try {
 		let itemImg = await Menu.findById(menuId);
-		// fs.unlink(`public/uploads/${itemImg.image}`, (err) => {
-		// 	err && console.error(err);
-		// });
 		await cloudinary.uploader.destroy(itemImg.cloudinaryId);
 		await Menu.findByIdAndDelete(menuId);
 		req.flash("success", "Item deleted successfully");
@@ -72,21 +68,20 @@ exports.deleteItemGetController = async (req, res, next) => {
 };
 
 exports.editItemPostController = async (req, res, next) => {
-	const { itemId, productName, productPrice, prevImg } = req.body;
+	const { itemId, productName, productPrice } = req.body;
 	let modImg, newCloudinaryId;
 
 	try {
 		const menu = await Menu.findById(itemId);
-		const result = await cloudinary.uploader.upload(req.file.path, { folder: "coffeeShop" });
+		let result;
+		if (req.file) {
+			result = await cloudinary.uploader.upload(req.file.path, { folder: "coffeeShop" });
+		}
 		if (result) {
 			modImg = result.secure_url;
 			newCloudinaryId = result.public_id;
-			// removing the previous image from local storage
-			// fs.unlink(`public/uploads/${prevImg}`, (err) => {
-			// 	err && console.error(err);
-			// });
 		} else {
-			modImg = prevImg;
+			modImg = menu.image;
 			newCloudinaryId = menu.public_id;
 		}
 		let price = "$" + Number(productPrice).toFixed(2);
@@ -97,10 +92,10 @@ exports.editItemPostController = async (req, res, next) => {
 			price,
 			cloudinaryId: newCloudinaryId,
 		});
+		res.redirect("/dashboard/edit-item#menu");
 	} catch (err) {
 		next(err);
 	}
-	res.redirect("/dashboard/edit-item#menu");
 };
 
 exports.reservationGetController = async (req, res, next) => {

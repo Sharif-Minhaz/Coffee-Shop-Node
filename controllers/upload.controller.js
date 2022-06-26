@@ -1,4 +1,3 @@
-const fs = require("fs");
 const User = require("../models/User.model");
 const Profile = require("../models/Profile.model");
 const cloudinary = require("../utils/cloudinary");
@@ -24,9 +23,6 @@ exports.uploadProfilePics = async (req, res, next) => {
 			);
 
 			if (oldProfilePics != "/images/default.jpg") {
-				// fs.unlink(`public/${oldProfilePics}`, (err) => {
-				// 	err && console.error(err);
-				// });
 				await cloudinary.uploader.destroy(req.user.cloudinaryId);
 			}
 			res.status(200).json({
@@ -47,13 +43,8 @@ exports.uploadProfilePics = async (req, res, next) => {
 exports.removeProfilePics = async (req, res, next) => {
 	try {
 		let defaultProfile = "/images/default.jpg";
-		// let currentProfilePics = req.user.profilePics;
 
 		await cloudinary.uploader.destroy(req.user.cloudinaryId);
-
-		// const result = await cloudinary.uploader.upload(req.file.path, { folder: "coffeeShop" });
-
-		// fs.unlink(`public/${currentProfilePics}`, async (err) => {}
 
 		let profile = await User.findOne({ user: req.user._id });
 
