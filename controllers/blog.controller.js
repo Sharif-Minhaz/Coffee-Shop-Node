@@ -107,11 +107,14 @@ exports.deleteSinglePostGetController = async (req, res, next) => {
 	if (String(singleBlog.author) == String(req.user._id)) {
 		try {
 			const deletedPost = await Post.findByIdAndDelete(id);
+			let publicId = deletedPost.body;
+			// need to extract the img src and public_id and should be process for deletion 
 			if (
 				singleBlog.thumbnail !=
 				"https://res.cloudinary.com/hostingimagesservice/image/upload/v1656086428/coffeeShop/default-blog_cz7q6j.jpg"
 			) {
 				await cloudinary.uploader.destroy(singleBlog.cloudinaryId);
+				// await cloudinary.uploader.destroy(publicId);
 			}
 			req.flash("success", "Blog post deleted successfully");
 			res.redirect("/blog#our-blog");
