@@ -6,10 +6,6 @@
   password: superman<br />
   role: user<br />
 
-  email: batman@gmail.com<br />
-  password: batman<br />
-  role: admin<br />
-
 #### Note: You can create user as your own.
 
 ### The technologies, I used for this project:
