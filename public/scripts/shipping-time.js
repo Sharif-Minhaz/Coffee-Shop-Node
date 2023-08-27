@@ -1,6 +1,6 @@
 let orderDate = document.getElementsByClassName("order-date");
 // Set the date we're counting down to
-let countDownDate = new Date("dec 5, 2022 15:37:25").getTime();
+let countDownDate = new Date("oct 6, 2024 15:37:25").getTime();
 
 // Update the count down every 1 second
 let countdownFunction = setInterval(function () {
