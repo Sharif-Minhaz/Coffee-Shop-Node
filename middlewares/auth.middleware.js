@@ -2,10 +2,11 @@ const User = require("../models/User.model");
 
 exports.bindUserWithRequest = () => {
 	return async (req, res, next) => {
-		if (!req.session.isLoggedIn) {
+		if (!req.session?.isLoggedIn) {
 			return next();
 		}
 		try {
+			if (!req.session?.user._id) return;
 			let user = await User.findById(req.session.user._id);
 			req.user = user;
 			next();

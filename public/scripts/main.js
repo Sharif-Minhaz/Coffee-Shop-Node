@@ -71,9 +71,11 @@ window.onload = () => {
 
 	// order modal close by clicking x
 	let orderModalCls = document.getElementById("order-modal-close");
-	orderModalCls.addEventListener("click", function () {
-		orderModal.style.display = "none";
-	});
+	if (orderModalCls) {
+		orderModalCls.addEventListener("click", function () {
+			orderModal.style.display = "none";
+		});
+	}
 
 	let singleMenuPrice;
 	singleMenu.forEach(function (menu) {
@@ -96,32 +98,36 @@ window.onload = () => {
 	const discoverMachine = document.getElementById("discover-machine");
 	const coffeeMachineModal = document.getElementsByClassName("coffee-modal")[0];
 	const coffeeMachinePrice = document.getElementById("price-machine");
-	const currentPrice = Number(coffeeMachinePrice.value.substring(1));
-	discoverMachine.addEventListener("click", function () {
-		coffeeMachineModal.style.display = "block";
-		let min = document.getElementById("min");
-		let res = document.getElementById("count-res");
-		let inc = document.getElementById("inc");
-		inc.addEventListener("click", function () {
-			let count = Number(res.value);
-			if (count < 50) {
-				count++;
-				res.value = count;
-				coffeeMachinePrice.value = "$" + (currentPrice * count).toFixed(2);
-			}
+	const currentPrice = Number(coffeeMachinePrice?.value.substring(1));
+	if (discoverMachine) {
+		discoverMachine.addEventListener("click", function () {
+			coffeeMachineModal.style.display = "block";
+			let min = document.getElementById("min");
+			let res = document.getElementById("count-res");
+			let inc = document.getElementById("inc");
+			inc.addEventListener("click", function () {
+				let count = Number(res.value);
+				if (count < 50) {
+					count++;
+					res.value = count;
+					coffeeMachinePrice.value = "$" + (currentPrice * count).toFixed(2);
+				}
+			});
+			min.addEventListener("click", function () {
+				let count = Number(res.value);
+				if (count > 1) {
+					count--;
+					res.value = count;
+					coffeeMachinePrice.value = "$" + (currentPrice * count).toFixed(2);
+				}
+			});
+			document
+				.getElementById("order-modal-close-machine")
+				.addEventListener("click", function () {
+					coffeeMachineModal.style.display = "none";
+				});
 		});
-		min.addEventListener("click", function () {
-			let count = Number(res.value);
-			if (count > 1) {
-				count--;
-				res.value = count;
-				coffeeMachinePrice.value = "$" + (currentPrice * count).toFixed(2);
-			}
-		});
-		document.getElementById("order-modal-close-machine").addEventListener("click", function () {
-			coffeeMachineModal.style.display = "none";
-		});
-	});
+	}
 
 	// hide coffee machine modal by clicking outside
 	closeModalClickOutside(".coffee-modal", ".coffee-modal-wrapper", ".coffee-modal-section");
@@ -130,21 +136,26 @@ window.onload = () => {
 	const dec = document.querySelector(".inc-dec span:first-child");
 	const inc = document.querySelector(".inc-dec span:nth-child(3)");
 
-	dec.addEventListener("click", function () {
-		let count = Number(orderCount.value);
-		if (count > 1) {
-			orderCount.value = count - 1;
-			price.value = "$" + ((count - 1) * singleMenuPrice.substring(1)).toFixed(2);
-		}
-	});
-	inc.addEventListener("click", function () {
-		let count = Number(orderCount.value);
-		if (count < 50) {
-			orderCount.value = count + 1;
-			price.value = "$" + ((count + 1) * singleMenuPrice.substring(1)).toFixed(2);
-		}
-	});
-	
+	if (dec) {
+		dec.addEventListener("click", function () {
+			let count = Number(orderCount.value);
+			if (count > 1) {
+				orderCount.value = count - 1;
+				price.value = "$" + ((count - 1) * singleMenuPrice.substring(1)).toFixed(2);
+			}
+		});
+	}
+
+	if (inc) {
+		inc.addEventListener("click", function () {
+			let count = Number(orderCount.value);
+			if (count < 50) {
+				orderCount.value = count + 1;
+				price.value = "$" + ((count + 1) * singleMenuPrice.substring(1)).toFixed(2);
+			}
+		});
+	}
+
 	// product plus modal
 	const productModal = document.querySelector(".product-plus");
 	const singleProduct = document.querySelectorAll(".single-item");
@@ -169,9 +180,11 @@ window.onload = () => {
 
 	// order modal close by clicking x
 	const orderProductModalCls = document.getElementById("product-modal-close");
-	orderProductModalCls.addEventListener("click", function () {
-		productModal.style.display = "none";
-	});
+	if (orderProductCount) {
+		orderProductModalCls.addEventListener("click", function () {
+			productModal.style.display = "none";
+		});
+	}
 
 	// hidden modal feature
 	closeModalClickOutside(".product-plus", ".modal-wrapper", ".modal-section");
@@ -180,14 +193,14 @@ window.onload = () => {
 	const decProduct = document.querySelector(".inc-dec-product span:first-child");
 	const incProduct = document.querySelector(".inc-dec-product span:nth-child(3)");
 
-	decProduct.addEventListener("click", function () {
+	decProduct?.addEventListener("click", function () {
 		let count = Number(orderProductCount.value);
 		if (count > 1) {
 			orderProductCount.value = count - 1;
 			productPrice.value = "$" + ((count - 1) * singleProductPrice.substring(1)).toFixed(2);
 		}
 	});
-	incProduct.addEventListener("click", function () {
+	incProduct?.addEventListener("click", function () {
 		let count = Number(orderProductCount.value);
 		if (count < 50) {
 			orderProductCount.value = count + 1;
@@ -211,26 +224,29 @@ window.onload = () => {
 	const date = document.getElementById("choose-date");
 	const time = document.getElementById("choose-time");
 	[date, time].forEach((element) => {
-		element.addEventListener("keydown", function (e) {
+		element?.addEventListener("keydown", function (e) {
 			e.preventDefault();
 		});
 	});
 
 	// now to future
 	let today = new Date().toISOString().split("T")[0];
-	document.getElementsByName("date")[0].setAttribute("min", today);
+	document.getElementsByName("date")[0]?.setAttribute("min", today);
 
 	// close modal by clicking outside function
 	function closeModalClickOutside(modal, selector, targetSelector) {
-		document.querySelector(selector).addEventListener(
-			"click",
-			function (e) {
-				if (!e.target.closest(targetSelector)) {
-					document.querySelector(modal).style.display = "none";
-				}
-			},
-			false
-		);
+		const mainSelector = document.querySelector(selector);
+		if (mainSelector) {
+			mainSelector.addEventListener(
+				"click",
+				function (e) {
+					if (!e.target.closest(targetSelector)) {
+						document.querySelector(modal).style.display = "none";
+					}
+				},
+				false
+			);
+		}
 	}
 };
 

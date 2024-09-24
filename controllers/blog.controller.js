@@ -84,13 +84,20 @@ exports.createBlogPostPostController = async (req, res, next) => {
 exports.showSingleBlogGetController = async (req, res, next) => {
 	const { id } = req.params;
 	try {
-		const singleBlog = await Post.findById(id).populate("author");
+		const singleBlog = await Post.findById(id)
+			.populate("author")
+			.populate({
+				path: "comments",
+				populate: {
+					path: "user",
+				},
+			});
 		let allBookmarks = false;
 		if (req.user) {
 			allBookmarks = await Profile.find({ user: req.user._id });
 		}
 		res.render("pages/blogs/single-blog", {
-			title: `Coffee Shop | ${singleBlog.title}`,
+			title: `Coffee Shop | ${singleBlog?.title}`,
 			flashMessage: Flash.getMessage(req),
 			orders: await gettingAllOrder(req, next),
 			singleBlog,
@@ -108,7 +115,7 @@ exports.deleteSinglePostGetController = async (req, res, next) => {
 		try {
 			const deletedPost = await Post.findByIdAndDelete(id);
 			let publicId = deletedPost.body;
-			// need to extract the img src and public_id and should be process for deletion 
+			// need to extract the img src and public_id and should be process for deletion
 			if (
 				singleBlog.thumbnail !=
 				"https://res.cloudinary.com/hostingimagesservice/image/upload/v1656086428/coffeeShop/default-blog_cz7q6j.jpg"

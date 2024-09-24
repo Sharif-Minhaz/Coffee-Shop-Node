@@ -1,33 +1,31 @@
 window.onload = function () {
-	const commentHolder = document.getElementById("comment-holder");
+	const commentHolder = document.getElementById("comment-box");
 
 	commentHolder.addEventListener("keypress", function (e) {
-		if (commentHolder.hasChildNodes(e.target)) {
-			if (e.key === "Enter") {
-				let commentId = e.target.dataset.comment;
-				let user = e.target.dataset.user;
-				let value = e.target.value;
+		if (e.key === "Enter") {
+			let commentId = e.target.dataset.comment;
+			let user = e.target.dataset.user;
+			let value = e.target.value;
 
-				if (value) {
-					let data = {
-						body: value,
-					};
-					let req = generateRequest(`/api/comments/replies/${commentId}`, "POST", data);
-					fetch(req)
-						.then((res) => res.json())
-						.then((data) => {
-							let replyElement = createReplyElement(data, user);
-							let parent = e.target.parentElement;
-							parent.previousElementSibling.appendChild(replyElement);
-							e.target.value = "";
-						})
-						.catch((e) => {
-							console.error(e);
-							alert(e.message);
-						});
-				} else {
-					alert("Please Enter A Valid Reply");
-				}
+			if (value) {
+				let data = {
+					body: value,
+				};
+				let req = generateRequest(`/api/comments/replies/${commentId}`, "POST", data);
+				fetch(req)
+					.then((res) => res.json())
+					.then((data) => {
+						let replyElement = createReplyElement(data, user);
+						let parent = e.target.parentElement;
+						parent.previousElementSibling.appendChild(replyElement);
+						e.target.value = "";
+					})
+					.catch((e) => {
+						console.error(e);
+						alert(e.message);
+					});
+			} else {
+				alert("Please Enter A Valid Reply");
 			}
 		}
 	});

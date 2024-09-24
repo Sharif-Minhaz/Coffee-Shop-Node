@@ -1,34 +1,35 @@
 <%- include("../partials/head.ejs")  %>
 <link rel="stylesheet" href="/dist/css/owl.carousel.min.css">
 </head>
+
 <body>
     <%- include("../partials/alert.ejs") %>
     <%- include("../partials/header.ejs") %>
-        <div class="intro">
-            <h1>
-                roasted coffee <br />
-                for you
-            </h1>
-            <p>
-                The coffee is brewed by first roasting the green coffee beans over hot <br />
-                coals in a brazier. given an opportunity to sample.
-            </p>
-            <div class="intro-btns">
-                <button onclick="window.location='/menu/all';">Testy Coffee</button>
-                <a href="#about"><button>Read More</button></a>
-            </div>
-            <div class="social-media">
-                <span>
-                    <a href="https://www.facebook.com/sharif.mdminhaz"><i class="bi bi-facebook"></i> Facebook</a>
-                </span>
-                <span>
-                    <a href="https://twitter.com/rabbi_minhaz"><i class="bi bi-twitter"></i> Twitter</a>
-                </span>
-                <span>
-                    <a target="_blank" href="https://github.com/Sharif-Minhaz"><i class="bi bi-github"></i> Github</a>
-                </span>
-            </div>
+    <div class="intro">
+        <h1>
+            roasted coffee <br />
+            for you
+        </h1>
+        <p>
+            The coffee is brewed by first roasting the green coffee beans over hot <br />
+            coals in a brazier. given an opportunity to sample.
+        </p>
+        <div class="intro-btns">
+            <button onclick="window.location='/menu/all';">Testy Coffee</button>
+            <a href="#about"><button>Read More</button></a>
         </div>
+        <div class="social-media">
+            <span>
+                <a href="https://www.facebook.com/sharif.mdminhaz"><i class="bi bi-facebook"></i> Facebook</a>
+            </span>
+            <span>
+                <a href="https://twitter.com/rabbi_minhaz"><i class="bi bi-twitter"></i> Twitter</a>
+            </span>
+            <span>
+                <a target="_blank" href="https://github.com/Sharif-Minhaz"><i class="bi bi-github"></i> Github</a>
+            </span>
+        </div>
+    </div>
     </header>
     <!-- opening section  -->
     <section id="opening">
@@ -80,8 +81,10 @@
                 <div class="des">
                     <span>OUR HISTORY</span>
                     <h1>CREATE A NEW STORY WITH US</h1>
-                    <p>Imagine Forest offers a combination of writing activities and writing games to break down the heavy task of writing a story into small and easy to manage activities.</p>
-                    <p>Story starters are a brilliant way to fix blank page syndrome (or writer’s block). Did you know that 67% of authors say the most difficult part of writing is starting their story?</p>
+                    <p>Imagine Forest offers a combination of writing activities and writing games to break down the
+                        heavy task of writing a story into small and easy to manage activities.</p>
+                    <p>Story starters are a brilliant way to fix blank page syndrome (or writer’s block). Did you know
+                        that 67% of authors say the most difficult part of writing is starting their story?</p>
                 </div>
             </div>
         </div>
@@ -94,17 +97,17 @@
         </div>
         <div class="container-sm">
             <div class="full-row">
-                <% if(menus.length > 0 && menus.forEach((menu) => { %> 
-                    <a href="/menu/view/<%= menu._id %>" style="text-decoration: none;">
-                        <div class="single-menu">
-                            <img src="<%= menu.image %>" alt="menu">
-                            <div class="inner-section">
-                                <span><%= menu.name %></span>
-                                <span><%= menu.price %></span>
-                            </div>
+                <% if(menus.length > 0 && menus.forEach((menu) => { %>
+                <a href="/menu/view/<%= menu._id %>" style="text-decoration: none;">
+                    <div class="single-menu">
+                        <img src="<%= menu.image %>" alt="menu">
+                        <div class="inner-section">
+                            <span><%= menu.name %></span>
+                            <span><%= menu.price %></span>
                         </div>
-                    </a>
-                <% })) %> 
+                    </div>
+                </a>
+                <% })) %>
             </div>
         </div>
         <div class="menu-footer">
@@ -118,11 +121,14 @@
             <div class="full-row">
                 <div class="des">
                     <h3>COFFEE MACHINE, BUY FOR HOME</h3>
-                    <p>Coffee machines are super-efficient and more versatile than having a kettle or pots of coffee. 
-                    Having coffee machines that use pods is so much better than having three different things.
-                    <br> 
-                    With one machine you can make tea and coffee without waiting for the kettle to brew or the coffee to drip out</p>
-                    <span id="discover-machine">discover now</span>
+                    <p>Coffee machines are super-efficient and more versatile than having a kettle or pots of coffee.
+                        Having coffee machines that use pods is so much better than having three different things.
+                        <br>
+                        With one machine you can make tea and coffee without waiting for the kettle to brew or the
+                        coffee to drip out
+                    </p>
+                    <a href="/menu/view/62b60f917ba0d4091b3e9eec"><span id="discover-machine">discover now</span></a>
+
                 </div>
                 <div class="product-img">
                     <img src="/images/product-big.png" alt="product">
@@ -142,18 +148,18 @@
             </div>
             <div class="full-row">
                 <% if(products) { %>
-                    <% products.forEach((product) => { %> 
-                        <div class="single-item" onclick="window.location='/menu/view/<%= product._id %>'">
-                            <div class="img">
-                                <img id="product-main-image" src="<%= product.image %>" alt="item">
-                            </div>
-                            <div class="item-des">
-                                <span><%= product.name %></span>
-                                <span>PRICE - <%= product.price %></span>
-                            </div>
-                        </div>
-                    <% }) %> 
-                <% } %>  
+                <% products.forEach((product) => { %>
+                <div class="single-item" onclick="window.location='/menu/view/<%= product._id %>'">
+                    <div class="img">
+                        <img id="product-main-image" src="<%= product.image %>" alt="item">
+                    </div>
+                    <div class="item-des">
+                        <span><%= product.name %></span>
+                        <span>PRICE - <%= product.price %></span>
+                    </div>
+                </div>
+                <% }) %>
+                <% } %>
             </div>
         </div>
     </section>
@@ -169,23 +175,23 @@
             <div class="full-row">
                 <div class="owl-carousel">
                     <!-- item all in all -->
-                    <% if(allItems) { %> 
-                        <% [...allItems].forEach((item) => { %>
-                            <% [...item.reviews].forEach((review) => { %> 
-                                <div class="owl-item-custom">
-                                    <div class="quote">
-                                        <img id="quote-img" src="/images/quote.png" alt="quote">
-                                    </div>
-                                    <div class="reviewed-user">
-                                        <p class="review-body"><%= review.body %></p>
-                                        <div class="user-img">
-                                            <img src="<%= review.user.profilePics %>" alt="profile-pic">
-                                        </div>
-                                        <p class="name"><%= review.user.username %></p>
-                                    </div>
-                                </div>
-                            <% }) %> 
-                        <% }) %> 
+                    <% if(allItems) { %>
+                    <% [...allItems].forEach((item) => { %>
+                    <% [...item.reviews].forEach((review) => { %>
+                    <div class="owl-item-custom">
+                        <div class="quote">
+                            <img id="quote-img" src="/images/quote.png" alt="quote">
+                        </div>
+                        <div class="reviewed-user">
+                            <p class="review-body"><%= review.body %></p>
+                            <div class="user-img">
+                                <img src="<%= review.user.profilePics %>" alt="profile-pic">
+                            </div>
+                            <p class="name"><%= review.user.username %></p>
+                        </div>
+                    </div>
+                    <% }) %>
+                    <% }) %>
                     <% } %>
                 </div>
             </div>
@@ -196,7 +202,9 @@
         <div class="container">
             <div class="full-row">
                 <div class="location">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14607.599897019574!2d90.3842537968623!3d23.750946087692075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b9ffa01d62cb%3A0x3ddc407248737a4e!2sCoffee%20Buzz!5e0!3m2!1sen!2sbd!4v1645867722596!5m2!1sen!2sbd" style="border:0;" loading="lazy" allowfullscreen="true"></iframe>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14607.599897019574!2d90.3842537968623!3d23.750946087692075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b9ffa01d62cb%3A0x3ddc407248737a4e!2sCoffee%20Buzz!5e0!3m2!1sen!2sbd!4v1645867722596!5m2!1sen!2sbd"
+                        style="border:0;" loading="lazy" allowfullscreen="true"></iframe>
                 </div>
                 <div class="reservation-input">
                     <div class="sm-heading">
@@ -205,14 +213,14 @@
                     <h1>BOOKING A TABLE</h1>
                     <form action="/reservation/table" method="post">
                         <div class="single-box">
-                            <input type="number" min="1" max="30" name="person" placeholder="Person" required >
+                            <input type="number" min="1" max="30" name="person" placeholder="Person" required>
                             <i class="bi bi-person"></i>
                         </div>
                         <div class="single-box">
-                            <input id="choose-date" name="date" type="date" required >
+                            <input id="choose-date" name="date" type="date" required>
                         </div>
                         <div class="single-box">
-                            <input id="choose-time" name="time" type="time" required >
+                            <input id="choose-time" name="time" type="time" required>
                         </div>
                         <input type="submit" value="BOOK A TABLE">
                     </form>
@@ -231,50 +239,51 @@
                 <a href="/blog#our-blog">VIEW ALL</a>
             </div>
             <div class="full-row">
-                <% if(blogs) { %> 
-                    <% blogs.forEach((blog) => { %> 
-                        <div class="single-blog">
-                            <div class="blog-img">
-                                <img src="<%= blog.thumbnail %>" alt="blog-1">
-                            </div>
-                            <div class="blog-des">
-                                <small>
-                                    <span>By:</span>
-                                    <span class="name"><%= blog.author.username %>,</span>
-                                    <span class="date">
-                                        <%= blog.createdAt.toLocaleDateString() %> 
-                                    </span>
-                                </small>
-                                <h3><a href="/blog/show/<%= blog._id %>"><%= blog.title %></a></h3>
-                                <a href="/blog/show/<%= blog._id %>">READ MORE <i class="bi bi-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    <% }) %> 
-                <% } %> 
+                <% if(blogs) { %>
+                <% blogs.forEach((blog) => { %>
+                <div class="single-blog">
+                    <div class="blog-img">
+                        <img src="<%= blog.thumbnail %>" alt="blog-1">
+                    </div>
+                    <div class="blog-des">
+                        <small>
+                            <span>By:</span>
+                            <span class="name"><%= blog.author.username %>,</span>
+                            <span class="date">
+                                <%= blog.createdAt.toLocaleDateString() %>
+                            </span>
+                        </small>
+                        <h3><a href="/blog/show/<%= blog._id %>"><%= blog.title %></a></h3>
+                        <a href="/blog/show/<%= blog._id %>">READ MORE <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+                <% }) %>
+                <% } %>
             </div>
         </div>
     </section>
-    
+
     <%- include("../partials/footer.ejs") %>
     <script src="/dist/js/owl.carousel.min.js"></script>
     <script>
         $('.owl-carousel').owlCarousel({
-            loop:true,
-            margin:10,
-            responsiveClass:true,
-            nav:true,
-            responsive:{
-                0:{
-                    items:1,
-                    loop:true,
+            loop: true,
+            margin: 10,
+            responsiveClass: true,
+            nav: true,
+            responsive: {
+                0: {
+                    items: 1,
+                    loop: true,
                 },
-                1000:{
-                    items:1,
-                    loop:true,
+                1000: {
+                    items: 1,
+                    loop: true,
                 }
             }
         })
 
     </script>
 </body>
+
 </html>
