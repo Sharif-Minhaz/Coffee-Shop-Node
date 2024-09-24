@@ -133,28 +133,28 @@ window.onload = () => {
 	closeModalClickOutside(".coffee-modal", ".coffee-modal-wrapper", ".coffee-modal-section");
 
 	// product count activation
-	const dec = document.querySelector(".inc-dec span:first-child");
-	const inc = document.querySelector(".inc-dec span:nth-child(3)");
+	// const dec = document.querySelector(".inc-dec span:first-child");
+	// const inc = document.querySelector(".inc-dec span:nth-child(3)");
 
-	if (dec) {
-		dec.addEventListener("click", function () {
-			let count = Number(orderCount.value);
-			if (count > 1) {
-				orderCount.value = count - 1;
-				price.value = "$" + ((count - 1) * singleMenuPrice.substring(1)).toFixed(2);
-			}
-		});
-	}
+	// if (dec) {
+	// 	dec.addEventListener("click", function () {
+	// 		let count = Number(orderCount.value);
+	// 		if (count > 1) {
+	// 			orderCount.value = count - 1;
+	// 			price.value = "$" + ((count - 1) * singleMenuPrice.substring(1)).toFixed(2);
+	// 		}
+	// 	});
+	// }
 
-	if (inc) {
-		inc.addEventListener("click", function () {
-			let count = Number(orderCount.value);
-			if (count < 50) {
-				orderCount.value = count + 1;
-				price.value = "$" + ((count + 1) * singleMenuPrice.substring(1)).toFixed(2);
-			}
-		});
-	}
+	// if (inc) {
+	// 	inc.addEventListener("click", function () {
+	// 		let count = Number(orderCount.value);
+	// 		if (count < 50) {
+	// 			orderCount.value = count + 1;
+	// 			price.value = "$" + ((count + 1) * singleMenuPrice.substring(1)).toFixed(2);
+	// 		}
+	// 	});
+	// }
 
 	// product plus modal
 	const productModal = document.querySelector(".product-plus");
