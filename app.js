@@ -30,6 +30,11 @@ const PORT = process.env.PORT || 5000;
 middlewares(app);
 setRoutes(app);
 
+// health check
+app.get("/health", (req, res) => {
+	res.status(200).json({ success: true, message: "Server is healthy" });
+});
+
 /**
  * Handles errors that are thrown by the application.
  * @param error - The error that was thrown.
