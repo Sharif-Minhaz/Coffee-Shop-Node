@@ -38,6 +38,11 @@ html {
 		}
 		// importing main header...
 		@import "header";
+
+		// tiny mce
+		.tox-toolbar__primary {
+			background-color: #232636 !important;
+		}
 		// all checkout details
 		#all-subscribed-mail {
 			.container-sm {

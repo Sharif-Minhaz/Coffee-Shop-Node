@@ -1,17 +1,17 @@
 const cards = document.querySelectorAll(".right .cards img");
 
-cards[0].addEventListener("click", function () {
-	activeDeactiveCard(0, 1, 2);
-	enableDisableInputBox(false);
-});
-cards[1].addEventListener("click", function () {
-	activeDeactiveCard(1, 0, 2);
-	enableDisableInputBox(false);
-});
-cards[2].addEventListener("click", function () {
-	activeDeactiveCard(2, 0, 1);
-	enableDisableInputBox(true);
-});
+// cards[0].addEventListener("click", function () {
+// 	activeDeactiveCard(0, 1, 2);
+// 	enableDisableInputBox(false);
+// });
+// cards[1].addEventListener("click", function () {
+// 	activeDeactiveCard(1, 0, 2);
+// 	enableDisableInputBox(false);
+// });
+// cards[2].addEventListener("click", function () {
+// 	activeDeactiveCard(2, 0, 1);
+// 	enableDisableInputBox(true);
+// });
 
 function activeDeactiveCard(active, deactive1, deactive2) {
 	cards[deactive1].classList.remove("selected-card");

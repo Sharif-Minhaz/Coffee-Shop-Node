@@ -1,5 +1,7 @@
 tinymce.init({
 	selector: "#rich-text-editor",
+	skin: "oxide-dark",
+	content_css: "tinymce-5-dark",
 	plugins: [
 		"advlist lists link autolink autosave code",
 		"preview",

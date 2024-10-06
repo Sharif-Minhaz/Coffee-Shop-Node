@@ -1,30 +1,38 @@
 let orderDate = document.getElementsByClassName("order-date");
-// Set the date we're counting down to
-let countDownDate = new Date("oct 6, 2024 15:37:25").getTime();
+// Set the countdown time (30 minutes in milliseconds)
+let countdownDuration = 30 * 60 * 1000;
 
-// Update the count down every 1 second
-let countdownFunction = setInterval(function () {
-	// Get todays date and time
-	let now = new Date().getTime();
+// Initialize the countdown start time
+let countDownDate = new Date().getTime() + countdownDuration;
 
-	// Find the distance between now an the count down date
-	let distance = countDownDate - now;
+// Function to start a new countdown cycle
+function startCountdown() {
+	// Update the count down every 1 second
+	let countdownFunction = setInterval(function () {
+		// Get the current date and time
+		let now = new Date().getTime();
 
-	// Time calculations for days, hours, minutes and seconds
-	let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-	let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-	let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-	let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+		// Find the distance between now and the countdown end time
+		let distance = countDownDate - now;
 
-	// Output the result in an element with id="demo"
+		// Time calculations for minutes and seconds
+		let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+		let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-	for (let i = 0; i < orderDate.length; i++) {
-		orderDate[i].innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-	}
+		// Output the result in elements with the class "order-date"
+		for (let i = 0; i < orderDate.length; i++) {
+			orderDate[i].innerHTML = minutes + "m " + seconds + "s ";
+		}
 
-	// If the count down is over, write some text
-	if (distance < 0) {
-		clearInterval(countdownFunction);
-		document.getElementById("demo").innerHTML = "EXPIRED";
-	}
-}, 1000);
+		// If the countdown is over, reset it to 30 minutes
+		if (distance < 0) {
+			clearInterval(countdownFunction); // Stop the current countdown
+			// Reset the countdown to 30 minutes from now
+			countDownDate = new Date().getTime() + countdownDuration;
+			startCountdown(); // Start a new countdown
+		}
+	}, 1000);
+}
+
+// Start the initial countdown
+startCountdown();

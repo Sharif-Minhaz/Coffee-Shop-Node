@@ -50,13 +50,10 @@ exports.homePostController = async (req, res, next) => {
 	const { checkoutProductName, productImg, checkoutPrice, quantity, name, address, phone } =
 		req.body;
 	try {
-		// const result = await cloudinary.uploader.upload(req.file.path, { folder: "coffeeShop" });
-
 		let order = new Checkout({
 			user: req.user._id,
 			checkoutProductName,
 			productImg,
-			// cloudinaryId: result.public_id,
 			checkoutPrice,
 			quantity,
 			name,
@@ -68,16 +65,16 @@ exports.homePostController = async (req, res, next) => {
 
 		req.flash("success", "Order placed successfully");
 
-		let menus = await Menu.find({ category: "menu" }).limit(6);
-		let products = await Menu.find({ category: "products" }).limit(3);
-		let coffeeMachine = await Menu.findOne({ name: "Coffee Machine" });
-
-		let allItems = await Menu.find().limit(8).populate({
-			path: "reviews.user",
-			model: "User",
-		});
-
-		let blogs = await Post.find().populate("author", "username").limit(3);
+		const [menus, products, coffeeMachine, allItems, blogs] = await Promise.all([
+			Menu.find({ category: "menu" }).limit(6),
+			Menu.find({ category: "products" }).limit(3),
+			Menu.findOne({ name: "Coffee Machine" }),
+			Menu.find().limit(8).populate({
+				path: "reviews.user",
+				model: "User",
+			}),
+			Post.find().populate("author", "username").limit(3),
+		]);
 
 		res.render("pages/home", {
 			title: "Coffee Shop | Home",

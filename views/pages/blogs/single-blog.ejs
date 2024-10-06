@@ -11,7 +11,7 @@
                 <div class="heading">
                     <div>
                         <h2><%= singleBlog.title %></h2>
-                        <p>By - <%= singleBlog.author.username %>, At: <%= singleBlog.createdAt.toLocaleDateString() %>
+                        <p>By - <%= singleBlog.author.username %>, At: <%= singleBlog.createdAt?.toLocaleDateString() %>
                         </p>
                     </div>
                     <div class="options" style="display: flex; gap: 10px;">
@@ -90,7 +90,7 @@
                                         <img src="<%= comment.user?.profilePics %>" alt="profile">
                                         <div class="name-date">
                                             <span><%= comment.user?.username %></span>
-                                            <span><%= (comment) ? comment.createdAt.toLocaleDateString() : "" %></span>
+                                            <span><%= (comment) ? comment.createdAt?.toLocaleDateString() : "" %></span>
                                         </div>
                                     </div>
                                     <p class="comment-body"><%= comment.body %></p>
