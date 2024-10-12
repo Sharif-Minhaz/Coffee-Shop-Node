@@ -1936,6 +1936,36 @@ html {
 		}
 	}
 }
+
+.product-animate {
+	opacity: 0;
+	animation: fallIn 0.5s forwards;
+}
+
+// Add this to your existing product styles
+#opening .prod-1,
+#opening .prod-2,
+#opening .prod-3,
+#menu-row .product-link,
+#coffee-machine .des,
+#coffee-machine .product-img,
+#popular-product-row .single-item,
+#our-blog .single-blog,
+.shop-menu-item {
+	opacity: 0;
+}
+
+@keyframes fallIn {
+	from {
+		transform: translateY(-20px);
+		opacity: 0;
+	}
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
 // sticky animation for topbar or nav
 @keyframes animationFade {
 	from {

@@ -96,9 +96,9 @@
             <h1>CAFE POPULAR MENU</h1>
         </div>
         <div class="container-sm">
-            <div class="full-row">
+            <div class="full-row" id="menu-row">
                 <% if(menus.length > 0 && menus.forEach((menu) => { %>
-                <a href="/menu/view/<%= menu._id %>" style="text-decoration: none;">
+                <a class="product-link" href="/menu/view/<%= menu._id %>" style="text-decoration: none;">
                     <div class="single-menu">
                         <img src="<%= menu.image %>" alt="menu">
                         <div class="inner-section">
@@ -146,7 +146,7 @@
                 <h1>CAFE POPULAR PRODUCT</h1>
                 <a href="/menu/all">VIEW ALL</a>
             </div>
-            <div class="full-row">
+            <div class="full-row" id="popular-product-row">
                 <% if(products) { %>
                 <% products.forEach((product) => { %>
                 <div class="single-item" onclick="window.location='/menu/view/<%= product._id %>'">
@@ -284,6 +284,7 @@
         })
 
     </script>
+    <script src="/scripts/motion.js"></script>
 </body>
 
 </html>
