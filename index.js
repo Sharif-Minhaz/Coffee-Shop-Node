@@ -10,6 +10,7 @@ const middlewares = require("./middlewares/middlewares");
  * Sets the view engine to ejs and sets the views directory.
  * @returns None
  */
+app.use(express.static("public"));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
