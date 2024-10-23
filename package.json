@@ -3,9 +3,12 @@
 	"version": "1.0.0",
 	"description": "In this project I will create a coffee shop management system with two category of user availability. I will focus on the backend system most. \r ---\r The technologies, I will use for this project:\r 1. EJS  \r 2. SCSS\r 3. Javascript (client-side)\r 4. Nodejs (Server-side)\r 5. Express\r 6. MongoDB\r 7. Mongoose",
 	"main": "app.js",
+	"engines": {
+		"node": ">=18.0.0"
+	},
 	"scripts": {
-		"start": "node app.js",
-		"dev": "nodemon app.js",
+		"start": "node index.js",
+		"dev": "nodemon index.js",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"keywords": [],
